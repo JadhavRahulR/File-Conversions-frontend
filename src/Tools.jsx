@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './sidebar';
 import { Link } from 'react-router-dom'
 import "./sidebar.css"
 
