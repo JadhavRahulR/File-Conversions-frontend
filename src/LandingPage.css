@@ -1,0 +1,132 @@
+/* Reset */
+body, h1, h2, h3, p, button {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.landing-page {
+  background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 50px 20px 60px;
+  background-color: #fff;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: #555;
+}
+
+.primary-btn {
+  background-color: #4f46e5;
+  color: white;
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.primary-btn a{
+    color: white;
+}
+
+.primary-btn:hover {
+  background-color: #3730a3;
+}
+
+/* Features */
+.features {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.features h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: black;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.feature-grid li{
+  list-style: none;
+}
+.feature-grid a {
+  text-decoration: none;
+}
+.feature-card {
+  background-color: black;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card .icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  padding: 60px 20px;
+   background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
+}
+.cta h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.cta p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #444;
+}
+.cta .paragraph{
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  
+}
+.paragraph p {
+  font-size: 20px;
+  color: #555;
+}
+
+.feature-card h5 {
+   color: white;
+}
+@media (max-width:500px){
+  .hero{
+      padding: 30px;
+  }
+  .hero h1{
+    font-size: 2.5rem;
+  }
+}

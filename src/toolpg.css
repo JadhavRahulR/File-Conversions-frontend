@@ -1,0 +1,47 @@
+body a{
+    text-decoration: none;
+}
+.toolpgcontainer{
+    background-color: black ;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 50px;
+    border-radius: 10px;
+    text-decoration: none;
+
+}
+
+.toolpgcontainer .toolcard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:200px;
+    height: 150px;;
+    background-color: #272626;
+    color: white;
+   
+    margin: 20px;
+    transition: 0.2s ease-in-out;
+    border-radius: 10px;
+} 
+
+.toolpgcontainer .toolcard:hover{
+    transform: translateY(-10px);
+     background-color: #525252;
+    box-shadow: 0 4px 20px rgb(255, 255, 255);
+}
+
+.toolpgcontainer .toolcard p {
+    width: 150px;
+    height: 40px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    border-radius:5px ;
+    align-items: center;
+     box-shadow: 0px 3px 20px rgb(254, 254, 255);
+}

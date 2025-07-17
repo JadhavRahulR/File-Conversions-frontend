@@ -1,0 +1,80 @@
+.pdf-merger {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items:center ;
+  flex-direction: column;
+}
+
+.pdf-merger h2 {
+  margin-bottom: 1rem;
+}
+
+.pdf-merger .drop-area {
+  border: 2px dashed #999;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  background: #fff;
+  cursor: pointer;
+  width: 300px;
+}
+
+.file-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  text-align: left;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.file-list li {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.pdf-merger .mergebtn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bfc;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.remove-btn {
+  float: right;
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.clear-btn {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  margin-bottom: 1rem;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background-color: #e22e2e;
+}

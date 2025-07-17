@@ -1,0 +1,70 @@
+/* .compressorpg{
+} */
+.compressor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+  background: #e3f2fd;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  font-family: sans-serif;
+  text-align: center;
+  border: 2px solid red;
+}
+
+.compressor-container h2 {
+  margin-bottom: 20px;
+  color: #1565c0;
+}
+
+.file-input {
+  display: block;
+  margin: 0 auto 20px auto;
+  font-size: 1rem;
+}
+
+.slider-container {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.slider-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.slider-container input[type="range"] {
+  width: 100%;
+}
+
+.compressor-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.compressor-container button:hover {
+  background-color: #0d47a1;
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+.compressorpg .fileuploadcontainer{
+  border: 2px solid red;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

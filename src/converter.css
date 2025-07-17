@@ -1,0 +1,216 @@
+.converter h3{
+    color: white;
+    margin-bottom: 50px;
+    /* border: 2px solid red; */
+}
+.converter{
+    border: 2px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+    border-radius: 10px;
+    margin: 10px auto;
+    min-height: 500px;
+    max-width: 800px;
+}
+.converter input {
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 5px ;
+    color: red;
+}
+.fileuploadcontainer{
+    width: 310px;
+    display: flex;
+}
+.selected-file{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ .selected-file b{
+    width: 500px;
+    /* height: 20px; */
+    overflow: hidden;
+    padding-top: 4px;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+.converter button {
+    width: 200px;
+    height: 50px;
+    /* margin: 70px; */
+    padding: 2px ;
+    background-color:rgb(9, 9, 210);
+    color: white;
+    border-radius: 6px;
+    position: relative;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+.converter button:hover{
+    box-shadow: 2px 2px 3px  white;
+    background-color: rgb(167, 255, 239);
+    color: #000;
+
+}
+.converter button:before{
+    content: '';
+    position:absolute;
+    top:0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 2px solid white;
+    border-radius: 6px;
+    border-right: 2px solid white;
+    animation: border-top 3s infinite ;
+}
+@keyframes border-top{
+    0%{
+        width: 0;
+        height: 0;
+    }
+    25%{width: 200px;height:0px;}
+    50%{
+        width: 200px;
+        height: 50px;
+    }
+    100%{
+        width:200px ;
+        height: 50px;
+    }
+}
+.converter button:after{
+    content: '';
+    position:absolute;
+    right:0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 2px solid white;
+    border-radius: 6px;
+    border-left: 2px solid white;
+    animation: border-bottom 3s infinite ;
+}
+
+@keyframes border-bottom{
+      0%{
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    50%{
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+    50.1%{
+         width: 0px;
+        height: 0px;
+        opacity: 1;
+    }
+    75%{
+        width: 200px;
+        height: 0;
+        opacity: 1;
+    }
+    100%{
+        width:200px ;
+        height: 50px;
+        opacity: 1;
+    }
+}
+.converter p {
+    color: white;
+}
+
+@media (max-width:500px){
+    .converter{
+        overflow: hidden;
+        margin: 0;
+    }
+    .selected-file b{
+    width: 300px;
+    height: 40px;
+    overflow: hidden;
+
+}
+}
+
+/* css for content of pages */
+.converter-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 2rem 1rem;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.converter-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #0a66c2;
+}
+
+.converter-tagline {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.converter-section {
+    margin-bottom: 2.5rem;
+}
+.converter-section h2{
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+
+}
+.converter-section ol,
+.converter-section ul {
+  padding-left: 1.2rem;
+}
+
+.converter-section li {
+  margin-bottom: 0.75rem;
+  list-style: none;
+}
+
+.converter-section p {
+  margin-bottom: 1rem;
+}
+
+.converter-btn {
+  background-color: #0a66c2;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.converter-btn:hover {
+  background-color: #004a99;
+}
+
+@media (max-width: 600px) {
+  .converter-title {
+    font-size: 1.5rem;
+  }
+
+  .converter-btn {
+    width: 100%;
+  }
+}

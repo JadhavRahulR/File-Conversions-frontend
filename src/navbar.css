@@ -1,0 +1,47 @@
+.basic-navbar-nav{
+    border: 2px solid red;
+    width: 1rem;
+    height: 1rem;
+}
+.navbar-toggler-icon{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.bg-body-tertiary{
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+}
+.navbarlogo a {
+    color: white;
+    text-decoration: none;
+
+}
+.pages{
+    text-decoration: none;
+    letter-spacing: 2px ;
+    margin-left: 20px;
+    
+}
+.pages:active{
+border-bottom: 1px solid white;
+}
+
+.hello{
+    border: 1px solid purple;
+    width: 150px;
+    margin: 4px ;
+    color:white;
+    font-size: 15px;
+    text-align: start;
+}
+.hello.selected{
+    border: 2px solid red;
+}
+@media (max-width:900px){
+    
+    .displaynone {
+            display: none;
+    }
+}
