@@ -8,6 +8,7 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const TxtToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
@@ -30,7 +31,7 @@ const TxtToPdfConverter = () => {
     try {
       setStatus("Converting...")
       const response = await axios.post(
-        "http://localhost:5000/convert-txt-to-pdf",
+        `${BASE_URL}/convert-txt-to-pdf`,
         formData,
         { responseType: "blob" }
       );

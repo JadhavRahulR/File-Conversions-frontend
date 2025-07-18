@@ -3,6 +3,7 @@ import axios from 'axios';
 import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const CsvCompressor = () => {
     const [file, setFile] = useState(null);
     const [compressionLevel, setCompressionLevel] = useState(19);
@@ -32,7 +33,7 @@ const CsvCompressor = () => {
         formData.append('level', compressionLevel);
 
         try {
-            const response = await axios.post('http://localhost:5000/compress-csv', formData, {
+            const response = await axios.post(`${BASE_URL}/compress-csv'`, formData, {
                 responseType: 'blob',
             });
 

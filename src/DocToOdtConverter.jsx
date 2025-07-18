@@ -8,7 +8,7 @@ import DropboxFileInput from './DropboxFileInput';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 
-
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const DocToOdtConverter = () => {
   const [file, setFile] = useState(null);
    const [status, setStatus] = useState("Upload");
@@ -30,7 +30,7 @@ const DocToOdtConverter = () => {
     try {
        setStatus("Converting...")
       const response = await axios.post(
-        "http://localhost:5000/convert-doc-to-odt",
+         `${BASE_URL}/convert-doc-to-odt`,
         formData,
         { responseType: "blob" }
       );

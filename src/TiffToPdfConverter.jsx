@@ -6,6 +6,7 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from "./ScrollToTop";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const TiffToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
@@ -27,7 +28,7 @@ const TiffToPdfConverter = () => {
     try {
       setStatus("Converting...")
       const response = await axios.post(
-        "http://localhost:5000/convert-tiff-to-pdf",
+        `${BASE_URL}/convert-tiff-to-pdf`,
         formData,
         { responseType: "blob" }
       );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ZipExtractor.css";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const ZipExtractor = () => {
   const [zipFile, setZipFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ const ZipExtractor = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/extract-zip", formData, {
+      const response = await axios.post(`${BASE_URL}/extract-zip`, formData, {
         responseType: "blob",
       });
 

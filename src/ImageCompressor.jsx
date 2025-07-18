@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ImageCompressor.css";
-import DropzoneInput from "./DropzoneInput";
+// import DropzoneInput from "./DropzoneInput";
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const ImageCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(70);
@@ -36,7 +37,7 @@ const ImageCompressor = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/compress-image", formData, {
+      const response = await axios.post( `${BASE_URL}/compress-image`, formData, {
         responseType: "blob"
       });
       const blob = new Blob([response.data], { type: "image/jpeg" });
@@ -57,26 +58,6 @@ const ImageCompressor = () => {
 
   return (
     <>
-      {/* <div className="image-compressor-container">
-      <h2>Compress Image (JPG/PNG)</h2>
-
-      <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
-      <div className="slider-section">
-        <label>Compression Quality: {quality}</label>
-        <input
-          type="range"
-          min="30"
-          max="95"
-          value={quality}
-          onChange={(e) => setQuality(e.target.value)}
-          />
-      </div>
-      <DropzoneInput acceptedType={['jpg', 'jpeg', 'png']}file={file} onFileAccepted={setFile} setStatus={setStatus}/>
-
-      <button onClick={handleSubmit} disabled={loading}>
-        {loading ? "Compressing..." : "Compress Image"}
-      </button>
-    </div> */}
 
 
 
@@ -107,15 +88,6 @@ const ImageCompressor = () => {
             <span>📦 Less Compress</span>
           </div>
         </div>
-
-
-        {/* <button
-                onClick={handleSubmit}
-                disabled={!file || status === 'uploading'}
-                className="compress-btn"
-            >
-                {status === 'uploading' ? 'Compressing...' : '🔽 Compress CSV'}
-            </button> */}
         <button onClick={handleSubmit} disabled={loading}>
           {loading ? "Compressing..." : "Compress Image"}
         </button>

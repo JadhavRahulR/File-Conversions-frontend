@@ -4,6 +4,8 @@ import "./PDFCompressor.css";
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 
+
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(60);
@@ -34,7 +36,7 @@ const PDFCompressor = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/convert-compress-pdf", formData, {
+      const response = await axios.post(`${BASE_URL}/convert-compress-pdf`, formData, {
         responseType: "blob",
       });
 

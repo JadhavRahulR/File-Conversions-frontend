@@ -4,6 +4,7 @@ import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const XlsxCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(30);
@@ -42,7 +43,7 @@ const XlsxCompressor = () => {
     formData.append('outputType', outputType);
 
     try {
-      const response = await axios.post('http://localhost:5000/compress-xlsx', formData, {
+      const response = await axios.post(`${BASE_URL}/compress-xlsx`, formData, {
         responseType: 'blob',
         onUploadProgress: (event) => {
           const percent = Math.round((event.loaded * 100) / event.total);

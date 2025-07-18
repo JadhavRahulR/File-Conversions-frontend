@@ -4,6 +4,7 @@ import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const PptxCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(30);
@@ -40,7 +41,7 @@ const PptxCompressor = () => {
     formData.append('outputType', outputType);
 
     try {
-      const response = await axios.post('http://localhost:5000/compress-pptx', formData, {
+      const response = await axios.post(`${BASE_URL}/compress-pptx`, formData, {
         responseType: 'blob',
       });
 

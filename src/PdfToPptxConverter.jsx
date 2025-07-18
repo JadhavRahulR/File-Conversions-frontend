@@ -6,7 +6,7 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 
-
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const PdfToPptxConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
@@ -30,7 +30,7 @@ const PdfToPptxConverter = () => {
     try {
       setStatus("Converting...");
 
-      const response = await axios.post("http://localhost:5000/convert-pdf-to-pptx", formData, {
+      const response = await axios.post(`${BASE_URL}/convert-pdf-to-pptx`, formData, {
         responseType: "blob",
       });
 

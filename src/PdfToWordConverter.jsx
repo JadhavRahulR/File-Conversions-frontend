@@ -7,7 +7,7 @@ import DropboxFileInput from './DropboxFileInput';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 
-const BASE_URL = "https://file-conversion-backend-s.onrender.com"
+const BASE_URL = import.meta.env.VITE_BASE_URL
   
 function PdfToWordConverter() {
   const [file, setFile] = useState(null);

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./PDFMerger.css";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFMerger = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isMerging, setIsMerging] = useState(false);
@@ -42,7 +43,7 @@ const PDFMerger = () => {
 
     setIsMerging(true);
     try {
-      const response = await axios.post("http://localhost:3000/merge-pdf", formData, {
+      const response = await axios.post(`${BASE_URL}/merge-pdf`, formData, {
         responseType: "blob",
       });
 

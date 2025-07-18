@@ -7,6 +7,7 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const XlsxToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
@@ -28,7 +29,7 @@ const XlsxToPdfConverter = () => {
     try {
       setStatus("Converting...")
       const response = await axios.post(
-        "http://localhost:5000/convert-xlsx-to-pdf",
+        `${BASE_URL}/convert-xlsx-to-pdf`,
         formData,
         { responseType: "blob" }
       );

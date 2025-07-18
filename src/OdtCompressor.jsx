@@ -4,6 +4,7 @@ import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(70);
@@ -32,7 +33,7 @@ const OdtCompressor = () => {
     formData.append('outputType', outputType);
 
     try {
-      const response = await axios.post('http://localhost:5000/compress-odt', formData, {
+      const response = await axios.post(`${BASE_URL}/compress-odt`, formData, {
         responseType: 'blob',
       });
 

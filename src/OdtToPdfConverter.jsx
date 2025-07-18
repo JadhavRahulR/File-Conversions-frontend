@@ -7,7 +7,7 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 
-
+const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("upload");
@@ -29,7 +29,7 @@ const OdtToPdfConverter = () => {
 
     try {
       setStatus("Converting...");
-      const response = await axios.post("http://localhost:5000/convert-odt-to-pdf", formData, {
+      const response = await axios.post(`${BASE_URL}/convert-odt-to-pdf`, formData, {
         responseType: "blob",
       });
 
