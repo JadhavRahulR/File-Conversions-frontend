@@ -7,6 +7,8 @@ import DropboxFileInput from './DropboxFileInput';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 
+const BASE_URL = "https://file-conversion-backend-s.onrender.com"
+  
 function PdfToWordConverter() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
@@ -24,6 +26,7 @@ function PdfToWordConverter() {
     console.timeEnd("📤 File → Ready to Convert");
   };
 
+
   const handleConvert = async () => {
     console.log("🔥 handleConvert triggered:", new Date().toISOString());
 
@@ -34,13 +37,14 @@ function PdfToWordConverter() {
 
     const formData = new FormData();
     formData.append("file", file);
+    
 
     try {
       setStatus("Converting...");
       console.time("⏱ ConvertRequest");
 
       const response = await axios.post(
-        "http://localhost:5000/convert-pdf-to-word",
+        `${BASE_URL}/convert-pdf-to-word`,
         formData,
         {
           responseType: "blob",
