@@ -3,6 +3,7 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import "./ZipCompressor.css"; // 👈 custom styles here
 
+
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const ZipCompressor = () => {
   const [files, setFiles] = useState([]);
