@@ -3,6 +3,7 @@ import axios from 'axios';
 import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import ScrollToTop from './ScrollToTop';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const DocxCompressor = () => {
@@ -69,17 +70,19 @@ const DocxCompressor = () => {
     };
 
     return (
+        <>
+        <ScrollToTop/>
         <div
             className="compressor-container drop-area"
             onDrop={handleDrop}
             onDragOver={handleDragOver}
-        >
+            >
             <h2>DOCX Compressor</h2>
 
             <p
                 className="file-label clickable-label"
                 onClick={() => fileInputRef.current.click()}
-            >
+                >
                 {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .docx file here, or click to select'}
             </p>
             <input type="file" accept=".docx" ref={fileInputRef} onChange={handleFileChange} className="hidden-input" />
@@ -114,7 +117,7 @@ const DocxCompressor = () => {
                         value="7z"
                         checked={outputType === '7z'}
                         onChange={() => setOutputType('7z')}
-                    />
+                        />
                     Export as .docx.7z
                 </label>
             </div>
@@ -126,6 +129,32 @@ const DocxCompressor = () => {
             {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
             {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
         </div>
+        <section>
+                <div className="compressor-page">
+  <h1 className="compressor-heading">Compress DOCX File Online</h1>
+  <p className="compressor-description">
+    Reduce the size of your Microsoft Word (.docx) documents without affecting formatting or content. Ideal for faster sharing and storage.
+  </p>
+
+  <h2 className="compressor-subheading">How to Compress a DOCX File?</h2>
+  <ol className="compressor-steps">
+    <li>📂 Upload or drag & drop your <code>.docx</code> file</li>
+    <li>🎚️ Choose your preferred image compression level</li>
+    <li>🚀 Click <strong>Compress</strong> to begin the process</li>
+    <li>⬇️ The compressed <code>.docx</code> will auto-download once ready</li>
+  </ol>
+
+  <h2 className="compressor-subheading">Why Use Our DOCX Compressor?</h2>
+  <ul className="compressor-benefits">
+    <li>📄 Keeps formatting, fonts, and layout intact</li>
+    <li>📉 Reduces file size by compressing embedded images</li>
+    <li>🔐 Your document remains secure and private</li>
+    <li>⚡ Fast processing with automatic download</li>
+  </ul>
+</div>
+
+        </section>
+    </>
     );
 };
 

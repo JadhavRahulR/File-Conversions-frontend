@@ -1,7 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import "./navbar.css"
 import { useState } from 'react';
 
@@ -26,18 +26,17 @@ function Navbar1() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-          <Link to="/aboutus" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> About US </Navbar.Toggle></Link>
+              {/* <NavLink to='/aboutus' className="pages">Check</NavLink> */}
           <Link to="/toolspg" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Tool</Navbar.Toggle></Link>
           <Link to="/pdf-compressor" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Compress PDF </Navbar.Toggle></Link>
           <Link to="/merge-pdf" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Merge PDF </Navbar.Toggle></Link>
-          <Link to="/privacy-policy" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Privacy-Policy</Navbar.Toggle></Link>
+          <NavLink to="/aboutus" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> About US </Navbar.Toggle></NavLink>
           <div className="displaynone">
               {/* <Link to="/home" className="pages">Home</Link> */}
-              <Link to="/toolspg" className="pages">Tools </Link>
-              <Link to="/pdf-compressor" className="pages"> Compress PDF </Link>
-              <Link to="/merge-pdf" className="pages"> Merge PDFs </Link>
-              <Link to="/aboutus" className="pages" onClick={changeColor} style={{color}}>About Us </Link>
-              <Link to="/privacy-policy" className="pages" onClick={changecolor}  >Privacy Policy</Link>
+              <NavLink to="/toolspg" className="pages">Tools </NavLink>
+              <NavLink to="/pdf-compressor" className="pages"> Compress PDF </NavLink>
+              <NavLink to="/merge-pdf" className="pages"> Merge PDFs </NavLink>
+              <NavLink to="/aboutus" className="pages" onClick={changeColor} >About Us </NavLink>
           </div>
             </Nav>
           </Navbar.Collapse>

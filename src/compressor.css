@@ -1,0 +1,42 @@
+/* shared-compressor.css */
+
+.compressor-page {
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.compressor-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #0056b3;
+  text-align: center;
+}
+
+.compressor-description {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.compressor-subheading {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #444;
+}
+
+.compressor-steps,
+.compressor-benefits {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.compressor-steps li,
+.compressor-benefits li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}

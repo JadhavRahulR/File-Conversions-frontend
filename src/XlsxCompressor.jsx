@@ -3,6 +3,7 @@ import axios from 'axios';
 import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import ScrollToTop from './ScrollToTop';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const XlsxCompressor = () => {
@@ -69,17 +70,19 @@ const XlsxCompressor = () => {
   };
 
   return (
+    <>
+    <ScrollToTop/>
     <div
       className="compressor-container drop-area"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
-    >
+      >
       <h2>XLSX Compressor</h2>
 
       <p
         className="file-label clickable-label"
         onClick={() => fileInputRef.current.click()}
-      >
+        >
         {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .xlsx file here, or click to select'}
       </p>
       <input
@@ -88,7 +91,7 @@ const XlsxCompressor = () => {
         ref={fileInputRef}
         onChange={handleFileChange}
         className="hidden-input"
-      />
+        />
       <div className="fileuploadcontainer">
         <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.xlsx']} />
         <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.xlsx']} />
@@ -103,7 +106,7 @@ const XlsxCompressor = () => {
           step="5"
           value={quality}
           onChange={(e) => setQuality(parseInt(e.target.value))}
-        />
+          />
         <div className="slider-labels">
           <span>📉 Smaller</span>
           <span>📊 Clearer</span>
@@ -118,7 +121,7 @@ const XlsxCompressor = () => {
             value="xlsx"
             checked={outputType === 'xlsx'}
             onChange={() => setOutputType('xlsx')}
-          />
+            />
           Export as .xlsx
         </label>
         <label>
@@ -128,7 +131,7 @@ const XlsxCompressor = () => {
             value="7z"
             checked={outputType === '7z'}
             onChange={() => setOutputType('7z')}
-          />
+            />
           Export as .xlsx.7z
         </label>
       </div>
@@ -140,6 +143,32 @@ const XlsxCompressor = () => {
       {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
       {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
     </div>
+    <section>
+      <div className="compressor-page">
+  <h1 className="compressor-heading">Compress XLSX File Online</h1>
+  <p className="compressor-description">
+    Reduce the size of your Excel spreadsheet (.xlsx) files by optimizing embedded content like images and charts, without changing your data or formulas.
+  </p>
+
+  <h2 className="compressor-subheading">How to Compress an XLSX File?</h2>
+  <ol className="compressor-steps">
+    <li>📂 Upload or drag & drop your <code>.xlsx</code> file</li>
+    <li>🎚️ Select a compression level (for image-heavy spreadsheets)</li>
+    <li>🚀 Click <strong>Compress</strong> to begin</li>
+    <li>⬇️ Your compressed <code>.xlsx</code> will auto-download once ready</li>
+  </ol>
+
+  <h2 className="compressor-subheading">Why Use Our XLSX Compressor?</h2>
+  <ul className="compressor-benefits">
+    <li>📊 Preserves all data, formulas, and formatting</li>
+    <li>📉 Shrinks file size for easier sharing and storage</li>
+    <li>🔐 Secure and private compression process</li>
+    <li>⚡ Fast performance with instant auto-download</li>
+  </ul>
+</div>
+
+    </section>
+</>
   );
 };
 

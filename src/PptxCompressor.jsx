@@ -3,6 +3,8 @@ import axios from 'axios';
 import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import "./compressor.css"
+import ScrollToTop from './ScrollToTop';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PptxCompressor = () => {
@@ -62,68 +64,96 @@ const PptxCompressor = () => {
   };
 
   return (
-    <div
-      className="compressor-container drop-area"
-      onDrop={handleDrop}
-      onDragOver={handleDragOver}
-    >
-      <h2>PPTX Compressor</h2>
+    <>
+      <ScrollToTop />
+      <div
+        className="compressor-container drop-area"
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+      >
+        <h2>PPTX Compressor</h2>
 
-      <p className="file-label clickable-label"
-        onClick={() => fileInputRef.current.click()}>
-        {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .pptx file here, or click to select'}
-      </p>
-      <input type="file" accept=".pptx" onChange={handleFileChange} ref={fileInputRef} className="hidden-input" />
-      <div className="fileuploadcontainer">
-        <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pptx']} />
-        <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pptx']} />
-      </div>
-      <div className="level-slider">
-        <label>Image Quality: {quality}</label>
-        <input
-          type="range"
-          min="10"
-          max="100"
-          step="5"
-          value={quality}
-          onChange={(e) => setQuality(parseInt(e.target.value))}
-        />
-        <div className="slider-labels">
-          <span>📉 Smaller</span>
-          <span>📸 Clearer</span>
+        <p className="file-label clickable-label"
+          onClick={() => fileInputRef.current.click()}>
+          {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .pptx file here, or click to select'}
+        </p>
+        <input type="file" accept=".pptx" onChange={handleFileChange} ref={fileInputRef} className="hidden-input" />
+        <div className="fileuploadcontainer">
+          <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pptx']} />
+          <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pptx']} />
         </div>
-      </div>
-
-      <div className="output-select">
-        <label>
+        <div className="level-slider">
+          <label>Image Quality: {quality}</label>
           <input
-            type="radio"
-            name="pptxOutputType"
-            value="pptx"
-            checked={outputType === 'pptx'}
-            onChange={() => setOutputType('pptx')}
+            type="range"
+            min="10"
+            max="100"
+            step="5"
+            value={quality}
+            onChange={(e) => setQuality(parseInt(e.target.value))}
           />
-          Export as .pptx
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="pptxOutputType"
-            value="7z"
-            checked={outputType === '7z'}
-            onChange={() => setOutputType('7z')}
-          />
-          Export as .pptx.7z
-        </label>
+          <div className="slider-labels">
+            <span>📉 Smaller</span>
+            <span>📸 Clearer</span>
+          </div>
+        </div>
+
+        <div className="output-select">
+          <label>
+            <input
+              type="radio"
+              name="pptxOutputType"
+              value="pptx"
+              checked={outputType === 'pptx'}
+              onChange={() => setOutputType('pptx')}
+            />
+            Export as .pptx
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="pptxOutputType"
+              value="7z"
+              checked={outputType === '7z'}
+              onChange={() => setOutputType('7z')}
+            />
+            Export as .pptx.7z
+          </label>
+        </div>
+
+        <button onClick={handleCompress} disabled={!file || status === 'uploading'}>
+          {status === 'uploading' ? 'Compressing...' : '🔽 Compress'}
+        </button>
+
+        {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
+        {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
       </div>
+      <section>
+        <div className="compressor-page">
+          <h1 className="compressor-heading">Compress PPTX Online</h1>
+          <p className="compressor-description">
+            Shrink the size of your PowerPoint (.pptx) presentations without losing quality. This tool optimizes embedded images and removes unnecessary data while keeping your slides intact.
+          </p>
 
-      <button onClick={handleCompress} disabled={!file || status === 'uploading'}>
-        {status === 'uploading' ? 'Compressing...' : '🔽 Compress'}
-      </button>
+          <h2 className="compressor-subheading">How to Compress a PPTX File?</h2>
+          <ol className="compressor-steps">
+            <li>📂 Upload or drag & drop your .pptx file</li>
+            <li>⚙️ Choose your desired image compression quality</li>
+            <li>🚀 Click <strong>Compress</strong> to reduce file size</li>
+            <li>⬇️ Your compressed PPTX will auto-download once it's ready</li>
+          </ol>
 
-      {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
-      {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
-    </div>
+          <h2 className="compressor-subheading">Why Use Our PPTX Compressor?</h2>
+          <ul className="compressor-benefits">
+            <li>✅ No quality loss in text and layout</li>
+            <li>⚡ Quick and efficient image optimization</li>
+            <li>🔒 Your presentation stays secure and private</li>
+            <li>📥 Automatic download after compression completes</li>
+          </ul>
+        </div>
+
+      </section>
+    </>
   );
 };
 

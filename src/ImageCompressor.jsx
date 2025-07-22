@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ImageCompressor.css";
-// import DropzoneInput from "./DropzoneInput";
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import "./compressor.css"
+import ScrollToTop from "./ScrollToTop";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const ImageCompressor = () => {
@@ -58,9 +59,7 @@ const ImageCompressor = () => {
 
   return (
     <>
-
-
-
+    <ScrollToTop/>
       <div className="compressor-container" onDrop={handleFileDrop} onDragOver={(e) => e.preventDefault()}>
         <h2>Image  Compressor</h2>
         <label htmlFor="csvInput" className="file-label">
@@ -95,6 +94,32 @@ const ImageCompressor = () => {
         {status === 'done' && <p className="success-msg">✅ Compression complete. File downloaded.</p>}
         {status === 'error' && <p className="error-msg">❌ Compression failed. Try again.</p>}
       </div>
+      <section>
+        <div className="compressor-page">
+  <h1 className="compressor-heading">Compress Image Online</h1>
+  <p className="compressor-description">
+    Reduce the size of your image files without losing too much quality. This tool supports JPG &  PNG and more — perfect for web uploads, email attachments, or saving storage.
+  </p>
+
+  <h2 className="compressor-subheading">How to Compress an Image?</h2>
+  <ol className="compressor-steps">
+    <li>📂 Upload or drag & drop your image file (JPG, PNG, BMP, etc.)</li>
+    <li>🎚️ Adjust image quality using the compression slider</li>
+    <li>🚀 Click <strong>Compress</strong> to start the process</li>
+    <li>⬇️ Auto Download the optimized image file instantly</li>
+  </ol>
+
+  <h2 className="compressor-subheading">Why Use Our Image Compressor?</h2>
+  <ul className="compressor-benefits">
+    <li>🖼️ Supports multiple formats: JPG, PNG</li>
+    <li>⚙️ Quality control slider to balance size vs. clarity</li>
+    <li>💾 Great for reducing file size before uploading</li>
+    <li>🔐 Files are processed securely and auto-deleted</li>
+    <li>⚡ Fast compression with instant download</li>
+  </ul>
+</div>
+
+      </section>
     </>
   );
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import ScrollToTop from './ScrollToTop';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtCompressor = () => {
@@ -54,18 +55,20 @@ const OdtCompressor = () => {
   };
 
   return (
+    <>
+    <ScrollToTop/>
     <div
       className="compressor-container drop-area"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
-    >
+      >
       <h2>ODT Compressor</h2>
 
       <p
         className="file-label"
         onClick={() => fileInputRef.current && fileInputRef.current.click()}
         style={{ cursor: 'pointer',  }}
-      >
+        >
         {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .odt file here, or click to select'}
       </p>
 
@@ -76,7 +79,7 @@ const OdtCompressor = () => {
         ref={fileInputRef}
         style={{ position: 'absolute', left: '-9999px' }}
         tabIndex={-1}
-      />
+        />
       <div className="fileuploadcontainer">
         <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.odt']} />
         <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.odt']} />
@@ -90,7 +93,7 @@ const OdtCompressor = () => {
           step="5"
           value={quality}
           onChange={(e) => setQuality(parseInt(e.target.value))}
-        />
+          />
         <div className="slider-labels">
           <span>📉 Smaller</span>
           <span>📸 Clearer</span>
@@ -105,7 +108,7 @@ const OdtCompressor = () => {
             value="odt"
             checked={outputType === 'odt'}
             onChange={() => setOutputType('odt')}
-          />
+            />
           Export as .odt
         </label>
         <label>
@@ -115,7 +118,7 @@ const OdtCompressor = () => {
             value="7z"
             checked={outputType === '7z'}
             onChange={() => setOutputType('7z')}
-          />
+            />
           Export as .odt.7z
         </label>
       </div>
@@ -127,6 +130,32 @@ const OdtCompressor = () => {
       {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
       {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
     </div>
+    <section>
+      <div className="compressor-page">
+  <h1 className="compressor-heading">Compress ODT File Online</h1>
+  <p className="compressor-description">
+    Reduce the size of your OpenDocument Text (.odt) files without affecting formatting or content. Perfect for optimizing documents with images or media.
+  </p>
+
+  <h2 className="compressor-subheading">How to Compress an ODT File?</h2>
+  <ol className="compressor-steps">
+    <li>📂 Upload or drag & drop your <code>.odt</code> file</li>
+    <li>🎚️ Select a compression level if available</li>
+    <li>🚀 Click <strong>Compress</strong> to start the process</li>
+    <li>⬇️ Your compressed <code>.odt</code> file will auto-download when ready</li>
+  </ol>
+
+  <h2 className="compressor-subheading">Why Use Our ODT Compressor?</h2>
+  <ul className="compressor-benefits">
+    <li>📝 Preserves original content and layout</li>
+    <li>📉 Reduces file size for easier sharing and storage</li>
+    <li>🔐 Secure processing with no data stored</li>
+    <li>⚡ Fast compression with automatic download</li>
+  </ul>
+</div>
+
+    </section>
+  </>
   );
 };
 

@@ -3,6 +3,7 @@ import DropzoneInput from "./DropzoneInput";import axios from "axios";
 import "./PDFCompressor.css";
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import ScrollToTop from './ScrollToTop';
 
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -57,40 +58,7 @@ const PDFCompressor = () => {
 
   return (
     <>
-      {/* <div className="compressorpg">
-        <div className="compressor-container">
-          <h2>Compress PDF</h2>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="file"
-              accept=".pdf"
-              onChange={(e) => setFile(e.target.files[0])}
-              className="file-input"
-            />
-            <div className="fileuploadcontainer">
-              <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']} />
-              <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']} />
-            </div>
-            <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus}/>
-            <div className="slider-container">
-              <label htmlFor="quality">Compression Level: {quality}</label>
-              <input
-                type="range"
-                id="quality"
-                min="30"
-                max="95"
-                value={quality}
-                onChange={(e) => setQuality(e.target.value)}
-              />
-            </div>
-            <button type="submit" disabled={loading}>
-              {loading ? "Compressing..." : "Compress PDF"}
-            </button>
-          </form>
-        </div>
-      </div> */}
-
-      {/* for adding complete div as drag and drop */}
+    <ScrollToTop/>
       <div className="compressor-container" onDrop={handleFileDrop} onDragOver={(e) => e.preventDefault()}>
             <h2>Compress Pdf</h2>
             <form onSubmit={handleSubmit}>
@@ -128,6 +96,31 @@ const PDFCompressor = () => {
             {status === 'error' && <p className="error-msg">❌ Compression failed. Try again.</p>}
             </form>
         </div>
+        <section>
+        <div className="compressor-page">
+          <h1 className="compressor-heading">Compress PDF Online</h1>
+          <p className="compressor-description">
+            Reduce the file size of your PDF documents quickly and securely. This tool compresses images and removes unnecessary data while keeping your PDF content intact.
+          </p>
+
+          <h2 className="compressor-subheading">How to Compress a PDF?</h2>
+          <ol className="compressor-steps">
+            <li>📂 Upload or drag & drop your PDF file</li>
+            <li>⚙️ Choose compression quality (e.g., low, medium, high)</li>
+            <li>🚀 Click on <strong>Compress</strong> to reduce the file size</li>
+            <li>⬇️ Auto Download the optimized PDF or `.pdf.7z` archive</li>
+          </ol>
+
+          <h2 className="compressor-subheading">Why Use Our PDF Compressor?</h2>
+          <ul className="compressor-benefits">
+            <li>✅ No watermark</li>
+            <li>🔒 Your files stay private – processed locally or securely deleted</li>
+            <li>⚡ Fast compression powered by Python backend</li>
+            <li>📱 Works on mobile and desktop</li>
+          </ul>
+        </div>
+
+      </section>
     </>
   );
 };

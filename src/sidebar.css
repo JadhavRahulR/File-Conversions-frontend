@@ -11,10 +11,10 @@ h2{
     margin: 10px;
 }
 .btn{
-     width: 300px;
+    width: 300px;
     height: 40px;
     border: 1px solid blue;
-    margin: 4px;
+    margin: 4px 0px;
 }
 .btn:hover{
     border: 1px solid blue;

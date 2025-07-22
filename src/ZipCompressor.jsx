@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import "./ZipCompressor.css"; // 👈 custom styles here
+import "./compressor.css"
+import ScrollToTop from "./ScrollToTop";
 
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -47,6 +49,8 @@ const ZipCompressor = () => {
   };
 
   return (
+    <>
+    <ScrollToTop/>
     <div className="zip-container">
       <h2>Convert Files to ZIP</h2>
 
@@ -67,6 +71,32 @@ const ZipCompressor = () => {
         {loading ? "Compressing..." : "Create ZIP"}
       </button>
     </div>
+    <section>
+      <div className="compressor-page">
+  <h1 className="compressor-heading">Convert Folder to ZIP Online</h1>
+  <p className="compressor-description">
+    Easily compress an entire folder into a ZIP archive. Perfect for sharing multiple files or backing up projects in one compact package.
+  </p>
+
+  <h2 className="compressor-subheading">How to Convert a Folder to ZIP?</h2>
+  <ol className="compressor-steps">
+    <li>📁 Upload or drag & drop a folder (containing files and subfolders)</li>
+    <li>📦 The contents will be packed into a ZIP file</li>
+    <li>🚀 Click <strong>Convert</strong> to start the compression</li>
+    <li>⬇️ Your ZIP archive will auto-download once it's ready</li>
+  </ol>
+
+  <h2 className="compressor-subheading">Why Use Our Folder to ZIP Converter?</h2>
+  <ul className="compressor-benefits">
+    <li>🗂️ Supports nested folders and multiple files</li>
+    <li>📉 Reduces overall file size for faster uploads</li>
+    <li>🔐 Your files are processed securely and never stored</li>
+    <li>⚡ Fast conversion with automatic download</li>
+  </ul>
+</div>
+
+    </section>
+</>
   );
 };
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./PDFMerger.css";
+import "./compressor.css"
+import ScrollToTop from "./ScrollToTop";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFMerger = () => {
@@ -62,44 +64,74 @@ const PDFMerger = () => {
   };
 
   return (
-    <div className="pdf-merger">
-      <h2>📎 Merge PDF Files</h2>
+    <>
+    <ScrollToTop/>
+      <div className="pdf-merger">
+        <h2>📎 Merge PDF Files</h2>
 
-      <div
-        className="drop-area"
-        onDrop={handleDrop}
-        onDragOver={handleDragOver}
-      >
-        <p>Drag & Drop your PDF files here</p>
-        <p>or</p>
-        <input type="file" multiple accept=".pdf" onChange={handleFileChange} />
+        <div
+          className="drop-area"
+          onDrop={handleDrop}
+          onDragOver={handleDragOver}
+        >
+          <p>Drag & Drop your PDF files here</p>
+          <p>or</p>
+          <input type="file" multiple accept=".pdf" onChange={handleFileChange} />
+        </div>
+
+        {selectedFiles.length > 0 && (
+          <>
+            <ul className="file-list">
+              {selectedFiles.map((file, index) => (
+                <li key={index}>
+                  {file.name}
+                  <button
+                    className="remove-btn"
+                    onClick={() => handleRemove(index)}
+                  >
+                    ❌
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <button className="clear-btn" onClick={handleClearAll}>
+              🗑️ Clear All
+            </button>
+          </>
+        )}
+
+        <button className="mergebtn" onClick={handleMerge} disabled={isMerging || selectedFiles.length < 2}>
+          {isMerging ? "Merging..." : "Merge PDFs"}
+        </button>
       </div>
+      <section>
+        <div className="compressor-page">
+  <h1 className="compressor-heading">Merge PDF Files Online</h1>
+  <p className="compressor-description">
+    Combine multiple PDF documents into a single file in just a few clicks. Upload, reorder, or remove PDFs as needed and generate a clean merged result instantly.
+  </p>
 
-      {selectedFiles.length > 0 && (
-        <>
-          <ul className="file-list">
-            {selectedFiles.map((file, index) => (
-              <li key={index}>
-                {file.name}
-                <button
-                  className="remove-btn"
-                  onClick={() => handleRemove(index)}
-                >
-                  ❌
-                </button>
-              </li>
-            ))}
-          </ul>
-          <button className="clear-btn" onClick={handleClearAll}>
-            🗑️ Clear All
-          </button>
-        </>
-      )}
+  <h2 className="compressor-subheading">How to Merge PDF Files?</h2>
+  <ol className="compressor-steps">
+    <li>📂 Upload or drag & drop multiple PDF files</li>
+    <li>🧩 Reorder the files if needed</li>
+    <li>🗑️ Remove a specific PDF or clear all files from the list</li>
+    <li>🔗 Click <strong>Merge</strong> to combine the files into one</li>
+    <li>⬇️ Download your final merged PDF instantly</li>
+  </ol>
 
-      <button className="mergebtn" onClick={handleMerge} disabled={isMerging || selectedFiles.length < 2}>
-        {isMerging ? "Merging..." : "Merge PDFs"}
-      </button>
-    </div>
+  <h2 className="compressor-subheading">Why Use Our PDF Merger?</h2>
+  <ul className="compressor-benefits">
+    <li>✅ Supports multiple file uploads</li>
+    <li>🧠 Simple drag & drop interface</li>
+    <li>🔒 Your files stay private and are never stored</li>
+    <li>⚡ Fast merging with auto-download</li>
+    <li>🗂️ Rearrangement and removal options for full control</li>
+  </ul>
+</div>
+
+      </section>
+    </>
   );
 };
 

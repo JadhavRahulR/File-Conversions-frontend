@@ -24,10 +24,9 @@
     margin-left: 20px;
     
 }
-.pages:active{
-border-bottom: 1px solid white;
+.active{
+    color: white;
 }
-
 .hello{
     border: 1px solid purple;
     width: 150px;

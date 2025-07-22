@@ -3,6 +3,7 @@ import axios from "axios";
 import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
+import ScrollToTop from "./ScrollToTop";
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const BmpCompressor = () => {
   const [file, setFile] = useState(null);
@@ -56,18 +57,20 @@ const BmpCompressor = () => {
   };
 
   return (
+    <>
+    <ScrollToTop/>
     <div
       className="compressor-container drop-area"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
-    >
+      >
       <h2>BMP Compressor</h2>
 
       {/* 📂 Only this triggers file explorer */}
       <p
         className="file-label clickable-label"
         onClick={() => fileInputRef.current.click()}
-      >
+        >
         {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .bmp file here, or click to select'}
       </p>
 
@@ -77,7 +80,7 @@ const BmpCompressor = () => {
         onChange={handleFileChange}
         ref={fileInputRef}
         className="hidden-input"
-      />
+        />
 
        <div className="fileuploadcontainer">
         <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.bmp']} />
@@ -92,7 +95,7 @@ const BmpCompressor = () => {
           step="5"
           value={quality}
           onChange={(e) => setQuality(parseInt(e.target.value))}
-        />
+          />
         <div className="slider-labels">
           <span>📉 Smaller</span>
           <span>📸 Clearer</span>
@@ -117,6 +120,32 @@ const BmpCompressor = () => {
       {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
       {status === "error" && <p className="error-msg">❌ Compression failed</p>}
     </div>
+    <section>
+      <div className="compressor-page">
+  <h1 className="compressor-heading">Compress BMP File Online</h1>
+  <p className="compressor-description">
+    Reduce the size of your BMP (.bmp) image files while keeping visual quality. Perfect for converting large bitmap images into smaller, more manageable files.
+  </p>
+
+  <h2 className="compressor-subheading">How to Compress a BMP File?</h2>
+  <ol className="compressor-steps">
+    <li>📂 Upload or drag & drop your <code>.bmp</code> file</li>
+    <li>🎚️ Select your preferred compression quality</li>
+    <li>🚀 Click <strong>Compress</strong> to start the process</li>
+    <li>⬇️ The compressed <code>.bmp</code> file will auto-download when ready</li>
+  </ol>
+
+  <h2 className="compressor-subheading">Why Use Our BMP Compressor?</h2>
+  <ul className="compressor-benefits">
+    <li>🖼️ Maintains image clarity while reducing file size</li>
+    <li>📉 Optimized for faster uploads and storage savings</li>
+    <li>🔐 Your files remain private and are never stored</li>
+    <li>⚡ Fast compression with automatic download</li>
+  </ul>
+</div>
+
+    </section>
+</>
   );
 };
 
