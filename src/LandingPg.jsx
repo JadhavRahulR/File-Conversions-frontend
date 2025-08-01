@@ -3,10 +3,21 @@ import "./LandingPage.css";
 import { Link } from 'react-router-dom'
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
+import { Helmet } from 'react-helmet-async';
 
 export default function LandingPage() {
   return (
     <div className="landing-page">
+      <Helmet>
+        <title>F I L E - U N I V E R S </title>
+<meta name="description" content="Convert and compress your files effortlessly with FileUnivers. Use our free tools to transform PDFs, Word, Excel, images, and more—all in one place, no signup needed." />
+<link rel="canonical" href="https://fileunivers.in/" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="file converter, file compressor, convert files online, compress files online, pdf converter, image to pdf, doc to pdf, zip extractor, pdf merger, folder to zip" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      </Helmet>
       <ScrollToTop/>
       <header className="hero">
         <h1>Convert Files Instantly</h1>
@@ -14,10 +25,8 @@ export default function LandingPage() {
           Fast, secure, and free file conversion tool. Convert Word, PDF, Excel,
           Images, and more in just a few clicks.
         </p>
-        <Link to="/home" className="pages"><button className="primary-btn" > Get Started</button></Link>
       </header>
 
-      {/* Features Section */}
       <section className="features">
         <h2>Supported Conversions</h2>
         <div className="feature-grid">
@@ -49,7 +58,7 @@ export default function LandingPage() {
 
         <h2>Ready to Convert?</h2>
         <p>No signup needed. Convert your files in seconds.</p>
-        <button className="primary-btn">Start Now</button>
+      <Link to='/word-to-pdf'>  <button className="primary-btn">Start Now</button></Link>
       </section>
       <section className="cta">
         <h2>Compress files, images  </h2>
@@ -69,13 +78,41 @@ export default function LandingPage() {
           <li><Link to="/odtcompressor" ><FeatureCard1 title="Compress ODT" image1="odt.png" /> </Link></li>
           <li><Link to="/odpcompressor" ><FeatureCard1 title="Compress Odp" image1="odp.png" /> </Link></li>
           <li><Link to="/tiffcompressor" ><FeatureCard1 title="Compress Tiff" image1="tiff.png" /> </Link></li>
-          <li><Link to="/bmpcompressor" ><FeatureCard1 title="Compress Bmp" image1="tiff.png" /> </Link></li>
+          <li><Link to="/bmpcompressor" ><FeatureCard1 title="Compress Bmp" image1="file.png" /> </Link></li>
           
           <li><Link to="/merge-pdf" ><FeatureCard1 title="Merge PDF" image1="pdf.png" /> </Link></li>
           <li><Link to="/zip-compressor" ><FeatureCard1 title="Convert File to Zip" image1="zip.png" /> </Link></li>
           <li><Link to="/zip-extractor" ><FeatureCard1 title="Extract Zip File " image1="unzip.png" /> </Link></li>
          </div>
       </section>
+     <section className="faq-section">
+  <h2>Frequently Asked Questions</h2>
+
+  <div className="faq-item">
+    <h3>Is FileUnivers free to use?</h3>
+    <p>Yes, all file conversion and compression tools on FileUnivers are completely free to use without registration.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Is my uploaded data secure?</h3>
+    <p>Yes. Your files are transmitted over HTTPS and are deleted from our servers automatically after conversion.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>What file formats do you support?</h3>
+    <p>We support PDF, Word, Excel, PowerPoint, ODT, BMP, TIFF, CSV, HTML, Markdown, and more for both conversion and compression.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Do I need to sign up to convert files?</h3>
+    <p>No sign-up is required. You can start converting or compressing files instantly.</p>
+  </div>
+
+  <div className="faq-item">
+    <h3>Can I use FileUnivers on mobile devices?</h3>
+    <p>Yes, our tools are fully responsive and work seamlessly on mobile, tablet, and desktop devices.</p>
+  </div>
+</section>
       <Footer/>
     </div>
   );

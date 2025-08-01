@@ -6,9 +6,10 @@ ul li {
     list-style: none;
 }
 h2{
-    color: red;
+    color:#2e86de;
     text-align: center;
     margin: 10px;
+    font-size: 1.5rem;
 }
 .btn{
     width: 300px;
@@ -23,6 +24,13 @@ h2{
     /* color: red; */
 }
 ul li a:hover{
-    /* border-bottom: 2px solid red; */
     color: red;
+}
+
+.sidebarbody{
+    padding: 0px;
+    margin: 0;
+}
+.sidebarbody ul{
+    padding-left:10px ;
 }

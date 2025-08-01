@@ -5,6 +5,7 @@ import Tools from './Tools';
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PdfToTextConverter = () => {
@@ -61,11 +62,21 @@ const PdfToTextConverter = () => {
   }, [status]);
   return (
     <>
+    <Helmet>
+      <title>PDF to TXT | Free PDF to Text Converter</title>
+<meta name="description" content="Convert PDF files to plain text (.txt) quickly and securely. Free online PDF to TXT converter with no email or signup required." />
+<link rel="canonical" href="https://fileunivers.in/pdf-to-txt" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="pdf to txt, convert pdf to text, pdf to text file, extract text from pdf, free pdf to txt converter, online pdf to txt" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
       <ScrollToTop />
       <section>
         <Tools />
         <div className='converter'>
-          <h3>Converte pdf To Txt/Text </h3>
+          <h1>Converte pdf To Txt/Text </h1>
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -119,6 +130,49 @@ const PdfToTextConverter = () => {
             <p><strong>Q:</strong> Can I edit the output file?<br />
               <strong>A:</strong> Yes, the .txt file is fully editable in any text editor.</p>
           </div>
+
+
+        <div className="compresspdf-article-section">
+  <h2>📄 Convert PDF to Text – Extract Text from PDF Easily</h2>
+  <p>
+    Need to extract plain text from a PDF file? Our PDF to Text converter tool lets you instantly turn any PDF document into an editable .txt file. Whether you’re working with reports, articles, invoices, or scanned notes, this tool makes data extraction effortless and accurate.
+  </p>
+
+  <h3>🔍 Why Use a PDF to Text Converter?</h3>
+  <p>
+    PDF files are great for viewing and sharing, but they’re not always easy to edit or reuse. Extracting the raw text from a PDF allows you to repurpose the content for research, editing, analysis, or record-keeping — all without losing formatting or layout accuracy.
+  </p>
+
+  <h3>⚡ Key Features</h3>
+  <ul>
+    <li><strong>Fast & Reliable:</strong> Get clean .txt files in seconds.</li>
+    <li><strong>No Sign-up Needed:</strong> Use it instantly with no limitations.</li>
+    <li><strong>100% Free:</strong> Unlimited conversions with no watermarks.</li>
+    <li><strong>Secure:</strong> Your files are never stored or shared.</li>
+  </ul>
+
+  <h3>🧑‍💼 Who Uses It?</h3>
+  <ul>
+    <li><strong>Students:</strong> Extract notes or textbook text for study.</li>
+    <li><strong>Writers & Editors:</strong> Repurpose content from books or articles.</li>
+    <li><strong>Data Analysts:</strong> Pull text for analysis from PDF reports.</li>
+    <li><strong>Professionals:</strong> Copy content from resumes, invoices, or proposals.</li>
+  </ul>
+
+  <h3>🔐 Safe & Private</h3>
+  <p>
+    We value your privacy. All PDF files are processed locally or deleted right after conversion. No tracking, no data sharing, and no file retention.
+  </p>
+
+  <h3>💡 Benefits at a Glance</h3>
+  <ul>
+    <li>Accurate PDF text extraction</li>
+    <li>Supports both native and scanned PDFs</li>
+    <li>No software download required</li>
+    <li>Mobile and desktop-friendly</li>
+  </ul>
+
+</div>
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>

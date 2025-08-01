@@ -16,7 +16,7 @@
   border: 2px solid red;
 }
 
-.compressor-container h2 {
+.compressor-container h1 {
   margin-bottom: 20px;
   color: #1565c0;
 }
@@ -67,4 +67,78 @@ button:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pdf-compressor-section {
+  padding: 2rem;
+  background-color: #fefefe;
+  color: #222;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.pdf-compressor-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pdf-compressor-heading {
+  font-size: 28px;
+  margin-bottom: 16px;
+  color: #007acc;
+  text-align: center;
+}
+
+.pdf-compressor-intro,
+.pdf-compressor-text,
+.pdf-compressor-conclusion {
+  font-size: 1.05rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.pdf-compressor-subheading {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  color: #333;
+}
+
+.pdf-compressor-steps,
+.pdf-compressor-benefits,
+.pdf-compressor-features {
+  padding-left: 1.5rem;
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+
+.pdf-compressor-steps li,
+.pdf-compressor-benefits li,
+.pdf-compressor-features li {
+  margin-bottom: 0.6rem;
+}
+
+.pdf-compressor-faq h3 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: #444;
+}
+
+.pdf-compressor-faq p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .pdf-compressor-heading {
+    font-size: 1.8rem;
+  }
+
+  .pdf-compressor-subheading {
+    font-size: 1.25rem;
+  }
+
+  .pdf-compressor-intro,
+  .pdf-compressor-text,
+  .pdf-compressor-conclusion {
+    font-size: 1rem;
+  }
 }

@@ -5,6 +5,7 @@ import Tools from "./Tools";
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from "./ScrollToTop";
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const TiffToPdfConverter = () => {
@@ -49,11 +50,22 @@ const TiffToPdfConverter = () => {
 
   return (
     <>
+    <Helmet>
+
+    <title>TIFF to PDF | Free TIFF Image to PDF Converter</title>
+<meta name="description" content="Convert TIFF images to PDF files quickly and securely. Free online TIFF to PDF converter with no email or registration required." />
+<link rel="canonical" href="https://fileunivers.in/tiff-to-pdf" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="tiff to pdf, convert tiff to pdf, image to pdf, free tiff to pdf converter, online tiff to pdf, tiff file to pdf" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
     <ScrollToTop/>
     <Tools/>
    <section>
         <div className='converter'>
-          <h3>Convert TIFF To Pdf</h3>
+          <h1>Convert TIFF To Pdf</h1>
           <input type="file" accept=".tiff" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -85,7 +97,7 @@ const TiffToPdfConverter = () => {
     </div>
 
     <div className="converter-section">
-      <h2>🔒 Why Use Our TIFF to PDF Converter?</h2>
+      <h1>🔒 Why Use Our TIFF to PDF Converter?</h1>
       <ul>
         <li>✅ Converts single or multi-page TIFF files into clean PDF pages.</li>
         <li>🔐 Secure: Files are auto-deleted after processing.</li>
@@ -110,6 +122,62 @@ const TiffToPdfConverter = () => {
       <p><strong>Q:</strong> Is this tool private and secure?<br />
         <strong>A:</strong> Yes, your files are automatically deleted after conversion.</p>
     </div>
+            <div className="compresspdf-article-section">
+  <h2>🧾 Convert TIFF to PDF – High-Quality TIFF to PDF Transformation</h2>
+  <p>
+    Need to convert large TIFF files into a more shareable and readable format? Our TIFF to PDF converter makes it simple to turn your scanned documents, faxes, or high-resolution images into compact PDF files, ready for digital sharing and printing.
+  </p>
+
+  <h3>🖼️ What is TIFF to PDF Conversion?</h3>
+  <p>
+    TIFF (Tagged Image File Format) is commonly used for storing high-quality images, often scanned documents or faxes. However, TIFFs can be large and not always compatible with mobile devices or browsers. Converting TIFF files to PDF ensures better accessibility, smaller file sizes, and universal compatibility.
+  </p>
+
+  <h3>✅ Why Convert TIFF to PDF?</h3>
+  <ul>
+    <li><strong>Better Compatibility:</strong> PDFs are easier to open and share across devices.</li>
+    <li><strong>Smaller File Size:</strong> Compress large TIFFs into optimized PDF documents.</li>
+    <li><strong>Preserve Image Quality:</strong> Retain clarity while reducing file size.</li>
+    <li><strong>Multi-Page Support:</strong> Combine multiple TIFF images into a single PDF file.</li>
+  </ul>
+
+  <h3>👤 Who Should Use TIFF to PDF?</h3>
+  <ul>
+    <li><strong>Medical professionals:</strong> Store scanned X-rays or documents efficiently.</li>
+    <li><strong>Lawyers & agencies:</strong> Archive scanned legal documents.</li>
+    <li><strong>Students & researchers:</strong> Convert large TIFF research files to PDF.</li>
+    <li><strong>Photographers:</strong> Share TIFF images as accessible PDF portfolios.</li>
+  </ul>
+
+  <h3>🌟 Features of Our TIFF to PDF Tool</h3>
+  <ul>
+    <li>Supports both single and multi-page TIFFs</li>
+    <li>Preserves image sharpness and resolution</li>
+    <li>Automatic orientation and page size detection</li>
+    <li>Drag-and-drop functionality</li>
+    <li>100% free to use with no watermarks</li>
+  </ul>
+
+  <h3>📲 Cross-Platform & Browser-Based</h3>
+  <p>
+    Use our tool on Windows, macOS, Android, or iOS without downloading any software. It's completely web-based and optimized for all screen sizes.
+  </p>
+
+  <h3>🔒 Secure and Private</h3>
+  <p>
+    We prioritize your data privacy. Your TIFF files are processed securely and automatically deleted after conversion—nothing is stored on our servers.
+  </p>
+
+  <h3>🚀 Why Choose Our TIFF to PDF Converter?</h3>
+  <ul>
+    <li>Fast, simple, and efficient conversion process</li>
+    <li>Retains the original image clarity</li>
+    <li>Great for printing or digital use</li>
+    <li>No sign-up or account required</li>
+  </ul>
+
+ 
+</div>
 
     <div className="converter-section" style={{ textAlign: 'center' }}>
       <h2>🎯 Try It Now!</h2>

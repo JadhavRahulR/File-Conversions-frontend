@@ -9,9 +9,10 @@
   text-align: center;
 }
 
-.extract-container h2 {
+.extract-container h1 {
+  font-size: 2.3rem;
   margin-bottom: 20px;
-  color: #e65100;
+  color:#0056b3;
 }
 
 .file-input {
@@ -38,4 +39,58 @@
 button:disabled {
   background-color: #bbb;
   cursor: not-allowed;
+}
+.tool-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tool-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.tool-description {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.tool-subheading {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.tool-steps {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.tool-steps li {
+  margin-bottom: 0.5rem;
+}
+
+.faq-list {
+  margin-top: 1rem;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.faq-answer {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 0.3rem;
 }

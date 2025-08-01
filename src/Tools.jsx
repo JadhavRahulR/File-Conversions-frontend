@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { Link } from 'react-router-dom'
 import "./sidebar.css"
+import { Helmet } from 'react-helmet-async';
 
 function Tools(props) {
   const [show, setShow] = useState(false);
@@ -12,7 +13,23 @@ function Tools(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className='m-2'>
+    <Helmet>
+      <title>Convert & Compress Files Online | FileUnivers Tools</title>
+<meta name="description" content="Access all-in-one file tools at FileUnivers — convert PDFs, Word, Excel, PowerPoint, images and compress them efficiently. Free, secure, and fast." />
+<meta name="keywords" content="file converter, file compression, compress pdf, pdf to word, word to pdf, image to pdf, compress docx, compress pptx, merge pdf, convert files, online converter, file tools" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://fileunivers.in/tools" />
+<meta property="og:title" content="Convert & Compress Files Online | FileUnivers Tools" />
+<meta property="og:description" content="Use our complete toolset to convert and compress PDFs, DOCX, PPTX, Excel, images, and more in one place. Fast, free, and user-friendly." />
+<meta property="og:url" content="https://fileunivers.in/tools" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="FileUnivers" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Convert & Compress Files Online | FileUnivers Tools" />
+<meta name="twitter:description" content="All your file conversion and compression tools in one place. Start converting and compressing now." />
+
+    </Helmet>
+      <Button variant="primary" onClick={handleShow} className='m-2' style={{border:'none'}}>
        F I L E S-C O N V E R S I O N S  
       </Button>
 
@@ -20,8 +37,7 @@ function Tools(props) {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title style={{width:'150px ', border:'1px solid grey',borderRadius:"10px",textAlign:"center"}}>T o o l s  </Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-        {/* <Sidebar/> */}
+        <Offcanvas.Body className='sidebarbody'>
         <ul>
 
          <li><Link to="/word-to-pdf" className='btn' onClick={handleClose}>Word to PDF Converter </Link></li>

@@ -5,6 +5,7 @@ import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import "./compressor.css"
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PptxCompressor = () => {
@@ -65,13 +66,23 @@ const PptxCompressor = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Compress PPTX | Reduce PowerPoint File Size Online</title>
+<meta name="description" content="Compress your PowerPoint (.pptx) presentations online to reduce file size without losing quality. Free and secure PPTX compressor tool." />
+<link rel="canonical" href="https://fileunivers.in/pptxcompress" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="compress pptx, pptx compressor, reduce powerpoint file size, shrink pptx, compress presentation, free pptx compression online" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
       <ScrollToTop />
       <div
         className="compressor-container drop-area"
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        <h2>PPTX Compressor</h2>
+        <h1>PPTX Compressor</h1>
 
         <p className="file-label clickable-label"
           onClick={() => fileInputRef.current.click()}>
@@ -130,7 +141,7 @@ const PptxCompressor = () => {
       </div>
       <section>
         <div className="compressor-page">
-          <h1 className="compressor-heading">Compress PPTX Online</h1>
+          <h2 className="compressor-heading">Compress PPTX Online</h2>
           <p className="compressor-description">
             Shrink the size of your PowerPoint (.pptx) presentations without losing quality. This tool optimizes embedded images and removes unnecessary data while keeping your slides intact.
           </p>
@@ -151,6 +162,75 @@ const PptxCompressor = () => {
             <li>📥 Automatic download after compression completes</li>
           </ul>
         </div>
+          <section>
+  <div className="compressor-article">
+    <h2>Everything You Need to Know About PPTX Compression</h2>
+
+    <h3>📄 What is a PPTX File?</h3>
+    <p>
+      PPTX is the file extension for Microsoft PowerPoint presentations created using Office 2007 or
+      later. These files can contain slides with text, images, charts, animations, and multimedia.
+      Although powerful for presentations, PPTX files can quickly become large due to embedded media.
+    </p>
+
+    <h3>📦 Why Do PPTX Files Get So Large?</h3>
+    <p>
+      PPTX files grow in size primarily due to high-resolution images, embedded videos, audio files,
+      custom fonts, and slide animations. If you're working with a media-rich deck, even a few slides can
+      become tens of megabytes in size.
+    </p>
+
+    <h3>💡 Benefits of Compressing PPTX Files</h3>
+    <ul>
+      <li><strong>🚀 Faster Sharing</strong> – Easily upload to email or cloud without hitting limits</li>
+      <li><strong>📥 Reduced Storage</strong> – Save space on your device or team drives</li>
+      <li><strong>📊 Smoother Presentations</strong> – Load and transition faster on any system</li>
+      <li><strong>📱 Mobile Compatibility</strong> – Compressed files open quicker on mobile devices</li>
+    </ul>
+
+    <h3>🛠️ How Our PPTX Compressor Works</h3>
+    <p>
+      Our tool scans your .pptx presentation and applies smart compression to embedded images, fonts, and
+      media without compromising visual quality. You simply upload your file, and within seconds, a
+      compressed version will be automatically downloaded.
+    </p>
+
+    <h3>🔐 Is it Safe to Compress PPTX Files Online?</h3>
+    <p>
+      Absolutely. Your PPTX file is processed securely and never stored or shared. We ensure:
+    </p>
+    <ul>
+      <li>🔒 No server-side storage</li>
+      <li>🔐 Private and encrypted processing</li>
+      <li>♻️ Automatic deletion right after compression</li>
+    </ul>
+
+    <h3>🔚 Final Thoughts</h3>
+    <p>
+      Whether you're preparing for a business meeting or sharing a classroom presentation, compressing
+      your PPTX file ensures faster, smoother delivery without sacrificing design. Use our free tool now
+      to reduce size, save space, and keep your content impactful and efficient.
+    </p>
+
+    <h2>📚 Frequently Asked Questions</h2>
+
+    <h3>❓ Will compressing my PPTX reduce its quality?</h3>
+    <p>
+      Not noticeably. Our tool compresses embedded media while keeping slide design and readability
+      intact.
+    </p>
+
+    <h3>❓ How much size can I expect to save?</h3>
+    <p>
+      You can often reduce file size by 50–80%, depending on how many images, fonts are used.
+    </p>
+
+    <h3>❓ Do I need to install anything?</h3>
+    <p>
+      No installation needed. Everything works directly in your browser—fast, simple, and secure.
+    </p>
+  </div>
+</section>
 
       </section>
     </>

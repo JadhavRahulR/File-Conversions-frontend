@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CsvToPdfConverter from "./CsvToPdfConverter";
 import DocToOdtConverter from "./DocToOdtConverter";
-// import FileConverter from "./Fileconverter";
 import HtmlToPdfConverter from "./HtmlToPdfConverter";
 import ImageToPdfConverter from "./ImageToPdfConverter";
 import MdToPdfConverter from "./MdToPdfConverter";
@@ -17,11 +16,7 @@ import TiffToPdfConverter from "./TiffToPdfConverter";
 import TxtToPdfConverter from "./TxtToPdfConverter";
 import WordToPdfConverter from "./WordToPdfConverter";
 import XlsxToPdfConverter from "./XlsxToPdfConverter";
-// import Sidebar from './sidebar';
 import Navbar1 from './Navbar';
-import Footer from './Footer';
-import Tools from './Tools';
-import Home from './Home';
 import About from './About';
 import ToolsPg from './ToolsPg';
 import LandingPage from './LandingPg';
@@ -45,21 +40,22 @@ import OdtCompressor from './OdtCompressor';
 import OdpCompressor from './OdpCompressor';
 import TiffCompressor from './TiffCompressor';
 import BmpCompressor from './BmpCompressor';
+import { Helmet } from 'react-helmet-async';
 
 function App() {
   return (
     <div>
-      {/* <FileConverter/> */}
+      
       <Navbar1/>
-      {/* <Tools /> */}
-      {/* <h1 align="center">converter</h1> */}
-      {/* <Sidebar/> */}
-        {/*  */}
+      <Helmet>
+      <title>F I L E -U N I V E R S </title>
+      <meta name='description' content='this is online converter app that convert pdf , word , pptx ,etc files to other format '/>
+      <link rel="canonical" href="https://fileunivers.in" />
+      </Helmet>
         <Routes>
            <Route path="/" element={ <LandingPage/>}/>
-           <Route path="/home" element={ <Home/>}/>
           <Route path="/aboutus" element={ <About/>}/>
-          <Route path="/toolspg" element={ <ToolsPg/>}/>
+          <Route path="/tools" element={ <ToolsPg/>}/>
           <Route path="/word-to-pdf" element={ <WordToPdfConverter/>}/>
           <Route path="/pdf-to-word" element={<PdfToWordConverter/>}/>
           <Route path="/odt-to-pdf" element={<OdtToPdfConverter/>}/>
@@ -96,52 +92,9 @@ function App() {
           <Route path="/odpcompressor" element={<OdpCompressor/>} />
           <Route path="/tiffcompressor" element={<TiffCompressor/>} />
           <Route path="/bmpcompressor" element={<BmpCompressor/>} />
-
-
-
-
-
           <></>
         </Routes>
        
-         {/* <Footer/> *
-         <PdfToTextConverter/>
-      <PdfToPptxConverter/>
-      <PdfToRtfConverter/>
-      <GoogleDrivePicker/>
-         /}
-       
-      {/* <PdfToWordConverter/>
-      <hr />
-      <WordToPdfConverter/>
-      <hr />
-      <OdtToPdfConverter/>
-      <hr />
-      <TxtToPdfConverter/>
-      <hr />
-      <DocToOdtConverter/>
-      <hr />
-      <OdtToDocConverter/>
-      <hr />
-      <PptxToPdf/>
-      <hr />
-      <PptxToOdp/>
-      <hr />
-      <OdpToPptx/>
-      <hr />
-      <RtfToPdfConverter/>
-      <hr />
-      <HtmlToPdfConverter/>
-      <hr />
-      <MdToPdfConverter/>
-      <hr />
-      <XlsxToPdfConverter/>
-      <hr />
-      <CsvToPdfConverter/>
-      <hr />
-      <ImageToPdfConverter/>
-      <hr />
-      <TiffToPdfConverter/>  */}
     </div>
   );
 }

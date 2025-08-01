@@ -6,6 +6,7 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from "./ScrollToTop";
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const MdToPdfConverter = () => {
@@ -58,11 +59,21 @@ const MdToPdfConverter = () => {
 
   return (
     <>
+    <Helmet>
+      <title>MD to PDF | Free Markdown to PDF Converter</title>
+<meta name="description" content="Convert Markdown (.md) files to PDF easily and securely. Free online MD to PDF converter with no email or registration required." />
+<link rel="canonical" href="https://fileunivers.in/md-to-pdf" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="md to pdf, convert md to pdf, markdown to pdf, free md to pdf converter, online markdown to pdf" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
     <ScrollToTop/>
     <Tools/>
     <section>
         <div className='converter'>
-          <h3>Convert Md To Pdf </h3>
+          <h1>Convert Md To Pdf </h1>
           <input type="file" accept=".md" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -77,7 +88,7 @@ const MdToPdfConverter = () => {
       </section>
       <section>
   <div className="converter-container">
-    <h1 className="converter-title">Convert Markdown (MD) to PDF – Free & Accurate</h1>
+    <h2 className="converter-title">Convert Markdown (MD) to PDF – Free & Accurate</h2>
 
     <div className="converter-section">
       <h2>🔄 How to Convert MD to PDF</h2>
@@ -115,7 +126,64 @@ const MdToPdfConverter = () => {
       <p><strong>Q:</strong> Can I use this without installing anything?<br />
         <strong>A:</strong> Absolutely! No registration or installation is needed.</p>
     </div>
+      <div className="compresspdf-article-section">
+  <h2>📝 Convert Markdown (MD) to PDF – Clean, Readable Document Export</h2>
+  <p>
+    Quickly convert your Markdown (.md) files into professional-grade PDF documents. Whether you're writing documentation, notes, or technical content, this tool helps you create a printable, shareable PDF version in seconds.
+  </p>
 
+  <h3>📄 What is Markdown to PDF Conversion?</h3>
+  <p>
+    Markdown is a lightweight markup language widely used for formatting plain text. Converting Markdown to PDF lets you preserve the structure and formatting of your content in a fixed, portable document format.
+  </p>
+
+  <h3>📌 Why Convert Markdown Files to PDF?</h3>
+  <ul>
+    <li><strong>Universal Sharing:</strong> PDFs are easier to share, print, and archive.</li>
+    <li><strong>Clean Formatting:</strong> Convert structured content like headings, lists, links, and code blocks into polished PDF layouts.</li>
+    <li><strong>Documentation:</strong> Turn README.md or project docs into official reports or manuals.</li>
+    <li><strong>Offline Use:</strong> Create accessible content that doesn't rely on Markdown viewers.</li>
+  </ul>
+
+  <h3>👨‍💻 Who Uses MD to PDF Tools?</h3>
+  <ul>
+    <li><strong>Developers:</strong> Export README files or API docs into PDFs.</li>
+    <li><strong>Writers & Bloggers:</strong> Write in Markdown, publish in PDF.</li>
+    <li><strong>Students & Researchers:</strong> Submit formatted reports created in Markdown.</li>
+    <li><strong>Open Source Contributors:</strong> Share markdown documentation in universally viewable PDF formats.</li>
+  </ul>
+
+
+  <h3>⚙️ Features of Our Markdown to PDF Converter</h3>
+  <ul>
+    <li>Supports GitHub-style Markdown syntax</li>
+    <li>Includes headers, bold/italic text, tables, and code blocks</li>
+    <li>Custom fonts and formatting for professional output</li>
+    <li>Handles large and multi-section Markdown files</li>
+    <li>No ads, no watermarks, and no limitations</li>
+  </ul>
+
+  <h3>🖥️ Cross-Platform Compatibility</h3>
+  <p>
+    This tool works flawlessly on all devices and browsers—whether you're on Windows, macOS, Linux, Android, or iOS.
+  </p>
+
+  <h3>🔐 Secure & Private</h3>
+  <p>
+    We prioritize user privacy. All uploaded Markdown files are encrypted during transmission and deleted automatically after conversion.
+  </p>
+
+  <h3>🚀 Why Use Our MD to PDF Converter?</h3>
+  <ul>
+    <li>Free and instant conversion</li>
+    <li>No need to install any software</li>
+    <li>Clean and minimal design</li>
+    <li>Perfect for tech professionals and writers</li>
+    <li>Optimized for speed and accuracy</li>
+  </ul>
+
+</div>
+      
     <div className="converter-section" style={{ textAlign: 'center' }}>
       <h2>🎯 Try It Now!</h2>
       <p>Convert your Markdown files to PDF instantly – perfect for documentation, notes, and reports.</p>

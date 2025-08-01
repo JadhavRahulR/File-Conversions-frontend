@@ -5,6 +5,7 @@ import Tools from './Tools';
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PdfToRtfConverter = () => {
@@ -58,12 +59,22 @@ const PdfToRtfConverter = () => {
   }, [status]);
   return (
     <>
+    <Helmet>
+      <title>PDF to RTF | Free PDF to Rich Text Format Converter</title>
+<meta name="description" content="Easily convert PDF files to RTF documents online. Use our free PDF to RTF converter — no email, signup, or watermark required." />
+<link rel="canonical" href="https://fileunivers.in/pdf-to-rtf" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="pdf to rtf, convert pdf to rtf, pdf to rich text, free pdf to rtf converter, online pdf to rtf, editable rtf from pdf" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
       <ScrollToTop />
       <section>
         <Tools />
 
         <div className='converter'>
-          <h3>Convert Pdf to Rtf </h3>
+          <h1>Convert Pdf to Rtf </h1>
 
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
@@ -80,7 +91,7 @@ const PdfToRtfConverter = () => {
       </section>
       <section>
   <div className="converter-container">
-    <h1 className="converter-title">Convert PDF to RTF – Editable Rich Text Format</h1>
+    <h2 className="converter-title">Convert PDF to RTF – Editable Rich Text Format</h2>
 
     <div className="converter-section">
       <h2>🔄 How to Convert PDF to RTF</h2>
@@ -118,6 +129,58 @@ const PdfToRtfConverter = () => {
       <p><strong>Q:</strong> Do I need to install anything?<br />
         <strong>A:</strong> No, the tool works directly in your web browser.</p>
     </div>
+<div className="compresspdf-article-section">
+  <h2>📄 Convert PDF to RTF – Extract Editable Text from PDF Files</h2>
+  <p>
+    Easily convert your PDF documents to Rich Text Format (RTF) using our free and secure online tool. Extract editable content including paragraphs, font styles, and lists into an RTF file that can be opened in any word processor like Microsoft Word or LibreOffice.
+  </p>
+
+  <h3>📌 Why Convert PDF to RTF?</h3>
+  <ul>
+    <li><strong>Edit Your PDF Content:</strong> Convert static text from PDF into a format you can easily modify.</li>
+    <li><strong>Lightweight & Portable:</strong> RTF files are smaller and supported by nearly all text editors.</li>
+    <li><strong>Cross-Platform Compatibility:</strong> Open RTF files in Word, Google Docs, LibreOffice, and more.</li>
+    <li><strong>Ideal for Resumes, Letters, and Reports:</strong> Reuse content from PDFs without retyping.</li>
+  </ul>
+
+  <h3>👨‍💼 Who Needs PDF to RTF Conversion?</h3>
+  <ul>
+    <li><strong>Writers:</strong> Reuse content from published PDFs in editable form.</li>
+    <li><strong>Students:</strong> Extract information from study PDFs to edit notes.</li>
+    <li><strong>Businesses:</strong> Edit or update contracts, invoices, and memos saved as PDFs.</li>
+    <li><strong>Researchers:</strong> Quickly copy and adapt references or excerpts from PDF files.</li>
+  </ul>
+
+
+  <h3>⚙️ Features of This PDF to RTF Converter</h3>
+  <ul>
+    <li>Preserves fonts, text alignment, and basic formatting</li>
+    <li>Fast conversion even for large PDF documents</li>
+    <li>No watermark, no signup – 100% free</li>
+    <li>Works on all devices: mobile, desktop, tablet</li>
+    <li>Browser-based – no software installation needed</li>
+  </ul>
+
+  <h3>🖥️ Platform Support</h3>
+  <p>
+    This converter runs on Windows, macOS, Linux, Android, and iOS. Whether you’re using Chrome, Safari, or Firefox, your conversion is fast and reliable.
+  </p>
+
+  <h3>🔐 File Safety & Privacy</h3>
+  <p>
+    We take file security seriously. Your PDF and converted RTF are transmitted securely and automatically deleted after conversion. Your documents are never stored or viewed by anyone.
+  </p>
+
+  <h3>🚀 Why Use Our PDF to RTF Tool?</h3>
+  <ul>
+    <li>Free and unlimited use</li>
+    <li>No login or account needed</li>
+    <li>Clean and fast interface</li>
+    <li>Accurate and editable RTF output</li>
+    <li>Supports both simple and complex PDFs</li>
+  </ul>
+
+</div>
 
     <div className="converter-section" style={{ textAlign: 'center' }}>
       <h2>🎯 Try It Now!</h2>

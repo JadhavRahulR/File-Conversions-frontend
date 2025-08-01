@@ -13,8 +13,9 @@
   flex-direction: column;
 }
 
-.pdf-merger h2 {
+.pdf-merger h1 {
   margin-bottom: 1rem;
+  color: #007bfc;
 }
 
 .pdf-merger .drop-area {
@@ -78,6 +79,45 @@ button:disabled {
 
 .clear-btn:hover {
   background-color: #e22e2e;
+}
+.mergepdf-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fafafa;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.mergepdf-section h2 {
+  font-size: 2rem;
+  color: #1e88e5;
+  margin-bottom: 1rem;
+}
+
+.mergepdf-section h3 {
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+  color: #2c3e50;
+}
+
+.mergepdf-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0.5rem 0 1rem;
+}
+
+.mergepdf-section ul,
+.mergepdf-section ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mergepdf-section ul li,
+.mergepdf-section ol li {
+  margin-bottom: 0.6rem;
 }
 
 @media (max-width:500px){

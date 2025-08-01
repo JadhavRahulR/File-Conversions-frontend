@@ -4,6 +4,7 @@ import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdpCompressor = () => {
@@ -57,13 +58,23 @@ const OdpCompressor = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Compress ODP | Reduce OpenDocument Presentation File Size</title>
+<meta name="description" content="Compress your ODP (OpenDocument Presentation) files online to minimize size while keeping layout intact. Free, fast, and secure ODP compressor." />
+<link rel="canonical" href="https://fileunivers.in/odpcompressor" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="compress odp, odp compressor, reduce odp file size, compress presentation, shrink opendocument presentation, odp file compression online" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
     <ScrollToTop/>
     <div
       className="compressor-container drop-area"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       >
-      <h2>ODP Compressor</h2>
+      <h1>ODP Compressor</h1>
 
       <p
         className="file-label"
@@ -130,7 +141,7 @@ const OdpCompressor = () => {
     </div>
     <section>
       <div className="compressor-page">
-  <h1 className="compressor-heading">Compress ODP File Online</h1>
+  <h2 className="compressor-heading">Compress ODP File Online</h2>
   <p className="compressor-description">
     Reduce the size of your OpenDocument Presentation (.odp) files by optimizing embedded images and media without affecting slide layout or content.
   </p>
@@ -151,6 +162,66 @@ const OdpCompressor = () => {
     <li>⚡ Quick compression with automatic download</li>
   </ul>
 </div>
+      <section>
+  <div className="compressor-article">
+    <h2>Everything You Need to Know About ODP Compression</h2>
+
+    <h3>📽️ What is an ODP File?</h3>
+    <p>
+      ODP stands for Open Document Presentation, the default format used by LibreOffice Impress and other open-source presentation tools. It supports slides with text, images, charts, and multimedia.
+    </p>
+
+    <h3>📦 Why Compress an ODP File?</h3>
+    <p>
+      ODP files often contain large images, videos, and graphics that increase the file size. Compressing these files helps with easier sharing, uploading, and storage.
+    </p>
+
+    <h3>💡 Benefits of Compressing ODP Files</h3>
+    <ul>
+      <li><strong>📉 Smaller Size</strong> – Optimize embedded content without losing slide quality</li>
+      <li><strong>🚀 Quicker Sharing</strong> – Share your presentation faster via email or cloud</li>
+      <li><strong>📁 Save Disk Space</strong> – Reduce clutter from large presentation decks</li>
+      <li><strong>📱 Smooth Loading</strong> – Present on mobile or web with better performance</li>
+    </ul>
+
+    <h3>⚙️ How Our ODP Compressor Works</h3>
+    <p>
+      Our tool compresses your ODP file by optimizing embedded media (like images), removing unnecessary metadata, and preserving the layout of your slides.
+    </p>
+
+    <h3>🔐 Is It Safe to Use This ODP Compressor?</h3>
+    <p>
+      Absolutely. Your file is processed in a secure environment. We never store your files or access your content beyond compression.
+    </p>
+    <ul>
+      <li>🔒 Secure & private processing</li>
+      <li>🗑️ Temporary file deletion</li>
+      <li>🌐 Cross-platform compatibility</li>
+    </ul>
+
+    <h3>📌 Final Tip</h3>
+    <p>
+      Compress your ODP files before submitting slides, uploading to learning portals, or sharing with colleagues to ensure a smooth and professional experience.
+    </p>
+
+    <h2>📚 Frequently Asked Questions</h2>
+
+    <h3>❓ Will my slide design be changed?</h3>
+    <p>
+      No. The compression tool keeps your slide content and formatting intact. Only media files and metadata are optimized.
+    </p>
+
+    <h3>❓ Can I compress large presentations with images?</h3>
+    <p>
+      Yes. The tool works especially well for presentations with many images or embedded charts.
+    </p>
+
+    <h3>❓ What are the output options?</h3>
+    <p>
+      You can choose to download the compressed `.odp` file directly or get a `.odp.7z` archive for maximum size reduction.
+    </p>
+  </div>
+</section>
 
     </section>
 </>

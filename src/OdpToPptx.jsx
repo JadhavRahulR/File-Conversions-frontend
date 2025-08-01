@@ -1,4 +1,4 @@
-import React, { useState ,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import DropzoneInput from "./DropzoneInput";
 import axios from 'axios';
 import "./converter.css"
@@ -6,20 +6,21 @@ import Tools from './Tools';
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdpToPptx = () => {
   const [file, setFile] = useState(null);
   // const [downloadUrl, setDownloadUrl] = useState('');
   const [status, setStatus] = useState("Upload");
-  
-    const handleFileChange = (eOrFile) => {
-      const file = eOrFile?.target?.files?.[0] || eOrFile;
-      if (file) {
-        setFile(file);
-        setStatus(status === "Done" ? "upload" : "convert");
-      }
-    };
+
+  const handleFileChange = (eOrFile) => {
+    const file = eOrFile?.target?.files?.[0] || eOrFile;
+    if (file) {
+      setFile(file);
+      setStatus(status === "Done" ? "upload" : "convert");
+    }
+  };
 
   const handleConvert = async () => {
     if (!file) return alert("Please select an ODP file");
@@ -29,7 +30,7 @@ const OdpToPptx = () => {
 
     try {
       setStatus("Converting...")
-      const response = await axios.post( `${BASE_URL}/convert-odp-to-pptx`, formData, {
+      const response = await axios.post(`${BASE_URL}/convert-odp-to-pptx`, formData, {
         responseType: 'blob',
       });
 
@@ -48,83 +49,146 @@ const OdpToPptx = () => {
     }
   };
   useEffect(() => {
-        if (status === "✅ Conversion complete!") {
-          setTimeout(() => {
-            setFile(null);
-            setStatus("Convert");
-          }, 4000); 
-        }
-      }, [status]);
-  
+    if (status === "✅ Conversion complete!") {
+      setTimeout(() => {
+        setFile(null);
+        setStatus("Convert");
+      }, 4000);
+    }
+  }, [status]);
+
   return (
     <>
-    <ScrollToTop/>
-    <Tools/>
-    <section>
+      <Helmet>
+        <title>ODP to PPTX | Free OpenDocument to PowerPoint Converter</title>
+        <meta name="description" content="Convert ODP files to PPTX format quickly and securely. Free online ODP to PPTX converter with no signup or email required." />
+        <link rel="canonical" href="https://fileunivers.in/odp-to-pptx" />
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="odp to pptx, convert odp to pptx, opendocument to powerpoint, free odp to pptx converter, online odp to pptx" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      </Helmet>
+      <ScrollToTop />
+      <Tools />
+      <section>
         <div className='converter'>
-          <h3>Convert Odp To Pptx </h3>
+          <h1>Convert Odp To Pptx </h1>
           <input type="file" accept=".odp" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
             <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.odp']} />
             <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.odp']} />
           </div>
-          <DropzoneInput acceptedType={['odp']} file={file} onFileAccepted={setFile} setStatus={setStatus}/>
+          <DropzoneInput acceptedType={['odp']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
             {status}
           </button>
         </div>
       </section>
       <section>
-  <div className="converter-container">
-    <h1 className="converter-title">Convert ODP to PPTX – Fast & Free Online</h1>
+        <div className="converter-container">
+          <h2 className="converter-title">Convert ODP to PPTX – Fast & Free Online</h2>
 
-    <div className="converter-section">
-      <h2>🔄 How to Convert ODP to PPTX</h2>
-      <ol>
-        <li>📤 Upload your ODP file – drag & drop or click to select.</li>
-        <li>⚙️ We’ll convert it to a PowerPoint Presentation (.pptx) format.</li>
-        <li>📥 Auto Download the PPTX file after conversion.</li>
-      </ol>
-      <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
-    </div>
+          <div className="converter-section">
+            <h2>🔄 How to Convert ODP to PPTX</h2>
+            <ol>
+              <li>📤 Upload your ODP file – drag & drop or click to select.</li>
+              <li>⚙️ We’ll convert it to a PowerPoint Presentation (.pptx) format.</li>
+              <li>📥 Auto Download the PPTX file after conversion.</li>
+            </ol>
+            <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
+          </div>
 
-    <div className="converter-section">
-      <h2>🔒 Why Use Our ODP to PPTX Converter?</h2>
-      <ul>
-        <li>✅ Converts slide content, formatting, and layout accurately.</li>
-        <li>🔐 Your privacy is protected – files are automatically deleted after conversion.</li>
-        <li>⚡ Fast conversion with no design loss.</li>
-        <li>🌐 Works in all browsers – no software required.</li>
-        <li>🆓 Free to use with unlimited access.</li>
-      </ul>
-    </div>
+          <div className="converter-section">
+            <h2>🔒 Why Use Our ODP to PPTX Converter?</h2>
+            <ul>
+              <li>✅ Converts slide content, formatting, and layout accurately.</li>
+              <li>🔐 Your privacy is protected – files are automatically deleted after conversion.</li>
+              <li>⚡ Fast conversion with no design loss.</li>
+              <li>🌐 Works in all browsers – no software required.</li>
+              <li>🆓 Free to use with unlimited access.</li>
+            </ul>
+          </div>
 
-    <div className="converter-section">
-      <h2>📁 Supported Formats</h2>
-      <p><strong>Input:</strong> .odp (OpenDocument Presentation)</p>
-      <p><strong>Output:</strong> .pptx (PowerPoint Presentation)</p>
-    </div>
+          <div className="converter-section">
+            <h2>📁 Supported Formats</h2>
+            <p><strong>Input:</strong> .odp (OpenDocument Presentation)</p>
+            <p><strong>Output:</strong> .pptx (PowerPoint Presentation)</p>
+          </div>
 
-    <div className="converter-section">
-      <h2>❓ FAQ</h2>
-      <p><strong>Q:</strong> Can I open the PPTX file in Microsoft PowerPoint?<br />
-        <strong>A:</strong> Yes! The converted file is fully compatible with all versions of PowerPoint.</p>
-      <p><strong>Q:</strong> Will my images and slide design remain the same?<br />
-        <strong>A:</strong> Yes, we preserve layout, images, and fonts during conversion.</p>
-      <p><strong>Q:</strong> Do I need to create an account to use this tool?<br />
-        <strong>A:</strong> No sign-up is required. It's 100% free and secure.</p>
-    </div>
+          <div className="converter-section">
+            <h2>❓ FAQ</h2>
+            <p><strong>Q:</strong> Can I open the PPTX file in Microsoft PowerPoint?<br />
+              <strong>A:</strong> Yes! The converted file is fully compatible with all versions of PowerPoint.</p>
+            <p><strong>Q:</strong> Will my images and slide design remain the same?<br />
+              <strong>A:</strong> Yes, we preserve layout, images, and fonts during conversion.</p>
+            <p><strong>Q:</strong> Do I need to create an account to use this tool?<br />
+              <strong>A:</strong> No sign-up is required. It's 100% free and secure.</p>
+          </div>
+          <div className="compresspdf-article-section">
+            <h2>📽️ Convert ODP to PPTX – OpenDocument to PowerPoint Made Easy</h2>
+            <p>
+              Convert your OpenDocument Presentation files (.odp) into Microsoft PowerPoint format (.pptx) quickly and effortlessly. Our online tool helps you transition from open-source software like LibreOffice to PowerPoint without losing your presentation’s layout, animations, or visuals.
+            </p>
 
-    <div className="converter-section" style={{ textAlign: 'center' }}>
-      <h2>🎯 Try It Now!</h2>
-      <p>Convert your ODP presentation to PPTX in seconds – accurate, private, and completely free.</p>
-      <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
-    </div>
-  </div>
-</section>
+            <h3>📌 Why Convert ODP to PPTX?</h3>
+            <ul>
+              <li><strong>Better Compatibility:</strong> PPTX is fully compatible with Microsoft PowerPoint and Office 365.</li>
+              <li><strong>Professional Presentations:</strong> Use advanced PowerPoint features like animations, templates, and transitions.</li>
+              <li><strong>Collaboration:</strong> Work easily with teams using Microsoft tools.</li>
+              <li><strong>Editing Flexibility:</strong> PPTX offers richer editing options and design flexibility.</li>
+              <li><strong>Presentation Sharing:</strong> PPTX format is widely accepted on platforms like Zoom, Teams, and Google Slides.</li>
+            </ul>
 
-      </>
+            <h3>👤 Who Needs ODP to PPTX Conversion?</h3>
+            <ul>
+              <li><strong>Students:</strong> Share class presentations with professors or peers using Microsoft tools.</li>
+              <li><strong>Professionals:</strong> Use company templates and PowerPoint formatting for client presentations.</li>
+              <li><strong>Teachers:</strong> Reuse LibreOffice slides in PowerPoint for easier classroom presentation.</li>
+              <li><strong>Freelancers:</strong> Convert and submit presentations to clients who use Office formats.</li>
+            </ul>
+
+            <h3>⚙️ Key Features</h3>
+            <ul>
+              <li>Preserves layout, fonts, animations, and images</li>
+              <li>High-quality file conversion with minimal formatting loss</li>
+              <li>Completely browser-based – no software needed</li>
+              <li>Fast conversion with instant download</li>
+              <li>Works with all versions of Microsoft PowerPoint</li>
+            </ul>
+
+            <h3>💻 Compatible with All Devices</h3>
+            <p>
+              Our converter works on Windows, Mac, Linux, Android, and iOS. You only need a browser – no installation or account required.
+            </p>
+
+            <h3>🔐 File Safety & Privacy</h3>
+            <p>
+              Your files are encrypted during transfer and deleted from our servers automatically after processing. We do not store or share your presentations with anyone.
+            </p>
+
+            <h3>🚀 Why Choose Our ODP to PPTX Converter?</h3>
+            <ul>
+              <li>Fast, free, and easy to use</li>
+              <li>No login or signup required</li>
+              <li>High-accuracy layout preservation</li>
+              <li>Supports large and complex presentations</li>
+              <li>Perfect for students, professionals, and educators</li>
+            </ul>
+
+
+          </div>
+
+          <div className="converter-section" style={{ textAlign: 'center' }}>
+            <h2>🎯 Try It Now!</h2>
+            <p>Convert your ODP presentation to PPTX in seconds – accurate, private, and completely free.</p>
+            <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
+          </div>
+        </div>
+      </section>
+
+    </>
   );
 };
 

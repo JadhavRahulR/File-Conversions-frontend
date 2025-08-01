@@ -9,7 +9,7 @@ function About() {
         <ScrollToTop/>
         <h1>About Us </h1>
       <p className="about-text">
-        Welcome to <span className="highlight">O N L I N E - C O N V E R T E R </span> – our simple and reliable tool for fast and accurate document conversion.
+        Welcome to <span className="highlight">F I L E - U N I V E R S </span> – our simple and reliable tool for fast and accurate document conversion.
         Whether you're a student, professional, or anyone in need of converting Word, PDF, Excel, or text files, we've got you covered.
       </p>
 

@@ -4,6 +4,7 @@ import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const XlsxCompressor = () => {
@@ -71,13 +72,23 @@ const XlsxCompressor = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Compress Excel | Reduce XLSX File Size Online</title>
+<meta name="description" content="Compress your Excel spreadsheets (.xlsx) online to reduce file size while preserving data and formatting. Free and secure XLSX compressor tool." />
+<link rel="canonical" href="https://fileunivers.in/xlsxcompressor" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="compress xlsx, excel compressor, reduce excel file size, compress spreadsheet, shrink xlsx, xlsx file compression online" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
     <ScrollToTop/>
     <div
       className="compressor-container drop-area"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       >
-      <h2>XLSX Compressor</h2>
+      <h1>XLSX Compressor</h1>
 
       <p
         className="file-label clickable-label"
@@ -145,7 +156,7 @@ const XlsxCompressor = () => {
     </div>
     <section>
       <div className="compressor-page">
-  <h1 className="compressor-heading">Compress XLSX File Online</h1>
+  <h2 className="compressor-heading">Compress XLSX File Online</h2>
   <p className="compressor-description">
     Reduce the size of your Excel spreadsheet (.xlsx) files by optimizing embedded content like images and charts, without changing your data or formulas.
   </p>
@@ -166,6 +177,71 @@ const XlsxCompressor = () => {
     <li>⚡ Fast performance with instant auto-download</li>
   </ul>
 </div>
+<section>
+  <div className="compressor-article">
+    <h2>Everything You Need to Know About XLSX Compression</h2>
+
+    <h3>📊 What is an XLSX File?</h3>
+    <p>
+      XLSX is the default file format used by Microsoft Excel. It stores spreadsheet data including text, numbers, formulas,
+      charts, images, and formatting. While efficient, XLSX files can become quite large due to embedded images or large datasets.
+    </p>
+
+    <h3>📦 Why Compress an XLSX File?</h3>
+    <p>
+      XLSX files may grow in size if they contain high-resolution charts, pivot tables, embedded pictures, macros, or
+      unnecessary formatting. Compressing them helps in reducing load time and makes sharing easier.
+    </p>
+
+    <h3>💡 Benefits of Compressing XLSX Files</h3>
+    <ul>
+      <li><strong>📉 Reduce File Size</strong> – Shrink large Excel sheets while keeping data intact</li>
+      <li><strong>📤 Easy to Share</strong> – Faster email uploads and sharing on cloud drives</li>
+      <li><strong>💾 Save Storage</strong> – Less disk usage for large spreadsheets</li>
+      <li><strong>📱 Better Performance</strong> – Faster access on mobile and older devices</li>
+    </ul>
+
+    <h3>⚙️ How Our XLSX Compressor Works</h3>
+    <p>
+      Our tool compresses XLSX files by optimizing images, removing hidden data, and cleaning up excess formatting.
+      It retains your original content, structure, and calculations—just in a lighter package.
+    </p>
+
+    <h3>🔐 Is It Safe to Use This XLSX Compressor?</h3>
+    <p>
+      Absolutely. We prioritize your privacy. All file compression happens over a secure connection and we don’t store or
+      analyze your content. Files are deleted after processing.
+    </p>
+    <ul>
+      <li>🔒 Encrypted transfer</li>
+      <li>🚫 No file retention</li>
+      <li>✅ Works on all devices</li>
+    </ul>
+
+    <h3>📌 Final Tip</h3>
+    <p>
+      Whether you're managing financial reports, academic data, or simple tables, compressing large XLSX files
+      ensures better usability and faster sharing. Try it now—it's quick, safe, and free.
+    </p>
+
+    <h2>📚 Frequently Asked Questions</h2>
+
+    <h3>❓ Will my formulas and charts be preserved?</h3>
+    <p>
+      Yes, all formulas, functions, charts, and formatting remain unchanged. Only file weight is reduced.
+    </p>
+
+    <h3>❓ Can I compress password-protected XLSX files?</h3>
+    <p>
+      No. Please remove any password protection before uploading the file for compression.
+    </p>
+
+    <h3>❓ What formats can I download after compression?</h3>
+    <p>
+      You can download the result as a compressed `.xlsx`, or as a `.xlsx.7z` archive for further size reduction.
+    </p>
+  </div>
+</section>
 
     </section>
 </>

@@ -6,6 +6,7 @@ import DropboxFileInput from './DropboxFileInput'
 import React, { useState ,useEffect} from 'react';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from "./ScrollToTop";
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const ImageToPdfConverter = () => {
@@ -58,12 +59,22 @@ const ImageToPdfConverter = () => {
 
   return (
     <>
+    <Helmet>
+      <title>IMG to PDF | Free Image to PDF Converter</title>
+<meta name="description" content="Convert images (JPG, PNG, BMP, etc.) to PDF format quickly and securely. Free online IMG to PDF converter with no signup or email required." />
+<link rel="canonical" href="https://fileunivers.in/img-to-pdf" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="img to pdf, image to pdf, jpg to pdf, png to pdf, convert image to pdf, free img to pdf converter, online image to pdf" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
     <ScrollToTop/>
     <Tools/>
     <section>
 
      <div className='converter'>
-        <h3>Convert Image  To Pdf  </h3>
+        <h1>Convert Image  To Pdf  </h1>
 
         <input type="file" accept=".jpg,.png,.jpeg" onChange={handleFileChange} />
         <br /><br />
@@ -87,7 +98,7 @@ const ImageToPdfConverter = () => {
         </section>
         <section>
   <div className="converter-container">
-    <h1 className="converter-title">Convert Image to PDF – JPG, PNG & More</h1>
+    <h2 className="converter-title">Convert Image to PDF – JPG, PNG & More</h2>
 
     <div className="converter-section">
       <h2>🔄 How to Convert Images to PDF</h2>
@@ -125,6 +136,65 @@ const ImageToPdfConverter = () => {
       <p><strong>Q:</strong> Is this tool free and safe?<br />
         <strong>A:</strong> Yes, it’s 100% free and all files are auto-deleted after processing.</p>
     </div>
+          <div className="compresspdf-article-section">
+  <h2>🖼️ Convert Image to PDF – Turn Photos into Printable Documents</h2>
+  <p>
+    Transform your images (JPG, PNG, BMP, etc.) into high-quality PDF documents in just a few seconds. Whether you're archiving scanned receipts, creating digital photo albums, or preparing professional reports, our Image to PDF tool makes it easy.
+  </p>
+
+  <h3>📸 What is Image to PDF Conversion?</h3>
+  <p>
+    Image to PDF conversion allows you to combine one or multiple image files into a single PDF document. This process is useful for sharing images in a universal format while preserving their resolution and layout.
+  </p>
+
+  <h3>✅ Why Convert Images to PDF?</h3>
+  <ul>
+    <li><strong>Universal Format:</strong> PDFs are widely supported on all devices.</li>
+    <li><strong>Batch Processing:</strong> Combine multiple images into one PDF file.</li>
+    <li><strong>Better Organization:</strong> Present images in a sequence, like a document.</li>
+    <li><strong>High-Quality Output:</strong> Retain image clarity and resolution.</li>
+  </ul>
+
+  <h3>👤 Who Benefits from Image to PDF Conversion?</h3>
+  <ul>
+    <li><strong>Students:</strong> Convert handwritten notes or diagrams into PDF for submission.</li>
+    <li><strong>Professionals:</strong> Send official ID scans or reports in PDF format.</li>
+    <li><strong>Photographers:</strong> Share portfolios as polished PDF albums.</li>
+    <li><strong>Everyone:</strong> Preserve and share memories securely and efficiently.</li>
+  </ul>
+
+ 
+
+  <h3>🌟 Features of Our Image to PDF Tool</h3>
+  <ul>
+    <li>Supports multiple image formats</li>
+    <li>Combines multiple images into one PDF</li>
+    <li>Auto-adjusts page layout and orientation</li>
+    <li>Drag & drop support</li>
+    <li>Completely free and watermark-free</li>
+  </ul>
+
+  <h3>📲 Online & Cross-Platform</h3>
+  <p>
+    Our tool works seamlessly on any device—Windows, macOS, Android, or iOS—without needing to install any software.
+  </p>
+
+  <h3>🔒 Safe and Private</h3>
+  <p>
+    Your files are processed securely and deleted automatically. We never store your images or PDFs.
+  </p>
+
+  <h3> Why Choose This Image to PDF Converter?</h3>
+  <ul>
+    <li>Fast and simple UI</li>
+    <li>Combines multiple images instantly</li>
+    <li>Maintains original image quality</li>
+    <li>No registration required</li>
+    <li>Optimized for both print and digital use</li>
+  </ul>
+
+ 
+</div>
 
     <div className="converter-section" style={{ textAlign: 'center' }}>
       <h2>🎯 Try It Now!</h2>

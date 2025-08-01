@@ -27,7 +27,7 @@ footer{
     text-decoration: none;
     color: aliceblue;
     height: 30px;
-    border: 1px solid red;
+    border: 1px solid white;
     display: flex;
     justify-content: center;
     box-shadow: 2px 3px 4px rgba(0, 0, o, white);
@@ -47,5 +47,8 @@ footer{
     }
      .footerpages a {
         margin: 2px;
+     }
+     .footer-note{
+        margin: 0px 10px;
      }
 }

@@ -4,6 +4,7 @@ import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtCompressor = () => {
@@ -56,13 +57,23 @@ const OdtCompressor = () => {
 
   return (
     <>
+    <Helmet>
+      <title>Compress ODT | Reduce OpenDocument Text File Size</title>
+<meta name="description" content="Compress your ODT (OpenDocument Text) files online to reduce file size without losing formatting. Fast, secure, and free ODT compressor tool." />
+<link rel="canonical" href="https://fileunivers.in/odtcompressor" />
+<meta name="robots" content="index, follow" />
+<meta name="keywords" content="compress odt, odt compressor, reduce odt file size, shrink opendocument text, compress opendocument, odt file compression online" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    </Helmet>
     <ScrollToTop/>
     <div
       className="compressor-container drop-area"
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       >
-      <h2>ODT Compressor</h2>
+      <h1>ODT Compressor</h1>
 
       <p
         className="file-label"
@@ -132,7 +143,7 @@ const OdtCompressor = () => {
     </div>
     <section>
       <div className="compressor-page">
-  <h1 className="compressor-heading">Compress ODT File Online</h1>
+  <h2 className="compressor-heading">Compress ODT File Online</h2>
   <p className="compressor-description">
     Reduce the size of your OpenDocument Text (.odt) files without affecting formatting or content. Perfect for optimizing documents with images or media.
   </p>
@@ -153,6 +164,66 @@ const OdtCompressor = () => {
     <li>⚡ Fast compression with automatic download</li>
   </ul>
 </div>
+<section>
+  <div className="compressor-article">
+    <h2>Everything You Need to Know About ODT Compression</h2>
+
+    <h3>📝 What is an ODT File?</h3>
+    <p>
+      ODT stands for Open Document Text. It’s the default format used by LibreOffice Writer and other open-source word processors. ODT files can include text, images, styles, and objects—and may become large if they contain rich media.
+    </p>
+
+    <h3>📦 Why Compress an ODT File?</h3>
+    <p>
+      If your ODT file has embedded images, charts, or unnecessary formatting, it can become too bulky for quick sharing or uploading. Compressing it helps you keep things efficient.
+    </p>
+
+    <h3>💡 Benefits of Compressing ODT Files</h3>
+    <ul>
+      <li><strong>📉 Smaller Size</strong> – Reduce large document size without quality loss</li>
+      <li><strong>🚀 Faster Upload</strong> – Share or email your file more quickly</li>
+      <li><strong>💾 Save Space</strong> – Keep your device or cloud storage tidy</li>
+      <li><strong>📱 Easier Access</strong> – Open and edit documents more smoothly</li>
+    </ul>
+
+    <h3>⚙️ How Our ODT Compressor Works</h3>
+    <p>
+      Our tool compresses ODT files by optimizing embedded images and removing hidden content or unused formatting. It doesn’t touch your text, structure, or document design.
+    </p>
+
+    <h3>🔐 Is It Safe to Use This ODT Compressor?</h3>
+    <p>
+      Yes. Your ODT file is processed securely. We don’t store your content and all temporary files are deleted after compression.
+    </p>
+    <ul>
+      <li>🔒 Encrypted file handling</li>
+      <li>🧹 Auto-delete after processing</li>
+      <li>🖥️ Works on all platforms</li>
+    </ul>
+
+    <h3>📌 Final Tip</h3>
+    <p>
+      Compressing your ODT files is ideal when submitting reports, sharing articles, or archiving long documents. Save time and space today with one click.
+    </p>
+
+    <h2>📚 Frequently Asked Questions</h2>
+
+    <h3>❓ Will my document layout be affected?</h3>
+    <p>
+      No. The compressor preserves the document's layout, text, and formatting. Only images and metadata are optimized.
+    </p>
+
+    <h3>❓ Can I compress files with embedded graphics?</h3>
+    <p>
+      Yes, image-heavy ODT files benefit the most from compression. We reduce image size while maintaining clarity.
+    </p>
+
+    <h3>❓ What file formats are available after compression?</h3>
+    <p>
+      You can download the file as compressed `.odt` or as a `.odt.7z` archive for further space saving.
+    </p>
+  </div>
+</section>
 
     </section>
   </>

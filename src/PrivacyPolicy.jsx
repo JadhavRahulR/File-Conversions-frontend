@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
     <div className="privacy-container">
       <ScrollToTop/>
       <h1>Privacy Policy</h1>
-      <p><strong>Effective Date:</strong> July 9, 2025</p>
+      <p><strong>Effective Date:</strong> August 1, 2025</p>
 
       <section>
         <h2>1. Information We Collect</h2>
@@ -64,7 +64,7 @@ const PrivacyPolicy = () => {
 
       <section>
         <h2>5. Contact Us</h2>
-        <p>For any questions, contact us at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
+        <p>For any questions, contact us at <a href="mailto:your-email@example.com">fileunivers@gmail.com</a>.</p>
       </section>
 
       <section>
