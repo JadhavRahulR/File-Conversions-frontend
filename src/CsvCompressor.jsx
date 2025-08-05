@@ -5,11 +5,13 @@ import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
-const BASE_URL = import.meta.env.VITE_BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 const CsvCompressor = () => {
     const [file, setFile] = useState(null);
     const [compressionLevel, setCompressionLevel] = useState(19);
     const [status, setStatus] = useState('idle');
+
+    console.log("Base URL:", import.meta.env.VITE_BASE_URL);
 
     const handleFileDrop = (e) => {
         e.preventDefault();
@@ -35,7 +37,7 @@ const CsvCompressor = () => {
         formData.append('level', compressionLevel);
 
         try {
-            const response = await axios.post(`${BASE_URL}/compress-csv'`, formData, {
+            const response = await axios.post(`${BASE_URL}/compress-csv`, formData, {
                 responseType: 'blob',
             });
 
