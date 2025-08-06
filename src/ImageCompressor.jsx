@@ -19,15 +19,22 @@ const ImageCompressor = () => {
   const handleFileDrop = (e) => {
     e.preventDefault();
     const dropped = e.dataTransfer.files[0];
-    if (dropped && dropped.name.endsWith('.jpg' || ".png")) {
-      setFile(dropped);
-    }
+   if (
+  dropped &&
+  (dropped.name.endsWith('.jpg') || dropped.name.endsWith('.png'))
+) {
+  setFile(dropped);
+}
   };
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
-    if (selected && selected.name.endsWith('.jpg' || ".png")) {
-      setFile(selected);
-    }
+    if (
+  selected &&
+  (selected.name.endsWith('.jpg') || selected.name.endsWith('.png'))
+) {
+  setFile(selected);
+}
+
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
