@@ -7,11 +7,14 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const RtfToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
+  const [progress, setProgress] = useState(0);
+
          
            const handleFileChange = (eOrFile) => {
              const file = eOrFile?.target?.files?.[0] || eOrFile;
@@ -22,6 +25,8 @@ const RtfToPdfConverter = () => {
            };
 
   const handleConvert = async () => {
+    setProgress(10);
+
     if (!file) return alert("Please upload an RTF file.");
 
     const formData = new FormData();
@@ -32,7 +37,12 @@ const RtfToPdfConverter = () => {
       const response = await axios.post(
         `${BASE_URL}/convert-rtf-to-pdf`,
         formData,
-        { responseType: "blob" }
+        { responseType: "blob" ,
+          onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
+        }
       );
 
       const blob = new Blob([response.data], { type: "application/pdf" });
@@ -83,7 +93,7 @@ useEffect(() => {
           <DropzoneInput acceptedType={['rtf']} file={file} onFileAccepted={setFile} setStatus={setStatus}/>
          
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status}
+            {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
           </button>
         </div>
       </section>
@@ -116,6 +126,8 @@ useEffect(() => {
       <h2>📁 Supported Formats</h2>
       <p><strong>Input:</strong> .rtf (Rich Text Format)</p>
       <p><strong>Output:</strong> .pdf</p>
+       <h2>Also check other features Related to rtf file  </h2>
+        <li><Link to="/pdf-to-rtf" className='btn' > PDF to rtf Converter </Link></li>
     </div>
 
     <div className="converter-section">

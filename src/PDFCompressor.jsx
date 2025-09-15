@@ -5,13 +5,15 @@ import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(60);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState("upload")
+  const [status, setStatus] = useState("upload");
+  const [progress, setProgress] = useState(0);
 
   const handleFileDrop = (e) => {
         e.preventDefault();
@@ -28,6 +30,8 @@ const PDFCompressor = () => {
     };
 
   const handleSubmit = async (e) => {
+     setProgress(10);
+
     e.preventDefault();
     if (!file) return alert("Please upload a PDF.");
 
@@ -39,6 +43,10 @@ const PDFCompressor = () => {
     try {
       const response = await axios.post(`${BASE_URL}/convert-compress-pdf`, formData, {
         responseType: "blob",
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data], { type: "application/pdf" });
@@ -99,7 +107,7 @@ const PDFCompressor = () => {
 
 
            <button type="submit" disabled={loading}>
-              {loading ? "Compressing..." : "Compress PDF"}
+              {loading ? `Compressing... (${progress}%)` : "Compress PDF"}
             </button>
 
             {status === 'done' && <p className="success-msg">✅ Compression complete. File downloaded.</p>}
@@ -127,11 +135,32 @@ const PDFCompressor = () => {
             <li>🔒 Your files stay private – processed locally or securely deleted</li>
             <li>⚡ Fast compression powered by Python backend</li>
             <li>📱 Works on mobile and desktop</li>
+            <h2 style={{marginBottom:"4px"}}>Also check other features Related to PDF file  </h2>
+                            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                            <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+                            <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
+                            <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
+                            <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
+                            <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
+                            <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
+                            <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
+                            <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
+                            <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
+                            <li><Link to="/img-to-pdf" className='btn' > img to pdf Converter </Link></li>
+                            <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
+                            <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+                            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+                            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+                            <li><Link to="/pdf-to-rtf" className='btn' > pdf to rtf Converter </Link></li>
+                            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
           </ul>
+          
         </div>
+        
         <section className="pdf-compressor-section">
       <div className="pdf-compressor-container">
-        <h3 className="pdf-compressor-heading">Compress PDF Online – Reduce File Size Effortlessly</h3>
+        
+        <h2 className="pdf-compressor-heading">Compress PDF Online – Reduce File Size Effortlessly</h2>
         <p className="pdf-compressor-intro">
           Want to reduce the size of your PDF files without compromising quality? Our online PDF compressor helps you shrink large PDF documents into smaller, more manageable files within seconds — no software installation needed!
         </p>
@@ -167,7 +196,7 @@ const PDFCompressor = () => {
         <p className="pdf-compressor-text">
           Our tool is built for everyone — from students submitting assignments to professionals sharing large documents. Whether you're working with eBooks, invoices, design portfolios, or scanned reports, our compressor simplifies your file management.
         </p>
-
+      
         <h2 className="pdf-compressor-subheading">FAQs About PDF Compression</h2>
         <div className="pdf-compressor-faq">
           <h3>Q: Will compression affect the quality of my PDF?</h3>

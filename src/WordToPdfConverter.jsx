@@ -7,11 +7,14 @@ import DropboxFileInput from './DropboxFileInput'
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 function WordToPdfConverter() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
+  const [progress, setProgress] = useState(0);
+
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
@@ -21,6 +24,8 @@ function WordToPdfConverter() {
     }
   };
   const handleConvert = async () => {
+    setProgress(10);
+
     if (!file) {
       alert('Please select a Word file.');
       return;
@@ -31,6 +36,10 @@ function WordToPdfConverter() {
       setStatus("Converting...")
       const response = await axios.post(`${BASE_URL}/convert-word-to-pdf`, formData, {
         responseType: 'blob',
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data], {
@@ -84,7 +93,7 @@ function WordToPdfConverter() {
           <DropzoneInput acceptedType={['docx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status}
+            {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
           </button>
         </div>
       </section>
@@ -121,6 +130,12 @@ function WordToPdfConverter() {
           <h2>📁 Supported Formats</h2>
           <p><strong>Input:</strong> .doc, .docx</p>
           <p><strong>Output:</strong> .pdf</p>
+          {/* <link to= "/pdf-to-word">pdf to word</link> */}
+          <h2>Also check other features Related to word / doc file  </h2>
+         <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+        <li><Link to="/doc-to-odt" className='btn'>doc to odt Converter </Link></li>
+        <li><Link to="/odt-to-doc" className='btn'> odt to doc  Converter </Link></li>
+        <li><Link to="/docxcompressor" className='btn'> Compress Doc / Word  </Link></li>
         </div>
 
         <div className="converter-section">

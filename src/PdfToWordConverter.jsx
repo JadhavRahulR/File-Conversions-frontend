@@ -7,12 +7,15 @@ import DropboxFileInput from './DropboxFileInput';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
 function PdfToWordConverter() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
+  const [progress, setProgress] = useState(0);
+
 
   const handleFileChange = (eOrFile) => {
     const selected = eOrFile?.target?.files?.[0] || eOrFile;
@@ -29,7 +32,8 @@ function PdfToWordConverter() {
 
 
   const handleConvert = async () => {
-    console.log("🔥 handleConvert triggered:", new Date().toISOString());
+    setProgress(10);
+
 
     if (!file) {
       alert("Please select a PDF file.");
@@ -49,7 +53,12 @@ function PdfToWordConverter() {
         formData,
         {
           responseType: "blob",
+          onUploadProgress: (event) => {
+            const percent = Math.round((event.loaded * 100) / event.total);
+            setProgress(Math.min(percent, 90));
+          },
         }
+
       );
 
       console.timeEnd("⏱ ConvertRequest");
@@ -107,7 +116,7 @@ function PdfToWordConverter() {
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status}
+            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
           </button>
         </div>
       </section>
@@ -140,6 +149,25 @@ function PdfToWordConverter() {
             <h2>📁 Supported Formats</h2>
             <p><strong>Input:</strong> .pdf</p>
             <p><strong>Output:</strong> .docx</p>
+            <h2>Also check other features Related to PDF file  </h2>
+            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+            <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn'>pdf to odt Converter </Link></li>
+            <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
+            <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
+            <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
+            <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
+            <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
+            <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
+            <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
+            <li><Link to="/img-to-pdf" className='btn' > img to pdf Converter </Link></li>
+            <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+            <li><Link to="/pdf-to-rtf" className='btn' > pdf to rtf Converter </Link></li>
+            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+            <Link></Link>
           </div>
 
           <div className="converter-section">

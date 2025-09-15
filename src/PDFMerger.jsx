@@ -4,11 +4,14 @@ import "./PDFMerger.css";
 import "./compressor.css"
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
+import { Link } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFMerger = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [isMerging, setIsMerging] = useState(false);
+  const [progress, setProgress] = useState(0);
+
 
   const handleFileChange = (e) => {
     const newFiles = Array.from(e.target.files);
@@ -36,6 +39,8 @@ const PDFMerger = () => {
   const handleClearAll = () => setSelectedFiles([]);
 
   const handleMerge = async () => {
+    setProgress(10);
+
     if (selectedFiles.length < 2) {
       alert("Please select at least two PDF files to merge.");
       return;
@@ -48,6 +53,10 @@ const PDFMerger = () => {
     try {
       const response = await axios.post(`${BASE_URL}/merge-pdf`, formData, {
         responseType: "blob",
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data], { type: "application/pdf" });
@@ -112,7 +121,7 @@ const PDFMerger = () => {
         )}
 
         <button className="mergebtn" onClick={handleMerge} disabled={isMerging || selectedFiles.length < 2}>
-          {isMerging ? "Merging..." : "Merge PDFs"}
+          {isMerging ? `Merging... (${progress}%)` : "Merge PDFs"}
         </button>
       </div>
       <section>
@@ -138,6 +147,21 @@ const PDFMerger = () => {
     <li>🔒 Your files stay private and are never stored</li>
     <li>⚡ Fast merging with auto-download</li>
     <li>🗂️ Rearrangement and removal options for full control</li>
+    <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF File  </h2>
+                <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+                <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
+                <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
+                <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
+                <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
+                <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
+                <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
+                <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
+                <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
+                <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
+                <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+                <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+                <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
   </ul>
 </div>
         <section>

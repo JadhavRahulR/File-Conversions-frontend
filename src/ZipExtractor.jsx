@@ -4,17 +4,22 @@ import "./ZipExtractor.css";
 import "./compressor.css"
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
+import { Link } from "react-router-dom";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const ZipExtractor = () => {
   const [zipFile, setZipFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [progress, setProgress] = useState(0);
+
 
   const handleFileChange = (e) => {
     setZipFile(e.target.files[0]);
   };
 
   const handleExtract = async (e) => {
+    setProgress(10);
+
     e.preventDefault();
     if (!zipFile) return alert("Please upload a .zip file");
 
@@ -25,6 +30,10 @@ const ZipExtractor = () => {
     try {
       const response = await axios.post(`${BASE_URL}/extract-zip`, formData, {
         responseType: "blob",
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data], { type: "application/zip" });
@@ -61,7 +70,7 @@ const ZipExtractor = () => {
       <input type="file" accept=".zip" onChange={handleFileChange} className="file-input" />
 
       <button onClick={handleExtract} disabled={loading}>
-        {loading ? "Extracting..." : "Extract ZIP"}
+        {loading ? `Extracting... (${progress}%)` : "Extract ZIP"}
       </button>
     </div>
     <section>
@@ -85,6 +94,15 @@ const ZipExtractor = () => {
     <li>🔍 Preview file names before extraction</li>
     <li>🔐 Your archives stay private and secure</li>
     <li>⚡ Fast extraction with automatic download</li>
+    <h2 style={{ marginBottom: '6px' }}>Also check other some features Related to PDF And Zip File </h2>
+                    <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                    <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+                    <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
+                    <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+                    <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+                    <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+                    <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                    <li><Link to="/zip-compressor" className='btn' > Compress Zip   </Link></li>
   </ul>
 </div>
        <div className="tool-container">

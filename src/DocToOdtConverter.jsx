@@ -8,11 +8,14 @@ import DropboxFileInput from './DropboxFileInput';
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const DocToOdtConverter = () => {
   const [file, setFile] = useState(null);
    const [status, setStatus] = useState("Upload");
+   const [progress, setProgress] = useState(0);
+
 
    const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
@@ -23,6 +26,8 @@ const DocToOdtConverter = () => {
   };
 
   const handleConvert = async () => {
+    setProgress(10);
+
     if (!file) return alert("Please upload a DOC or DOCX file.");
 
     const formData = new FormData();
@@ -33,7 +38,12 @@ const DocToOdtConverter = () => {
       const response = await axios.post(
          `${BASE_URL}/convert-doc-to-odt`,
         formData,
-        { responseType: "blob" }
+        { responseType: "blob",
+          onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
+         }
       );
 
       const blob = new Blob([response.data], {
@@ -94,7 +104,7 @@ const DocToOdtConverter = () => {
           </p>
         )}
         <button onClick={handleConvert} disabled={status === 'Converting...'}>
-          {status}
+          {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
         </button>
 
       </div>
@@ -128,6 +138,11 @@ const DocToOdtConverter = () => {
       <h2>📁 Supported Formats</h2>
       <p><strong>Input:</strong> .doc (Microsoft Word)</p>
       <p><strong>Output:</strong> .odt (OpenDocument Text)</p>
+      <h2>Also check other features Related to word / doc file  </h2>
+              <li><Link to="/odt-to-doc" className='btn'> odt to doc  Converter </Link></li>
+               <li><Link to="/odt-to-pdf" className='btn' >odt to PDF Converter </Link></li>
+               <li><Link to="/pdf-to-odt" className='btn' >PDF to odt Converter </Link></li>
+                <li><Link to="/docxcompressor" className='btn'> Compress Doc / Word  </Link></li>
     </div>
 
     <div className="converter-section">

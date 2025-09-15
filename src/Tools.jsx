@@ -40,9 +40,10 @@ function Tools(props) {
         <Offcanvas.Body className='sidebarbody'>
         <ul>
 
-         <li><Link to="/word-to-pdf" className='btn' onClick={handleClose}>Word to PDF Converter </Link></li>
+        <li><Link to="/word-to-pdf" className='btn' onClick={handleClose}>Word to PDF Converter </Link></li>
         <li><Link to="/pdf-to-word" className='btn'onClick={handleClose}>PDF to Word Converter </Link></li>
         <li><Link to="/odt-to-pdf" className='btn'onClick={handleClose}>odt to pdf Converter </Link></li>
+        <li><Link to="/pdf-to-odt" className='btn'onClick={handleClose}>pdf to odt Converter </Link></li>
         <li><Link to="/text-to-pdf" className='btn'onClick={handleClose}>txt to pdf Converter </Link></li>
         <li><Link to="/doc-to-odt" className='btn'onClick={handleClose}>doc to odt Converter </Link></li>
         <li><Link to="/odt-to-doc" className='btn'onClick={handleClose}> odt to doc  Converter </Link></li>

@@ -5,6 +5,7 @@ import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdpCompressor = () => {
@@ -12,6 +13,8 @@ const OdpCompressor = () => {
   const [quality, setQuality] = useState(70);
   const [outputType, setOutputType] = useState("odp");
   const [status, setStatus] = useState("idle");
+  const [progress, setProgress] = useState(0);
+
   const fileInputRef = useRef();
 
   const handleFileChange = (e) => {
@@ -33,6 +36,7 @@ const OdpCompressor = () => {
   const handleCompress = async () => {
     if (!file) return;
     setStatus("uploading");
+    setProgress(10);
 
     const formData = new FormData();
     formData.append("file", file);
@@ -42,6 +46,10 @@ const OdpCompressor = () => {
     try {
       const response = await axios.post( `${BASE_URL}/compress-odp`, formData, {
         responseType: 'blob',
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data]);
@@ -133,7 +141,7 @@ const OdpCompressor = () => {
       </div>
 
       <button onClick={handleCompress} disabled={!file || status === "uploading"}>
-        {status === "uploading" ? "Compressing..." : "🔽 Compress"}
+        {status === "uploading" ?`Compressing... (${progress}%)` : "🔽 Compress"}
       </button>
 
       {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
@@ -160,6 +168,23 @@ const OdpCompressor = () => {
     <li>📉 Reduces size for faster sharing and uploading</li>
     <li>🔐 Private and secure — no files stored</li>
     <li>⚡ Quick compression with automatic download</li>
+    <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odp file  </h2>
+                <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+                <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
+                <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
+                <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
+                <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
+                <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
+                <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
+                <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
+                <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
+                <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
+                <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+                <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+                <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+                <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
   </ul>
 </div>
       <section>

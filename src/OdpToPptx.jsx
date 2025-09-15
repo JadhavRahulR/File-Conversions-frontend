@@ -7,12 +7,15 @@ import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdpToPptx = () => {
   const [file, setFile] = useState(null);
   // const [downloadUrl, setDownloadUrl] = useState('');
   const [status, setStatus] = useState("Upload");
+  const [progress, setProgress] = useState(0);
+
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
@@ -23,6 +26,8 @@ const OdpToPptx = () => {
   };
 
   const handleConvert = async () => {
+    setProgress(10);
+
     if (!file) return alert("Please select an ODP file");
 
     const formData = new FormData();
@@ -32,6 +37,10 @@ const OdpToPptx = () => {
       setStatus("Converting...")
       const response = await axios.post(`${BASE_URL}/convert-odp-to-pptx`, formData, {
         responseType: 'blob',
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' });
@@ -82,7 +91,7 @@ const OdpToPptx = () => {
           </div>
           <DropzoneInput acceptedType={['odp']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status}
+             {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
           </button>
         </div>
       </section>
@@ -115,6 +124,11 @@ const OdpToPptx = () => {
             <h2>📁 Supported Formats</h2>
             <p><strong>Input:</strong> .odp (OpenDocument Presentation)</p>
             <p><strong>Output:</strong> .pptx (PowerPoint Presentation)</p>
+            <h2>Also check other features Related to odp file  </h2>
+                                <li><Link to="/pptx-to-pdf" className='btn'> pptx to PDF  Converter </Link></li>
+                                <li><Link to="/pptx-to-odp" className='btn'> pptx to odp  Converter </Link></li>
+                                 <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+                                <li><Link to="/odpcompressor" className='btn'> Compress odp </Link></li>
           </div>
 
           <div className="converter-section">

@@ -5,6 +5,7 @@ import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
+import { Link } from "react-router-dom";
 
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
@@ -14,6 +15,8 @@ const BmpCompressor = () => {
   const [format, setFormat] = useState("jpg");
   const [export7z, setExport7z] = useState(false);
   const [status, setStatus] = useState("idle");
+  const [progress, setProgress] = useState(0);
+
   const fileInputRef = useRef(null);
 
   const handleFileChange = (e) => {
@@ -35,6 +38,8 @@ const BmpCompressor = () => {
     if (!file) return;
 
     setStatus("uploading");
+    setProgress(10);
+
     const formData = new FormData();
     formData.append("file", file);
     formData.append("quality", quality);
@@ -44,6 +49,10 @@ const BmpCompressor = () => {
     try {
       const response = await axios.post( `${BASE_URL}/compress-bmp`, formData, {
         responseType: "blob",
+        onUploadProgress: (event) => {
+                    const percent = Math.round((event.loaded * 100) / event.total);
+                    setProgress(Math.min(percent, 90));
+                },
       });
 
       const blob = new Blob([response.data]);
@@ -127,7 +136,7 @@ const BmpCompressor = () => {
       </label>
 
       <button onClick={handleCompress} disabled={!file || status === "uploading"}>
-        {status === "uploading" ? "Compressing..." : "🔽 Compress"}
+        {status === "uploading" ? `Compressing... (${progress}%)` : "🔽 Compress"}
       </button>
 
       {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
@@ -154,6 +163,13 @@ const BmpCompressor = () => {
     <li>📉 Optimized for faster uploads and storage savings</li>
     <li>🔐 Your files remain private and are never stored</li>
     <li>⚡ Fast compression with automatic download</li>
+    <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Bmp file  </h2>
+                <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+                <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+                <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+                <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
   </ul>
 </div>
     <div className="compressor-article">
