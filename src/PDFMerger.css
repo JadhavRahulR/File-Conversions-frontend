@@ -27,6 +27,13 @@
   cursor: pointer;
   width: 800px;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.pdf-merger .drop-area .fileuploadcontainer{
+  margin: 20px;
 }
 
 .file-list {

@@ -7,6 +7,10 @@ import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert pdf to odt.mp4";
+import IntroPoster from "../src/assets/images/pdf to odt poster.png";
+
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PdfToOdtConverter = () => {
@@ -72,9 +76,12 @@ const PdfToOdtConverter = () => {
             }, [status]);
   return (
     <>
+     <ScrollToTop/>
+      <Tools />
+      <section>
     <Helmet>
-      <title>PDF to ODT | Free PDF to OpenDocument Converter</title>
-<meta name="description" content="Convert PDF files to ODT documents easily and securely. Free online PDF to ODT converter with no signup or email required." />
+      <title>Convert PDF To ODT | Free PDF To OpenDocument Converter</title>
+<meta name="description" content="Convert PDF to ODT online for free. Fast, secure, and accurate — keep original formatting, fonts, and layout. No sign-up or software needed. Upload, convert, and Auto download instantly." />
 <link rel="canonical" href="https://fileunivers.in/pdf-to-odt" />
 <meta name="robots" content="index, follow" />
 <meta name="keywords" content="pdf to odt, convert pdf to odt, pdf to open document, free pdf to odt converter, online pdf to odt" />
@@ -82,11 +89,16 @@ const PdfToOdtConverter = () => {
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     </Helmet>
-    <ScrollToTop/>
-      <Tools />
-      <section>
+        <div className="pagetitle">
+
+        <h1>PDF To ODT Converter – Convert PDF TO OpenDocument Free, Fast & Accurate Online Tool </h1>
+
+        <p className="intro-paragraph">
+          Convert your PDF files to editable ODT documents instantly with our free PDF to ODT converter. This secure online tool keeps your text, formatting, and layout perfectly intact while transforming your PDF into a fully editable OpenDocument Text (.odt) file. 
+        </p>
+        </div>
       <div className='converter'>
-        <h1>Converte Pdf To Odt </h1>
+        
         <input type="file" accept=".pdf" onChange={handleFileChange} />
         <br /><br />
         <div className="fileuploadcontainer">
@@ -102,9 +114,16 @@ const PdfToOdtConverter = () => {
         <section>
   <div className="converter-container">
     <h2 className="converter-title">Convert PDF to ODT – Free, Editable & Accurate</h2>
+    <p> Convert your PDF files to editable ODT documents  with our free PDF to ODT converter tool.No installation or sign-up needed — just upload, convert, and Auto download within seconds. Ideal for students, writers, and professionals who want quick, high-quality PDF to ODT conversion anytime, anywhere.</p>
+       <div className="converterImg">
+          <img src="pdf.png" alt="Word Img" className='ConverterImgone'/>
+          <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg'/>
 
+          <img src="odt.png" alt="Pdf Img" className='ConverterImgtwo'/>
+
+        </div>
     <div className="converter-section">
-      <h2>🔄 How to Convert PDF to ODT</h2>
+      <h2>🔄 How to Convert PDF to ODT ?</h2>
       <ol>
         <li>📤 Upload your PDF file – drag & drop or click to select.</li>
         <li>⚙️ We’ll convert it into an editable ODT (OpenDocument Text) file.</li>
@@ -112,7 +131,12 @@ const PdfToOdtConverter = () => {
       </ol>
       <p><strong>📌 Note:</strong> Large or scanned PDF files may take more time to process.</p>
     </div>
-
+      <section>
+          <LazyVideo src={IntroVideo} poster={IntroPoster}
+            title="How to Convert PDF to ODT ? "
+            description='Easily convert your PDF files into editable ODT documents using this free online converter!.No registration — just upload your PDF, click "Upload”, and get your .odt file in seconds. Perfect for editing PDFs in OpenOffice or LibreOffice while keeping your fonts and formatting exactly the same.'
+          />
+        </section>
     <div className="converter-section">
       <h2>🔒 Why Use Our PDF to ODT Converter?</h2>
       <ul>
@@ -128,24 +152,24 @@ const PdfToOdtConverter = () => {
       <h2>📁 Supported Formats</h2>
       <p><strong>Input:</strong> .pdf</p>
       <p><strong>Output:</strong> .odt (OpenDocument Text)</p>
+      
       <h2>Also check other features Related to PDF file  </h2>
-                  <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-                  <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-                  <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
-                  <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
-                  <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
-                  <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
-                  <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
-                  <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
-                  <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
-                  <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
-                  <li><Link to="/img-to-pdf" className='btn' > img to pdf Converter </Link></li>
-                  <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
-                  <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
-                  <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-                  <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-                  <li><Link to="/pdf-to-rtf" className='btn' > pdf to rtf Converter </Link></li>
-                  <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                 <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+                             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+                             <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                             <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                             <li><Link to="/rtf-to-pdf" className='btn' > RTF To PDF Converter </Link></li>
+                             <li><Link to="/html-to-pdf" className='btn' > HTML To PDF Converter </Link></li>
+                             <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                             <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                             <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                             <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                             <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                             <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
+                             <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                             <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
                   <Link></Link>
     </div>
 

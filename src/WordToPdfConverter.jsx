@@ -8,6 +8,12 @@ import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert  word to pdf .mp4";
+import IntroPoster from "../src/assets/images/Word-to-pdf-conversion-poster.png";
+
+
+
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 function WordToPdfConverter() {
@@ -37,9 +43,9 @@ function WordToPdfConverter() {
       const response = await axios.post(`${BASE_URL}/convert-word-to-pdf`, formData, {
         responseType: 'blob',
         onUploadProgress: (event) => {
-                    const percent = Math.round((event.loaded * 100) / event.total);
-                    setProgress(Math.min(percent, 90));
-                },
+          const percent = Math.round((event.loaded * 100) / event.total);
+          setProgress(Math.min(percent, 90));
+        },
       });
 
       const blob = new Blob([response.data], {
@@ -69,8 +75,11 @@ function WordToPdfConverter() {
 
   return (
     <div>
+      <section>
+      <ScrollToTop />
+        <Tools />
       <Helmet>
-        <title>Word to PDF | Free & Secure Online Converter</title>
+        <title>Convert Word To PDF  | Online DOC TO PDF Free & Secure Converter</title>
         <meta name="description" content="Convert Word documents (.doc, .docx) to PDF easily and securely. Free online Word to PDF converter with no email or signup needed." />
         <link rel="canonical" href="https://fileunivers.in/word-to-pdf" />
         <meta name="robots" content="index, follow" />
@@ -79,11 +88,17 @@ function WordToPdfConverter() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Helmet>
-      <section>
-        <ScrollToTop />
-        <Tools />
+        
+        <div className="pagetitle">
+
+        <h1>WORD To PDF Converter — Convert WORD (DOCX) To PDF Online Free</h1>
+
+        <p className="intro-paragraph">
+          Convert your Word documents (.doc, .docx) into professional PDFs in seconds.
+          Our free online tool preserves formatting and works securely in your browser.
+        </p>
+        </div>
         <div className='converter'>
-          <h1>Convert Word/Docx To Pdf</h1>
           <input type="file" accept=".docx" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -93,7 +108,7 @@ function WordToPdfConverter() {
           <DropzoneInput acceptedType={['docx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
+            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
           </button>
         </div>
       </section>
@@ -103,10 +118,16 @@ function WordToPdfConverter() {
         <p className="converter-intro" style={{ marginTop: "20px" }}>
           Easily convert Word documents (.doc, .docx) into secure, high-quality PDFs online. No registration, no watermarks – just a fast, free tool you can trust.
         </p>
+        <div className="converterImg">
+          <img src="word.png" alt="Word Img" className='ConverterImgone'/>
+          <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg'/>
 
+          <img src="pdf.png" alt="Pdf Img" className='ConverterImgtwo'/>
+
+        </div>
 
         <div className="converter-section">
-          <h2>🔄 How to Convert Word to PDF</h2>
+          <h2>🔄 How to Convert Word to PDF ? </h2>
           <ol>
             <li>📤 Upload your Word file – drag & drop or click to select.</li>
             <li>⚙️ Wait a moment – we convert your file to a clean, compact PDF.</li>
@@ -114,6 +135,13 @@ function WordToPdfConverter() {
           </ol>
           <p><strong>Note:</strong> Large files may take more time to process.</p>
         </div>
+
+        <section>
+          <LazyVideo src={IntroVideo} poster={IntroPoster}
+            title="How to Convert WORD to PDF ? "
+            description='Convert your Word documents (.docx) to PDF instantly with our free online tool "File-Univers". Preserve formatting, protect content, and download in seconds.'
+          />
+        </section>
 
         <div className="converter-section">
           <h2>🔒 Why Use Our Word to PDF Converter?</h2>
@@ -130,16 +158,15 @@ function WordToPdfConverter() {
           <h2>📁 Supported Formats</h2>
           <p><strong>Input:</strong> .doc, .docx</p>
           <p><strong>Output:</strong> .pdf</p>
-          {/* <link to= "/pdf-to-word">pdf to word</link> */}
-          <h2>Also check other features Related to word / doc file  </h2>
-         <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-        <li><Link to="/doc-to-odt" className='btn'>doc to odt Converter </Link></li>
-        <li><Link to="/odt-to-doc" className='btn'> odt to doc  Converter </Link></li>
-        <li><Link to="/docxcompressor" className='btn'> Compress Doc / Word  </Link></li>
+          <h2>Also check other features Related to word / DOC file  </h2>
+          <li><Link to="/pdf-to-word" className='btn'>PDF To WORD Converter </Link></li>
+          <li><Link to="/doc-to-odt" className='btn'>DOC To ODT Converter </Link></li>
+          <li><Link to="/odt-to-doc" className='btn'> ODT To DOC  Converter </Link></li>
+          <li><Link to="/docxcompressor" className='btn'> Compress DOC / WORD  </Link></li>
         </div>
 
         <div className="converter-section">
-          <h2>❓ FAQ</h2>
+          <h2> FAQ ❓</h2>
           <p><strong>Q:</strong> Will my layout and fonts be preserved?<br />
             <strong>A:</strong> Yes, our tool ensures perfect formatting.</p>
           <p><strong>Q:</strong> Any size limits?<br />
@@ -199,7 +226,7 @@ function WordToPdfConverter() {
           Try it now and experience fast, accurate, and secure document conversion — all online and absolutely free.
         </p>
         <div className="converter-section" style={{ textAlign: 'center' }}>
-          <h2>🎯 Try It Now!</h2>
+          <h2> Try It Now!</h2>
           <p>Upload your Word file and convert to PDF in seconds!</p>
           <p className="converter-tagline">✅ Fast | ✅ Secure | ✅ No Email Required</p>
         </div>

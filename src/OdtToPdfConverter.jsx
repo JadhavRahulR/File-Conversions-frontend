@@ -8,6 +8,10 @@ import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert odt to pdf.mp4"
+import IntroPoster from "../src/assets/images/odt to pdf poster.png";
+
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtToPdfConverter = () => {
@@ -64,8 +68,11 @@ const OdtToPdfConverter = () => {
   }, [status]);
   return (
     <>
-      <Helmet>
-        <title>ODT to PDF | Free & Easy ODT File Converter</title>
+      <section>
+      <ScrollToTop />
+      <Tools />
+      <Helmet> 
+        <title>ODT To PDF Converter-Online Free ,Safe & Easy ODT to PDF File Converter</title>
         <meta name="description" content="Convert ODT files to PDF format instantly. Free and secure ODT to PDF converter with no registration or email required." />
         <link rel="canonical" href="https://fileunivers.in/odt-to-pdf" />
         <meta name="robots" content="index, follow" />
@@ -74,11 +81,16 @@ const OdtToPdfConverter = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Helmet>
-      <ScrollToTop />
-      <Tools />
-      <section>
+         <div className="pagetitle">
+
+          <h1>ODT to PDF Converter – Free, Fast & Secure Online Conversion of ODT to PDF </h1>
+
+          <p className="intro-paragraph">
+            Convert your ODT files to professional-quality PDFs instantly with our free ODT to PDF converter. This fast and secure online tool preserves your original formatting, fonts, and layout while generating a print-ready PDF in seconds. No registrations required — simply upload your ODT document, click "Upload" button , and get your high-quality PDF file.
+          </p>
+        </div>
         <div className='converter'>
-          <h1>Convert Odt To Pdf </h1>
+          
           <input type="file" accept=".odt" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -94,9 +106,18 @@ const OdtToPdfConverter = () => {
       <section>
         <div className="converter-container">
           <h2 className="converter-title">Convert ODT to PDF – Free, Fast & Reliable</h2>
+              <p className="converter-intro" style={{ marginTop: "20px" }}>
+            Convert ODT to PDF online for free. Fast, secure, and accurate — no software or sign-up required. Upload your ODT file, convert in seconds, and download your PDF instantly.Whether you’re a student, writer, or office user, our ODT to PDF converter makes document sharing easier, faster, and more reliable.
+          </p>
+           <div className="converterImg">
+            <img src="pdf.png" alt="Pdf Img" className='ConverterImgone' />
+            <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
 
+            <img src="word.png" alt="Word Img" className='ConverterImgtwo' />
+
+          </div>
           <div className="converter-section">
-            <h2>🔄 How to Convert ODT to PDF</h2>
+            <h2> How to Convert ODT to PDF ? </h2>
             <ol>
               <li>📤 Upload your ODT file – drag & drop or click to select.</li>
               <li>⚙️ We’ll convert it to a high-quality PDF file.</li>
@@ -104,7 +125,13 @@ const OdtToPdfConverter = () => {
             </ol>
             <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
           </div>
-
+               <section>
+            <LazyVideo src={IntroVideo} poster={IntroPoster}
+              title="How to Convert ODT to PDF ? "
+              description='Convert your ODT files to PDF instantly with this free online ODT to PDF converter! 
+               No software installation, no sign-up, and no watermark — just upload your .odt file and download a perfectly formatted PDF in seconds. Whether you’re a student, writer, or professional, this tool helps you save and share your ODT documents as secure, print-ready PDFs with just one click.'
+            />
+          </section>
           <div className="converter-section">
             <h2>🔒 Why Use Our ODT to PDF Converter?</h2>
             <ul>
@@ -121,10 +148,10 @@ const OdtToPdfConverter = () => {
             <p><strong>Input:</strong> .odt (OpenDocument Text)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to odt file  </h2>
-            <li><Link to="/doc-to-odt" className='btn' >doc to odt Converter </Link></li>
-            <li><Link to="/odt-to-doc" className='btn' > odt to doc  Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>pdf to odt Converter </Link></li>
-            <li><Link to="/odtcompressor" className='btn'>Compress Odt </Link></li>
+            <li><Link to="/doc-to-odt" className='btn' >DOC To ODT Converter </Link></li>
+            <li><Link to="/odt-to-doc" className='btn' > ODT To DOC  Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+            <li><Link to="/odtcompressor" className='btn'>Compress ODT </Link></li>
           </div>
 
           <div className="converter-section">

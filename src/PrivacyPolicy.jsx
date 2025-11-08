@@ -72,7 +72,6 @@ const PrivacyPolicy = () => {
         <p>We may update this page. Please review it periodically.</p>
       </section>
     </div>
-    <Footer/>
     </>
   );
 };

@@ -8,6 +8,9 @@ import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert odt to doc.mp4"
+import IntroPoster from "../src/assets/images/odt to doc poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtToDocConverter = () => {
@@ -37,13 +40,14 @@ const OdtToDocConverter = () => {
       const response = await axios.post(
         `${BASE_URL}/convert-odt-to-doc`,
         formData,
-        { responseType: "blob",
+        {
+          responseType: "blob",
           onUploadProgress: (event) => {
-                    const percent = Math.round((event.loaded * 100) / event.total);
-                    setProgress(Math.min(percent, 90));
-                },
+            const percent = Math.round((event.loaded * 100) / event.total);
+            setProgress(Math.min(percent, 90));
+          },
 
-         }
+        }
       );
 
       const blob = new Blob([response.data], {
@@ -71,8 +75,10 @@ const OdtToDocConverter = () => {
   }, [status]);
   return (
     <>
+      <ScrollToTop />
+      <Tools />
       <Helmet>
-        <title>ODT to DOC | Free OpenDocument to Word Converter</title>
+        <title>Convert ODT To DOC | Free OpenDocument To Word Online and Secure Converter</title>
         <meta name="description" content="Convert ODT files to DOC format easily and securely. Free online ODT to DOC converter with no email or registration required." />
         <link rel="canonical" href="https://fileunivers.in/odt-to-doc" />
         <meta name="robots" content="index, follow" />
@@ -81,11 +87,15 @@ const OdtToDocConverter = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Helmet>
-      <ScrollToTop />
-      <Tools />
+      <div className="pagetitle">
+
+        <h1>Convert ODT To DOC Online – Free ODT To Word Converter (Fast & Secure)</h1>
+
+        <p className="intro-paragraph">
+          Convert your ODT files to DOC format quickly with our free online ODT to Word converter. This powerful tool allows you to turn OpenDocument Text (.odt) files into editable Microsoft Word (.doc) documents in seconds — no software installation required. Just upload your ODT file, click “Upload”, and auto download your DOC file instantly. The conversion is 100% secure, fast, and preserves your original formatting perfectly for easy editing in Microsoft Word.          </p>
+      </div>
       <section>
         <div className='converter'>
-          <h1>Convert Odt To Word/Doc </h1>
           <input type="file" accept=".odt" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -94,16 +104,23 @@ const OdtToDocConverter = () => {
           </div>
           <DropzoneInput acceptedType={['odt']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-             {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
+            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
           </button>
         </div>
       </section>
       <section>
         <div className="converter-container">
           <h2 className="converter-title">Convert ODT to DOC – Free & Reliable</h2>
+          <p>Convert your ODT files to DOC format quickly with our free online ODT to Word converter. This tool allows you to turn OpenDocument Text (.odt) files to (.doc) documents in seconds — no sign up need. Just upload your ODT file, click “Upload”, and auto download your DOC file instantly. IT secure, fast, and preserves your original formatting perfectly for easy editing in Microsoft Word. </p>
+          <div className="converterImg">
+            <img src="odt.png" alt="odt Img" className='ConverterImgone' />
+            <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
 
+            <img src="word.png" alt="word Img" className='ConverterImgtwo' />
+
+          </div>
           <div className="converter-section">
-            <h2>🔄 How to Convert ODT to DOC</h2>
+            <h2>🔄 How to Convert ODT to DOC ? </h2>
             <ol>
               <li>📤 Upload your ODT file – drag & drop or click to select.</li>
               <li>⚙️ We’ll convert it into a Microsoft Word (.doc) format.</li>
@@ -111,7 +128,12 @@ const OdtToDocConverter = () => {
             </ol>
             <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
           </div>
-
+          <section>
+            <LazyVideo src={IntroVideo} poster={IntroPoster}
+              title="How to Convert ODT To DOC ? "
+              description='Convert ODT to DOC format quickly and easily with our free online ODT to Word converter. This video shows you how to change your OpenDocument Text (.odt) files into Microsoft Word (.doc) files in just a few seconds — no software or sign-up needed. Perfect for users of LibreOffice, OpenOffice, or Google Docs who need full compatibility with Microsoft Word.'
+            />
+          </section>
           <div className="converter-section">
             <h2>🔒 Why Use Our ODT to DOC Converter?</h2>
             <ul>
@@ -128,11 +150,11 @@ const OdtToDocConverter = () => {
             <p><strong>Input:</strong> .odt (OpenDocument Text)</p>
             <p><strong>Output:</strong> .doc /docs</p>
             <h2>Also check other features Related to odt file  </h2>
-                           <li><Link to="/odt-to-pdf" className='btn' >odt to PDF Converter </Link></li>
-                           <li><Link to="/doc-to-odt" className='btn' >Doc to odt Converter </Link></li>
-                                       <li><Link to="/pdf-to-odt" className='btn'>PDF to odt Converter </Link></li>
-                                       <li><Link to="/odtcompressor" className='btn'>Compress Odt </Link></li>
-                                       <Link></Link>
+            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+            <li><Link to="/doc-to-odt" className='btn' >DOC To ODT Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+            <li><Link to="/odtcompressor" className='btn'>Compress ODT </Link></li>
+            <Link></Link>
           </div>
 
           <div className="converter-section">

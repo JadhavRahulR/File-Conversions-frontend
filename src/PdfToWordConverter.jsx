@@ -8,6 +8,9 @@ import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert pdf to word.mp4"
+import IntroPoster from "../src/assets/images/pdf to word poster .png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -97,7 +100,7 @@ function PdfToWordConverter() {
       <Tools />
       <section>
         <Helmet>
-          <title>Convert PDF to Word | Free & Secure Online Tool</title>
+          <title>Convert PDF To Word | Free & Secure Online Tool</title>
           <meta name="description" content="Convert PDF files to Word documents (.docx) quickly and securely. Free online PDF to Word converter with no email or signup required." />
           <link rel="canonical" href="https://fileunivers.in/pdf-to-word" />
           <meta name="robots" content="index, follow" />
@@ -106,8 +109,15 @@ function PdfToWordConverter() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         </Helmet>
+        <div className="pagetitle">
+
+          <h1>PDF To Word Converter – Convert PDF To DOC Online Free, Fast & Secure </h1>
+
+          <p className="intro-paragraph">
+            Convert PDF to Word online for free — fast, secure, and accurate. No sign-up or software needed. Upload your PDF, convert to editable Word, and download instantly.Simply upload your PDF, click " Upload”, and download your Word file within seconds.
+          </p>
+        </div>
         <div className='converter'>
-          <h1>Convert Pdf To Word/Docx </h1>
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -122,10 +132,13 @@ function PdfToWordConverter() {
       </section>
       <section>
         <div className="converter-container">
-          <h1 className="converter-title">Convert PDF to Word – Free & Accurate</h1>
-
+          <h2 className="converter-title">Convert PDF to Word – Free & Accurate</h2>
+          <p className="converter-intro" style={{ marginTop: "20px" }}>
+            Convert your PDF files to editable Word documents instantly with our free online PDF to Word converter. This tool keeps your formatting, fonts, and images perfectly intact while transforming your PDFs into fully editable .docx files. No software installation or sign-up required.
+          </p>
           <div className="converter-section">
-            <h2>🔄 How to Convert PDF to Word</h2>
+            <h2>🔄 How to Convert PDF to Word ? </h2>
+
             <ol>
               <li>📤 Upload your PDF file – drag & drop or click to select.</li>
               <li>⚙️ Let us convert your file to an editable Word document (.docx).</li>
@@ -133,6 +146,15 @@ function PdfToWordConverter() {
             </ol>
             <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
           </div>
+
+          <section>
+            <LazyVideo src={IntroVideo} poster={IntroPoster}
+              title="How to Convert PDF to Word ? "
+              description='Easily convert any PDF to Word (DOCX) online for free — no software, no sign-up, and no watermark!.
+                 In this video, you’ll learn how to convert a PDF file into an editable Word document in just a few seconds using a simple online tool. Perfect for students, office users, and anyone who needs to edit or update text in a PDF.'
+            />
+          </section>
+
 
           <div className="converter-section">
             <h2>🔒 Why Use Our PDF to Word Converter?</h2>
@@ -144,29 +166,35 @@ function PdfToWordConverter() {
               <li>🆓 100% free, unlimited conversions.</li>
             </ul>
           </div>
+          <div className="converterImg">
+            <img src="pdf.png" alt="Pdf Img" className='ConverterImgone' />
+            <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
 
+            <img src="word.png" alt="Word Img" className='ConverterImgtwo' />
+
+          </div>
           <div className="converter-section">
             <h2>📁 Supported Formats</h2>
             <p><strong>Input:</strong> .pdf</p>
             <p><strong>Output:</strong> .docx</p>
             <h2>Also check other features Related to PDF file  </h2>
-            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>pdf to odt Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
-            <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > img to pdf Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
-            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > pdf to rtf Converter </Link></li>
+            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+            <li><Link to="/html-to-pdf" className='btn' > HTML To PDF Converter </Link></li>
+            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <Link></Link>
           </div>
 

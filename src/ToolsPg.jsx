@@ -60,8 +60,10 @@ function ToolsPg() {
          <Link to="/zip-extractor" ><div className="toolcard">
           <p>Extract Zip  </p>
         </div></Link>
+        <Link to="/favicon-generator" ><div className="toolcard">
+          <p>Favicon Generator  </p>
+        </div></Link>
       </div>
-        <Footer/>
     </div>
   )
 }

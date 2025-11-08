@@ -19,7 +19,7 @@ body, h1, h2, h3, p, button {
 }
 
 .hero h1 {
-  font-size: 48px;
+  font-size: 36px;
   margin-bottom: 20px;
 }
 
@@ -127,7 +127,7 @@ body, h1, h2, h3, p, button {
 /* For FAQ 
  */
  .faq-section {
-  max-width:800px ;
+  max-width:1000px ;
   padding: 1rem;
   margin: 20px auto;
   background-color: #f9f9f9;
@@ -158,6 +158,41 @@ body, h1, h2, h3, p, button {
   font-size: 1rem;
   color: #555;
   line-height: 1.6;
+}
+/* for landingpage Intro video and images  */
+.intro-video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 0;
+  text-align: center;
+  padding: 20px;
+}
+
+.intro-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.intro-text p {
+  max-width: 700px;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.intro-video-container {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
+}
+
+.intro-video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width:500px){

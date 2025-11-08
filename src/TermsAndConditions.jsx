@@ -46,7 +46,6 @@ const TermsAndConditions = () => {
         <p>If you have any questions, please contact us at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
       </section>
     </div>
-      <Footer/>
     </>
   );
 };

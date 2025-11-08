@@ -1,0 +1,28 @@
+.intro-video-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.intro-video-title {
+  font-size: 1.4rem;
+  margin-top: 1rem;
+  color: #222;
+  font-weight: 600;
+}
+
+.intro-video-description {
+  font-size: 1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0.5rem auto;
+}
+
+@media (max-width:500px){
+    .intro-video-title{
+         font-size: 1rem;   
+    }
+    .intro-video-description {
+  font-size: 0.8rem;
+  
+}
+}

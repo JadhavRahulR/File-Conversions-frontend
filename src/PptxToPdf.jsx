@@ -8,6 +8,9 @@ import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert pptx to pdf.mp4"
+import IntroPoster from "../src/assets/images/pptx to pdf poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PptxToPdf = () => {
@@ -37,9 +40,9 @@ const PptxToPdf = () => {
       const response = await axios.post(`${BASE_URL}/convert-pptx-to-pdf`, formData, {
         responseType: 'blob',
         onUploadProgress: (event) => {
-                    const percent = Math.round((event.loaded * 100) / event.total);
-                    setProgress(Math.min(percent, 90));
-                },
+          const percent = Math.round((event.loaded * 100) / event.total);
+          setProgress(Math.min(percent, 90));
+        },
 
       });
 
@@ -67,8 +70,10 @@ const PptxToPdf = () => {
 
   return (
     <>
+      <ScrollToTop />
+      <Tools />
       <Helmet>
-        <title>PPTX to PDF | Free PowerPoint to PDF Converter</title>
+        <title>Convert PPTX To PDF | Free and Secure PowerPoint To PDF Online Converter</title>
         <meta name="description" content="Convert PPTX presentations to PDF format quickly and securely. Free online PPTX to PDF converter with no signup or email needed." />
         <link rel="canonical" href="https://fileunivers.in/pptx-to-pdf" />
         <meta name="robots" content="index, follow" />
@@ -77,11 +82,15 @@ const PptxToPdf = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Helmet>
-      <ScrollToTop />
-      <Tools />
+      <div className="pagetitle">
+       <h1>Convert PPTX To PDF Online – Free Fast & Secure PowerPoint To PDF Converter </h1>
+
+        <p className="intro-paragraph">
+          Convert your PowerPoint presentations (.pptx) to high-quality PDF files instantly with our free online PPTX to PDF converter. This tool preserves your slides’ design, images, animations, and text perfectly while converting the file for easy sharing. No software installation required and No email and sign up needs — just upload your PPTX file, click “Upload”, and auto download your PDF within seconds. Fast, secure, and online, it’s the easiest way to turn your PowerPoint slides into a professional PDF document.
+        </p>
+        </div>
       <section>
         <div className='converter'>
-          <h1>Convert Pptx To Pdf</h1>
           <input type="file" accept=".pptx" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -90,15 +99,21 @@ const PptxToPdf = () => {
           </div>
           <DropzoneInput acceptedType={['pptx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-             {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
+            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
           </button>
         </div>
       </section>
       <section>
         <div className="converter-container">
           <h2 className="converter-title">Convert PPTX to PDF – High-Quality & Free</h2>
-
+            Convert your PowerPoint presentations  to high-quality PDF files  with our free online PPTX to PDF tool . No software installation required — just upload your PPTX file, click "Upload", and auto download your PDF within seconds. Fast, secure, and compatible with all devices, it’s the easiest way to turn your PowerPoint slides into a professional PDF document.
           <div className="converter-section">
+            <div className="converterImg">
+            <img src="pptx.png" alt="pptx Img" className='ConverterImgtwo' />
+            <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
+            <img src="pdf.png" alt="pdf Img" className='ConverterImgone' />
+
+          </div>
             <h2>🔄 How to Convert PPTX to PDF</h2>
             <ol>
               <li>📤 Upload your PowerPoint (.pptx) file – drag & drop or click to select.</li>
@@ -107,7 +122,12 @@ const PptxToPdf = () => {
             </ol>
             <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
           </div>
-
+      <section>
+          <LazyVideo src={IntroVideo} poster={IntroPoster}
+            title="How to Convert PPTX To PDF ? "
+            description='Convert PPTX to PDF in seconds with our free online PowerPoint to PDF converter. This video shows a simple step-by-step process to turn your Microsoft PowerPoint (.pptx) presentations into professional, shareable PDF files — fast, secure, and 100% free. No software installation or sign-up required.'
+          />
+        </section>
           <div className="converter-section">
             <h2>🔒 Why Use Our PPTX to PDF Converter?</h2>
             <ul>
@@ -123,12 +143,12 @@ const PptxToPdf = () => {
             <h2>📁 Supported Formats</h2>
             <p><strong>Input:</strong> .pptx (PowerPoint Presentation)</p>
             <p><strong>Output:</strong> .pdf</p>
-             <h2>Also check other features Related to Pptx file  </h2>
-              <li><Link to="/pptx-to-odp" className='btn'> pptx to odp  Converter </Link></li>
-              <li><Link to="/odp-to-pptx" className='btn'> odp to pptx  Converter </Link></li>
-               <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-              <li><Link to="/pptxcompress" className='btn'> Compress PPtx </Link></li>
-              <Link></Link>
+            <h2>Also check other features Related to PPTX file  </h2>
+            <li><Link to="/pptx-to-odp" className='btn'> PPTX To ODP  Converter </Link></li>
+            <li><Link to="/odp-to-pptx" className='btn'> ODP To PPTX  Converter </Link></li>
+            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+            <li><Link to="/pptxcompress" className='btn'> Compress PPTX </Link></li>
+            <Link></Link>
           </div>
 
           <div className="converter-section">

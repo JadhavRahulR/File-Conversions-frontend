@@ -7,6 +7,9 @@ import "./compressor.css"
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
 import { Link } from "react-router-dom";
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to compress img.mp4";
+import IntroPoster from "../src/assets/images/img compress poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const ImageCompressor = () => {
@@ -82,8 +85,14 @@ const ImageCompressor = () => {
 
       </Helmet>
       <ScrollToTop />
+      <div className="pagetitle">
+        <h1>Compress Image Online – Free JPG, JPEG, and PNG Image Compressor</h1>
+        <p className="intro-paragraph">
+          Quickly compress JPG, JPEG, and PNG images online without losing quality using our free image compressor tool. Reduce image file size for faster uploads, sharing, and website performance while keeping sharpness and color intact. No software or registration required — simply upload your image, adjust compression quality, and download your optimized photo instantly. Perfect for photographers, web designers, and anyone who needs high-quality images at smaller sizes.
+        </p>
+      </div>
       <div className="compressor-container" onDrop={handleFileDrop} onDragOver={(e) => e.preventDefault()}>
-        <h1>Image  Compressor</h1>
+
         <label htmlFor="csvInput" className="file-label">
           {file ? `✅ Selected: ${file.name}` : '📂Drag and Drop or  Click here  to select a image file'}
         </label>
@@ -122,39 +131,55 @@ const ImageCompressor = () => {
             <h2 className="compressor-heading">Compress Image Files Online</h2>
             <p className="compressor-description">
               Optimize your image files (.jpg, .jpeg, .png, .bmp, etc.) instantly without compromising quality.
-              Ideal for faster web loading, smaller storage needs, and quick sharing.
+              Ideal for faster web loading, smaller storage needs, and quick sharing.Our online image compressor uses smart optimization to reduce file size while preserving visual quality and resolution. Whether you’re compressing product images, social media photos, or website graphics, this tool ensures clean, detailed results every time. 100% free, browser-based, and secure — works perfectly on desktop and mobile. Start compressing your JPG, JPEG, or PNG images now with FileUnivers.in and make your files lighter, faster, and easier to share.
             </p>
+            <div className="converterImg">
+              <div style={{ textAlign: "center" }}>
+                <img src="compression.png" alt="Arrow Symbol" className='ConverterArrowImg' />
+                <p>Compress</p>
+              </div>
+              <div >
+                <img src="img.png" alt="img Img" className='ConverterImgtwo' />
+                <p style={{ textAlign: "center" }}>IMAGES</p>
+              </div>
+            </div>
 
             <h2 className="compressor-subheading">How to Compress an Image File?</h2>
             <ol className="compressor-steps">
-              <li>📁 Upload or drag & drop your image file (JPG, PNG, BMP, etc.)</li>
+              <li>📁 Upload or drag & drop your image file (JPG, PNG,and JPEG)</li>
               <li>🎚️ Select your desired compression level or quality setting</li>
               <li>🚀 Hit the <strong>Compress</strong> button to start compression</li>
               <li>⬇️ The optimized image will automatically download when done</li>
             </ol>
-
+            <section>
+              <LazyVideo src={IntroVideo} poster={IntroPoster}
+                title="How to Compress IMAGES ? "
+                description='Shrink your JPG, JPEG, or PNG images without losing quality in this quick tutorial!. Learn how to compress images online for faster uploads, website speed, or easy sharing — no app or software needed.'
+              />
+            </section>
             <h2 className="compressor-subheading">Why Use Our Image Compressor?</h2>
             <ul className="compressor-benefits">
               <li>🌆 Works with multiple formats including JPG, PNG, and BMP</li>
               <li>💡 Keeps quality high while reducing file size significantly</li>
               <li>🔐 100% secure – files are not stored or shared</li>
               <li>⚡ Quick processing with auto-download for convenience</li>
-               <h2 style={{marginBottom:'6px'}}>Also check other features Related to PDF and Image file  </h2>
-                                            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-                                            <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-                                            <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
-                                            <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
-                                            <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
-                                            <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
-                                            <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
-                                            <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
-                                            <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
-                                            <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
-                                            <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
-                                            <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
-                                            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-                                            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-                                            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Image file  </h2>
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             </ul>
           </div>
 

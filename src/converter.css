@@ -1,3 +1,23 @@
+.pagetitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pagetitle h1 {
+  text-align: center;
+  max-width: 900px;
+  font-size: 2rem;
+  color:#2e86de;
+
+}
+.pagetitle p{
+  text-align: center;
+  max-width: 800px;
+  margin: 10px;
+  
+}
 .converter h1{
   color: white;
   margin-bottom: 50px;
@@ -136,6 +156,22 @@
         opacity: 1;
     }
 }
+.converterImg{
+  display: flex ;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
+}
+.converterImg .ConverterImgone{
+  width: 100px;
+}
+.converterImg .ConverterArrowImg{
+  width: 50px;
+  height: 50px;
+}
+.converterImg .ConverterImgtwo{
+  width: 100px;
+}
 .converter p {
     color: white;
 }
@@ -145,10 +181,10 @@
     font-size: 2rem;
   }
   body h2{
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
   body h3{
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
     .converter{
@@ -180,7 +216,7 @@
 }
 
 .converter-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   color: #0a66c2;
 }
@@ -231,9 +267,11 @@
 
 @media (max-width: 600px) {
   .converter-title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
-
+  .pagetitle h1{
+    font-size: 1.3rem;
+  }
   .converter-btn {
     width: 100%;
   }
@@ -244,7 +282,7 @@
 
 /* for bottom artical */
 .converter-article-section {
-  padding: 20px;
+  padding: 10px 20PX;
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.7;

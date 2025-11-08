@@ -6,6 +6,9 @@ import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to compress csv.mp4";
+import IntroPoster from "../src/assets/images/csv compress poster.png";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const CsvCompressor = () => {
   const [file, setFile] = useState(null);
@@ -68,7 +71,7 @@ const CsvCompressor = () => {
       <Helmet>
         <title>Compress CSV | Reduce CSV File Size Online Free</title>
         <meta name="description" content="Compress your CSV files online to reduce file size quickly and securely. Free CSV compressor with no signup or software required." />
-        <link rel="canonical" href="https://fileunivers.in/compress-csv" />
+        <link rel="canonical" href="https://fileunivers.in/csvcompress" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress csv, csv file compressor, reduce csv file size, online csv compression, shrink csv, free csv compressor" />
         <meta charset="utf-8" />
@@ -76,8 +79,13 @@ const CsvCompressor = () => {
 
       </Helmet>
       <ScrollToTop />
+      <div className="pagetitle">
+        <h1>Compress CSV Online – Free & Fast CSV File Compressor</h1>
+        <p className="intro-paragraph">
+          Compress CSV files online to reduce file size without losing data accuracy or structure. Our free and secure CSV compressor helps you shrink large spreadsheets for faster uploads, sharing, and storage. No software installation or registration required — just upload your CSV file, click compress, and download your optimized version in seconds. Perfect for data analysts, developers, and professionals who manage large datasets.
+        </p>
+      </div>
       <div className="compressor-container" onDrop={handleFileDrop} onDragOver={(e) => e.preventDefault()}>
-        <h1>CSV Compressor</h1>
         <label htmlFor="csvInput" className="file-label">
           {file ? `✅ Selected: ${file.name}` : '📂Drag and Drop or  Click here  to select a .csv file'}
         </label>
@@ -113,7 +121,19 @@ const CsvCompressor = () => {
           <h2 className="compressor-heading">Compress CSV File Online</h2>
           <p className="compressor-description">
             Quickly reduce the size of your CSV files without altering the data. Ideal for large spreadsheet exports or data backups.
+            Our online CSV compression tool uses smart optimization to reduce file size while keeping every value, column, and format intact. Whether you’re compressing large data files, reports, or analytics sheets, this tool ensures accurate and safe results every time. 100% free, browser-based, and secure — works on all devices. Start compressing your CSV files now with FileUnivers.in and make your data lighter, faster, and easier to store or share.
           </p>
+
+           <div className="converterImg">
+            <div style={{ textAlign: "center" }}>
+              <img src="compression.png" alt="Arrow Symbol" className='ConverterArrowImg' />
+              <p>Compress</p>
+            </div>
+            <div >
+              <img src="csv.png" alt="Pdf Img" className='ConverterImgtwo' />
+              <p style={{ textAlign: "center" }}>CSV</p>
+            </div>
+          </div>
 
           <h2 className="compressor-subheading">How to Compress a CSV File?</h2>
           <ol className="compressor-steps">
@@ -122,6 +142,12 @@ const CsvCompressor = () => {
             <li>🚀 Click <strong>Compress</strong> to process the file</li>
             <li>⬇️ Auto Download the compressed <code>.csv</code> file</li>
           </ol>
+          <section>
+            <LazyVideo src={IntroVideo} poster={IntroPoster}
+              title="How to Compress PDF ? "
+              description='Compress your CSV files online quickly and easily with this step-by-step video!. Learn how to reduce CSV file size without losing data, making it perfect for faster uploads, sharing, and storage — no software needed.'
+            />
+          </section>
 
           <h2 className="compressor-subheading">Why Use Our CSV Compressor?</h2>
           <ul className="compressor-benefits">
@@ -130,20 +156,21 @@ const CsvCompressor = () => {
             <li>⚡ Fast processing with instant download</li>
             <li>🖥️ Works on all devices with a browser</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and CSV file  </h2>
-            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-            <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
-            <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
-            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
           </ul>

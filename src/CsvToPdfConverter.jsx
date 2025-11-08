@@ -9,6 +9,9 @@ import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
 import { Link } from "react-router-dom";
+import LazyVideo from "./LazyVideo";
+import IntroVideo from "../src/assets/videos/how to convert csv to pdf.mp4";
+import IntroPoster from "../src/assets/images/csv to pdf poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const CsvToPdfConverter = () => {
@@ -38,12 +41,13 @@ const CsvToPdfConverter = () => {
       const response = await axios.post(
         `${BASE_URL}/convert-csv-to-pdf`,
         formData,
-        { responseType: "blob",
+        {
+          responseType: "blob",
           onUploadProgress: (event) => {
-                    const percent = Math.round((event.loaded * 100) / event.total);
-                    setProgress(Math.min(percent, 90));
-                },
-         }
+            const percent = Math.round((event.loaded * 100) / event.total);
+            setProgress(Math.min(percent, 90));
+          },
+        }
       );
 
       const blob = new Blob([response.data], { type: "application/pdf" });
@@ -69,20 +73,26 @@ const CsvToPdfConverter = () => {
   }, [status]);
   return (
     <>
-    <Helmet>
-      <title>CSV to PDF | Free CSV File to PDF Converter</title>
-<meta name="description" content="Convert CSV files to PDF format easily and securely. Free online CSV to PDF converter with no email or registration required." />
-<link rel="canonical" href="https://fileunivers.in/csv-to-pdf" />
-<meta name="robots" content="index, follow" />
-<meta name="keywords" content="csv to pdf, convert csv to pdf, spreadsheet to pdf, free csv to pdf converter, online csv to pdf" />
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    </Helmet>
       <ScrollToTop />
       <Tools />
+      <Helmet>
+        <title>CSV To PDF Online Converter| Free and Secure CSV File To PDF Converter</title>
+        <meta name="description" content="Convert CSV files to PDF format easily and securely. Free online CSV to PDF converter with no email or registration required." />
+        <link rel="canonical" href="https://fileunivers.in/csv-to-pdf" />
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="csv to pdf, convert csv to pdf, spreadsheet to pdf, free csv to pdf converter, online csv to pdf" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      </Helmet>
+      <div className="pagetitle">
+
+        <h1>Convert CSV To PDF Online – Free & Fast CSV File To PDF Converter</h1>
+
+        <p className="intro-paragraph">
+          Easily convert your CSV (Comma-Separated Values) files to PDF online with our fast and secure converter. Keep your data organized and perfectly formatted while transforming spreadsheets into clean, shareable PDF documents. No software installation or technical setup required — simply upload your CSV file, click Upload for Conversion, and auto  download your PDF in seconds. Ideal for data analysts, accountants, students, and professionals who need quick and accurate CSV to PDF conversion.     </p>
+      </div>
       <div className='converter'>
-        <h1>Convert Csv  To Pdf </h1>
 
         <input type="file" accept=".csv" onChange={handleFileChange} />
         <br /><br />
@@ -98,14 +108,21 @@ const CsvToPdfConverter = () => {
           </p>
         )}
         <button onClick={handleConvert} disabled={status === 'Converting...'}>
-          {status === 'Converting...'? `Converting... (${progress}%)` :"Upload"}
+          {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
         </button>
 
       </div>
       <section>
         <div className="converter-container">
-          <h1 className="converter-title">Convert CSV to PDF – Instant, Clean & Free</h1>
+          <h2 className="converter-title">Convert CSV to PDF – Instant, Clean & Free</h2>
+          <p>Our CSV to PDF converter ensures precise alignment, clear table formatting, and full compatibility with all devices. Whether your file contains financial data, reports, or lists, this tool converts every row and column into a beautifully structured, print-ready PDF. 100% free, browser-based, and secure — your files are automatically deleted after processing. Experience seamless CSV to PDF conversion today and make your data presentation-ready in just one click.</p>
+          <div className="converterImg">
+            <img src="csv.png" alt="csv Img" className='ConverterImgone' />
+            <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
 
+            <img src="pdf.png" alt="Pdf Img" className='ConverterImgtwo' />
+
+          </div>
           <div className="converter-section">
             <h2>🔄 How to Convert CSV to PDF</h2>
             <ol>
@@ -115,7 +132,12 @@ const CsvToPdfConverter = () => {
             </ol>
             <p><strong>📌 Note:</strong> Large CSV files may take more time to process.</p>
           </div>
-
+          <section>
+            <LazyVideo src={IntroVideo} poster={IntroPoster}
+              title="How to Convert CSV To PDF ? "
+              description='Convert your CSV file to PDF in just a few seconds with this easy step-by-step video!. Learn how to turn your Comma-Separated Values (CSV) data into a clean, well-formatted PDF document that’s ready for sharing, printing, or reporting — all without installing any software.'
+            />
+          </section>
           <div className="converter-section">
             <h2>🔒 Why Use Our CSV to PDF Converter?</h2>
             <ul>
@@ -131,23 +153,21 @@ const CsvToPdfConverter = () => {
             <h2>📁 Supported Formats</h2>
             <p><strong>Input:</strong> .csv (Comma-Separated Values)</p>
             <p><strong>Output:</strong> .pdf</p>
-             <h2>Also check other features Related to PDF and CSV file  </h2>
-                                                <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-                                                <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-                                                <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
-                                                <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
-                                                <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
-                                                <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
-                                                <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
-                                                <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
-                                                <li><Link to="/img-to-pdf" className='btn' > img to pdf Converter </Link></li>
-                                                <li><Link to="/tiff-to-pdf" className='btn' > tiff to pdf Converter </Link></li>
-                                                <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
-                                                <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-                                                <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-                                                <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-                                                <li><Link to='/csvcompress' className='btn' > Compress CSV  </Link></li>
-                                                <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+            <h2>Also check other features Related to PDF and CSV file  </h2>
+            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+            <li><Link to='/csvcompress' className='btn' > Compress CSV  </Link></li>
           </div>
 
           <div className="converter-section">
@@ -186,7 +206,7 @@ const CsvToPdfConverter = () => {
               <li><strong>Students:</strong> Convert lab results or data tables into report-ready PDFs.</li>
             </ul>
 
-            
+
 
             <h3>🌟 Features of Our CSV to PDF Converter</h3>
             <ul>

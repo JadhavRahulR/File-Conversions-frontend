@@ -1,5 +1,5 @@
 .zip-container {
-  max-width: 500px;
+  max-width: 800px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 12px;
@@ -7,6 +7,14 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+.zip-container .fileuploadcontainer{
+  margin-top: 30px;
 }
 
 .zip-container h1 {
@@ -29,6 +37,31 @@
   background-color: #e7f9ed;
   color: #2e7d32;
 }
+.rename-container {
+  width: 300px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.rename-container label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.rename-container input {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 320px;
+}
+.rename-container input:focus {
+  outline: none; 
+  border: 2px solid #6df8f8; 
+  box-shadow: 0 0 10px #61ebfa; 
+  transition: 0.3s ease-in-out;
+}
 
 .file-list {
   text-align: left;
@@ -40,6 +73,9 @@
 
 .file-list li {
   margin-bottom: 4px;
+}
+.compressor-benefits .btn{
+  width: 250px;
 }
 
 .zip-container button {
@@ -114,4 +150,10 @@ button:disabled {
   font-size: 1rem;
   color: #555;
   margin-top: 0.3rem;
+}
+@media (max-width:350px){
+  .dropzone{
+    padding: 10px;
+    background-color: #fff;
+  }
 }

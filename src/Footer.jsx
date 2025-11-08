@@ -12,7 +12,14 @@ function Footer() {
         <Link to="/contact">Contact</Link>
         <Link to="/aboutus">About Us </Link>
         </div>
-        <p className="footer-note" > &copy; {new Date().getFullYear()} O N L I N E - C O N V E R T E R. All rights reserved.</p>
+        <div className="toollinks">
+          {/* <p> * T O O L S *</p> */}
+          <Link to = '/word-to-pdf'>WORD To PDF</Link>
+          <Link to = '/pdf-to-word'>PDF To WORD</Link>
+          <Link to = '/favicon-generator'>FAVICON GENERATOR</Link>
+          <Link to = '/merge-pdf'>MERGE PDFS</Link>
+        </div>
+        <p className="footer-note" > &copy; {new Date().getFullYear()}   " F I L E - U N I V E R S "  . All rights reserved.</p>
 
 
       </footer>

@@ -40,18 +40,25 @@ import OdtCompressor from './OdtCompressor';
 import OdpCompressor from './OdpCompressor';
 import TiffCompressor from './TiffCompressor';
 import BmpCompressor from './BmpCompressor';
+import FaviconGenerator from './FaviconGenerator';
 import { Helmet } from 'react-helmet-async';
+import RenameFile from './RenameFile';
+import Footer from './Footer';
+import "./App.css"
+
 
 function App() {
   return (
-    <div>
+    <div className="app-container">
       
       <Navbar1/>
-      <Helmet>
+      {/* <Helmet>
       <title>F I L E -U N I V E R S </title>
       <meta name='description' content='this is online converter app that convert pdf , word , pptx ,etc files to other format '/>
       <link rel="canonical" href="https://fileunivers.in" />
-      </Helmet>
+      </Helmet> */}
+       <div className="main-content">
+
         <Routes>
            <Route path="/" element={ <LandingPage/>}/>
           <Route path="/aboutus" element={ <About/>}/>
@@ -92,9 +99,13 @@ function App() {
           <Route path="/odpcompressor" element={<OdpCompressor/>} />
           <Route path="/tiffcompressor" element={<TiffCompressor/>} />
           <Route path="/bmpcompressor" element={<BmpCompressor/>} />
+          <Route path="/favicon-generator" element={<FaviconGenerator />} />
+          <Route path="/renamefile" element={<RenameFile/>} />
+
           <></>
         </Routes>
-       
+       </div>
+       <Footer/>
     </div>
   );
 }

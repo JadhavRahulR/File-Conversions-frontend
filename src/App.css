@@ -1,3 +1,17 @@
-body{
-  background: transparent;
+/* Make the app take full viewport height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Use flexbox layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Main content grows to push footer down */
+.main-content {
+  flex: 1;
 }
