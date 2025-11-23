@@ -101,15 +101,31 @@ const PDFMerger = () => {
       </div>
       <div className="pdf-merger">
         <div
-          className="drop-area"
+          className="Mdrop-area"
           onDrop={handleDrop}
           onDragOver={handleDragOver}
         >
 
           <input type="file" multiple accept=".pdf" onChange={handleFileChange} />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']} />
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['pdf']} />
+            <DriveFileInput onFilePicked={(file) => {
+              setFile(file); setSelectedFiles(prev => {
+                const exists = prev.some(f => f.name === file.name);
+                return exists ? prev : [...prev, file];
+              });
+            }} setStatus={setStatus} allowedTypes={['.pdf']} />
+
+            <DropboxFileInput
+              onFilePicked={(file) => {
+                setFile(file);
+                setSelectedFiles(prev => {
+                  const exists = prev.some(f => f.name === file.name);
+                  return exists ? prev : [...prev, file];
+                });
+              }}
+              setStatus={setStatus}
+              extensions={['.pdf']}
+            />
           </div>
           <p>Drag & Drop your PDF files here</p>
         </div>
@@ -135,10 +151,12 @@ const PDFMerger = () => {
             </button>
           </>
         )}
+<div className="mergeb">
 
         <button className="mergebtn" onClick={handleMerge} disabled={isMerging || selectedFiles.length < 2}>
           {isMerging ? `Merging... (${progress}%)` : "Merge PDFs"}
         </button>
+</div>
       </div>
       <section>
         <div className="compressor-page">

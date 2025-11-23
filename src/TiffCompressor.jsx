@@ -95,8 +95,7 @@ const TiffCompressor = () => {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-        <h1>TIFF Compressor</h1>
-
+          {/* Remove h1 title from here  */}
         <p
           className="file-label"
           onClick={() => fileInputRef.current.click()}

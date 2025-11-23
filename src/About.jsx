@@ -49,7 +49,7 @@ function About() {
 
      
     </div>
-    <Footer/>
+    {/* <Footer/> */}
     </div>
   )
 }
