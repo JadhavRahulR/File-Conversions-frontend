@@ -73,9 +73,12 @@ footer p {
     }
     .footerpages{
         flex-direction: column;
-        margin: 0;
+        /* margin-top: 10px; */
+        margin: none;
     }
      .footerpages a {
+        width: 200px;
+        border: none;
         margin: 2px;
      }
      .footer-note{
