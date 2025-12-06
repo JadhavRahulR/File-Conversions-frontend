@@ -46,11 +46,10 @@
 .extract-container button {
   background-color:#007bff;
   color: white;
-  border: 2px solid yellow;
-
   padding: 10px 22px;
   font-size: 1rem;
   border-radius: 8px;
+  border: none;
   cursor: pointer;
   transition: background-color 0.2s;
 }
