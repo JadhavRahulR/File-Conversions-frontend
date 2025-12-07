@@ -4,41 +4,81 @@ import { saveAs } from "file-saver";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import DropboxFileInput from './DropboxFileInput'
-import DriveFileInput from './DriveFileInput';
-import './CsvCompressor.css';
+import DropboxFileInput from "./DropboxFileInput";
+import DriveFileInput from "./DriveFileInput";
+import "./CsvCompressor.css";
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to generate favicon.mp4";
 import IntroPoster from "../src/assets/images/generate favicon poster.png";
 
+/* ---------------- ICO CREATOR ---------------- */
+function createICO(images) {
+    const ICONDIR = new ArrayBuffer(6);
+    const dv = new DataView(ICONDIR);
+    dv.setUint16(0, 0, true);
+    dv.setUint16(2, 1, true);
+    dv.setUint16(4, images.length, true);
+
+    let entries = [];
+    let imageDataBuffers = [];
+    let offset = 6 + images.length * 16;
+
+    images.forEach((img) => {
+        const entry = new DataView(new ArrayBuffer(16));
+        entry.setUint8(0, img.width === 256 ? 0 : img.width);
+        entry.setUint8(1, img.height === 256 ? 0 : img.height);
+        entry.setUint8(2, 0);
+        entry.setUint8(3, 0);
+        entry.setUint16(4, 1, true);
+        entry.setUint16(6, 32, true);
+        entry.setUint32(8, img.buffer.byteLength, true);
+        entry.setUint32(12, offset, true);
+
+        offset += img.buffer.byteLength;
+        entries.push(entry.buffer);
+        imageDataBuffers.push(img.buffer);
+    });
+
+    return new Blob([ICONDIR, ...entries, ...imageDataBuffers], {
+        type: "image/x-icon",
+    });
+}
+
+/* ------------------ MAIN COMPONENT ------------------ */
 const FaviconGenerator = () => {
     const [file, setFile] = useState(null);
     const [status, setStatus] = useState("idle");
     const [preview, setPreview] = useState(null);
+
+    const [generatedFiles, setGeneratedFiles] = useState([]); // <-- NEW
+
     const fileInputRef = useRef(null);
 
-    const handleFileChange = (e) => {
-        const selected = e.target.files[0];
+    /* ---------------- AUTO GENERATE WHEN FILE SELECTED ---------------- */
+    const handleFileSelect = (selected) => {
         if (selected) {
             setFile(selected);
             setPreview(URL.createObjectURL(selected));
             setStatus("idle");
+            generateFavicons(selected); // <-- AUTO GENERATE
         }
     };
+
+    const handleFileChange = (e) => {
+        handleFileSelect(e.target.files[0]);
+    };
+
     const handleDrop = (e) => {
         e.preventDefault();
-        setFile(e.dataTransfer.files[0]);
-        setStatus("idle");
+        handleFileSelect(e.dataTransfer.files[0]);
     };
 
     const handleDragOver = (e) => {
         e.preventDefault();
     };
 
-
-    const handleGenerate = async () => {
-        if (!file) return alert("Please select an image first.");
-
+    /* ---------------- GENERATE & PREPARE LIST + ZIP ---------------- */
+    const generateFavicons = async (file) => {
         setStatus("generating");
 
         const img = new Image();
@@ -47,29 +87,64 @@ const FaviconGenerator = () => {
         img.onload = async () => {
             const zip = new JSZip();
             const sizes = [16, 32, 48, 64, 128, 256];
+
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d");
+
+            let fileList = [];
+            let icoImages = [];
 
             for (const size of sizes) {
                 canvas.width = canvas.height = size;
                 ctx.clearRect(0, 0, size, size);
                 ctx.drawImage(img, 0, 0, size, size);
 
-                const data = canvas.toDataURL("image/png");
-                const blob = await (await fetch(data)).blob();
+                const dataURL = canvas.toDataURL("image/png");
+                const blob = await (await fetch(dataURL)).blob();
+                const arrayBuffer = await blob.arrayBuffer();
+
+                // Add PNG to zip
                 zip.file(`favicon-${size}x${size}.png`, blob);
+
+                // Add for ICO
+                icoImages.push({ width: size, height: size, buffer: arrayBuffer });
+
+                // Add to UI list
+                fileList.push({
+                    name: `favicon-${size}x${size}.png`,
+                    url: dataURL,
+                });
             }
 
+            // ICO file
+            const icoFile = createICO(icoImages);
+            const icoURL = URL.createObjectURL(icoFile);
+            zip.file("favicon.ico", icoFile);
+
+            fileList.unshift({
+                name: "favicon.ico",
+                url: icoURL,
+            });
+
+            setGeneratedFiles(fileList); // <-- SHOW LIST
+
+            // Auto download Zip
             const zipBlob = await zip.generateAsync({ type: "blob" });
             saveAs(zipBlob, "favicons.zip");
+
             setStatus("done");
         };
+    };
+
+    /* -------------- OLD BUTTON (still works if clicked) ---------------- */
+    const handleGenerate = () => {
+        if (file) generateFavicons(file);
     };
 
     return (
         <>
             <Helmet>
-                <title> Favicon Generator Free – Fast & Secure Online Favicon Maker | FileUnivers</title>
+                <title> Favicon Generator |Free (ICO, PNG, ,JPG , JPEG ,SVG) ico maker</title>
                 <meta name="description" content="Free Favicon Generator – Create favicons of all sizes (16x16, 32x32, 48x48 & more) instantly online. Fast, secure, and privacy-safe favicon.ico maker — no uploads required." />
                 <link rel="canonical" href="https://fileunivers.in/favicon-generator" />
                 <meta name="robots" content="index, follow" />
@@ -77,7 +152,7 @@ const FaviconGenerator = () => {
 
             <ScrollToTop />
             <div className="pagetitle">
-            <h1> Favicon Generator Free – Fast, Secure & Online Icon Maker (ICO, PNG, SVG)</h1>
+                <h1> Favicon Generator -Free, Fast & Online Icon Maker (ICO, PNG,JPG , JPEG ,SVG)</h1>
                 <p className="intro-paragraph">
                     Easily generate favicons online and create beautiful website icons in formats like ICO, PNG, or SVG within seconds. Whether you’re designing a new website or refreshing your brand identity, this free favicon generator helps you create professional icons directly from images, logos, or text — no design software needed. Just upload your image, choose the size, and download your ready-to-use favicon instantly.
                 </p>
@@ -132,6 +207,28 @@ const FaviconGenerator = () => {
                 {status === "done" && (
                     <p className="success-msg">✅ Favicons generated and downloaded!</p>
                 )}
+
+
+            </div>
+            <div className="favlist">
+
+                {generatedFiles.length > 0 && (
+                    <div className="favicon-file-list">
+                        <h3>All Generated Files</h3>
+
+                        {generatedFiles.map((f, idx) => (
+                            <div className="favicon-file-row" key={idx}>
+                                <div className="favicon-file-left">
+                                    <img src={f.url} className="favicon-thumb" alt="icon" />
+                                    <span>{f.name}</span>
+                                </div>
+                                <a href={f.url} download={f.name} className="favicon-download-btn">
+                                    Download
+                                </a>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
             <div>
                 <section className="compressor-page">
@@ -143,11 +240,11 @@ const FaviconGenerator = () => {
                         Android, and iOS devices. No sign-up, no watermark, and everything runs directly in your browser.With FileUnivers.in, you get a fast, simple, and high-quality solution to generate favicons that make your website stand out.
                     </p>
                     <div className="converterImg">
-            <div >
-              <img src="Fav.png" alt="fav Img" className='ConverterImgtwo' />
-              <p style={{ textAlign: "center" }}>FAVICON</p>
-            </div>
-          </div>
+                        <div >
+                            <img src="Fav.png" alt="fav Img" className='ConverterImgtwo' />
+                            <p style={{ textAlign: "center" }}>FAVICON</p>
+                        </div>
+                    </div>
 
                     <h2>What is a Favicon Generator?</h2>
                     <p>
@@ -162,11 +259,11 @@ const FaviconGenerator = () => {
                         converts it into compatible favicon formats — ready for download and use.
                     </p>
                     <section>
-          <LazyVideo src={IntroVideo} poster={IntroPoster}
-              title="How to Generate Favicon ? "
-              description='Create your website icon in seconds!. This video shows how to generate favicons online (ICO, PNG, SVG) from your logo or image — no design skills required. In this video, you’ll learn: How to upload an image or logo ,Generate favicon in multiple formats (ICO, PNG, SVG) Download and add it to your website easily.'
-            />
-          </section>
+                        <LazyVideo src={IntroVideo} poster={IntroPoster}
+                            title="How to Generate Favicon ? "
+                            description='Create your website icon in seconds!. This video shows how to generate favicons online (ICO, PNG, SVG) from your logo or image — no design skills required. In this video, you’ll learn: How to upload an image or logo ,Generate favicon in multiple formats (ICO, PNG, SVG) Download and add it to your website easily.'
+                        />
+                    </section>
 
                     <h2>How to Use the Favicon Generator</h2>
                     <ol>
@@ -175,7 +272,29 @@ const FaviconGenerator = () => {
                         <li><strong>Download ZIP package:</strong> Get a ready-to-use ZIP file containing all favicon versions.</li>
                         <li><strong>Add to your website:</strong> Extract the files and link the favicon.ico in your website’s HTML &lt;head&gt; tag.</li>
                     </ol>
+                    <div className="otherlinks">
 
+                     <h2>Try Other Free Tools on FileUnivers</h2>
+                    <ul>
+                        <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+                        <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                        <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+                        <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                        <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                        <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                        <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                        <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                        <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                        <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                        <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+                        <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                        <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                        <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+                        <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                        <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+                    </ul>
+
+                    </div>
                     <h2>Why Use FileUnivers Favicon Generator?</h2>
                     <ul>
                         <li>⚡ <strong>Fast and Instant:</strong> Generates favicons within seconds — no waiting or uploads to external servers.</li>
@@ -202,28 +321,29 @@ const FaviconGenerator = () => {
                         <li>✔️ Choose high-contrast colors to make your icon stand out on both light and dark themes.</li>
                         <li>✔️ Keep the background transparent or solid for clarity across all platforms.</li>
                         <li>✔️ Test your favicon in multiple browsers before final use.</li>
+                        
                     </ul>
 
                     <h2>Frequently Asked Questions (FAQ)</h2>
-                    <h3>1. Is this favicon generator really free?</h3>
+                    <h5>1. Is this favicon generator really free?</h5>
                     <p>
                         Yes! The FileUnivers favicon generator is 100% free to use. There are no hidden costs or sign-ups required.
                         You can generate and download as many favicons as you like.
                     </p>
 
-                    <h3>2. Does it work offline or require uploads?</h3>
+                    <h5>2. Does it work offline or require uploads?</h5>
                     <p>
                         Everything runs directly in your browser. No image is uploaded to any server, making it one of the most
                         secure favicon tools available online.
                     </p>
 
-                    <h3>3. Can I use SVG files for better quality?</h3>
+                    <h5>3. Can I use SVG files for better quality?</h5>
                     <p>
                         Absolutely! Uploading an SVG ensures your favicon scales perfectly without losing quality.
                         The tool automatically converts it to multiple raster sizes for compatibility.
                     </p>
 
-                    <h3>4. What file formats are included in the ZIP?</h3>
+                    <h5>4. What file formats are included in the ZIP?</h5>
                     <p>
                         The ZIP file includes standard favicon.ico along with PNG icons (16×16, 32×32, 48×48, 64×64, 128×128, etc.),
                         making it ready for immediate website integration.
@@ -241,25 +361,7 @@ const FaviconGenerator = () => {
                         This ensures that browsers automatically detect and display your favicon whenever your site loads.
                     </p>
 
-                    <h2>Try Other Free Tools on FileUnivers</h2>
-                    <ul>
-                        <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-                                    <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-                                    <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-                                    <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-                                    <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-                                    <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-                                    <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-                                    <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-                                    <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-                                    <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-                                    <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-                                    <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-                                    <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-                                    <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-                                    <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-                                    <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-                    </ul>
+                   
 
                     <p>
                         The FileUnivers favicon generator is built for web designers, developers, and businesses who want a

@@ -21,9 +21,9 @@
   background-color:black;
   color: white;
   cursor: pointer;
-  padding: 15px;
+  padding: 15px 5px;
   border-radius: 10px;
-  margin: 10px;
+  margin: 10px 4px 60px 4px;
 }
 
 .pdf-merger input #file-upload-button{
@@ -32,7 +32,7 @@
 
 .pdf-merger .Mdrop-area {
   border: 2px dashed #999;
-  padding: 1rem;
+  padding: 30px;
   border-radius: 8px;
   margin-bottom: 1rem;
   background: #fff;
@@ -141,7 +141,7 @@ button:disabled {
 }
 
 @media (max-width:500px){
-  /* .pdf-merger .drop-area{
-    width: 300px;
-  } */
+  .pdf-merger{
+    padding: 0;
+  }
 }
