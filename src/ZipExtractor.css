@@ -40,10 +40,11 @@
 }
 
 .extract-container input{
-  border: 1px solid black;
+  border: 1px solid white;
   padding: 10px 30px 10px 2px;
   width: 300px;
   border-radius: 5px;
+  color: white;
 }
 .extract-container input:hover{
   background-color:rgb(112, 112, 112);
