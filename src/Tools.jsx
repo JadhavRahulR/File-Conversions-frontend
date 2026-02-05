@@ -15,13 +15,13 @@ function Tools(props) {
     <>
       <Helmet>
         <title>Convert & Compress Files Online | FileUnivers Tools</title>
-        <meta name="description" content="Access all-in-one file tools at FileUnivers — convert PDFs, Word, Excel, PowerPoint, images and compress them efficiently. Free, secure, and fast." />
+        <meta name="description" content="Access all-in-one file tools at FileUnivers Ã¢â‚¬” convert PDFs, Word, Excel, PowerPoint, images and compress them efficiently. Free, secure, and fast." />
         <meta name="keywords" content="file converter, file compression, compress pdf, pdf to word, word to pdf, image to pdf, compress docx, compress pptx, merge pdf, convert files, online converter, file tools" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://fileunivers.in/tools" />
+        <link rel="canonical" href="https://fileunivers.com/tools" />
         {/* <meta property="og:title" content="Convert & Compress Files Online | FileUnivers Tools" />
         <meta property="og:description" content="Use our complete toolset to convert and compress PDFs, DOCX, PPTX, Excel, images, and more in one place. Fast, free, and user-friendly." />
-        <meta property="og:url" content="https://fileunivers.in" />
+        <meta property="og:url" content="https://fileunivers.com" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="FileUnivers" />
         <meta name="twitter:card" content="summary_large_image" />

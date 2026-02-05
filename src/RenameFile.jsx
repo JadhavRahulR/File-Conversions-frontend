@@ -62,9 +62,9 @@ const RenameFile = () => {
         <title>Re-name Any File | Change File Name Online Instantly</title>
         <meta
           name="description"
-          content="Rename any type of file online — PDF, Word, Excel, Image, PPT, or ZIP. Fast and free file renamer tool with drag & drop support."
+          content="Rename any type of file online- PDF, Word, Excel, Image, PPT, or ZIP. Fast and free file renamer tool with drag & drop support."
         />
-        <link rel="canonical" href="https://fileunivers.in/rename-file" />
+        <link rel="canonical" href="https://fileunivers.com/renamefile" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="rename file online, change file name, file renamer, rename pdf, rename word, rename image, rename pptx, rename docx, rename csv"/>
         <meta charSet="utf-8" />
@@ -73,22 +73,25 @@ const RenameFile = () => {
 
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Rename Files Online – Free Fast and Secure  Rename Your File Instantly </h1>
+        <h1>Rename Files Online - Free Fast and Secure  Rename Your File Instantly </h1>
         <p className="intro-paragraph">
-          Easily rename multiple files online in seconds using this free and secure file renaming tool. Whether you want to rename images, documents, videos, or any file type, this tool lets you change filenames in bulk — no downloads or installations needed. Simply upload your files, set your naming pattern or prefix, and download the renamed files instantly.
+          Easily rename multiple files online in seconds using this free and secure file renaming tool. Whether you want to rename images, documents, videos, or any file type, this tool lets you change filenames in bulk- no downloads or installations needed. Simply upload your files, set your naming pattern or prefix, and download the renamed files instantly.
         </p>
       </div>
 
       <div
-        className="compressor-container drop-area"
+        className="compressor-container "
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
+        <div className="compressing">
+          <h2 color="black">Rename Your File</h2>
+        </div>
         <p
           className="file-label clickable-label"
           onClick={() => fileInputRef.current.click()}
         >
-          {file ? `✅ Selected: ${file.name}` : "📂 Drag & drop any file here, or click to select"}
+          {file ? `✅ Selected: ${file.name}` : "   📂 Drag & drop any file here, or click to select"}
         </p>
 
         <input
@@ -104,7 +107,7 @@ const RenameFile = () => {
         </div>
 
         <div className="rename-section" style={{margin:'10px'}}>
-          <input style={{padding:'10px',paddingLeft:"40px",paddingRight:"40px",width:'300px'}}
+          <input style={{padding:'10px',paddingLeft:"40px",paddingRight:"40px",width:'300px',margin:"30px",borderRadius:"8px"}}
             type="text"
             className="rename-input"
             placeholder="Enter name without extension"
@@ -124,8 +127,8 @@ const RenameFile = () => {
   <div className="compressor-page">
     <h2 className="compressor-heading">Rename Any File Online</h2>
     <p className="compressor-description">
-      Instantly rename any file — PDF, Word, Excel, Image, ZIP, or more — directly in your browser.
-      No upload, no registration, and no privacy risk. Simply change the file name and download it instantly.Our online file renamer is designed for speed, accuracy, and convenience. You can organize large file collections effortlessly, maintain consistent naming for projects, or prepare files for upload. Perfect for photographers, students, professionals, and anyone managing lots of files. Simplify your workflow with FileUnivers.in, the easiest and fastest way to rename files online for free.
+      Instantly rename any file- PDF, Word, Excel, Image, ZIP, or more- directly in your browser.
+      No upload, no registration, and no privacy risk. Simply change the file name and download it instantly.Our online file renamer is designed for speed, accuracy, and convenience. You can organize large file collections effortlessly, maintain consistent naming for projects, or prepare files for upload. Perfect for photographers, students, professionals, and anyone managing lots of files. Simplify your workflow with fileunivers.com, the easiest and fastest way to rename files online for free.
     </p>
     <div className="converterImg">
             <div >
@@ -136,10 +139,10 @@ const RenameFile = () => {
 
     <h2 className="compressor-subheading">How to Rename a File?</h2>
     <ol className="compressor-steps">
-      <li>📂 Upload or drag & drop your file</li>
-      <li>✏️ Enter the new file name (without changing the extension)</li>
+      <li>   📂 Upload or drag & drop your file</li>
+      <li>    Enter the new file name (without changing the extension)</li>
       <li>🚀 Click <strong>Rename & Download</strong></li>
-      <li>⬇️ Instantly get your file with the new name</li>
+      <li>   ⬇️ Instantly get your file with the new name</li>
     </ol>
     <section>
           <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -150,9 +153,9 @@ const RenameFile = () => {
 
     <h2 className="compressor-subheading">Why Use Our Rename Tool?</h2>
     <ul className="compressor-benefits">
-      <li>💻 Works with all file types — PDF, DOCX, PPTX, XLSX, JPG, PNG, ZIP, and more</li>
+      <li>     Works with all file types- PDF, DOCX, PPTX, XLSX, JPG, PNG, ZIP, and more</li>
       <li>⚡ Rename instantly without uploading to a server</li>
-      <li>🔒 100% safe — files never leave your device</li>
+      <li>🔒100% safe- files never leave your device</li>
       <li>🌐 Works on any browser or device</li>
 
       <h2 style={{ marginBottom: "6px" }}>Also check other features related to PDF and File Tools</h2>
@@ -186,7 +189,7 @@ const RenameFile = () => {
         helps you stay organized, identify files quickly, and share them professionally.
       </p>
 
-      <h3>📦 Why You Might Need to Rename Files</h3>
+      <h3>   📦 Why You Might Need to Rename Files</h3>
       <p>
         File names can become cluttered, confusing, or inconsistent over time. Whether it’s a photo, 
         report, or spreadsheet, renaming helps create order. Students, professionals, and businesses 
@@ -195,36 +198,36 @@ const RenameFile = () => {
 
       <h3>💡 Benefits of Using Our Rename Tool</h3>
       <ul>
-        <li><strong>⚡ Instant Action</strong> – Rename and download immediately, no waiting or uploading</li>
-        <li><strong>🔐 Complete Privacy</strong> – The process happens in your browser only</li>
-        <li><strong>📁 Universal Compatibility</strong> – Works with PDFs, Word, Excel, images, archives, and more</li>
-        <li><strong>🧾 Better Organization</strong> – Manage and identify your files easily</li>
-        <li><strong>💼 Professional Look</strong> – Send neatly named documents for work or clients</li>
+        <li><strong>⚡ Instant Action</strong> - Rename and download immediately, no waiting or uploading</li>
+        <li><strong>🔐 Complete Privacy</strong> - The process happens in your browser only</li>
+        <li><strong>📁 Universal Compatibility</strong> - Works with PDFs, Word, Excel, images, archives, and more</li>
+        <li><strong>🧠   Better Organization</strong> - Manage and identify your files easily</li>
+        <li><strong>   💾¼ Professional Look</strong> - Send neatly named documents for work or clients</li>
       </ul>
 
-      <h3>🛠️ How This Rename Tool Works</h3>
+      <h3>   🛠️ How This Rename Tool Works</h3>
       <p>
         Our Rename File tool runs entirely in your browser using JavaScript. Once you select a file and 
         type your new name, the tool creates a renamed copy with the same extension (like <code>.pdf</code> or <code>.jpg</code>). 
-        You can then download it instantly — no upload or conversion needed.
+        You can then download it instantly- no upload or conversion needed.
       </p>
       <ol>
-        <li>1️⃣ Select or drop your file</li>
-        <li>2️⃣ Type your preferred file name</li>
-        <li>3️⃣ Click the rename button</li>
-        <li>4️⃣ Download your file instantly with the new name</li>
+        <li>    Select or drop your file</li>
+        <li>    Type your preferred file name</li>
+        <li>    Click the rename button</li>
+        <li>    Download your file instantly with the new name</li>
       </ol>
 
-      <h3>🔒 Is It Safe to Rename Files Online?</h3>
+      <h3>🔒Is It Safe to Rename Files Online?</h3>
       <p>
         Yes, it’s 100% safe. Unlike many online tools that upload files to a server, our renaming tool 
         performs all actions locally on your device. That means your files never leave your computer 
         and remain private at all times.
       </p>
       <ul>
-        <li>🔒 No server upload</li>
-        <li>💻 Fully local processing</li>
-        <li>♻️ No data stored or shared</li>
+        <li>🔒No server upload</li>
+        <li>     Fully local processing</li>
+        <li>   ♻️ No data stored or shared</li>
       </ul>
 
       <h3>🌍 Supported File Types</h3>
@@ -232,12 +235,12 @@ const RenameFile = () => {
         You can rename nearly every type of file, including:
       </p>
       <ul>
-        <li>📄 Documents – PDF, DOC, DOCX, ODT, TXT, RTF</li>
-        <li>📊 Spreadsheets – XLS, XLSX, CSV, ODS</li>
-        <li>📽️ Presentations – PPT, PPTX, ODP</li>
-        <li>🖼️ Images – JPG, PNG, TIFF, BMP, WEBP</li>
-        <li>📦 Archives – ZIP, 7Z, RAR</li>
-        <li>🎵 & 🎬 Media – MP3, MP4, MOV, and more</li>
+        <li>📄 Documents - PDF, DOC, DOCX, ODT, TXT, RTF</li>
+        <li>📚 Spreadsheets - XLS, XLSX, CSV, ODS</li>
+        <li>     Presentations - PPT, PPTX, ODP</li>
+        <li>     Images - JPG, PNG, TIFF, BMP, WEBP</li>
+        <li>   📦 Archives - ZIP, 7Z, RAR</li>
+        <li>    Media - MP3, MP4, MOV, and more</li>
       </ul>
 
       <h3>💡 Tips for Naming Files</h3>
@@ -258,11 +261,11 @@ const RenameFile = () => {
         or login. The Rename File tool is designed for speed, simplicity, and complete privacy.
       </p>
 
-      <h3>🔚 Final Thoughts</h3>
+      <h3>   🔚 Final Thoughts</h3>
       <p>
         Renaming files might sound like a small thing, but it can make a big difference in how you manage 
         and share your data. Use our <strong>Rename Any File</strong> tool to stay organized, work faster, 
-        and keep your files labeled clearly — all for free, right here on FileUnivers.
+        and keep your files labeled clearly- all for free, right here on FileUnivers.
       </p>
     </div>
   </section>

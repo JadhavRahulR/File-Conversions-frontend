@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { useLoader } from "./LoaderContext";
 
-const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv','.docx','.html','.jpg','.png','.jpeg','.md','odp','.odt','pptx','.rtf','.tiff','.txt','.xlsx'] }) => {
+
+const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv','.docx','.html','.jpg','.png','.jpeg','.md','.odp','.odt','.pptx','.rtf','.tiff','.txt','.xlsx','.bmp'] }) => {
+  const { setLoading } = useLoader();
+  
   useEffect(() => {
     // Load Dropbox SDK if not already loaded
     if (!document.getElementById("dropboxjs")) {
@@ -28,6 +32,7 @@ const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv
         if (url.includes("?dl=0")) {
           url = url.replace("?dl=0", "?raw=1");
         }
+        setLoading(true);
 
         try {
           const res = await fetch(url);
@@ -61,6 +66,7 @@ const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv
           const namedFile = new File([blob], file.name, { type: blob.type });
 
           onFilePicked(namedFile);
+          setLoading(false);
           setStatus("Convert");
           console.log("✅ File download completed");
         } catch (error) {

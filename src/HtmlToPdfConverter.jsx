@@ -11,19 +11,22 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert html to pdf.mp4";
 import IntroPoster from "../src/assets/images/html to pdf poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const HtmlToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
 
@@ -49,6 +52,19 @@ const HtmlToPdfConverter = () => {
         }
       );
 
+      const save = new Blob([response.data], {
+        type: "application/pdf",
+      });
+
+      const convertedFile = new File(
+        [save],
+        "html-to-pdf.pdf",
+        { type: "application/pdf" }
+      );
+
+      setConvertedFile(convertedFile);
+
+
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -56,14 +72,14 @@ const HtmlToPdfConverter = () => {
       a.download = file.name.replace(/\.html$/, "") + ".pdf";
       a.click();
       window.URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus(" ✅  Done");
     } catch (error) {
-      console.error("❌ Conversion failed", error);
+      console.error("   ❌ Conversion failed", error);
       alert("Conversion failed");
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
+    if (status === " ✅  Conversion complete!") {
       setTimeout(() => {
         setFile(null);
         setStatus("Convert");
@@ -77,7 +93,7 @@ const HtmlToPdfConverter = () => {
       <Helmet>
         <title>Convert HTML To PDF | Free and Secure JPG,JPEG,PNG To PDF Online Converter</title>
         <meta name="description" content="Convert HTML files or webpages to PDF quickly and securely. Free online HTML to PDF converter with no email or signup needed." />
-        <link rel="canonical" href="https://fileunivers.in/html-to-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/html-to-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="html to pdf, convert html to pdf, webpage to pdf, free html to pdf converter, online html to pdf" />
         <meta charset="utf-8" />
@@ -86,13 +102,16 @@ const HtmlToPdfConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert HTML To PDF Online – Free & High-Quality Webpage To PDF Converter</h1>
+        <h1>Convert HTML To PDF Online - Free & High-Quality Webpage To PDF Converter</h1>
 
         <p className="intro-paragraph">
-          Easily convert your HTML files or webpages to PDF online with our fast and accurate converter. Preserve your page’s full design, layout, text, images, and styles exactly as they appear on screen — perfect for saving web content, reports, or templates in a professional PDF format. No software or coding required — simply upload your HTML file , click Upload for conversion, and auto  download your PDF instantly. Ideal for developers, designers, and professionals who need high-quality HTML to PDF conversion with just one click.        </p>
+          Easily convert your HTML files or webpages to PDF online with our fast and accurate converter. Preserve your page’s full design, layout, text, images, and styles exactly as they appear on screen- perfect for saving web content, reports, or templates in a professional PDF format. No software or coding required- simply upload your HTML file , click Upload for conversion, and auto  download your PDF instantly. Ideal for developers, designers, and professionals who need high-quality HTML to PDF conversion with just one click.        </p>
       </div>
       <section>
         <div className='converter'>
+          <div className="converterheading">
+            <h2>Convert HTML To PDF </h2>
+          </div>
           <input type="file" accept=".html" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -101,20 +120,28 @@ const HtmlToPdfConverter = () => {
           </div>
           <DropzoneInput acceptedType={['html']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
-          {file && (
-            <p className="selected-file ">
-              ✅ Selected File: <b>{file.name}</b>
-            </p>
-          )}
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === " ✅  Done" && "Download Again"}
           </button>
+
+          {status === " ✅  Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} className="savetodropbox" />
+              </div>
+            </>
+          )}
         </div>
       </section>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert HTML to PDF – Clean, Fast & Free</h2>
-          <p>Our HTML to PDF converter ensures pixel-perfect rendering, maintaining fonts, links, and CSS formatting across all browsers. Whether you’re converting a web page, blog, invoice template, or code-based HTML file, this tool delivers a clean, print-ready PDF that’s easy to share and store. 100% online, secure, and compatible with all devices — from desktop to mobile. Start using the best HTML to PDF converter today and turn your web content into beautifully formatted PDFs in seconds.</p>
+          <h2 className="converter-title">Convert HTML to PDF - Clean, Fast & Free</h2>
+          <p>Our HTML to PDF converter ensures pixel-perfect rendering, maintaining fonts, links, and CSS formatting across all browsers. Whether you’re converting a web page, blog, invoice template, or code-based HTML file, this tool delivers a clean, print-ready PDF that’s easy to share and store. 100% online, secure, and compatible with all devices- from desktop to mobile. Start using the best HTML to PDF converter today and turn your web content into beautifully formatted PDFs in seconds.</p>
           <div className="converterImg">
             <img src="html.png" alt="html Img" className='ConverterImgone' />
             <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
@@ -126,26 +153,26 @@ const HtmlToPdfConverter = () => {
           <div className="converter-section">
             <h2>🔄 How to Convert HTML to PDF ? </h2>
             <ol>
-              <li>📤 Upload your HTML file – drag & drop or click to select.</li>
+              <li>📤 Upload your HTML file - drag & drop or click to select.</li>
               <li>⚙️ We’ll render and convert it into a high-quality PDF.</li>
               <li>📥 Auto Download the PDF file after conversion.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large files or pages with heavy styling may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large files or pages with heavy styling may take more time to process.</p>
           </div>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Convert HTML to PDF ? "
-              description='Learn how to convert HTML to PDF online in just a few seconds with this quick step-by-step video!. Whether you have a webpage, code-based HTML file, or online report, this tutorial shows you how to turn it into a professional, print-ready PDF — all without installing any software.'
+              description='Learn how to convert HTML to PDF online in just a few seconds with this quick step-by-step video!. Whether you have a webpage, code-based HTML file, or online report, this tutorial shows you how to turn it into a professional, print-ready PDF- all without installing any software.'
             />
           </section>
 
           <div className="converter-section">
-            <h2>🔒 Why Use Our HTML to PDF Converter?</h2>
+            <h2>🔒Why Use Our HTML to PDF Converter?</h2>
             <ul>
-              <li>✅ Converts HTML files with styles, images, and layout intact.</li>
+              <li> ✅  Converts HTML files with styles, images, and layout intact.</li>
               <li>🔐 Secure: We automatically delete your files after conversion.</li>
-              <li>⚡ Fast rendering and precise output – even for complex pages.</li>
-              <li>🌐 No extensions or installs required – works in all browsers.</li>
+              <li>⚡ Fast rendering and precise output - even for complex pages.</li>
+              <li>🌐 No extensions or installs required - works in all browsers.</li>
               <li>🆓 100% free and unlimited usage.</li>
             </ul>
           </div>
@@ -184,7 +211,7 @@ const HtmlToPdfConverter = () => {
               <strong>A:</strong> Yes, it's fully responsive and mobile-friendly.</p>
           </div>
           <div className="compresspdf-article-section">
-            <h2> Convert HTML to PDF – Turn Webpages into Printable Documents</h2>
+            <h2> Convert HTML to PDF - Turn Webpages into Printable Documents</h2>
             <p>
               Convert your HTML files or webpage content into high-quality PDF documents quickly and securely. Whether it's a web design mockup, blog post, or dynamic report, our HTML to PDF converter captures it all with precision.
             </p>
@@ -194,7 +221,7 @@ const HtmlToPdfConverter = () => {
               HTML (HyperText Markup Language) is used to build web pages. Converting HTML to PDF allows you to preserve the layout, styling, images, and content of a webpage or HTML file into a universal document format suitable for sharing and printing.
             </p>
 
-            <h3>📌 Why Convert HTML to PDF?</h3>
+            <h3>📌Why Convert HTML to PDF?</h3>
             <ul>
               <li><strong>Offline Access:</strong> Save webpages for later viewing without an internet connection.</li>
               <li><strong>Print-Ready:</strong> Create clean and formatted documents from any HTML or website content.</li>
@@ -202,7 +229,7 @@ const HtmlToPdfConverter = () => {
               <li><strong>Professional Reports:</strong> Convert dynamic data reports or invoices into PDFs with ease.</li>
             </ul>
 
-            <h3>👨‍💻 Who Uses HTML to PDF Tools?</h3>
+            <h3>         Who Uses HTML to PDF Tools?</h3>
             <ul>
               <li><strong>Web Developers:</strong> Export HTML prototypes or documentation into PDF.</li>
               <li><strong>Designers:</strong> Showcase web layouts or portfolios in a fixed-format PDF.</li>
@@ -221,9 +248,9 @@ const HtmlToPdfConverter = () => {
               <li>No file size limits or conversion restrictions</li>
             </ul>
 
-            <h3>🖥️ Device & Browser Compatibility</h3>
+            <h3>     Device & Browser Compatibility</h3>
             <p>
-              Our tool works across all platforms and browsers. Use it on Windows, macOS, Linux, iOS, or Android – no downloads or installations required.
+              Our tool works across all platforms and browsers. Use it on Windows, macOS, Linux, iOS, or Android - no downloads or installations required.
             </p>
 
             <h3>🔐 Secure and Private</h3>
@@ -245,8 +272,8 @@ const HtmlToPdfConverter = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Convert HTML files to PDF effortlessly – perfect for reports, invoices, or saving web content.</p>
-            <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
+            <p>Convert HTML files to PDF effortlessly - perfect for reports, invoices, or saving web content.</p>
+            <p className="converter-tagline"> ✅  Easy |  ✅  Secure |  ✅  No Sign-up Required</p>
           </div>
         </div>
       </section>

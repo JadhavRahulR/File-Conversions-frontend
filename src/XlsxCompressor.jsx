@@ -79,7 +79,7 @@ const XlsxCompressor = () => {
       <Helmet>
         <title>Compress Excel | Reduce XLSX File Size Online</title>
         <meta name="description" content="Compress your Excel spreadsheets (.xlsx) online to reduce file size while preserving data and formatting. Free and secure XLSX compressor tool." />
-        <link rel="canonical" href="https://fileunivers.in/xlsxcompressor" />
+        <link rel="canonical" href="https://fileunivers.com/xlsxcompressor" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress xlsx, excel compressor, reduce excel file size, compress spreadsheet, shrink xlsx, xlsx file compression online" />
         <meta charset="utf-8" />
@@ -88,22 +88,24 @@ const XlsxCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress XLSX File Online – Free Excel File Size Reducer</h1>
+        <h1>Compress XLSX File Online - Free Excel File Size Reducer</h1>
         <p className="intro-paragraph">
-          Compress XLSX files online to reduce large Excel file sizes while keeping your data, charts, and formatting fully intact. Whether you’re sharing reports, financial sheets, or project data, this fast and secure tool helps you shrink Excel files in seconds — no software installation required. Just upload your XLSX file, choose your preferred compression level, and download the optimized version instantly.
+          Compress XLSX files online to reduce large Excel file sizes while keeping your data, charts, and formatting fully intact. Whether you’re sharing reports, financial sheets, or project data, this fast and secure tool helps you shrink Excel files in seconds- no software installation required. Just upload your XLSX file, choose your preferred compression level, and download the optimized version instantly.
         </p>
       </div>
       <div
-        className="compressor-container drop-area"
+        className="compressor-container "
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-
+          <div className="compressing">
+          <h2>Compress XLSX</h2>
+        </div>
         <p
           className="file-label clickable-label"
           onClick={() => fileInputRef.current.click()}
         >
-          {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .xlsx file here, or click to select'}
+          {file ? `✅ Selected: ${file.name}` : '   📂 Drag & drop a .xlsx file here, or click to select'}
         </p>
         <input
           type="file"
@@ -128,8 +130,8 @@ const XlsxCompressor = () => {
             onChange={(e) => setQuality(parseInt(e.target.value))}
           />
           <div className="slider-labels">
-            <span>📉 Smaller</span>
-            <span>📊 Clearer</span>
+            <span>   📉 Smaller</span>
+            <span>📚 Clearer</span>
           </div>
         </div>
 
@@ -157,17 +159,17 @@ const XlsxCompressor = () => {
         </div>
 
         <button onClick={handleCompress} disabled={!file || status === 'uploading'}>
-          {status === 'uploading' ? `Compressing... (${progress}%)` : '🔽 Compress'}
+          {status === 'uploading' ? `Compressing... (${progress}%)` : '    Compress'}
         </button>
 
         {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
-        {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
+        {status === 'error' && <p className="error-msg">   ❌ Compression failed</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress XLSX File Online</h2>
           <p className="compressor-description">
-            Reduce the size of your Excel spreadsheet (.xlsx) files by optimizing embedded content like images and charts, without changing your data or formulas.XLSX compressor intelligently minimizes file size by optimizing embedded images, removing unnecessary metadata, and streamlining internal data structure. Perfect for professionals and students who deal with heavy Excel spreadsheets, this online tool makes sharing and uploading smoother than ever. Experience lightning-fast, 100% secure, and free Excel file compression with FileUnivers.in today.
+            Reduce the size of your Excel spreadsheet (.xlsx) files by optimizing embedded content like images and charts, without changing your data or formulas.XLSX compressor intelligently minimizes file size by optimizing embedded images, removing unnecessary metadata, and streamlining internal data structure. Perfect for professionals and students who deal with heavy Excel spreadsheets, this online tool makes sharing and uploading smoother than ever. Experience lightning-fast, 100% secure, and free Excel file compression with fileunivers.com today.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -182,10 +184,10 @@ const XlsxCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress an XLSX File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.xlsx</code> file</li>
-            <li>🎚️ Select a compression level (for image-heavy spreadsheets)</li>
+            <li>   📂 Upload or drag & drop your <code>.xlsx</code> file</li>
+            <li>   🎚️ Select a compression level (for image-heavy spreadsheets)</li>
             <li>🚀 Click <strong>Compress</strong> to begin</li>
-            <li>⬇️ Your compressed <code>.xlsx</code> will auto-download once ready</li>
+            <li>   ⬇️ Your compressed <code>.xlsx</code> will auto-download once ready</li>
           </ol>
             <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -195,8 +197,8 @@ const XlsxCompressor = () => {
             </section>
           <h2 className="compressor-subheading">Why Use Our XLSX Compressor?</h2>
           <ul className="compressor-benefits">
-            <li>📊 Preserves all data, formulas, and formatting</li>
-            <li>📉 Shrinks file size for easier sharing and storage</li>
+            <li>📚 Preserves all data, formulas, and formatting</li>
+            <li>   📉 Shrinks file size for easier sharing and storage</li>
             <li>🔐 Secure and private compression process</li>
             <li>⚡ Fast performance with instant auto-download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Xlsx file  </h2>
@@ -224,13 +226,13 @@ const XlsxCompressor = () => {
           <div className="compressor-article">
             <h2>Everything You Need to Know About XLSX Compression</h2>
 
-            <h3>📊 What is an XLSX File?</h3>
+            <h3>📚 What is an XLSX File?</h3>
             <p>
               XLSX is the default file format used by Microsoft Excel. It stores spreadsheet data including text, numbers, formulas,
               charts, images, and formatting. While efficient, XLSX files can become quite large due to embedded images or large datasets.
             </p>
 
-            <h3>📦 Why Compress an XLSX File?</h3>
+            <h3>   📦 Why Compress an XLSX File?</h3>
             <p>
               XLSX files may grow in size if they contain high-resolution charts, pivot tables, embedded pictures, macros, or
               unnecessary formatting. Compressing them helps in reducing load time and makes sharing easier.
@@ -238,16 +240,16 @@ const XlsxCompressor = () => {
 
             <h3>💡 Benefits of Compressing XLSX Files</h3>
             <ul>
-              <li><strong>📉 Reduce File Size</strong> – Shrink large Excel sheets while keeping data intact</li>
-              <li><strong>📤 Easy to Share</strong> – Faster email uploads and sharing on cloud drives</li>
-              <li><strong>💾 Save Storage</strong> – Less disk usage for large spreadsheets</li>
-              <li><strong>📱 Better Performance</strong> – Faster access on mobile and older devices</li>
+              <li><strong>   📉 Reduce File Size</strong> - Shrink large Excel sheets while keeping data intact</li>
+              <li><strong>📤 Easy to Share</strong> - Faster email uploads and sharing on cloud drives</li>
+              <li><strong>   💾   Save Storage</strong> - Less disk usage for large spreadsheets</li>
+              <li><strong>📱 Better Performance</strong> - Faster access on mobile and older devices</li>
             </ul>
 
             <h3>⚙️ How Our XLSX Compressor Works</h3>
             <p>
               Our tool compresses XLSX files by optimizing images, removing hidden data, and cleaning up excess formatting.
-              It retains your original content, structure, and calculations—just in a lighter package.
+              It retains your original content, structure, and calculations   —just in a lighter package.
             </p>
 
             <h3>🔐 Is It Safe to Use This XLSX Compressor?</h3>
@@ -256,15 +258,15 @@ const XlsxCompressor = () => {
               analyze your content. Files are deleted after processing.
             </p>
             <ul>
-              <li>🔒 Encrypted transfer</li>
-              <li>🚫 No file retention</li>
+              <li>🔒Encrypted transfer</li>
+              <li>   🚫 No file retention</li>
               <li>✅ Works on all devices</li>
             </ul>
 
-            <h3>📌 Final Tip</h3>
+            <h3>📌Final Tip</h3>
             <p>
               Whether you're managing financial reports, academic data, or simple tables, compressing large XLSX files
-              ensures better usability and faster sharing. Try it now—it's quick, safe, and free.
+              ensures better usability and faster sharing. Try it now   —it's quick, safe, and free.
             </p>
 
             <h2>📚 Frequently Asked Questions</h2>

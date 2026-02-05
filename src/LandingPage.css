@@ -9,6 +9,7 @@ body, h1, h2, h3, p, button {
   background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
   color: #333;
   min-height: 100vh;
+  
 }
 
 /* Hero Section */
@@ -21,6 +22,7 @@ body, h1, h2, h3, p, button {
 .hero h1 {
   font-size: 36px;
   margin-bottom: 20px;
+  color: #2e86de;
 }
 
 .hero p {
@@ -58,7 +60,7 @@ body, h1, h2, h3, p, button {
 .features h2 {
   font-size: 32px;
   margin-bottom: 40px;
-  color: black;
+  color: #2e86de;
 }
 
 .feature-grid {
@@ -100,7 +102,7 @@ body, h1, h2, h3, p, button {
 .cta h2 {
   font-size: 28px;
   margin-bottom: 10px;
-  color: black;
+  color: #2e86de;
 }
 
 .cta p {

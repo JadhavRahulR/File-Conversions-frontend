@@ -145,8 +145,8 @@ const FaviconGenerator = () => {
         <>
             <Helmet>
                 <title> Favicon Generator |Free (ICO, PNG, ,JPG , JPEG ,SVG) ico maker</title>
-                <meta name="description" content="Free Favicon Generator – Create favicons of all sizes (16x16, 32x32, 48x48 & more) instantly online. Fast, secure, and privacy-safe favicon.ico maker — no uploads required." />
-                <link rel="canonical" href="https://fileunivers.in/favicon-generator" />
+                <meta name="description" content="Free Favicon Generator - Create favicons of all sizes (16x16, 32x32, 48x48 & more) instantly online. Fast, secure, and privacy-safe favicon.ico maker- no uploads required." />
+                <link rel="canonical" href="https://fileunivers.com/favicon-generator" />
                 <meta name="robots" content="index, follow" />
             </Helmet>
 
@@ -154,12 +154,15 @@ const FaviconGenerator = () => {
             <div className="pagetitle">
                 <h1> Favicon Generator -Free, Fast & Online Icon Maker (ICO, PNG,JPG , JPEG ,SVG)</h1>
                 <p className="intro-paragraph">
-                    Easily generate favicons online and create beautiful website icons in formats like ICO, PNG, or SVG within seconds. Whether you’re designing a new website or refreshing your brand identity, this free favicon generator helps you create professional icons directly from images, logos, or text — no design software needed. Just upload your image, choose the size, and download your ready-to-use favicon instantly.
+                    Easily generate favicons online and create beautiful website icons in formats like ICO, PNG, or SVG within seconds. Whether you’re designing a new website or refreshing your brand identity, this free favicon generator helps you create professional icons directly from images, logos, or text- no design software needed. Just upload your image, choose the size, and download your ready-to-use favicon instantly.
                 </p>
             </div>
-            <div className="compressor-container drop-area"
+            <div className="compressor-container"
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}>
+                <div className="compressing">
+                    <h2>Generate Favicon</h2>
+                </div>
 
                 <p
                     className="file-label clickable-label"
@@ -167,7 +170,7 @@ const FaviconGenerator = () => {
                 >
                     {file
                         ? `✅ Selected: ${file.name}`
-                        : "📂 Click or drag & drop an image (PNG, JPG,JPEG,SVG)"}
+                        : "   📂 Click or drag & drop an image (PNG, JPG,JPEG,SVG)"}
                 </p>
                 <input
                     type="file"
@@ -192,14 +195,20 @@ const FaviconGenerator = () => {
                     </div>
                 )}
                 <div className="fileuploadcontainer">
-                    <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['jpg', 'jpeg', 'png']} />
-                    <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['jpg', 'jpeg', 'png']} />
+                    <DriveFileInput onFilePicked={handleFileSelect} setStatus={setStatus} allowedTypes={['.jpg', '.jpeg', '.png']} useBackend={true} />
+                    <DropboxFileInput
+                        onFilePicked={(file) => {
+                            handleFileSelect(file);
+                        }}
+                        setStatus={setStatus}
+                        extensions={['.jpg', '.jpeg', '.png']}
+                    />
                 </div>
 
                 <button
                     onClick={handleGenerate}
                     disabled={!file || status === "generating"}
-                    style={{ marginTop: '10px' }}
+                    style={{ marginTop: '50px' }}
                 >
                     {status === "generating" ? "⚙️ Generating..." : "Generate Favicons"}
                 </button>
@@ -232,12 +241,12 @@ const FaviconGenerator = () => {
             </div>
             <div>
                 <section className="compressor-page">
-                    <h2>Free Online Favicon Generator – Create Fast, Secure, and High-Quality Favicons</h2>
+                    <h2>Free Online Favicon Generator - Create Fast, Secure, and High-Quality Favicons</h2>
                     <p>
-                        Welcome to the <strong>Free Favicon Generator</strong> by FileUnivers — your simple, fast, and secure way
+                        Welcome to the <strong>Free Favicon Generator</strong> by FileUnivers- your simple, fast, and secure way
                         to create professional favicon icons for your website or app. With just one image upload, you can generate
-                        all required favicon sizes including 16×16, 32×32, 48×48, and even high-resolution icons for modern browsers,
-                        Android, and iOS devices. No sign-up, no watermark, and everything runs directly in your browser.With FileUnivers.in, you get a fast, simple, and high-quality solution to generate favicons that make your website stand out.
+                        all required favicon sizes including 16   ×16, 32   ×32, 48   ×48, and even high-resolution icons for modern browsers,
+                        Android, and iOS devices. No sign-up, no watermark, and everything runs directly in your browser.With fileunivers.com, you get a fast, simple, and high-quality solution to generate favicons that make your website stand out.
                     </p>
                     <div className="converterImg">
                         <div >
@@ -256,12 +265,12 @@ const FaviconGenerator = () => {
                     <p>
                         FileUnivers’s <strong>favicon generator online</strong> allows you to instantly generate multiple icon resolutions
                         without needing any software. Whether you upload a <strong>PNG, JPG, or SVG</strong> file, the tool automatically
-                        converts it into compatible favicon formats — ready for download and use.
+                        converts it into compatible favicon formats- ready for download and use.
                     </p>
                     <section>
                         <LazyVideo src={IntroVideo} poster={IntroPoster}
                             title="How to Generate Favicon ? "
-                            description='Create your website icon in seconds!. This video shows how to generate favicons online (ICO, PNG, SVG) from your logo or image — no design skills required. In this video, you’ll learn: How to upload an image or logo ,Generate favicon in multiple formats (ICO, PNG, SVG) Download and add it to your website easily.'
+                            description='Create your website icon in seconds!. This video shows how to generate favicons online (ICO, PNG, SVG) from your logo or image- no design skills required. In this video, you’ll learn: How to upload an image or logo ,Generate favicon in multiple formats (ICO, PNG, SVG) Download and add it to your website easily.'
                         />
                     </section>
 
@@ -274,41 +283,41 @@ const FaviconGenerator = () => {
                     </ol>
                     <div className="otherlinks">
 
-                     <h2>Try Other Free Tools on FileUnivers</h2>
-                    <ul>
-                        <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-                        <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-                        <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-                        <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-                        <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-                        <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-                        <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-                        <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-                        <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-                        <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-                        <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-                        <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-                        <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-                        <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-                        <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-                        <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-                    </ul>
+                        <h2>Try Other Free Tools on FileUnivers</h2>
+                        <ul>
+                            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+                            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+                            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+                            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+                            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+                        </ul>
 
                     </div>
                     <h2>Why Use FileUnivers Favicon Generator?</h2>
                     <ul>
-                        <li>⚡ <strong>Fast and Instant:</strong> Generates favicons within seconds — no waiting or uploads to external servers.</li>
-                        <li>🧩 <strong>All Formats Supported:</strong> Works with PNG, JPG, and SVG files effortlessly.</li>
-                        <li>🔒 <strong>Privacy-Safe & Secure:</strong> All processing happens in your browser; your images are never uploaded.</li>
-                        <li>💾 <strong>Download as ZIP:</strong> Get all favicon sizes bundled and ready for use.</li>
+                        <li>⚡ <strong>Fast and Instant:</strong> Generates favicons within seconds- no waiting or uploads to external servers.</li>
+                        <li>🧠© <strong>All Formats Supported:</strong> Works with PNG, JPG, and SVG files effortlessly.</li>
+                        <li>🔒<strong>Privacy-Safe & Secure:</strong> All processing happens in your browser; your images are never uploaded.</li>
+                        <li>   💾   <strong>Download as ZIP:</strong> Get all favicon sizes bundled and ready for use.</li>
                         <li>📱 <strong>Cross-Platform Compatible:</strong> Favicons work perfectly for browsers, Android, and iOS shortcuts.</li>
                         <li>🌐 <strong>SEO Friendly:</strong> Helps improve brand visibility in search engine results and browser tabs.</li>
-                        <li>🎨 <strong>High-Quality Output:</strong> Maintains color accuracy and sharpness across all icon sizes.</li>
+                        <li>    <strong>High-Quality Output:</strong> Maintains color accuracy and sharpness across all icon sizes.</li>
                     </ul>
 
                     <h2>Benefits of Having a Favicon</h2>
                     <p>
-                        Having a favicon is more than just a design choice — it’s a crucial part of branding and user experience.
+                        Having a favicon is more than just a design choice- it’s a crucial part of branding and user experience.
                         When users open multiple tabs, your favicon helps them identify your site instantly. It also adds credibility,
                         improves SEO click-through rates, and enhances your professional image. Without a favicon, your site may look incomplete
                         or less trustworthy in search results and browser tabs.
@@ -316,12 +325,12 @@ const FaviconGenerator = () => {
 
                     <h2>Best Practices for Creating Favicons</h2>
                     <ul>
-                        <li>✔️ Use a simple design or lettermark that remains clear even at 16×16 pixels.</li>
-                        <li>✔️ Avoid small text or complex patterns that may blur at smaller resolutions.</li>
-                        <li>✔️ Choose high-contrast colors to make your icon stand out on both light and dark themes.</li>
-                        <li>✔️ Keep the background transparent or solid for clarity across all platforms.</li>
-                        <li>✔️ Test your favicon in multiple browsers before final use.</li>
-                        
+                        <li>    Use a simple design or lettermark that remains clear even at 16   ×16 pixels.</li>
+                        <li>    Avoid small text or complex patterns that may blur at smaller resolutions.</li>
+                        <li>    Choose high-contrast colors to make your icon stand out on both light and dark themes.</li>
+                        <li>    Keep the background transparent or solid for clarity across all platforms.</li>
+                        <li>    Test your favicon in multiple browsers before final use.</li>
+
                     </ul>
 
                     <h2>Frequently Asked Questions (FAQ)</h2>
@@ -345,7 +354,7 @@ const FaviconGenerator = () => {
 
                     <h5>4. What file formats are included in the ZIP?</h5>
                     <p>
-                        The ZIP file includes standard favicon.ico along with PNG icons (16×16, 32×32, 48×48, 64×64, 128×128, etc.),
+                        The ZIP file includes standard favicon.ico along with PNG icons (16   ×16, 32   ×32, 48   ×48, 64   ×64, 128   ×128, etc.),
                         making it ready for immediate website integration.
                     </p>
 
@@ -361,12 +370,12 @@ const FaviconGenerator = () => {
                         This ensures that browsers automatically detect and display your favicon whenever your site loads.
                     </p>
 
-                   
+
 
                     <p>
                         The FileUnivers favicon generator is built for web designers, developers, and businesses who want a
-                        <strong>fast, secure, and reliable favicon creation tool</strong>. Whether you’re launching a new website or updating
-                        your brand identity, this free online favicon maker gives you everything you need — instantly.
+                        <strong> fast, secure, and reliable favicon creation tool</strong>. Whether you’re launching a new website or updating
+                        your brand identity, this free online favicon maker gives you everything you need- instantly.
                     </p>
                 </section>
             </div>

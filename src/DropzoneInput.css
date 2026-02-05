@@ -1,4 +1,4 @@
-.dropzone-container {
+/* .dropzone-container {
   border: 2px dashed #ccc;
   padding: 20px;
   text-align: center;
@@ -22,4 +22,40 @@
   background-color: #00acc1;
   border-color:red;
   color: black;
+} */
+
+.page-drop-overlay{
+  position:fixed;
+  left:0;
+  width:100%;
+  height:calc(100vh - 70px);
+  background:rgba(0,0,0,0.85);
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border:3px dashed #00ff9c;
+  color:white;
 }
+
+.dropzone-big{
+  border-radius:12px;
+  padding:10px;
+  margin-bottom: 40px;
+  text-align:center;
+}
+
+.file-inside{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.file-inside span {
+  color: white;
+  opacity: 0.6;
+  display: flex;
+  
+}
+
+

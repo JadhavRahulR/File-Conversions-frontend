@@ -66,7 +66,7 @@ const TiffCompressor = () => {
       downloadLink.click();
       setStatus("done");
     } catch (err) {
-      console.error("❌ Compression failed", err);
+      console.error("   ❌ Compression failed", err);
       setStatus("error");
     }
   };
@@ -76,7 +76,7 @@ const TiffCompressor = () => {
       <Helmet>
         <title>Compress TIFF | Reduce TIFF Image File Size Online</title>
         <meta name="description" content="Compress TIFF image files online to reduce file size without significant quality loss. Free, secure TIFF compression tool with no signup needed." />
-        <link rel="canonical" href="https://fileunivers.in/tiffcompressor" />
+        <link rel="canonical" href="https://fileunivers.com/tiffcompressor" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress tiff, tiff compressor, reduce tiff size, tiff image compression, shrink tiff file, compress tiff online" />
         <meta charset="utf-8" />
@@ -85,22 +85,24 @@ const TiffCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress TIFF Images Online –Free and Secure Reduce TIFF File Size </h1>
+        <h1>Compress TIFF Images Online -Free and Secure Reduce TIFF File Size </h1>
         <p className="intro-paragraph">
-          Easily compress TIFF files online and reduce their size while keeping your images crystal clear. Whether you’re working with single or multi-page TIFFs, this free online tool helps you shrink large image files for faster uploads, sharing, and storage. No software installation or account required — simply upload, compress, and download your optimized TIFF in seconds.
+          Easily compress TIFF files online and reduce their size while keeping your images crystal clear. Whether you’re working with single or multi-page TIFFs, this free online tool helps you shrink large image files for faster uploads, sharing, and storage. No software installation or account required- simply upload, compress, and download your optimized TIFF in seconds.
         </p>
       </div>
       <div
-        className="compressor-container drop-area"
+        className="compressor-container "
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
-          {/* Remove h1 title from here  */}
+        <div className="compressing">
+          <h2>Compress TIFF</h2>
+        </div>
         <p
           className="file-label"
           onClick={() => fileInputRef.current.click()}
         >
-          {file ? `✅ Selected: ${file.name}` : "📂 Drag & drop a .tiff file here, or click to select"}
+          {file ? `✅ Selected: ${file.name}` : "   📂 Drag & drop a .tiff file here, or click to select"}
         </p>
         <input
           type="file"
@@ -124,8 +126,8 @@ const TiffCompressor = () => {
             onChange={(e) => setQuality(parseInt(e.target.value))}
           />
           <div className="slider-labels">
-            <span>📉 Smaller</span>
-            <span>📸 Clearer</span>
+            <span>   📉 Smaller</span>
+            <span>     Clearer</span>
           </div>
         </div>
 
@@ -153,17 +155,17 @@ const TiffCompressor = () => {
         </div>
 
         <button onClick={handleCompress} disabled={!file || status === "uploading"}>
-          {status === "uploading" ? `Compressing... (${progress}%)` : "🔽 Compress"}
+          {status === "uploading" ? `Compressing... (${progress}%)` : "    Compress"}
         </button>
 
         {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
-        {status === "error" && <p className="error-msg">❌ Compression failed</p>}
+        {status === "error" && <p className="error-msg">   ❌ Compression failed</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress TIFF File Online</h2>
           <p className="compressor-description">
-            Reduce the size of your high-resolution TIFF (.tiff) images without noticeably affecting visual quality. Ideal for archiving or faster uploading.Our advanced TIFF compressor uses smart optimization to reduce image size while maintaining the original resolution and clarity. You can also control image quality and output level for the best balance between compression and detail. Ideal for photographers, designers, and professionals who need lighter, high-quality image files. Experience fast, secure, and reliable compression powered by FileUnivers.in.
+            Reduce the size of your high-resolution TIFF (.tiff) images without noticeably affecting visual quality. Ideal for archiving or faster uploading.Our advanced TIFF compressor uses smart optimization to reduce image size while maintaining the original resolution and clarity. You can also control image quality and output level for the best balance between compression and detail. Ideal for photographers, designers, and professionals who need lighter, high-quality image files. Experience fast, secure, and reliable compression powered by fileunivers.com.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -178,10 +180,10 @@ const TiffCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress a TIFF File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.tiff</code> file</li>
-            <li>🎚️ Choose your preferred compression level</li>
+            <li>   📂 Upload or drag & drop your <code>.tiff</code> file</li>
+            <li>   🎚️ Choose your preferred compression level</li>
             <li>🚀 Click <strong>Compress</strong> to begin the optimization</li>
-            <li>⬇️ Your compressed <code>.tiff</code> will auto-download once ready</li>
+            <li>   ⬇️ Your compressed <code>.tiff</code> will auto-download once ready</li>
           </ol>
           <section>
           <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -192,9 +194,9 @@ const TiffCompressor = () => {
 
           <h2 className="compressor-subheading">Why Use Our TIFF Compressor?</h2>
           <ul className="compressor-benefits">
-            <li>🖼️ Retains image clarity and resolution</li>
-            <li>📉 Shrinks file size for quicker transfer and storage</li>
-            <li>🔐 Safe and secure — files are not stored</li>
+            <li>     Retains image clarity and resolution</li>
+            <li>   📉 Shrinks file size for quicker transfer and storage</li>
+            <li>🔐 Safe and secure- files are not stored</li>
             <li>⚡ Fast image compression with auto-download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Tiff file  </h2>
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
@@ -221,25 +223,25 @@ const TiffCompressor = () => {
           <div className="compressor-article">
             <h2>All About TIFF Compression</h2>
 
-            <h3>🖼️ What is a TIFF File?</h3>
+            <h3>     What is a TIFF File?</h3>
             <p>
               TIFF (Tagged Image File Format) is a high-quality raster image format used by designers, publishers, and photographers. It preserves image details and supports lossless compression.
             </p>
 
-            <h3>📦 Why Should You Compress TIFF Files?</h3>
+            <h3>   📦 Why Should You Compress TIFF Files?</h3>
             <p>
               TIFF files can be very large due to their high resolution. Compressing them makes storage and sharing easier without significantly reducing image quality.
             </p>
 
             <h3>🚀 Benefits of TIFF Compression</h3>
             <ul>
-              <li><strong>⚡ Faster Uploads</strong> – Share large images online quickly</li>
-              <li><strong>💾 Save Space</strong> – Reduce file size on disk or cloud storage</li>
-              <li><strong>📤 Easier Sharing</strong> – Attach smaller files via email or apps</li>
-              <li><strong>🔧 Adjustable Quality</strong> – Choose the right balance of quality and size</li>
+              <li><strong>⚡ Faster Uploads</strong> - Share large images online quickly</li>
+              <li><strong>   💾   Save Space</strong> - Reduce file size on disk or cloud storage</li>
+              <li><strong>📤 Easier Sharing</strong> - Attach smaller files via email or apps</li>
+              <li><strong>    Adjustable Quality</strong> - Choose the right balance of quality and size</li>
             </ul>
 
-            <h3>🔧 How Our TIFF Compressor Works</h3>
+            <h3>    How Our TIFF Compressor Works</h3>
             <p>
               Our tool uses efficient compression techniques to reduce the TIFF file size. You can also control the image quality and choose export options like `.tiff` or `.tiff.7z` for extra compression.
             </p>
@@ -249,8 +251,8 @@ const TiffCompressor = () => {
               Yes, your files are handled safely. We do not store or access any user content beyond compression.
             </p>
             <ul>
-              <li>🔒 Safe and encrypted processing</li>
-              <li>🗑️ Auto-deletion after download</li>
+              <li>🔒Safe and encrypted processing</li>
+              <li>   🗑️ Auto-deletion after download</li>
               <li>🌍 Works on all devices and platforms</li>
             </ul>
 

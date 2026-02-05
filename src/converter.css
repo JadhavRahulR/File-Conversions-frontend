@@ -26,6 +26,12 @@
 }
 .converter h2 {
   color:#2e86de;
+  font-size: 1.5rem;
+}
+.converter .converterheading h2{
+  color:white;
+  font-size: 1.8rem;
+  margin-bottom: 50px;
 }
 .converter h3{
    color: white;
@@ -33,7 +39,7 @@
 
 }
 .converter{
-    border: 2px solid gray;
+    border: 2px dashed white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +47,7 @@
     background-color: black;
     border-radius: 10px;
     margin: 10px auto;
-    min-height: 500px;
+    min-height: 700px;
     max-width: 800px;
 }
 .converter input {
@@ -74,19 +80,22 @@
     height: 50px;
     /* margin: 70px; */
     padding: 2px ;
-    background-color:rgb(9, 9, 210);
+    background-color:rgb(94, 94, 94);
     color: white;
     border-radius: 6px;
     position: relative;
     border: none;
     text-transform: uppercase;
-    letter-spacing: 2px;
     margin-bottom: 20px;
-}
-.converter button:hover{
-    box-shadow: 2px 2px 3px  white;
-    background-color: rgb(167, 255, 239);
-    color: #000;
+    /* box-shadow: 2px 2px 2px rgb(13, 0, 255); */
+    letter-spacing: 2px;
+
+  }
+  .converter button:hover{
+  letter-spacing: 4px;
+    box-shadow: 2px 2px 40px  rgb(255, 255, 255);
+    background-color: rgb(121, 119, 119);
+    color: #ffff;
 
 }
 .converter button:before{
@@ -101,6 +110,18 @@
     border-right: 2px solid white;
     animation: border-top 3s infinite ;
 }
+
+.saveTo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-border-animation::before,
+.no-border-animation::after {
+  animation: none !important;
+  display: none !important;
+}
+
 @keyframes border-top{
     0%{
         width: 0;
@@ -347,3 +368,9 @@
   text-align: center;
   color: #27ae60;
 }
+
+
+
+
+
+

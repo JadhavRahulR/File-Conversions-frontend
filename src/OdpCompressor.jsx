@@ -62,7 +62,7 @@ const OdpCompressor = () => {
       downloadLink.click();
       setStatus("done");
     } catch (err) {
-      console.error("❌ Compression failed", err);
+      console.error("   ❌ Compression failed", err);
       setStatus("error");
     }
   };
@@ -72,7 +72,7 @@ const OdpCompressor = () => {
       <Helmet>
         <title>Compress ODP | Reduce OpenDocument Presentation File Size</title>
         <meta name="description" content="Compress your ODP (OpenDocument Presentation) files online to minimize size while keeping layout intact. Free, fast, and secure ODP compressor." />
-        <link rel="canonical" href="https://fileunivers.in/odpcompressor" />
+        <link rel="canonical" href="https://fileunivers.com/odpcompressor" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress odp, odp compressor, reduce odp file size, compress presentation, shrink opendocument presentation, odp file compression online" />
         <meta charset="utf-8" />
@@ -81,21 +81,24 @@ const OdpCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress ODP File Online – Reduce Presentation Size Without Losing Quality</h1>
+        <h1>Compress ODP File Online - Reduce Presentation Size Without Losing Quality</h1>
         <p className="intro-paragraph">
-          Compress ODP files online and make your OpenDocument presentations smaller, faster to share, and easier to upload. Whether you created it in LibreOffice Impress or OpenOffice, this free online tool reduces your ODP file size while keeping slides, text, and images perfectly intact. No software download needed — just upload, compress, and download your optimized presentation instantly.
+          Compress ODP files online and make your OpenDocument presentations smaller, faster to share, and easier to upload. Whether you created it in LibreOffice Impress or OpenOffice, this free online tool reduces your ODP file size while keeping slides, text, and images perfectly intact. No software download needed- just upload, compress, and download your optimized presentation instantly.
         </p>
       </div>
       <div
-        className="compressor-container drop-area"
+        className="compressor-container "
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
+        <div className="compressing">
+          <h2>Compress ODP</h2>
+        </div>
         <p
           className="file-label"
           onClick={() => fileInputRef.current.click()}
         >
-          {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .odp file here, or click to select'}
+          {file ? `✅ Selected: ${file.name}` : '   📂 Drag & drop a .odp file here, or click to select'}
         </p>
         <input
           type="file"
@@ -119,8 +122,8 @@ const OdpCompressor = () => {
             onChange={(e) => setQuality(parseInt(e.target.value))}
           />
           <div className="slider-labels">
-            <span>📉 Smaller</span>
-            <span>📸 Clearer</span>
+            <span>   📉 Smaller</span>
+            <span>     Clearer</span>
           </div>
         </div>
 
@@ -148,17 +151,17 @@ const OdpCompressor = () => {
         </div>
 
         <button onClick={handleCompress} disabled={!file || status === "uploading"}>
-          {status === "uploading" ? `Compressing... (${progress}%)` : "🔽 Compress"}
+          {status === "uploading" ? `Compressing... (${progress}%)` : "    Compress"}
         </button>
 
         {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
-        {status === "error" && <p className="error-msg">❌ Compression failed</p>}
+        {status === "error" && <p className="error-msg">   ❌ Compression failed</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress ODP File Online</h2>
           <p className="compressor-description">
-            Reduce the size of your OpenDocument Presentation (.odp) files by optimizing embedded images and media without affecting slide layout or content.Our smart ODP compressor automatically optimizes embedded images, removes unnecessary data, and reduces file size without affecting slide quality or transitions. Ideal for students, teachers, and professionals who share presentations frequently. Save space, upload faster, and keep your presentations crisp and professional — all with the reliable tools at FileUnivers.in.
+            Reduce the size of your OpenDocument Presentation (.odp) files by optimizing embedded images and media without affecting slide layout or content.Our smart ODP compressor automatically optimizes embedded images, removes unnecessary data, and reduces file size without affecting slide quality or transitions. Ideal for students, teachers, and professionals who share presentations frequently. Save space, upload faster, and keep your presentations crisp and professional- all with the reliable tools at fileunivers.com.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -173,10 +176,10 @@ const OdpCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress an ODP File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.odp</code> file</li>
-            <li>🎚️ Select your desired image compression quality</li>
+            <li>   📂 Upload or drag & drop your <code>.odp</code> file</li>
+            <li>   🎚️ Select your desired image compression quality</li>
             <li>🚀 Click <strong>Compress</strong> to begin the process</li>
-            <li>⬇️ Your compressed <code>.odp</code> will auto-download once it's ready</li>
+            <li>   ⬇️ Your compressed <code>.odp</code> will auto-download once it's ready</li>
           </ol>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -187,9 +190,9 @@ const OdpCompressor = () => {
 
           <h2 className="compressor-subheading">Why Use Our ODP Compressor?</h2>
           <ul className="compressor-benefits">
-            <li>📽️ Keeps your slides, animations, and content intact</li>
-            <li>📉 Reduces size for faster sharing and uploading</li>
-            <li>🔐 Private and secure — no files stored</li>
+            <li>     Keeps your slides, animations, and content intact</li>
+            <li>   📉 Reduces size for faster sharing and uploading</li>
+            <li>🔐 Private and secure- no files stored</li>
             <li>⚡ Quick compression with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odp file  </h2>
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
@@ -216,22 +219,22 @@ const OdpCompressor = () => {
           <div className="compressor-article">
             <h2>Everything You Need to Know About ODP Compression</h2>
 
-            <h3>📽️ What is an ODP File?</h3>
+            <h3>     What is an ODP File?</h3>
             <p>
               ODP stands for Open Document Presentation, the default format used by LibreOffice Impress and other open-source presentation tools. It supports slides with text, images, charts, and multimedia.
             </p>
 
-            <h3>📦 Why Compress an ODP File?</h3>
+            <h3>   📦 Why Compress an ODP File?</h3>
             <p>
               ODP files often contain large images, videos, and graphics that increase the file size. Compressing these files helps with easier sharing, uploading, and storage.
             </p>
 
             <h3>💡 Benefits of Compressing ODP Files</h3>
             <ul>
-              <li><strong>📉 Smaller Size</strong> – Optimize embedded content without losing slide quality</li>
-              <li><strong>🚀 Quicker Sharing</strong> – Share your presentation faster via email or cloud</li>
-              <li><strong>📁 Save Disk Space</strong> – Reduce clutter from large presentation decks</li>
-              <li><strong>📱 Smooth Loading</strong> – Present on mobile or web with better performance</li>
+              <li><strong>   📉 Smaller Size</strong> - Optimize embedded content without losing slide quality</li>
+              <li><strong>🚀 Quicker Sharing</strong> - Share your presentation faster via email or cloud</li>
+              <li><strong>📁 Save Disk Space</strong> - Reduce clutter from large presentation decks</li>
+              <li><strong>📱 Smooth Loading</strong> - Present on mobile or web with better performance</li>
             </ul>
 
             <h3>⚙️ How Our ODP Compressor Works</h3>
@@ -244,12 +247,12 @@ const OdpCompressor = () => {
               Absolutely. Your file is processed in a secure environment. We never store your files or access your content beyond compression.
             </p>
             <ul>
-              <li>🔒 Secure & private processing</li>
-              <li>🗑️ Temporary file deletion</li>
+              <li>🔒Secure & private processing</li>
+              <li>   🗑️ Temporary file deletion</li>
               <li>🌐 Cross-platform compatibility</li>
             </ul>
 
-            <h3>📌 Final Tip</h3>
+            <h3>📌Final Tip</h3>
             <p>
               Compress your ODP files before submitting slides, uploading to learning portals, or sharing with colleagues to ensure a smooth and professional experience.
             </p>

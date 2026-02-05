@@ -4,39 +4,37 @@ import { Link } from 'react-router-dom'
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
-import IntroVideo from "../src/assets/videos/Fileunivers-Introduction-Video.mp4"
-import IntroPoster from "../src/assets/images/Fileunivers-intro-poster.png"
+import IntroVideo from "../src/assets/videos/fileunivers-Introduction-Video.mp4"
+import IntroPoster from "../src/assets/images/fileunivers-intro-poster.png"
 
 export default function LandingPage() {
   return (
     <>
     <Helmet>
-        <title>F I L E - U N I V E R S – Free Online PDF Converter & File Compressor Tool</title>
-        <meta name="description" content="Free online file converter & compressor. Convert PDF, Word, Excel, images & more in seconds with FileUnivers – fast, secure & easy-to-use tools." />
-        <link rel="canonical" href="https://fileunivers.in/" />
+        <title>F I L E - U N I V E R S - Free Online PDF Converter & File Compressor Tool</title>
+        <meta name="description" content="Free online file converter & compressor. Convert PDF, Word, Excel, images & more in seconds with FileUnivers ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…“ fast, secure & easy-to-use tools." />
+        <link rel="canonical" href="https://fileunivers.com/" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="file converter, file compressor, convert files online, compress files online, pdf converter, image to pdf, doc to pdf, zip extractor, pdf merger, folder to zip" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
          <meta property="og:title" content="Convert & Compress Files Online | FileUnivers Tools" />
         <meta property="og:description" content="Use our complete toolset to convert and compress PDFs, DOCX, PPTX, Excel, images, and more in one place. Fast, free, and user-friendly." />
-        <meta property="og:url" content="https://fileunivers.in" />
+        <meta property="og:url" content="https://fileunivers.com" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="FileUnivers" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Convert & Compress Files Online | FileUnivers Tools" />
         <meta name="twitter:description" content="All your file conversion and compression tools in one place. Start converting and compressing now." />
-
-
       </Helmet>
       <ScrollToTop />
         <div className="landing-page">
      <header className="hero">
-  <h1>Free & Secure Online File Converter – Convert PDF, Word, Excel & Images Instantly</h1>
+  <h1>Free & Secure Online File Converter - Convert PDF, Word, Excel & Images Instantly</h1>
   <p>
     Convert your files quickly and securely with FileUnivers. 
     Our free online converter lets you turn PDFs, Word docs, Excel sheets, 
-    PowerPoint slides, and images into any format — no signup, no limits, just instant conversion.
+    PowerPoint slides, and images into any format - no signup, no limits, just instant conversion.
   </p>
 </header>
 
@@ -44,26 +42,26 @@ export default function LandingPage() {
       <section className="features">
         <h2>Supported Conversions</h2>
         <div className="feature-grid">
-          <li><Link to="/word-to-pdf" className=''><FeatureCard title="WORD → PDF" image1="/word.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/pdf-to-word" >  <FeatureCard title="PDF → WORD" image2="word.png" image1="/pdf.png" /></Link></li>
-          <li><Link to="/odt-to-pdf">  <FeatureCard title="ODT → PDF" image1="/odt.png" image2="pdf.png " /></Link></li>
-          <li><Link to="/pdf-to-odt">  <FeatureCard title="PDF → ODT" image1="/pdf.png" image2="odt.png " /></Link></li>
-          <li><Link to="/text-to-pdf">  <FeatureCard title="TEXT → PDF" image1="/txt.png" image2="pdf.png" /></Link></li>
-          <li><Link to="/pdf-to-txt">  <FeatureCard title="PDF → TEXT" image2="/txt.png" image1="pdf.png" /></Link></li>
-          <li><Link to="/doc-to-odt">  <FeatureCard title="DOC → ODT" image1="/word.png" image2="odt.png " /> </Link></li>
-          <li><Link to="/odt-to-doc" > <FeatureCard title="ODT → DOC" image1="/odt.png" image2="word.png " /> </Link></li>
-          <li><Link to="/pptx-to-pdf" > <FeatureCard title="PPTX → PDF" image1="/pptx.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/pdf-to-pptx" > <FeatureCard title="PDF → PPTX" image1="/pdf.png" image2="pptx.png" /> </Link></li>
-          <li><Link to="/pptx-to-odp" > <FeatureCard title="PPTX → ODP" image1="/pptx.png" image2="odp.png" /></Link></li>
-          <li><Link to="/odp-to-pptx" > <FeatureCard title="ODP → PPTX" image1="/odp.png" image2="pptx.png" /></Link></li>
-          <li><Link to="/rtf-to-pdf" ><FeatureCard title="RTF → PDF" image1="/rtf.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/pdf-to-rtf" ><FeatureCard title="PDF → RTF" image1="/pdf.png" image2="rtf.png" /> </Link></li>
-          <li><Link to="/html-to-pdf" ><FeatureCard title="HTML → PDF" image1="/html.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/md-to-pdf" ><FeatureCard title="MD → PDF" image1="/md.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/xlsx-to-pdf" ><FeatureCard title="XLSX → PDF" image1="/xlsx.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/csv-to-pdf" ><FeatureCard title="CSV → PDF" image1="/csv.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/img-to-pdf" > <FeatureCard title="IMG → PDF" image1="/img.png" image2="pdf.png" /> </Link></li>
-          <li><Link to="/tiff-to-pdf" ><FeatureCard title="TIFF → PDF" image1="/tiff.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/word-to-pdf" className=''><FeatureCard title="WORD  →  PDF" image1="/word.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/pdf-to-word" >  <FeatureCard title="PDF  →  WORD" image2="word.png" image1="/pdf.png" /></Link></li>
+          <li><Link to="/odt-to-pdf">  <FeatureCard title="ODT  →  PDF" image1="/odt.png" image2="pdf.png " /></Link></li>
+          <li><Link to="/pdf-to-odt">  <FeatureCard title="PDF  →  ODT" image1="/pdf.png" image2="odt.png " /></Link></li>
+          <li><Link to="/text-to-pdf">  <FeatureCard title="TEXT  →  PDF" image1="/txt.png" image2="pdf.png" /></Link></li>
+          <li><Link to="/pdf-to-txt">  <FeatureCard title="PDF  →  TEXT" image2="/txt.png" image1="pdf.png" /></Link></li>
+          <li><Link to="/doc-to-odt">  <FeatureCard title="DOC  →  ODT" image1="/word.png" image2="odt.png " /> </Link></li>
+          <li><Link to="/odt-to-doc" > <FeatureCard title="ODT  →  DOC" image1="/odt.png" image2="word.png " /> </Link></li>
+          <li><Link to="/pptx-to-pdf" > <FeatureCard title="PPTX  →  PDF" image1="/pptx.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/pdf-to-pptx" > <FeatureCard title="PDF  →  PPTX" image1="/pdf.png" image2="pptx.png" /> </Link></li>
+          <li><Link to="/pptx-to-odp" > <FeatureCard title="PPTX  →  ODP" image1="/pptx.png" image2="odp.png" /></Link></li>
+          <li><Link to="/odp-to-pptx" > <FeatureCard title="ODP  →  PPTX" image1="/odp.png" image2="pptx.png" /></Link></li>
+          <li><Link to="/rtf-to-pdf" ><FeatureCard title="RTF  →  PDF" image1="/rtf.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/pdf-to-rtf" ><FeatureCard title="PDF  →  RTF" image1="/pdf.png" image2="rtf.png" /> </Link></li>
+          <li><Link to="/html-to-pdf" ><FeatureCard title="HTML  →  PDF" image1="/html.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/md-to-pdf" ><FeatureCard title="MD  →  PDF" image1="/md.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/xlsx-to-pdf" ><FeatureCard title="XLSX  →  PDF" image1="/xlsx.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/csv-to-pdf" ><FeatureCard title="CSV  →  PDF" image1="/csv.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/img-to-pdf" > <FeatureCard title="IMG  →  PDF" image1="/img.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/tiff-to-pdf" ><FeatureCard title="TIFF  →  PDF" image1="/tiff.png" image2="pdf.png" /> </Link></li>
         </div>
       </section>
 
@@ -79,7 +77,7 @@ export default function LandingPage() {
   <div className="intro-text">
     <h2>What is FileUnivers?</h2>
     <p>
-      Watch a quick introduction to see various FileUnivers conversion options  – & this options are  free, fast, and secure.
+      Watch a quick introduction to see various FileUnivers conversion options  & this options are  free, fast, and secure.
     </p>
   </div>
 
@@ -125,13 +123,13 @@ export default function LandingPage() {
 }} />
 
       <section className="cta">
-        <h2>Compress Files, Images & Documents Online – Free ZIP & PDF Tools</h2>
+        <h2>Compress Files, Images & Documents Online  Free ZIP & PDF Tools</h2>
 <div className="paragraph">
   <p>
     Reduce file size without losing quality. Compress PDFs, Word documents, Excel sheets, 
     and images instantly with FileUnivers. Our free online tools also let you 
     <b> convert folders to ZIP, extract ZIP files, and merge multiple PDFs </b> 
-    — fast, secure, and easy to use.
+    - fast, secure, and easy to use.
   </p>
 </div>
 
@@ -153,6 +151,13 @@ export default function LandingPage() {
           <li><Link to="/zip-extractor" ><FeatureCard1 title="Extract Zip File " image1="unzip.png" /> </Link></li>
           <li><Link to="/favicon-generator" ><FeatureCard1 title="Favicon Generator" image1="Fav.png" /> </Link></li>
           <li><Link to="renamefile" ><FeatureCard1 title="Rename Your File" image1="rename.png" /> </Link></li>
+           {/* <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>
+           <li><Link to="/pdfpageremover" ><FeatureCard1 title="PDF Page Remover"  image1="pdf.png" /> </Link></li>
+           <li><Link to="/pdfurl" ><FeatureCard title="PDF To URL" image1="/pdf.png" image2="link.png" /> </Link></li>
+           <li><Link to="/urlpdf" ><FeatureCard title="PDF URL To PDF" image1="/link.png" image2="pdf.png" /> </Link></li>
+           <li><Link to="/tts" ><FeatureCard title="Text To Speech" image1="/link.png" image2="pdf.png" /> </Link></li> */}
+          {/* <li><Link to="/pdfurl" ><FeatureCard1 title="Make PDF URL" image1="rename.png" /> </Link></li> */}
+           {/* <li><Link to="/webpagetopdf" ><FeatureCard title="web Page to PDF" image1="/Favicon.png" image2="pdf.png" /> </Link></li> */}
         </div>
       </section>
       <section className="faq-section">
@@ -193,7 +198,7 @@ export default function LandingPage() {
 function FeatureCard({ title, image1, image2 }) {
   return (
     <div className="feature-card">
-      <div className="icon"><img src={image1} width="40px" alt="no data" />→<img src={image2} width="40px" alt="no data" /></div>
+      <div className="icon"><img src={image1} width="40px" alt="no data" /> → <img src={image2} width="40px" alt="no data" /></div>
       <h5>{title}</h5>
     </div>
   );

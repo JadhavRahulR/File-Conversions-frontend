@@ -22,7 +22,11 @@
     text-decoration: none;
     letter-spacing: 2px ;
     margin-left: 20px;
+    background-color: transparent;
     
+}
+.pages:hover{
+    color: white;
 }
 .active{
     color: white;

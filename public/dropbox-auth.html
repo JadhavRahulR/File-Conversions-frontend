@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Dropbox Auth</title>
+</head>
+<body>
+  <p>Authorizing Dropbox…</p>
+
+  <script>
+    // Dropbox sends token in URL HASH
+    const hash = window.location.hash;
+
+    if (!hash || !hash.includes("access_token")) {
+      throw new Error("No access token");
+    }
+
+    const params = new URLSearchParams(hash.substring(1));
+    const accessToken = params.get("access_token");
+
+    if (!accessToken) {
+      throw new Error("No access token");
+    }
+
+    // Send token back to opener
+    if (window.opener && window.opener.handleDropboxAuth) {
+      window.opener.handleDropboxAuth(accessToken);
+      window.close();
+    } else {
+      throw new Error("Parent window not found");
+    }
+  </script>
+</body>
+</html>

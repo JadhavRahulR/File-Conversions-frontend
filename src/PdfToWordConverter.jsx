@@ -11,6 +11,9 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert pdf to word.mp4"
 import IntroPoster from "../src/assets/images/pdf to word poster .png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
+
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 
@@ -18,6 +21,11 @@ function PdfToWordConverter() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  // For Dropbox
+  // const [convertedBlob, setConvertedBlob] = useState(null);
+  const [convertedFile, setConvertedFile] = useState(null);
+
+
 
 
   const handleFileChange = (eOrFile) => {
@@ -25,12 +33,12 @@ function PdfToWordConverter() {
     if (!selected) return;
 
     console.log("📄 File selected:", selected.name, selected.size, "bytes");
-    console.time("📤 File → Ready to Convert");
+    console.time("📤 File â†’ Ready to Convert");
 
     setFile(selected);
     setStatus("Convert");
 
-    console.timeEnd("📤 File → Ready to Convert");
+    console.timeEnd("📤 File â†’ Ready to Convert");
   };
 
 
@@ -49,7 +57,7 @@ function PdfToWordConverter() {
 
     try {
       setStatus("Converting...");
-      console.time("⏱ ConvertRequest");
+      console.time("â± ConvertRequest");
 
       const response = await axios.post(
         `${BASE_URL}/convert-pdf-to-word`,
@@ -64,11 +72,21 @@ function PdfToWordConverter() {
 
       );
 
-      console.timeEnd("⏱ ConvertRequest");
+      console.timeEnd("â± ConvertRequest");
 
       const blob = new Blob([response.data], {
-        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      });
+  type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+});
+
+const convertedFile = new File(
+  [blob],
+  file.name.replace(/\.pdf$/, "") + ".docx",
+  {
+    type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  }
+);
+
+setConvertedFile(convertedFile); 
 
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -77,15 +95,15 @@ function PdfToWordConverter() {
       a.click();
       window.URL.revokeObjectURL(url);
 
-      setStatus("✅ Done");
+      setStatus(" ✅  Done");
     } catch (error) {
-      console.error("❌ Conversion failed:", error);
+      console.error("   ❌ Conversion failed:", error);
       alert("Conversion failed.");
-      setStatus("❌ Error");
+      setStatus("   ❌ Error");
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
+    if (status === " ✅  Conversion complete!") {
       setTimeout(() => {
         setFile(null);
         setStatus("Convert");
@@ -102,7 +120,7 @@ function PdfToWordConverter() {
         <Helmet>
           <title>Convert PDF To Word | Free & Secure Online Tool</title>
           <meta name="description" content="Convert PDF files to Word documents (.docx) quickly and securely. Free online PDF to Word converter with no email or signup required." />
-          <link rel="canonical" href="https://fileunivers.in/pdf-to-word" />
+          <link rel="canonical" href="https://fileunivers.com/pdf-to-word" />
           <meta name="robots" content="index, follow" />
           <meta name="keywords" content="pdf to word, convert pdf to word, free pdf to word converter, secure pdf to word, pdf to docx" />
           <meta charset="utf-8" />
@@ -111,13 +129,16 @@ function PdfToWordConverter() {
         </Helmet>
         <div className="pagetitle">
 
-          <h1>PDF To Word Converter – Convert PDF To DOC Online Free, Fast & Secure </h1>
+          <h1>PDF To Word Converter- Convert PDF To DOC Online Free, Fast & Secure </h1>
 
           <p className="intro-paragraph">
-            Convert PDF to Word online for free — fast, secure, and accurate. No sign-up or software needed. Upload your PDF, convert to editable Word, and download instantly.Simply upload your PDF, click " Upload”, and download your Word file within seconds.
+            Convert PDF to Word online for free - fast, secure, and accurate. No sign-up or software needed. Upload your PDF, convert to editable Word, and download instantly.Simply upload your PDF, click " Upload”, and download your Word file within seconds.
           </p>
         </div>
         <div className='converter'>
+          <div className="converterheading">
+          <h2>Convert PDF To Word </h2>
+          </div>
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -126,8 +147,21 @@ function PdfToWordConverter() {
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === " ✅  Done" && "Download Again"}
           </button>
+
+          {status === " ✅  Done" && convertedFile && (<>
+          <p>Save To . . .</p>
+          <div className="saveTo">
+            <SaveToGoogleDrive file={convertedFile} />
+            <SaveToDropbox file={convertedFile} className='savetodropbox'/>
+
+          </div>
+          </>)}
+
         </div>
       </section>
       <section>
@@ -223,7 +257,7 @@ function PdfToWordConverter() {
             PDF files are ideal for sharing, but they aren't easy to edit. Converting a PDF to Word allows you to modify content, update formatting, and reuse text without retyping. Our tool ensures high-quality conversion that keeps layout, fonts, images, and tables intact.
           </p>
 
-          <h3>✨ Key Features</h3>
+          <h3>🔄 Key Features</h3>
           <ul>
             <li><strong>Accurate Layout:</strong> Preserves formatting, images, and structure in Word.</li>
             <li><strong>Instant Results:</strong> Convert in seconds, large files may takes more time .</li>

@@ -12,12 +12,16 @@ import { Link } from "react-router-dom";
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert csv to pdf.mp4";
 import IntroPoster from "../src/assets/images/csv to pdf poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const CsvToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+
 
 
 
@@ -25,7 +29,7 @@ const CsvToPdfConverter = () => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
   const handleConvert = async () => {
@@ -49,6 +53,19 @@ const CsvToPdfConverter = () => {
           },
         }
       );
+      const save = new Blob([response.data], {
+        type: "application/pdf",
+      });
+
+      const convertedFile = new File(
+        [save],
+        file.name.replace(/\.csv$/i, "") + ".pdf",
+        { type: "application/pdf" }
+      );
+
+      setConvertedFile(convertedFile);
+
+
 
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
@@ -57,9 +74,9 @@ const CsvToPdfConverter = () => {
       a.download = "converted.pdf";
       a.click();
       window.URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus("✅ Done");
     } catch (error) {
-      console.error("❌ Conversion failed", error);
+      console.error("   ❌ Conversion failed", error);
       alert("Conversion failed");
     }
   };
@@ -78,7 +95,7 @@ const CsvToPdfConverter = () => {
       <Helmet>
         <title>CSV To PDF Online Converter| Free and Secure CSV File To PDF Converter</title>
         <meta name="description" content="Convert CSV files to PDF format easily and securely. Free online CSV to PDF converter with no email or registration required." />
-        <link rel="canonical" href="https://fileunivers.in/csv-to-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/csv-to-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="csv to pdf, convert csv to pdf, spreadsheet to pdf, free csv to pdf converter, online csv to pdf" />
         <meta charset="utf-8" />
@@ -87,13 +104,15 @@ const CsvToPdfConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert CSV To PDF Online – Free & Fast CSV File To PDF Converter</h1>
+        <h1>Convert CSV To PDF Online - Free & Fast CSV File To PDF Converter</h1>
 
         <p className="intro-paragraph">
-          Easily convert your CSV (Comma-Separated Values) files to PDF online with our fast and secure converter. Keep your data organized and perfectly formatted while transforming spreadsheets into clean, shareable PDF documents. No software installation or technical setup required — simply upload your CSV file, click Upload for Conversion, and auto  download your PDF in seconds. Ideal for data analysts, accountants, students, and professionals who need quick and accurate CSV to PDF conversion.     </p>
+          Easily convert your CSV (Comma-Separated Values) files to PDF online with our fast and secure converter. Keep your data organized and perfectly formatted while transforming spreadsheets into clean, shareable PDF documents. No software installation or technical setup required- simply upload your CSV file, click Upload for Conversion, and auto  download your PDF in seconds. Ideal for data analysts, accountants, students, and professionals who need quick and accurate CSV to PDF conversion.     </p>
       </div>
       <div className='converter'>
-
+        <div className="converterheading">
+          <h2>Convert CSV To PDF </h2>
+        </div>
         <input type="file" accept=".csv" onChange={handleFileChange} />
         <br /><br />
         <div className="fileuploadcontainer">
@@ -102,20 +121,29 @@ const CsvToPdfConverter = () => {
           <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.csv']} />
         </div>
         <DropzoneInput acceptedType={['csv']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
-        {file && (
-          <p className="selected-file ">
-            ✅ Selected File: <b>{file.name}</b>
-          </p>
-        )}
+        
         <button onClick={handleConvert} disabled={status === 'Converting...'}>
-          {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+          {status === "Upload" && "Upload"}
+          {status === "Convert" && "Convert"}
+          {status === "Converting..." && `Converting... (${progress}%)`}
+          {status === "✅ Done" && "Download Again"}
         </button>
+
+        {status === "✅ Done" && convertedFile && (
+          <>
+            <p>Save To . . .</p>
+            <div className="saveTo">
+              <SaveToGoogleDrive file={convertedFile} />
+              <SaveToDropbox file={convertedFile} className="savetodropbox" />
+            </div>
+          </>
+        )}
 
       </div>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert CSV to PDF – Instant, Clean & Free</h2>
-          <p>Our CSV to PDF converter ensures precise alignment, clear table formatting, and full compatibility with all devices. Whether your file contains financial data, reports, or lists, this tool converts every row and column into a beautifully structured, print-ready PDF. 100% free, browser-based, and secure — your files are automatically deleted after processing. Experience seamless CSV to PDF conversion today and make your data presentation-ready in just one click.</p>
+          <h2 className="converter-title">Convert CSV to PDF - Instant, Clean & Free</h2>
+          <p>Our CSV to PDF converter ensures precise alignment, clear table formatting, and full compatibility with all devices. Whether your file contains financial data, reports, or lists, this tool converts every row and column into a beautifully structured, print-ready PDF. 100% free, browser-based, and secure- your files are automatically deleted after processing. Experience seamless CSV to PDF conversion today and make your data presentation-ready in just one click.</p>
           <div className="converterImg">
             <img src="csv.png" alt="csv Img" className='ConverterImgone' />
             <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
@@ -126,25 +154,25 @@ const CsvToPdfConverter = () => {
           <div className="converter-section">
             <h2>🔄 How to Convert CSV to PDF</h2>
             <ol>
-              <li>📤 Upload your CSV file – drag & drop or click to select.</li>
+              <li>📤 Upload your CSV file - drag & drop or click to select.</li>
               <li>⚙️ We’ll format the data into a neat and printable PDF table.</li>
               <li>📥 Auto Download the PDF after conversion is complete.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large CSV files may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large CSV files may take more time to process.</p>
           </div>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Convert CSV To PDF ? "
-              description='Convert your CSV file to PDF in just a few seconds with this easy step-by-step video!. Learn how to turn your Comma-Separated Values (CSV) data into a clean, well-formatted PDF document that’s ready for sharing, printing, or reporting — all without installing any software.'
+              description='Convert your CSV file to PDF in just a few seconds with this easy step-by-step video!. Learn how to turn your Comma-Separated Values (CSV) data into a clean, well-formatted PDF document that’s ready for sharing, printing, or reporting- all without installing any software.'
             />
           </section>
           <div className="converter-section">
-            <h2>🔒 Why Use Our CSV to PDF Converter?</h2>
+            <h2>🔒Why Use Our CSV to PDF Converter?</h2>
             <ul>
               <li>✅ Converts tabular data into well-formatted PDF tables.</li>
-              <li>🔐 Secure and private – files are deleted automatically after processing.</li>
+              <li>🔐 Secure and private - files are deleted automatically after processing.</li>
               <li>⚡ Lightning-fast conversion with no formatting loss.</li>
-              <li>🌐 100% browser-based – no need to install anything.</li>
+              <li>🌐 100% browser-based - no need to install anything.</li>
               <li>🆓 Free to use with unlimited conversions.</li>
             </ul>
           </div>
@@ -180,14 +208,14 @@ const CsvToPdfConverter = () => {
               <strong>A:</strong> No, the tool works entirely in your browser.</p>
           </div>
           <div className="compresspdf-article-section">
-            <h2>📄 Convert CSV to PDF – Export Table Data into Polished PDFs</h2>
+            <h2>📄 Convert CSV to PDF - Export Table Data into Polished PDFs</h2>
             <p>
               Convert your raw CSV data into clean, readable PDF files with just one click. Perfect for printing spreadsheets, data logs, reports, or tables in a universally accessible format.
             </p>
 
-            <h3>🧾 What is CSV to PDF Conversion?</h3>
+            <h3>🧠   What is CSV to PDF Conversion?</h3>
             <p>
-              A CSV (Comma Separated Values) file contains tabular data in plain text format. Converting a CSV to PDF allows you to present that data in a neatly formatted document that's easy to print, view, or share — with rows, columns, and spacing retained.
+              A CSV (Comma Separated Values) file contains tabular data in plain text format. Converting a CSV to PDF allows you to present that data in a neatly formatted document that's easy to print, view, or share- with rows, columns, and spacing retained.
             </p>
 
             <h3>✅ Why Convert CSV Files to PDF?</h3>
@@ -198,7 +226,7 @@ const CsvToPdfConverter = () => {
               <li><strong>Easy Sharing:</strong> Attach clean PDFs to emails, reports, or meeting notes.</li>
             </ul>
 
-            <h3>👥 Who Uses CSV to PDF Tools?</h3>
+            <h3>    Who Uses CSV to PDF Tools?</h3>
             <ul>
               <li><strong>Developers & Analysts:</strong> Export API logs or results in readable form.</li>
               <li><strong>Accountants:</strong> Share CSV financial data with clients as formatted PDFs.</li>
@@ -208,7 +236,7 @@ const CsvToPdfConverter = () => {
 
 
 
-            <h3>🌟 Features of Our CSV to PDF Converter</h3>
+            <h3>     Features of Our CSV to PDF Converter</h3>
             <ul>
               <li>Auto-detects column separators</li>
               <li>Formats tables for clean readability</li>
@@ -217,7 +245,7 @@ const CsvToPdfConverter = () => {
               <li>Free, fast, and secure</li>
             </ul>
 
-            <h3>💻 Fully Online, No Installation Needed</h3>
+            <h3>     Fully Online, No Installation Needed</h3>
             <p>
               Convert CSV to PDF right in your browser. No need for Excel, Google Sheets, or any plugins. Compatible with Windows, Mac, Linux, and mobile browsers.
             </p>
@@ -231,7 +259,7 @@ const CsvToPdfConverter = () => {
             <ul>
               <li>Clean, professional formatting for tables</li>
               <li>Supports large CSV files</li>
-              <li>100% browser-based – no downloads</li>
+              <li>100% browser-based - no downloads</li>
               <li>No login or signup required</li>
               <li>Fast results with high accuracy</li>
             </ul>
@@ -241,7 +269,7 @@ const CsvToPdfConverter = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Convert your CSV file to a clean and structured PDF in seconds – safe, fast, and free!</p>
+            <p>Convert your CSV file to a clean and structured PDF in seconds - safe, fast, and free!</p>
             <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
           </div>
         </div>

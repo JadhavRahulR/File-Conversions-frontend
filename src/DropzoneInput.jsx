@@ -1,8 +1,13 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import "./DropzoneInput.css";
 
+const NAVBAR_HEIGHT = 70; // apne navbar ke hisaab se change karo
+
 const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) => {
+
+  const [showOverlay, setShowOverlay] = useState(false);
+
   const getMimeMap = {
     pdf: "application/pdf",
     docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -13,26 +18,25 @@ const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) =
     jpg: "image/jpeg",
     jpeg: "image/jpeg",
     png: "image/png",
-    md:"text/markdown",
-    odp:"application/vnd.oasis.opendocument.presentation",
-    odt:"application/vnd.oasis.opendocument.text",
-    rtf:"application/rtf",
+    md: "text/markdown",
+    odp: "application/vnd.oasis.opendocument.presentation",
+    odt: "application/vnd.oasis.opendocument.text",
+    rtf: "application/rtf",
   };
 
-  // Build accept object for react-dropzone
   const accept = {};
   acceptedType.forEach((type) => {
     const mime = getMimeMap[type];
-    if (mime) {
-      if (!accept[mime]) accept[mime] = [];
-      accept[mime].push(`.${type}`);
-    }
+    if (mime) accept[mime] = [`.${type}`];
   });
 
   const onDrop = useCallback(
     (acceptedFiles, rejectedFiles) => {
+
+      setShowOverlay(false);
+
       if (rejectedFiles.length > 0) {
-        alert(`❌ Only ${acceptedType.join(", ")} files are allowed.`);
+        alert(`❌ Only ${acceptedType.join(", ")} file allowed`);
         return;
       }
 
@@ -44,29 +48,71 @@ const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) =
     [onFileAccepted, acceptedType, setStatus]
   );
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept,
     multiple: false,
+    noClick:true
   });
 
+  /* Detect global drag */
+  useEffect(() => {
+
+    const dragEnter = (e) => {
+      e.preventDefault();
+      setShowOverlay(true);
+    };
+
+    const dragLeave = (e) => {
+      if (e.clientY <= 0) {
+        setShowOverlay(false);
+      }
+    };
+
+    const drop = () => setShowOverlay(false);
+
+    window.addEventListener("dragenter", dragEnter);
+    window.addEventListener("dragleave", dragLeave);
+    window.addEventListener("drop", drop);
+
+    return () => {
+      window.removeEventListener("dragenter", dragEnter);
+      window.removeEventListener("dragleave", dragLeave);
+      window.removeEventListener("drop", drop);
+    };
+
+  }, []);
+
   return (
-    <div
-      {...getRootProps()}
-      className={`dropzone-container ${isDragActive ? "drag-active" : ""}`}
-    >
-      <input {...getInputProps()} />
-      {file ? (
-        <>
-        <p>📄 File selected: {file.name} — </p>
-        <span><strong>Click  button below to start</strong></span>
-        </>
-      ) : isDragActive ? (
-        <p>📥 Drop your {acceptedType.map(t => `.${t}`).join(", ")} file here...and click convert button  </p>
-      ) : (
-        <p>📂 Drag & drop a {acceptedType.map(t => `.${t}`).join(", ")} file here, or click to select</p>
+    <>
+      {/* NORMAL BOX */}
+      <div className="dropzone-big">
+        {!file ? (
+          <>
+            <h2>📂 Drag & Drop file here</h2>
+          </>
+        ) : (
+          <div className="file-inside">
+            <div className="file-icon">📄</div>
+            <p className="file-name">{file.name}</p>
+            <span>Click Convert button for Conversion<p></p></span>
+            
+          </div>
+        )}
+      </div>
+
+      {/* FULL PAGE OVERLAY */}
+      {showOverlay && (
+        <div
+          {...getRootProps()}
+          className="page-drop-overlay"
+          style={{ top: NAVBAR_HEIGHT }}
+        >
+          <input {...getInputProps()} />
+          <h2>📥 Drop file anywhere</h2>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

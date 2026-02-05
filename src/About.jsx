@@ -44,7 +44,7 @@ function About() {
       <h2 className="section-title">📬 Get in Touch</h2>
       <p className="about-end">
         Have feedback or questions? We’d love to hear from you.
-        Reach out via email at <a href="mailto:support@quickconvert.io" className="email-link">support@quickconvert.io</a>.
+        Reach out via email at <a href="mailto:support@quickconvert.io" className="email-link"> fileunivers@gmail.com</a>.
       </p>
 
      

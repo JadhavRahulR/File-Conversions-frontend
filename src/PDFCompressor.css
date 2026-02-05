@@ -2,23 +2,28 @@
 } */
 .compressor-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   max-width: 500px;
+  min-height: 600px;
   margin: 40px auto;
   padding: 20px;
   border-radius: 12px;
-  background: #e3f2fd;
+  background: #000000;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   font-family: sans-serif;
   text-align: center;
-  border: 2px solid red;
 }
 
 .compressor-container h1 {
   margin-bottom: 20px;
   color: #1565c0;
+}
+.compressor-container .pdfcontainer h2{
+  margin: 40px;
+  color: #d7eaff ;
+  letter-spacing: 2px;
 }
 
 .file-input {
@@ -28,24 +33,28 @@
 }
 
 .slider-container {
-  margin: 20px 0;
+  margin: 30px 20px;
   text-align: left;
+  /* margin: 20px; */
 }
 
 .slider-container label {
   display: block;
   margin-bottom: 5px;
-  color: #333;
+  color: #ffffff;
 }
 
 .slider-container input[type="range"] {
   width: 100%;
 }
-
+.slider-labels span{
+  color: white;
+}
 .compressor-container button {
   background-color: #007bff;
   color: white;
   border: none;
+  margin: 20px;
   padding: 10px 24px;
   font-size: 1rem;
   border-radius: 8px;
@@ -61,13 +70,17 @@ button:disabled {
   background-color: #aaa;
   cursor: not-allowed;
 }
-.compressorpg .fileuploadcontainer{
-  border: 2px solid red;
-  max-width: 600px;
+
+.compressor-container .fileupload{
+  width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 40px auto;
+  margin-left: 50px;
 }
+
+
 
 .pdf-compressor-section {
   padding: 2rem;
@@ -110,6 +123,16 @@ button:disabled {
   margin-bottom: 1.5rem;
 }
 
+.compressor-benefits .otherlink{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  
+}
+.compressor-benefits .otherlink li{
+  margin: 10px;
+}
 .pdf-compressor-steps li,
 .pdf-compressor-benefits li,
 .pdf-compressor-features li {
@@ -140,5 +163,10 @@ button:disabled {
   .pdf-compressor-text,
   .pdf-compressor-conclusion {
     font-size: 1rem;
+  }
+
+  .compressor-container .fileupload{
+    margin-left: 0;
+    width: 300px;
   }
 }

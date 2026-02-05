@@ -11,19 +11,22 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert pptx to pdf.mp4"
 import IntroPoster from "../src/assets/images/pptx to pdf poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PptxToPdf = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
 
@@ -45,6 +48,21 @@ const PptxToPdf = () => {
         },
 
       });
+      const save = new Blob([response.data], {
+        type: "application/pdf",
+      });
+
+      const convertedFile = new File(
+        [save],
+        file.name.replace(/\.pptx$/i, "") + ".pdf",
+        {
+          type: "application/pdf",
+        }
+      );
+
+      setConvertedFile(convertedFile);
+
+
 
       const blob = new Blob([response.data], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
@@ -53,7 +71,7 @@ const PptxToPdf = () => {
       a.download = file.name.replace(/\.pptx$/, '') + '.pdf';
       a.click();
       URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus("✅ Done");
     } catch (error) {
       console.error("Conversion failed", error);
       alert("Failed to convert file.");
@@ -75,7 +93,7 @@ const PptxToPdf = () => {
       <Helmet>
         <title>Convert PPTX To PDF | Free and Secure PowerPoint To PDF Online Converter</title>
         <meta name="description" content="Convert PPTX presentations to PDF format quickly and securely. Free online PPTX to PDF converter with no signup or email needed." />
-        <link rel="canonical" href="https://fileunivers.in/pptx-to-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/pptx-to-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="pptx to pdf, convert pptx to pdf, powerpoint to pdf, free pptx to pdf converter, online pptx to pdf" />
         <meta charset="utf-8" />
@@ -83,14 +101,17 @@ const PptxToPdf = () => {
 
       </Helmet>
       <div className="pagetitle">
-       <h1>Convert PPTX To PDF Online – Free Fast & Secure PowerPoint To PDF Converter </h1>
+        <h1>Convert PPTX To PDF Online - Free Fast & Secure PowerPoint To PDF Converter </h1>
 
         <p className="intro-paragraph">
-          Convert your PowerPoint presentations (.pptx) to high-quality PDF files instantly with our free online PPTX to PDF converter. This tool preserves your slides’ design, images, animations, and text perfectly while converting the file for easy sharing. No software installation required and No email and sign up needs — just upload your PPTX file, click “Upload”, and auto download your PDF within seconds. Fast, secure, and online, it’s the easiest way to turn your PowerPoint slides into a professional PDF document.
+          Convert your PowerPoint presentations (.pptx) to high-quality PDF files instantly with our free online PPTX to PDF converter. This tool preserves your slides’ design, images, animations, and text perfectly while converting the file for easy sharing. No software installation required and No email and sign up needs- just upload your PPTX file, click “Upload”, and auto download your PDF within seconds. Fast, secure, and online, it’s the easiest way to turn your PowerPoint slides into a professional PDF document.
         </p>
-        </div>
+      </div>
       <section>
         <div className='converter'>
+          <div className="converterheading">
+            <h2>Convert PPTX To PDF </h2>
+          </div>
           <input type="file" accept=".pptx" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -98,42 +119,56 @@ const PptxToPdf = () => {
             <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pptx']} />
           </div>
           <DropzoneInput acceptedType={['pptx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
+          
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === "✅ Done" && "Download Again"}
           </button>
+
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} className="savetodropbox" />
+              </div>
+            </>
+          )}
         </div>
       </section>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert PPTX to PDF – High-Quality & Free</h2>
-            Convert your PowerPoint presentations  to high-quality PDF files  with our free online PPTX to PDF tool . No software installation required — just upload your PPTX file, click "Upload", and auto download your PDF within seconds. Fast, secure, and compatible with all devices, it’s the easiest way to turn your PowerPoint slides into a professional PDF document.
+          <h2 className="converter-title">Convert PPTX to PDF - High-Quality & Free</h2>
+          Convert your PowerPoint presentations  to high-quality PDF files  with our free online PPTX to PDF tool . No software installation required- just upload your PPTX file, click "Upload", and auto download your PDF within seconds. Fast, secure, and compatible with all devices, it’s the easiest way to turn your PowerPoint slides into a professional PDF document.
           <div className="converter-section">
             <div className="converterImg">
-            <img src="pptx.png" alt="pptx Img" className='ConverterImgtwo' />
-            <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
-            <img src="pdf.png" alt="pdf Img" className='ConverterImgone' />
+              <img src="pptx.png" alt="pptx Img" className='ConverterImgtwo' />
+              <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
+              <img src="pdf.png" alt="pdf Img" className='ConverterImgone' />
 
-          </div>
+            </div>
             <h2>🔄 How to Convert PPTX to PDF</h2>
             <ol>
-              <li>📤 Upload your PowerPoint (.pptx) file – drag & drop or click to select.</li>
+              <li>📤 Upload your PowerPoint (.pptx) file - drag & drop or click to select.</li>
               <li>⚙️ We’ll convert your slides into a clean and printable PDF.</li>
               <li>📥 Auto Download the PDF after conversion.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
-      <section>
-          <LazyVideo src={IntroVideo} poster={IntroPoster}
-            title="How to Convert PPTX To PDF ? "
-            description='Convert PPTX to PDF in seconds with our free online PowerPoint to PDF converter. This video shows a simple step-by-step process to turn your Microsoft PowerPoint (.pptx) presentations into professional, shareable PDF files — fast, secure, and 100% free. No software installation or sign-up required.'
-          />
-        </section>
+          <section>
+            <LazyVideo src={IntroVideo} poster={IntroPoster}
+              title="How to Convert PPTX To PDF ? "
+              description='Convert PPTX to PDF in seconds with our free online PowerPoint to PDF converter. This video shows a simple step-by-step process to turn your Microsoft PowerPoint (.pptx) presentations into professional, shareable PDF files- fast, secure, and 100% free. No software installation or sign-up required.'
+            />
+          </section>
           <div className="converter-section">
-            <h2>🔒 Why Use Our PPTX to PDF Converter?</h2>
+            <h2>🔒Why Use Our PPTX to PDF Converter?</h2>
             <ul>
               <li>✅ Preserves slide design, fonts, animations (as static), and layout.</li>
               <li>🔐 Files are deleted automatically after conversion to ensure privacy.</li>
-              <li>⚡ Fast and accurate conversion – ready in seconds.</li>
+              <li>⚡ Fast and accurate conversion - ready in seconds.</li>
               <li>🌐 Works on all browsers and devices, no installs needed.</li>
               <li>🆓 Completely free with unlimited conversions.</li>
             </ul>
@@ -161,7 +196,7 @@ const PptxToPdf = () => {
               <strong>A:</strong> Currently, only the visual slides are included, not speaker notes.</p>
           </div>
           <div className="compresspdf-article-section">
-            <h2>🎯 Convert PPTX to PDF – Presentations to Portable Documents</h2>
+            <h2>🎯 Convert PPTX to PDF - Presentations to Portable Documents</h2>
             <p>
               Quickly convert your PowerPoint presentations (PPTX) into universally viewable PDF files with our fast, free, and secure online converter. Whether you’re submitting a presentation for review, sharing it via email, or printing it for meetings, converting it to PDF ensures consistent formatting across all devices and platforms.
             </p>
@@ -193,12 +228,12 @@ const PptxToPdf = () => {
               Our converter works entirely in your browser. No installation, no downloads, no limits. It’s compatible with Windows, macOS, Linux, Android, and iOS.
             </p>
 
-            <h3>🔒 Privacy Matters</h3>
+            <h3>🔒Privacy Matters</h3>
             <p>
               We take your privacy seriously. All uploads are processed securely and automatically deleted from our servers after a short time. Your data remains confidential at all times.
             </p>
 
-            <h3>✨ Benefits of Using Our Tool</h3>
+            <h3>🔄 Benefits of Using Our Tool</h3>
             <ul>
               <li>Absolutely free, no hidden costs or subscriptions</li>
               <li>No account or login needed</li>
@@ -211,7 +246,7 @@ const PptxToPdf = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Convert your PPTX file to a professional PDF – secure, accurate, and fast!</p>
+            <p>Convert your PPTX file to a professional PDF - secure, accurate, and fast!</p>
             <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
           </div>
         </div>

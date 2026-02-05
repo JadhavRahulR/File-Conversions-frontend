@@ -11,7 +11,8 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert  word to pdf .mp4";
 import IntroPoster from "../src/assets/images/Word-to-pdf-conversion-poster.png";
-
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 
 
@@ -20,13 +21,14 @@ function WordToPdfConverter() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
   const handleConvert = async () => {
@@ -52,20 +54,31 @@ function WordToPdfConverter() {
         type: 'application/pdf',
       });
 
+const convertedFile = new File(
+  [blob],
+  file.name.replace(/\.(docx|doc)$/i, "") + ".pdf",
+  {
+    type: "application/pdf",
+  }
+);
+setConvertedFile(convertedFile); 
+
+
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
       a.download = file.name.replace(/\.(doc|docx)$/, '') + '.pdf';
       a.click();
       URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus(" ✅  Done");
     } catch (error) {
-      console.error('❌ Conversion failed:', error);
+      console.error('   ❌ Conversion failed:', error);
       alert('Conversion failed.');
+      setStatus("Upload")
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
+    if (status === " ✅  Conversion complete!") {
       setTimeout(() => {
         setFile(null);
         setStatus("Convert");
@@ -79,26 +92,29 @@ function WordToPdfConverter() {
       <ScrollToTop />
         <Tools />
       <Helmet>
-        <title>Convert Word To PDF  | Online DOC TO PDF Free & Secure Converter</title>
+        <title>Word To PDF |Word TO PDF Converter</title>
         <meta name="description" content="Convert Word documents (.doc, .docx) to PDF easily and securely. Free online Word to PDF converter with no email or signup needed." />
-        <link rel="canonical" href="https://fileunivers.in/word-to-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/word-to-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="word to pdf, convert word to pdf, doc to pdf, docx to pdf, free word to pdf converter, secure word to pdf" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
       </Helmet>
+      
         
         <div className="pagetitle">
 
-        <h1>WORD To PDF Converter — Convert WORD (DOCX) To PDF Online Free</h1>
+        <h1>WORD To PDF Converter - Convert WORD (DOCX) To PDF Online Free</h1>
 
         <p className="intro-paragraph">
-          Convert your Word documents (.doc, .docx) into professional PDFs in seconds.
-          Our free online tool preserves formatting and works securely in your browser.
+          Word to PDF Converter is a simple and reliable online tool that helps you convert Word documents (DOC or DOCX) into high-quality PDF files within seconds. It preserves original formatting, fonts, images, and layout, making it perfect for sharing, printing, or professional use. No installation or sign-up is required   —just upload your Word file and download a secure, perfectly converted PDF instantly.
         </p>
         </div>
         <div className='converter'>
+          <div className="converterheading">
+          <h2>Convert Word To PDF </h2>
+          </div>
           <input type="file" accept=".docx" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -108,12 +124,24 @@ function WordToPdfConverter() {
           <DropzoneInput acceptedType={['docx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+           {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === " ✅  Done" && "Download Again"}
           </button>
+
+           {status === " ✅  Done" && convertedFile && (<>
+                    <p>Save To . . .</p>
+                    <div className="saveTo">
+                      <SaveToGoogleDrive file={convertedFile} />
+                      <SaveToDropbox file={convertedFile} className='savetodropbox'/>
+          
+                    </div>
+                    </>)}
         </div>
       </section>
 
-      <div className="converter-container">
+       <div className="converter-container">
         <h2 className="converter-title">Convert Word to PDF – Free & Easy Online Tool</h2>
         <p className="converter-intro" style={{ marginTop: "20px" }}>
           Easily convert Word documents (.doc, .docx) into secure, high-quality PDFs online. No registration, no watermarks – just a fast, free tool you can trust.

@@ -72,7 +72,7 @@ const OdtCompressor = () => {
       <Helmet>
         <title>Compress ODT | Reduce OpenDocument Text File Size</title>
         <meta name="description" content="Compress your ODT (OpenDocument Text) files online to reduce file size without losing formatting. Fast, secure, and free ODT compressor tool." />
-        <link rel="canonical" href="https://fileunivers.in/odtcompressor" />
+        <link rel="canonical" href="https://fileunivers.com/odtcompressor" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress odt, odt compressor, reduce odt file size, shrink opendocument text, compress opendocument, odt file compression online" />
         <meta charset="utf-8" />
@@ -81,22 +81,25 @@ const OdtCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress ODT File Online –Free Reduce OpenDocument File Size Secure and Instantly</h1>
+        <h1>Compress ODT File Online -Free Reduce OpenDocument File Size Secure and Instantly</h1>
         <p className="intro-paragraph">
-          Quickly compress ODT files online and reduce document size without affecting content, layout, or text formatting. Whether it’s an OpenOffice or LibreOffice document, this free online tool helps you make your ODT files lighter and easier to share — no software installation or registration required. Upload your file, choose the compression level, and get a smaller version in seconds.
+          Quickly compress ODT files online and reduce document size without affecting content, layout, or text formatting. Whether it’s an OpenOffice or LibreOffice document, this free online tool helps you make your ODT files lighter and easier to share- no software installation or registration required. Upload your file, choose the compression level, and get a smaller version in seconds.
         </p>
       </div>
       <div
-        className="compressor-container drop-area"
+        className="compressor-container "
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
+        <div className="compressing">
+          <h2>Compress ODT</h2>
+        </div>
         <p
           className="file-label"
           onClick={() => fileInputRef.current && fileInputRef.current.click()}
           style={{ cursor: 'pointer', }}
         >
-          {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .odt file here, or click to select'}
+          {file ? `✅ Selected: ${file.name}` : '   📂 Drag & drop a .odt file here, or click to select'}
         </p>
 
         <input
@@ -122,8 +125,8 @@ const OdtCompressor = () => {
             onChange={(e) => setQuality(parseInt(e.target.value))}
           />
           <div className="slider-labels">
-            <span>📉 Smaller</span>
-            <span>📸 Clearer</span>
+            <span>   📉 Smaller</span>
+            <span>     Clearer</span>
           </div>
         </div>
 
@@ -151,17 +154,17 @@ const OdtCompressor = () => {
         </div>
 
         <button onClick={handleCompress} disabled={!file || status === 'uploading'}>
-          {status === 'uploading' ? `Compressing... (${progress}%)` : '🔽 Compress'}
+          {status === 'uploading' ? `Compressing... (${progress}%)` : '    Compress'}
         </button>
 
         {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
-        {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
+        {status === 'error' && <p className="error-msg">   ❌ Compression failed</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress ODT File Online</h2>
           <p className="compressor-description">
-            Reduce the size of your OpenDocument Text (.odt) files without affecting formatting or content. Perfect for optimizing documents with images or media.Our smart ODT compressor removes unnecessary elements like embedded metadata and optimizes images for maximum file size reduction while maintaining top-quality visuals. Perfect for students, writers, and professionals who frequently work with OpenDocument files. Enjoy faster uploads, easier sharing, and reliable compression — all within a secure, browser-based tool powered by FileUnivers.in.
+            Reduce the size of your OpenDocument Text (.odt) files without affecting formatting or content. Perfect for optimizing documents with images or media.Our smart ODT compressor removes unnecessary elements like embedded metadata and optimizes images for maximum file size reduction while maintaining top-quality visuals. Perfect for students, writers, and professionals who frequently work with OpenDocument files. Enjoy faster uploads, easier sharing, and reliable compression- all within a secure, browser-based tool powered by fileunivers.com.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -176,10 +179,10 @@ const OdtCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress an ODT File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.odt</code> file</li>
-            <li>🎚️ Select a compression level if available</li>
+            <li>   📂 Upload or drag & drop your <code>.odt</code> file</li>
+            <li>   🎚️ Select a compression level if available</li>
             <li>🚀 Click <strong>Compress</strong> to start the process</li>
-            <li>⬇️ Your compressed <code>.odt</code> file will auto-download when ready</li>
+            <li>   ⬇️ Your compressed <code>.odt</code> file will auto-download when ready</li>
           </ol>
              <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -190,7 +193,7 @@ const OdtCompressor = () => {
           <h2 className="compressor-subheading">Why Use Our ODT Compressor?</h2>
           <ul className="compressor-benefits">
             <li>📝 Preserves original content and layout</li>
-            <li>📉 Reduces file size for easier sharing and storage</li>
+            <li>   📉 Reduces file size for easier sharing and storage</li>
             <li>🔐 Secure processing with no data stored</li>
             <li>⚡ Fast compression with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odt file  </h2>
@@ -220,20 +223,20 @@ const OdtCompressor = () => {
 
             <h3>📝 What is an ODT File?</h3>
             <p>
-              ODT stands for Open Document Text. It’s the default format used by LibreOffice Writer and other open-source word processors. ODT files can include text, images, styles, and objects—and may become large if they contain rich media.
+              ODT stands for Open Document Text. It’s the default format used by LibreOffice Writer and other open-source word processors. ODT files can include text, images, styles, and objects   —and may become large if they contain rich media.
             </p>
 
-            <h3>📦 Why Compress an ODT File?</h3>
+            <h3>   📦 Why Compress an ODT File?</h3>
             <p>
               If your ODT file has embedded images, charts, or unnecessary formatting, it can become too bulky for quick sharing or uploading. Compressing it helps you keep things efficient.
             </p>
 
             <h3>💡 Benefits of Compressing ODT Files</h3>
             <ul>
-              <li><strong>📉 Smaller Size</strong> – Reduce large document size without quality loss</li>
-              <li><strong>🚀 Faster Upload</strong> – Share or email your file more quickly</li>
-              <li><strong>💾 Save Space</strong> – Keep your device or cloud storage tidy</li>
-              <li><strong>📱 Easier Access</strong> – Open and edit documents more smoothly</li>
+              <li><strong>   📉 Smaller Size</strong> - Reduce large document size without quality loss</li>
+              <li><strong>🚀 Faster Upload</strong> - Share or email your file more quickly</li>
+              <li><strong>   💾   Save Space</strong> - Keep your device or cloud storage tidy</li>
+              <li><strong>📱 Easier Access</strong> - Open and edit documents more smoothly</li>
             </ul>
 
             <h3>⚙️ How Our ODT Compressor Works</h3>
@@ -246,12 +249,12 @@ const OdtCompressor = () => {
               Yes. Your ODT file is processed securely. We don’t store your content and all temporary files are deleted after compression.
             </p>
             <ul>
-              <li>🔒 Encrypted file handling</li>
+              <li>🔒Encrypted file handling</li>
               <li>🧹 Auto-delete after processing</li>
-              <li>🖥️ Works on all platforms</li>
+              <li> 🖥️Works on all platforms</li>
             </ul>
 
-            <h3>📌 Final Tip</h3>
+            <h3>📌Final Tip</h3>
             <p>
               Compressing your ODT files is ideal when submitting reports, sharing articles, or archiving long documents. Save time and space today with one click.
             </p>

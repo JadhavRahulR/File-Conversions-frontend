@@ -7,7 +7,7 @@ const ContactUs = () => {
     <Helmet>
       <title>contact us page </title>
       <meta name="description" content="Convert PDF files to Word documents (.docx) quickly and securely. Free online PDF to Word converter with no email or signup required." />
-        <link rel="canonical" href="http://localhost:5173/contactus" />
+        <link rel="canonical" href="https://fileunivers.com/contactus" />
         <meta name="robots" content="index, follow" />
     </Helmet>
     <div className="contact-container">

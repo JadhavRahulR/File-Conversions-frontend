@@ -191,3 +191,9 @@ li .download-link{
   color: #ffffff;
 }
 
+@media (max-width:500px){
+  .extracted-list li{
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -21,7 +21,7 @@ const ZipCompressor = () => {
   const [progress, setProgress] = useState(0);
   const [zipName, setZipName] = useState(""); // ✅ New state for rename
 
-  // 🔹 Handle drag & drop
+  // ðŸ”¹ Handle drag & drop
   const onDrop = (acceptedFiles) => {
     setFiles((prevFiles) => [...prevFiles, ...acceptedFiles]);
   };
@@ -31,7 +31,7 @@ const ZipCompressor = () => {
     multiple: true,
   });
 
-  // 🔹 Handle Dropbox or Drive file select
+  // ðŸ”¹ Handle Dropbox or Drive file select
   const handleExternalFile = (file) => {
     if (!file) return;
     setFiles((prevFiles) => [...prevFiles, file]);
@@ -43,7 +43,7 @@ const ZipCompressor = () => {
     return name.replace(/[<>:"/\\|?*\x00-\x1F]/g, "").trim();
   };
 
-  // 🔹 Handle compression request
+  // ðŸ”¹ Handle compression request
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (files.length === 0) return alert("Please select at least one file.");
@@ -89,7 +89,7 @@ const ZipCompressor = () => {
           name="description"
           content="Convert any folder to a ZIP file online with ease. Secure and fast folder-to-ZIP compression tool. No installation or signup needed."
         />
-        <link rel="canonical" href="https://fileunivers.in/zip-compressor" />
+        <link rel="canonical" href="https://fileunivers.com/zip-compressor" />
         <meta name="robots" content="index, follow" />
         <meta
           name="keywords"
@@ -99,9 +99,9 @@ const ZipCompressor = () => {
 
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress Files to ZIP Online – Create ZIP Archives Instantly</h1>
+        <h1>Compress Files to ZIP Online - Create ZIP Archives Instantly</h1>
         <p className="intro-paragraph">
-          Quickly compress files to ZIP online and reduce file sizes for easier sharing and storage. Whether you have documents, images, videos, or folders, this free online ZIP compressor lets you bundle multiple files into a single compact ZIP archive — all without installing any software. Just upload your files, compress them, and download your new ZIP in seconds.
+          Quickly compress files to ZIP online and reduce file sizes for easier sharing and storage. Whether you have documents, images, videos, or folders, this free online ZIP compressor lets you bundle multiple files into a single compact ZIP archive- all without installing any software. Just upload your files, compress them, and download your new ZIP in seconds.
         </p>
       </div>
 
@@ -164,7 +164,7 @@ const ZipCompressor = () => {
           <h2 className="compressor-heading">Convert Folder to ZIP Online</h2>
           <p className="compressor-description">
             Easily compress an entire folder into a ZIP archive. Perfect for
-            sharing multiple files or backing up projects in one compact package.Our online ZIP compression tool ensures your files are safely compressed without losing quality or data integrity. It’s perfect for students, professionals, and businesses who want to share large files easily via email or cloud storage. With FileUnivers.in, you get a fast, secure, and efficient ZIP compression experience right from your browser — anytime, anywhere.
+            sharing multiple files or backing up projects in one compact package.Our online ZIP compression tool ensures your files are safely compressed without losing quality or data integrity. It’s perfect for students, professionals, and businesses who want to share large files easily via email or cloud storage. With fileunivers.com, you get a fast, secure, and efficient ZIP compression experience right from your browser- anytime, anywhere.
           </p>
           <div className="converterImg">
             <div >
@@ -178,16 +178,16 @@ const ZipCompressor = () => {
             <li>
               📁 Upload or drag & drop a folder (containing files and subfolders)
             </li>
-            <li>📦 The contents will be packed into a ZIP file</li>
+            <li>   📦 The contents will be packed into a ZIP file</li>
             <li>
               🚀 Click <strong>Convert</strong> to start the compression
             </li>
-            <li>⬇️ Your ZIP archive will auto-download once it's ready</li>
+            <li>   ⬇️ Your ZIP archive will auto-download once it's ready</li>
           </ol>
           <section>
           <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to create zip file ? "
-              description='Shrink your files and folders in seconds! 🗜️⚡ This video shows how to compress files into ZIP format online easily and securely. In this video, you’ll learn: How to upload and compress files into a ZIP ,Combine multiple files into one archive Download your ZIP instantly .'
+              description='Shrink your files and folders in seconds!    🗜️⚡ This video shows how to compress files into ZIP format online easily and securely. In this video, you’ll learn: How to upload and compress files into a ZIP ,Combine multiple files into one archive Download your ZIP instantly .'
             />
           </section>
 
@@ -195,8 +195,8 @@ const ZipCompressor = () => {
             Why Use Our Folder to ZIP Converter?
           </h2>
           <ul className="compressor-benefits">
-            <li>🗂️ Supports nested folders and multiple files</li>
-            <li>📉 Reduces overall file size for faster uploads</li>
+            <li>   🗂️Supports nested folders and multiple files</li>
+            <li>   📉 Reduces overall file size for faster uploads</li>
             <li>🔐 Your files are processed securely and never stored</li>
             <li>⚡ Fast conversion with automatic download</li>
             <h2 style={{ marginBottom: "6px" }}>

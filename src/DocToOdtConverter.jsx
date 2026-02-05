@@ -12,19 +12,22 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert doc to odt.mp4";
 import IntroPoster from "../src/assets/images/doc to odt poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const DocToOdtConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
 
@@ -49,6 +52,21 @@ const DocToOdtConverter = () => {
           },
         }
       );
+      const save = new Blob([response.data], {
+        type: "application/vnd.oasis.opendocument.text",
+      });
+
+      const convertedFile = new File(
+        [save],
+        file.name.replace(/\.(doc|docx)$/i, "") + ".odt",
+        {
+          type: "application/vnd.oasis.opendocument.text",
+        }
+      );
+
+      setConvertedFile(convertedFile);
+
+
 
       const blob = new Blob([response.data], {
         type: "application/vnd.oasis.opendocument.text",
@@ -59,9 +77,9 @@ const DocToOdtConverter = () => {
       a.download = file.name.replace(/\.docx$/, "") + ".odt";
       a.click();
       window.URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus("✅ Done");
     } catch (error) {
-      console.error("❌ Conversion failed", error);
+      console.error("   ❌ Conversion failed", error);
       alert("Conversion failed");
     }
   };
@@ -81,7 +99,7 @@ const DocToOdtConverter = () => {
       <Helmet>
         <title>Convert DOC To ODT | Free and Secure Word To OpenDocument Online Converter</title>
         <meta name="description" content="Convert DOC files to ODT format online for free. Fast, secure, and easy DOC to ODT converter with no email or signup needed." />
-        <link rel="canonical" href="https://fileunivers.in/doc-to-odt" />
+        <link rel="canonical" href="https://fileunivers.com/doc-to-odt" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="doc to odt, convert doc to odt, word to odt, free doc to odt converter, online doc to odt" />
         <meta charset="utf-8" />
@@ -90,16 +108,18 @@ const DocToOdtConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert DOC To ODT Online – Free Word To ODT Converter (Fast & Secure)</h1>
+        <h1>Convert DOC To ODT Online - Free Word To ODT Converter (Fast & Secure)</h1>
 
         <p className="intro-paragraph">
-          Convert your Microsoft Word DOC files to ODT format instantly with our free online DOC to ODT converter. This tool works directly in your browser — no software installation needed and sign up . Just upload your Word document, click “Upload”, and auto download your ODT file in seconds.It’s fast, secure, and  ideal for LibreOffice or OpenOffice users who need compatibility without losing quality.
+          Convert your Microsoft Word DOC files to ODT format instantly with our free online DOC to ODT converter. This tool works directly in your browser- no software installation needed and sign up . Just upload your Word document, click “Upload”, and auto download your ODT file in seconds.It’s fast, secure, and  ideal for LibreOffice or OpenOffice users who need compatibility without losing quality.
         </p>
       </div>
       <section>
 
         <div className='converter'>
-
+          <div className="converterheading">
+            <h2>Convert Word TO ODT  </h2>
+          </div>
           <input type="file" accept=".docx" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -109,22 +129,37 @@ const DocToOdtConverter = () => {
           </div>
           <DropzoneInput acceptedType={['docx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
-          {file && (
+          {/* {file && (
             <p className="selected-file ">
               ✅ Selected File: <b>{file.name}</b>
             </p>
-          )}
-          <button onClick={handleConvert} disabled={status === 'Converting...'}>
+          )} */}
+          {/* <button onClick={handleConvert} disabled={status === 'Converting...'}>
             {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+          </button> */}
+          <button onClick={handleConvert} disabled={status === 'Converting...'}>
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === "✅ Done" && "Download Again"}
           </button>
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} className="savetodropbox" />
+              </div>
+            </>
+          )}
 
         </div>
       </section>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert DOC To ODT – Free & Instant</h2>
+          <h2 className="converter-title">Convert DOC To ODT - Free & Instant</h2>
           <p>
-            Convert your  DOC files to ODT instantly with our free online DOC to ODT converter tool. This tool works directly in your browser — no sign up needed. Just upload your Word document, click “Upload”, and auto download your ODT file in seconds.It’s fast and secure making it ideal for LibreOffice or OpenOffice users.
+            Convert your  DOC files to ODT instantly with our free online DOC to ODT converter tool. This tool works directly in your browser- no sign up needed. Just upload your Word document, click “Upload”, and auto download your ODT file in seconds.It’s fast and secure making it ideal for LibreOffice or OpenOffice users.
           </p>
           <div className="converterImg">
             <img src="word.png" alt="Word Img" className='ConverterImgone' />
@@ -136,25 +171,25 @@ const DocToOdtConverter = () => {
           <div className="converter-section">
             <h2>🔄 How to Convert DOC to ODT ?</h2>
             <ol>
-              <li>📤 Upload your DOC file – drag & drop or click to select.</li>
+              <li>📤 Upload your DOC file - drag & drop or click to select.</li>
               <li>⚙️ We’ll convert it to an OpenDocument Text (.odt) file.</li>
               <li>📥 Auto Download the ODT file after conversion.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Convert DOC To ODT ? "
-              description='Convert your DOC files to ODT format easily using our free online DOC to ODT converter. This video shows a simple step-by-step method to change Microsoft Word (.doc) files into OpenDocument Text (.odt) without installing any software. It’s fast, secure, and completely free — ideal for anyone using LibreOffice or OpenOffice.'
+              description='Convert your DOC files to ODT format easily using our free online DOC to ODT converter. This video shows a simple step-by-step method to change Microsoft Word (.doc) files into OpenDocument Text (.odt) without installing any software. It’s fast, secure, and completely free- ideal for anyone using LibreOffice or OpenOffice.'
             />
           </section>
           <div className="converter-section">
-            <h2>🔒 Why Use Our DOC to ODT Converter?</h2>
+            <h2>🔒Why Use Our DOC to ODT Converter?</h2>
             <ul>
               <li>✅ Preserves document formatting and layout.</li>
               <li>🔐 Privacy-friendly: We automatically delete files after conversion.</li>
               <li>⚡ Fast and accurate conversion.</li>
-              <li>🌐 Works on all browsers and devices – no installation required.</li>
+              <li>🌐 Works on all browsers and devices - no installation required.</li>
               <li>🆓 100% free, unlimited use with no restrictions.</li>
             </ul>
           </div>
@@ -180,7 +215,7 @@ const DocToOdtConverter = () => {
               <strong>A:</strong> No. This tool works entirely online.</p>
           </div>
           <div className="compresspdf-article-section">
-            <h2>📄 Convert DOC to ODT – Microsoft Word to Open Document Format</h2>
+            <h2>📄 Convert DOC to ODT - Microsoft Word to Open Document Format</h2>
             <p>
               Want to convert your DOC or DOCX files to ODT format? Our free online DOC to ODT converter lets you switch your Microsoft Word documents into the OpenDocument format instantly and without hassle. Whether you're migrating to open-source tools or simply need a compatible format for LibreOffice, this tool ensures quick and accurate conversions.
             </p>
@@ -190,7 +225,7 @@ const DocToOdtConverter = () => {
               ODT stands for Open Document Text, an open standard format used by word processors like LibreOffice and OpenOffice. Unlike DOC (used by Microsoft Word), ODT is freely accessible, more portable, and ideal for users who prefer open-source ecosystems.
             </p>
 
-            <h3>✨ Why Convert DOC to ODT?</h3>
+            <h3>🔄 Why Convert DOC to ODT?</h3>
             <ul>
               <li><strong>Compatibility:</strong> ODT files work seamlessly with LibreOffice, OpenOffice, and many other free office suites.</li>
               <li><strong>Free and Open-Source:</strong> No need for Microsoft Word to view or edit your file.</li>
@@ -198,7 +233,7 @@ const DocToOdtConverter = () => {
               <li><strong>Perfect for Collaboration:</strong> Many organizations and institutions prefer open formats for document sharing.</li>
             </ul>
 
-            <h3>🧠 Who Can Benefit?</h3>
+            <h3>🧠  Who Can Benefit?</h3>
             <ul>
               <li><strong>Students:</strong> Submit assignments or reports in ODT for LibreOffice-based institutions.</li>
               <li><strong>Freelancers & Writers:</strong> Create universally accessible documents for clients.</li>
@@ -208,7 +243,7 @@ const DocToOdtConverter = () => {
 
             <h3>📱 Works on Any Device</h3>
             <p>
-              This DOC to ODT converter is browser-based, so you can use it on any platform – Windows, macOS, Linux, Android, or iOS. There's no need to install software or create an account.
+              This DOC to ODT converter is browser-based, so you can use it on any platform - Windows, macOS, Linux, Android, or iOS. There's no need to install software or create an account.
             </p>
 
             <h3>🔐 Your Privacy is Our Priority</h3>
@@ -229,7 +264,7 @@ const DocToOdtConverter = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Convert your DOC file to ODT instantly – safe, accurate, and free!</p>
+            <p>Convert your DOC file to ODT instantly - safe, accurate, and free!</p>
             <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
           </div>
         </div>

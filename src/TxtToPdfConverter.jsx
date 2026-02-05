@@ -12,19 +12,22 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert text to pdf.mp4"
 import IntroPoster from "../src/assets/images/text to pdf poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const TxtToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
 
@@ -50,6 +53,20 @@ const TxtToPdfConverter = () => {
           },
         }
       );
+      const save = new Blob([response.data], {
+  type: "application/pdf",
+});
+
+const convertedFile = new File(
+  [save],
+  file.name.replace(/\.txt$/i, "") + ".pdf",
+  {
+    type: "application/pdf",
+  }
+);
+
+setConvertedFile(convertedFile);
+
 
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
@@ -58,9 +75,9 @@ const TxtToPdfConverter = () => {
       a.download = file.name.replace(".txt", ".pdf");
       a.click();
       window.URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus("✅ Done");
     } catch (error) {
-      console.error("❌ Conversion failed", error);
+      console.error("   ❌ Conversion failed", error);
       alert("Conversion failed");
     }
   };
@@ -80,7 +97,7 @@ const TxtToPdfConverter = () => {
       <Helmet>
         <title>Text To PDF | Free Online Text File To PDF Converter</title>
         <meta name="description" content="Convert TXT files to PDF easily and securely. Free online TXT to PDF converter with no signup or email required." />
-        <link rel="canonical" href="https://fileunivers.in/text-to-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/text-to-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="txt to pdf, convert txt to pdf, text file to pdf, free txt to pdf converter, online txt to pdf" />
         <meta charset="utf-8" />
@@ -90,12 +107,15 @@ const TxtToPdfConverter = () => {
       <section>
         <div className="pagetitle">
 
-          <h1>Text To PDF Converter – Free, Fast & Secure Online Text To PDF Converting Tool</h1>
+          <h1>Text To PDF Converter - Free, Fast & Secure Online Text To PDF Converting Tool</h1>
 
           <p className="intro-paragraph">
             Convert your plain text (.txt) files into professional, shareable PDF documents instantly with our free Text to PDF converter. This fast and secure online tool preserves your text formatting, fonts, and alignment while generating a clean, ready-to-print PDF file.          </p>
         </div>
         <div className='converter'>
+          <div className="converterheading">
+          <h2>Convert TEXT To PDF </h2>
+          </div>
           <input type="file" accept=".txt" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -104,15 +124,31 @@ const TxtToPdfConverter = () => {
           </div>
           <DropzoneInput acceptedType={['txt']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
+          
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === "✅ Done" && "Download Again"}
           </button>
+
+
+
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} className="savetodropbox" />
+              </div>
+            </>
+          )}
         </div>
       </section>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert Text to PDF – Simple & Fast</h2>
-          <p>Convert Text to PDF online for free. Fast, secure, and accurate — no sign-up or software needed. Upload your TXT file and download a clean, formatted PDF instantly.No software installation or sign-up required — just upload your text file, click "Upload”, and Auto download your PDF File in seconds. </p>
+          <h2 className="converter-title">Convert Text to PDF - Simple & Fast</h2>
+          <p>Convert Text to PDF online for free. Fast, secure, and accurate- no sign-up or software needed. Upload your TXT file and download a clean, formatted PDF instantly.No software installation or sign-up required- just upload your text file, click "Upload”, and Auto download your PDF File in seconds. </p>
           <div className="converterImg">
             <img src="txt.png" alt="txt Img" className='ConverterImgone' />
             <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
@@ -124,22 +160,22 @@ const TxtToPdfConverter = () => {
             <h2>🔄 How to Convert Text to PDF ?   </h2>
 
             <ol>
-              <li>📤 Upload your TXT file – drag & drop or click to select.</li>
+              <li>📤 Upload your TXT file - drag & drop or click to select.</li>
               <li>⚙️ We’ll convert your plain text into a clean PDF file.</li>
               <li>📥 Auto Download the PDF instantly after conversion.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large files may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Convert Text to PDF ? "
               description='Easily convert your text files (.txt) into PDF documents with this free online Text to PDF converter!.
-              No software installation or sign-up required — just upload your text file, click "Upload”, and download your formatted PDF instantly.'
+              No software installation or sign-up required- just upload your text file, click "Upload”, and download your formatted PDF instantly.'
             />
           </section>
 
           <div className="converter-section">
-            <h2>🔒 Why Use Our Text to PDF Converter?</h2>
+            <h2>🔒Why Use Our Text to PDF Converter?</h2>
             <ul>
               <li>✅ Clean formatting: Your text is neatly wrapped into a readable PDF.</li>
               <li>🔐 Privacy-first: Files are deleted automatically after conversion.</li>
@@ -168,9 +204,9 @@ const TxtToPdfConverter = () => {
               <strong>A:</strong> Yes, no limits, no fees.</p>
           </div>
           <div className="compresspdf-article-section">
-            <h2>📝 Convert Text to PDF – Free Online Tool</h2>
+            <h2>📝 Convert Text to PDF - Free Online Tool</h2>
             <p>
-              Looking to save your plain text (.txt) files as professional PDFs? Our Text to PDF converter helps you create clean, printer-friendly PDFs from any text content in just a few clicks. Whether it's notes, logs, code, or a draft — we’ve got you covered.
+              Looking to save your plain text (.txt) files as professional PDFs? Our Text to PDF converter helps you create clean, printer-friendly PDFs from any text content in just a few clicks. Whether it's notes, logs, code, or a draft- we’ve got you covered.
             </p>
 
             <h3>📄 Why Convert Text to PDF?</h3>
@@ -212,7 +248,7 @@ const TxtToPdfConverter = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Convert your plain text files to PDF in just a click – simple, safe, and fast.</p>
+            <p>Convert your plain text files to PDF in just a click - simple, safe, and fast.</p>
             <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
           </div>
         </div>

@@ -1,0 +1,177 @@
+.urlHeading{
+  background-color: #0d1117;
+
+
+}
+.urlHeading h1{
+  color: rgb(174, 252, 255);
+  font-size: 2rem;
+  padding: 20px;
+  text-align: center;
+  
+}
+.urlHeading p{
+  text-align: center;
+  max-width: 800px;
+  color:white;
+  margin-bottom: 10px;
+
+}
+
+.file-page {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
+  background-color: #0d1117;
+  color: #fff;
+  /* max-width: 800px; */
+}
+.urlpagecontainer .pageImg{
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.urlpagecontainer .pageImg img{
+  width: 100px;
+}
+.urlpagecontainer .pageImg p{
+  text-align: center;
+}
+
+.file-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #161b22;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 600px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.file-title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.file-description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #9ca3af;
+}
+
+.file-input {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  padding: 12px;
+  width: 500px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.file-button {
+  background: #238636;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: 0.3s;
+}
+
+.file-button:hover {
+  background: #2ea043;
+}
+
+.file-error {
+  color: #ff5555;
+  margin-top: 10px;
+}
+
+.file-success {
+  margin-top: 15px;
+  word-break: break-all;
+}
+
+.urlpagecontainer {
+    max-width: 900px;
+    background: #0d1117;
+    padding: 30px;
+    margin: 40px auto;
+    border-radius: 12px;
+    /* box-shadow: 0 4px 15px rgba(0,0,0,0.1); */
+}
+
+/* h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+} */
+.file-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.file-page h2 {
+    margin-top: 30px;
+    color: #78f1ff;
+    font-size: 1.3rem;
+}
+
+.file-page p {
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+.file-page ul, ol {
+    margin: 15px 0;
+    padding-left: 25px;
+    line-height: 1.7;
+
+}
+
+.file-page strong {
+    color: #d8f9fc;
+}
+.file-page .fileuploadcontainer .drive{
+  margin-right: 10px;
+}
+.copy-btn {
+  background: #4b7bec;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background: #3867d6;
+}
+
+
+@media (max-width:575px){
+  .urlHeading h1{
+    font-size: 1.3rem;
+    padding: 10px;
+  }
+  .urlHeading p{
+    margin-bottom: 2px;
+  }
+  .file-container{
+    width: 330px;
+  }
+  .file-input{
+    max-width: 300px;
+  }
+
+}

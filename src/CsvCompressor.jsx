@@ -71,7 +71,7 @@ const CsvCompressor = () => {
       <Helmet>
         <title>Compress CSV | Reduce CSV File Size Online Free</title>
         <meta name="description" content="Compress your CSV files online to reduce file size quickly and securely. Free CSV compressor with no signup or software required." />
-        <link rel="canonical" href="https://fileunivers.in/csvcompress" />
+        <link rel="canonical" href="https://fileunivers.com/csvcompress" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress csv, csv file compressor, reduce csv file size, online csv compression, shrink csv, free csv compressor" />
         <meta charset="utf-8" />
@@ -80,14 +80,17 @@ const CsvCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress CSV Online – Free & Fast CSV File Compressor</h1>
+        <h1>Compress CSV Online - Free & Fast CSV File Compressor</h1>
         <p className="intro-paragraph">
-          Compress CSV files online to reduce file size without losing data accuracy or structure. Our free and secure CSV compressor helps you shrink large spreadsheets for faster uploads, sharing, and storage. No software installation or registration required — just upload your CSV file, click compress, and download your optimized version in seconds. Perfect for data analysts, developers, and professionals who manage large datasets.
+          Compress CSV files online to reduce file size without losing data accuracy or structure. Our free and secure CSV compressor helps you shrink large spreadsheets for faster uploads, sharing, and storage. No software installation or registration required- just upload your CSV file, click compress, and download your optimized version in seconds. Perfect for data analysts, developers, and professionals who manage large datasets.
         </p>
       </div>
       <div className="compressor-container" onDrop={handleFileDrop} onDragOver={(e) => e.preventDefault()}>
+        <div className="compressing">
+          <h2>Compress CSV</h2>
+        </div>
         <label htmlFor="csvInput" className="file-label">
-          {file ? `✅ Selected: ${file.name}` : '📂Drag and Drop or  Click here  to select a .csv file'}
+          {file ? `✅ Selected: ${file.name}` : '   📂Drag and Drop or  Click here  to select a .csv file'}
         </label>
         <input id="csvInput" type="file" accept=".csv" onChange={handleFileChange} className="hidden-input" />
         <div className="fileuploadcontainer">
@@ -100,7 +103,7 @@ const CsvCompressor = () => {
           <input type="range" id="compressionSlider" min="1" max="22" value={compressionLevel} onChange={(e) => setCompressionLevel(parseInt(e.target.value))} />
           <div className="slider-labels">
             <span>⚡ Faster</span>
-            <span>📦 Smaller File</span>
+            <span>   📦 Smaller File</span>
           </div>
         </div>
 
@@ -110,18 +113,18 @@ const CsvCompressor = () => {
           disabled={!file || status === 'uploading'}
           className="compress-btn"
         >
-          {status === 'uploading' ? `Compressing... (${progress}%)` : '🔽 Compress CSV'}
+          {status === 'uploading' ? `Compressing... (${progress}%)` : '    Compress CSV'}
         </button>
 
         {status === 'done' && <p className="success-msg">✅ Compression complete. File downloaded.</p>}
-        {status === 'error' && <p className="error-msg">❌ Compression failed. Try again.</p>}
+        {status === 'error' && <p className="error-msg">   ❌ Compression failed. Try again.</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress CSV File Online</h2>
           <p className="compressor-description">
             Quickly reduce the size of your CSV files without altering the data. Ideal for large spreadsheet exports or data backups.
-            Our online CSV compression tool uses smart optimization to reduce file size while keeping every value, column, and format intact. Whether you’re compressing large data files, reports, or analytics sheets, this tool ensures accurate and safe results every time. 100% free, browser-based, and secure — works on all devices. Start compressing your CSV files now with FileUnivers.in and make your data lighter, faster, and easier to store or share.
+            Our online CSV compression tool uses smart optimization to reduce file size while keeping every value, column, and format intact. Whether you’re compressing large data files, reports, or analytics sheets, this tool ensures accurate and safe results every time. 100% free, browser-based, and secure- works on all devices. Start compressing your CSV files now with fileunivers.com and make your data lighter, faster, and easier to store or share.
           </p>
 
            <div className="converterImg">
@@ -137,24 +140,24 @@ const CsvCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress a CSV File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.csv</code> file</li>
+            <li>   📂 Upload or drag & drop your <code>.csv</code> file</li>
             <li>⚙️ Choose your preferred compression level</li>
             <li>🚀 Click <strong>Compress</strong> to process the file</li>
-            <li>⬇️ Auto Download the compressed <code>.csv</code> file</li>
+            <li>   ⬇️ Auto Download the compressed <code>.csv</code> file</li>
           </ol>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Compress PDF ? "
-              description='Compress your CSV files online quickly and easily with this step-by-step video!. Learn how to reduce CSV file size without losing data, making it perfect for faster uploads, sharing, and storage — no software needed.'
+              description='Compress your CSV files online quickly and easily with this step-by-step video!. Learn how to reduce CSV file size without losing data, making it perfect for faster uploads, sharing, and storage- no software needed.'
             />
           </section>
 
           <h2 className="compressor-subheading">Why Use Our CSV Compressor?</h2>
           <ul className="compressor-benefits">
-            <li>📉 Reduces file size without losing data</li>
-            <li>🔒 Your CSV stays secure and private</li>
+            <li>   📉 Reduces file size without losing data</li>
+            <li>🔒Your CSV stays secure and private</li>
             <li>⚡ Fast processing with instant download</li>
-            <li>🖥️ Works on all devices with a browser</li>
+            <li>     Works on all devices with a browser</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and CSV file  </h2>
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
@@ -188,22 +191,22 @@ const CsvCompressor = () => {
               Each line represents a row, and values are separated by commas.
             </p>
 
-            <h3>🧮 Why Are Some CSV Files So Large?</h3>
+            <h3>🧠    Why Are Some CSV Files So Large?</h3>
             <p>
-              While CSV is a plain text format, large datasets—such as financial records, analytics exports, or
-              logs—can contain thousands of rows and columns. Uncompressed, these files grow quickly and are
+              While CSV is a plain text format, large datasets   —such as financial records, analytics exports, or
+              logs   —can contain thousands of rows and columns. Uncompressed, these files grow quickly and are
               difficult to manage or share.
             </p>
 
             <h3>💡 Benefits of Compressing CSV Files</h3>
             <ul>
-              <li><strong>🚀 Faster Uploads & Downloads</strong> – Share large files easily via email or cloud</li>
-              <li><strong>📤 Efficient Storage</strong> – Reduce data consumption on servers or local devices</li>
-              <li><strong>📁 Easy Archiving</strong> – Store historical data in compressed archives</li>
-              <li><strong>🔐 Secure & Private</strong> – Your data never leaves your browser or device</li>
+              <li><strong>🚀 Faster Uploads & Downloads</strong> - Share large files easily via email or cloud</li>
+              <li><strong>📤 Efficient Storage</strong> - Reduce data consumption on servers or local devices</li>
+              <li><strong>📁 Easy Archiving</strong> - Store historical data in compressed archives</li>
+              <li><strong>🔐 Secure & Private</strong> - Your data never leaves your browser or device</li>
             </ul>
 
-            <h3>🛠️ How Our CSV Compressor Works</h3>
+            <h3>   🛠️ How Our CSV Compressor Works</h3>
             <p>
               Our online tool takes your CSV file and compresses it using efficient formats like ZIP or 7Z.
               Simply upload your file, choose a format, and get a compressed version instantly. No signup or
@@ -239,13 +242,13 @@ const CsvCompressor = () => {
               Yes! Your data is never saved or viewed. Compression is done in a secure environment, and your file:
             </p>
             <ul>
-              <li>🔒 Is not stored on any server</li>
+              <li>🔒Is not stored on any server</li>
               <li>🔐 Is not accessed by anyone</li>
-              <li>♻️ Is deleted automatically after processing</li>
+              <li>   ♻️ Is deleted automatically after processing</li>
             </ul>
 
 
-            <h3>🔚 Final Thoughts</h3>
+            <h3>   🔚 Final Thoughts</h3>
             <p>
               CSV files are essential for storing and sharing structured data, but they can get bulky quickly.
               Compressing them reduces load times, saves space, and makes transferring easier than ever. Try our

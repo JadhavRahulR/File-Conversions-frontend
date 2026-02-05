@@ -1,0 +1,28 @@
+
+
+
+.gdb .googleDrivesavebtn{
+    border-radius: 10px;
+    animation: none;
+    background-color: transparent;
+    border: 1px solid white;
+    color: rgb(255, 255, 255);
+    margin: 4px;
+    letter-spacing: normal;
+    text-transform: none;
+    height: 40px;
+    width: 170px;
+    /* padding: 2px; */
+}
+.gdb .googleDrivesavebtn:hover{
+    border: none;
+    box-shadow: 0px 4px 20px rgb(255, 255, 255);
+    background-color: transparent;
+    color: white;
+}
+.gdb .googleDrivesavebtn .no-border-animation::before,
+.gdb .googleDrivesavebtn .no-border-animation::after {
+  animation: none !important;
+  display: none !important;
+}
+

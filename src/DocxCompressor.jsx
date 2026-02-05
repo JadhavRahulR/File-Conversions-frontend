@@ -81,7 +81,7 @@ const DocxCompressor = () => {
       <Helmet>
         <title>Compress Word | Reduce DOCX File Size Online</title>
         <meta name="description" content="Compress your Microsoft Word (.docx) files online and reduce file size instantly. Free DOCX compressor with no signup or installation needed." />
-        <link rel="canonical" href="https://fileunivers.in/docxcompressor" />
+        <link rel="canonical" href="https://fileunivers.com/docxcompressor" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress word, docx compressor, reduce word file size, compress doc file, shrink docx, word file compression online" />
         <meta charset="utf-8" />
@@ -90,22 +90,25 @@ const DocxCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress DOC File Online – Free Word Document Size Reducer</h1>
+        <h1>Compress DOC File Online - Free Word Document Size Reducer</h1>
         <p className="intro-paragraph">
-          Quickly compress DOC files online to reduce file size while preserving document quality, formatting, and content. Whether you’re uploading assignments, sharing reports, or sending official documents, this tool makes your Word files lighter and faster to share — all without installing any software. Simply upload your DOC file, select the compression level, and download your optimized Word document instantly.
+          Quickly compress DOC files online to reduce file size while preserving document quality, formatting, and content. Whether you’re uploading assignments, sharing reports, or sending official documents, this tool makes your Word files lighter and faster to share- all without installing any software. Simply upload your DOC file, select the compression level, and download your optimized Word document instantly.
         </p>
       </div>
 
       <div
-        className="compressor-container drop-area"
+        className="compressor-container"
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
+        <div className="compressing">
+          <h2>Compress Word / DOCX</h2>
+        </div>
         <p
           className="file-label clickable-label"
           onClick={() => fileInputRef.current.click()}
         >
-          {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .docx file here, or click to select'}
+          {file ? `✅ Selected: ${file.name}` : '   📂 Drag & drop a .docx file here, or click to select'}
         </p>
         <input type="file" accept=".docx" ref={fileInputRef} onChange={handleFileChange} className="hidden-input" />
         <div className="fileuploadcontainer">
@@ -116,8 +119,8 @@ const DocxCompressor = () => {
           <label>Image Quality: {quality}</label>
           <input type="range" min="10" max="100" step="5" value={quality} onChange={(e) => setQuality(parseInt(e.target.value))} />
           <div className="slider-labels">
-            <span>📉 Compress More</span>
-            <span>📖 Compress Less</span>
+            <span>   📉 Compress More</span>
+            <span>ðŸ“– Compress Less</span>
           </div>
         </div>
 
@@ -145,17 +148,17 @@ const DocxCompressor = () => {
         </div>
 
         <button onClick={handleCompress} disabled={!file || status === 'uploading'}>
-          {status === 'uploading' ? `Compressing... (${progress}%)` : '🔽 Compress'}
+          {status === 'uploading' ? `Compressing... (${progress}%)` : '    Compress'}
         </button>
 
         {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
-        {status === 'error' && <p className="error-msg">❌ Compression failed</p>}
+        {status === 'error' && <p className="error-msg">   ❌ Compression failed</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress DOCX File Online</h2>
           <p className="compressor-description">
-            Reduce the size of your Microsoft Word (.docx) documents without affecting formatting or content. Ideal for faster sharing and storage.Our DOC compressor smartly reduces embedded images and unnecessary data, keeping your text and layout intact. It’s the easiest way to minimize large Word file sizes for email attachments, cloud storage, or web uploads. 100% browser-based, secure, and lightning-fast — start compressing your Word (.doc) files with FileUnivers.in and make document sharing smoother and more efficient.
+            Reduce the size of your Microsoft Word (.docx) documents without affecting formatting or content. Ideal for faster sharing and storage.Our DOC compressor smartly reduces embedded images and unnecessary data, keeping your text and layout intact. It’s the easiest way to minimize large Word file sizes for email attachments, cloud storage, or web uploads. 100% browser-based, secure, and lightning-fast- start compressing your Word (.doc) files with fileunivers.com and make document sharing smoother and more efficient.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -170,21 +173,21 @@ const DocxCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress a DOCX File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.docx</code> file</li>
-            <li>🎚️ Choose your preferred image compression level</li>
+            <li>   📂 Upload or drag & drop your <code>.docx</code> file</li>
+            <li>   🎚️ Choose your preferred image compression level</li>
             <li>🚀 Click <strong>Compress</strong> to begin the process</li>
-            <li>⬇️ The compressed <code>.docx</code> will auto-download once ready</li>
+            <li>   ⬇️ The compressed <code>.docx</code> will auto-download once ready</li>
           </ol>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Compress DOC ? "
-              description='Learn how to compress DOC files online in just a few seconds!. This tutorial shows you how to reduce Word file size without losing formatting or content quality — fast, free, and secure.In this video, you’ll learn:How to upload your DOC fileChoose a compression quality Download your smaller, optimized Word document instantly.'
+              description='Learn how to compress DOC files online in just a few seconds!. This tutorial shows you how to reduce Word file size without losing formatting or content quality- fast, free, and secure.In this video, you’ll learn:How to upload your DOC fileChoose a compression quality Download your smaller, optimized Word document instantly.'
             />
           </section>
           <h2 className="compressor-subheading">Why Use Our DOCX Compressor?</h2>
           <ul className="compressor-benefits">
             <li>📄 Keeps formatting, fonts, and layout intact</li>
-            <li>📉 Reduces file size by compressing embedded images</li>
+            <li>   📉 Reduces file size by compressing embedded images</li>
             <li>🔐 Your document remains secure and private</li>
             <li>⚡ Fast processing with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Word file  </h2>
@@ -215,10 +218,10 @@ const DocxCompressor = () => {
             <p>
               DOCX is the default file format used by Microsoft Word. It contains formatted text, images, tables,
               styles, and other elements. While DOCX files are more efficient than the older DOC format, they can
-              still become large—especially when filled with images or embedded objects.
+              still become large   —especially when filled with images or embedded objects.
             </p>
 
-            <h3>📦 Why Do DOCX Files Get So Large?</h3>
+            <h3>   📦 Why Do DOCX Files Get So Large?</h3>
             <p>
               DOCX files often grow in size due to high-resolution images, embedded fonts, custom graphics, and
               media. Reports, resumes, portfolios, or academic papers with multiple elements can easily cross
@@ -227,16 +230,16 @@ const DocxCompressor = () => {
 
             <h3>💡 Benefits of Compressing DOCX Files</h3>
             <ul>
-              <li><strong>📤 Easier Sharing</strong> – Send documents faster through email or messaging apps</li>
-              <li><strong>💾 Save Storage</strong> – Free up space on your computer, drive, or device</li>
-              <li><strong>⚡ Faster Load Times</strong> – Open large documents more smoothly</li>
-              <li><strong>📱 Better Mobile Experience</strong> – Smaller files open faster on mobile devices</li>
+              <li><strong>📤 Easier Sharing</strong> - Send documents faster through email or messaging apps</li>
+              <li><strong>   💾   Save Storage</strong> - Free up space on your computer, drive, or device</li>
+              <li><strong>⚡ Faster Load Times</strong> - Open large documents more smoothly</li>
+              <li><strong>📱 Better Mobile Experience</strong> - Smaller files open faster on mobile devices</li>
             </ul>
 
-            <h3>🛠️ How Our DOCX Compressor Works</h3>
+            <h3>   🛠️ How Our DOCX Compressor Works</h3>
             <p>
               Our tool analyzes your DOCX file and compresses embedded images, removes unnecessary metadata, and
-              restructures internal elements for maximum size reduction—all while preserving your document’s
+              restructures internal elements for maximum size reduction   —all while preserving your document’s
               layout and formatting. Upload, compress, and download instantly.
             </p>
 
@@ -246,16 +249,16 @@ const DocxCompressor = () => {
               store or access your files, and everything is deleted after compression.
             </p>
             <ul>
-              <li>🔒 No file storage</li>
+              <li>🔒No file storage</li>
               <li>🔐 Secure processing</li>
-              <li>♻️ Automatic cleanup after processing</li>
+              <li>   ♻️ Automatic cleanup after processing</li>
             </ul>
 
-            <h3>🔚 Final Thoughts</h3>
+            <h3>   🔚 Final Thoughts</h3>
             <p>
               DOCX is one of the most commonly used formats for documentation. If your Word files are too large
               to share or store comfortably, compressing them is a quick and effective solution. Try our DOCX
-              compressor today—it's fast, secure, and completely free.
+              compressor today   —it's fast, secure, and completely free.
             </p>
 
             <h2>📚 Frequently Asked Questions</h2>

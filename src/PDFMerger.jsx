@@ -74,7 +74,7 @@ const PDFMerger = () => {
       a.click();
       URL.revokeObjectURL(url);
     } catch (err) {
-      console.error("❌ Merge failed", err);
+      console.error("   ❌ Merge failed", err);
       alert("Merge failed. Try again.");
     }
     setIsMerging(false);
@@ -85,7 +85,7 @@ const PDFMerger = () => {
       <Helmet>
         <title>Merge PDF Files | Combine Multiple PDFs into One</title>
         <meta name="description" content="Merge multiple PDF files into a single document easily and securely. Use our free online PDF merger with no signup required." />
-        <link rel="canonical" href="https://fileunivers.in/merge-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/merge-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="merge pdf, combine pdf, pdf merger, join pdf files, merge pdf online, free pdf merge tool" />
         <meta charset="utf-8" />
@@ -94,9 +94,9 @@ const PDFMerger = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Merge PDF Files Online – Combine Multiple PDFs into One Seamlessly</h1>
+        <h1>Merge PDF Files Online - Combine Multiple PDFs into One Seamlessly</h1>
         <p className="intro-paragraph">
-          Easily merge multiple PDF files online into a single, organized document in just a few seconds. Whether you’re combining reports, invoices, or scanned pages, this free online tool helps you join PDFs effortlessly — no software installation or registration required. Just upload your files, arrange them in order, and download your perfectly merged PDF instantly.
+          Easily merge multiple PDF files online into a single, organized document in just a few seconds. Whether you’re combining reports, invoices, or scanned pages, this free online tool helps you join PDFs effortlessly- no software installation or registration required. Just upload your files, arrange them in order, and download your perfectly merged PDF instantly.
         </p>
       </div>
       <div className="pdf-merger">
@@ -141,13 +141,13 @@ const PDFMerger = () => {
                     className="remove-btn"
                     onClick={() => handleRemove(index)}
                   >
-                    ❌
+                       ❌
                   </button>
                 </li>
               ))}
             </ul>
             <button className="clear-btn" onClick={handleClearAll}>
-              🗑️ Clear All
+                 🗑️ Clear All
             </button>
           </>
         )}
@@ -162,7 +162,7 @@ const PDFMerger = () => {
         <div className="compressor-page">
           <h2 className="compressor-heading">Merge PDF Files Online</h2>
           <p className="compressor-description">
-            Combine multiple PDF documents into a single file in just a few clicks. Upload, reorder, or remove PDFs as needed and generate a clean merged result instantly.Our fast and secure PDF merger keeps your formatting, images, and text intact while combining multiple PDFs into one high-quality document. It’s ideal for students, professionals, and businesses that handle multiple files daily. Save time, stay organized, and simplify your workflow with FileUnivers.in, your trusted online solution for PDF merging and file management.
+            Combine multiple PDF documents into a single file in just a few clicks. Upload, reorder, or remove PDFs as needed and generate a clean merged result instantly.Our fast and secure PDF merger keeps your formatting, images, and text intact while combining multiple PDFs into one high-quality document. It’s ideal for students, professionals, and businesses that handle multiple files daily. Save time, stay organized, and simplify your workflow with fileunivers.com, your trusted online solution for PDF merging and file management.
           </p>
           <div className="converterImg">
             <div >
@@ -172,11 +172,11 @@ const PDFMerger = () => {
           </div>
           <h2 className="compressor-subheading">How to Merge PDF Files?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop multiple PDF files</li>
-            <li>🧩 Reorder the files if needed</li>
-            <li>🗑️ Remove a specific PDF or clear all files from the list</li>
-            <li>🔗 Click <strong>Merge</strong> to combine the files into one</li>
-            <li>⬇️ Download your final merged PDF instantly</li>
+            <li>   📂 Upload or drag & drop multiple PDF files</li>
+            <li>🧠 Reorder the files if needed</li>
+            <li>   🗑️ Remove a specific PDF or clear all files from the list</li>
+            <li>   🔗 Click <strong>Merge</strong> to combine the files into one</li>
+            <li>   ⬇️ Download your final merged PDF instantly</li>
           </ol>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -188,10 +188,10 @@ const PDFMerger = () => {
           <h2 className="compressor-subheading">Why Use Our PDF Merger?</h2>
           <ul className="compressor-benefits">
             <li>✅ Supports multiple file uploads</li>
-            <li>🧠 Simple drag & drop interface</li>
-            <li>🔒 Your files stay private and are never stored</li>
+            <li>🧠  Simple drag & drop interface</li>
+            <li>🔒Your files stay private and are never stored</li>
             <li>⚡ Fast merging with auto-download</li>
-            <li>🗂️ Rearrangement and removal options for full control</li>
+            <li>   🗂️Rearrangement and removal options for full control</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF File  </h2>
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
@@ -213,7 +213,7 @@ const PDFMerger = () => {
         </div>
         <section>
           <div className="mergepdf-section">
-            <h2>🧩 Merge PDF Files Easily</h2>
+            <h2> Merge PDF Files Easily</h2>
 
             <h3>📄 What is PDF Merging?</h3>
             <p>
@@ -222,13 +222,13 @@ const PDFMerger = () => {
 
             <h3> Why Use Our PDF Merger?</h3>
             <ul>
-              <li><strong>✅ Combine Multiple PDFs</strong> – Join 2 or more PDFs into one</li>
-              <li><strong>🧹 Remove Extra Pages</strong> – Option to delete pages before merging</li>
-              <li><strong>📁 Reorder Easily</strong> – Drag to reorder before final merge</li>
-              <li><strong>🔒 Secure</strong> – Files processed locally and auto-deleted</li>
+              <li><strong>✅ Combine Multiple PDFs</strong> - Join 2 or more PDFs into one</li>
+              <li><strong>🧠 Remove Extra Pages</strong> - Option to delete pages before merging</li>
+              <li><strong>📁 Reorder Easily</strong> - Drag to reorder before final merge</li>
+              <li><strong>🔒Secure</strong> - Files processed locally and auto-deleted</li>
             </ul>
 
-            <h3>🛠️ How to Merge PDFs</h3>
+            <h3>   🛠️ How to Merge PDFs</h3>
             <ol>
               <li>Upload or drag multiple PDF files</li>
               <li>Reorder or remove any pages if needed</li>
@@ -238,7 +238,7 @@ const PDFMerger = () => {
 
             <h3>🔐 Your Files Stay Safe</h3>
             <p>
-              All file processing is encrypted. We do not keep any files—your PDFs are deleted automatically after download.
+              All file processing is encrypted. We do not keep any files   —your PDFs are deleted automatically after download.
             </p>
 
             <h2>📚 Frequently Asked Questions</h2>
@@ -247,7 +247,7 @@ const PDFMerger = () => {
             <p>Yes! You can remove any file or all files before the merge process.</p>
 
             <h3>❓ Is there a limit to the number of PDFs?</h3>
-            <p>You can upload multiple files—performance may vary based on file size.</p>
+            <p>You can upload multiple files   —performance may vary based on file size.</p>
 
             <h3>❓ Does merging change the quality of the PDFs?</h3>
             <p>No, your PDFs retain their original resolution and formatting.</p>

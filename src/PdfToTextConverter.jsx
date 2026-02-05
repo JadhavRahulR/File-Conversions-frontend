@@ -10,12 +10,15 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert pdf to text.mp4"
 import IntroPoster from "../src/assets/images/pdf to text poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PdfToTextConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
 
   // const handleFileChange = (e) => {
@@ -25,7 +28,7 @@ const PdfToTextConverter = () => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
 
@@ -51,6 +54,21 @@ const PdfToTextConverter = () => {
         },
 
       });
+      const save = new Blob([response.data], {
+        type: "text/plain",
+      });
+
+      const convertedFile = new File(
+        [save],
+        file.name.replace(/\.pdf$/i, "") + ".txt",
+        {
+          type: "text/plain",
+        }
+      );
+
+      setConvertedFile(convertedFile);
+
+
 
       // Create a link to download the file
       const blob = new Blob([response.data], { type: 'text/plain' });
@@ -59,10 +77,10 @@ const PdfToTextConverter = () => {
       link.download = file.name.replace(".pdf", ".txt");
       link.click();
 
-      setStatus("✅ Conversion complete!");
+      setStatus("✅ Done");
     } catch (error) {
       console.error("Conversion failed", error);
-      setStatus("❌ Conversion failed");
+      setStatus("   ❌ Conversion failed");
     }
   };
   useEffect(() => {
@@ -80,7 +98,7 @@ const PdfToTextConverter = () => {
       <Helmet>
         <title>PDF to TXT | Free and Easy PDF To Text Online Converter</title>
         <meta name="description" content="Convert PDF files to plain text (.txt) quickly and securely. Free online PDF to TXT converter with no email or signup required." />
-        <link rel="canonical" href="https://fileunivers.in/pdf-to-txt" />
+        <link rel="canonical" href="https://fileunivers.com/pdf-to-txt" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="pdf to txt, convert pdf to text, pdf to text file, extract text from pdf, free pdf to txt converter, online pdf to txt" />
         <meta charset="utf-8" />
@@ -89,14 +107,17 @@ const PdfToTextConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>PDF To Text Converter – Online Convert PDF To Text Free Fast and Secure  </h1>
+        <h1>PDF To Text Converter - Online Convert PDF To Text Free Fast and Secure  </h1>
 
         <p className="intro-paragraph">
-          Extract text from any PDF file instantly with our free PDF to Text converter. This fast and secure online tool converts your PDF into a clean, editable text (.txt) file while preserving the original content and layout. No software installation or registration required — just upload your PDF, click “Convert,” and download your text file in seconds. Perfect for students, researchers, and professionals who need to copy, edit, or reuse text from PDF documents quickly and accurately.
+          Extract text from any PDF file instantly with our free PDF to Text converter. This fast and secure online tool converts your PDF into a clean, editable text (.txt) file while preserving the original content and layout. No software installation or registration required- just upload your PDF, click “Convert,” and download your text file in seconds. Perfect for students, researchers, and professionals who need to copy, edit, or reuse text from PDF documents quickly and accurately.
         </p>
       </div>
       <section>
         <div className='converter'>
+          <div className="converterheading">
+            <h2>Convert PDF To TEXT </h2>
+          </div>
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -105,15 +126,30 @@ const PdfToTextConverter = () => {
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
-          <button onClick={handleUpload} disabled={status === 'Converting...'}>
+          {/* <button onClick={handleUpload} disabled={status === 'Converting...'}>
             {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+          </button> */}
+          <button onClick={handleUpload} disabled={status === 'Converting...'}>
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === "✅ Done" && "Download Again"}
           </button>
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} className="savetodropbox" />
+              </div>
+            </>
+          )}
         </div>
       </section>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert PDF to Text – Extract Plain Text for Free</h2>
-          <p>Convert PDF to Text online for free. Fast, secure, and accurate — extract editable text from any PDF instantly. No sign-up or software required.Perfect for students, researchers, and professionals who need to copy, edit, or reuse text from PDF documents quickly and accurately.</p>
+          <h2 className="converter-title">Convert PDF to Text - Extract Plain Text for Free</h2>
+          <p>Convert PDF to Text online for free. Fast, secure, and accurate- extract editable text from any PDF instantly. No sign-up or software required.Perfect for students, researchers, and professionals who need to copy, edit, or reuse text from PDF documents quickly and accurately.</p>
           <div className="converterImg">
             <img src="pdf.png" alt="pdf Img" className='ConverterImgtwo' />
             <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
@@ -124,26 +160,26 @@ const PdfToTextConverter = () => {
           <div className="converter-section">
             <h2>🔄 How to Convert PDF to Text ?</h2>
             <ol>
-              <li>📤 Upload your PDF file – drag & drop or click to select.</li>
+              <li>📤 Upload your PDF file - drag & drop or click to select.</li>
               <li>⚙️ We’ll extract all readable text and convert it into a clean .txt file.</li>
               <li>📥 Auto Download the text file after conversion.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large or scanned PDFs may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large or scanned PDFs may take more time to process.</p>
           </div>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Convert PDF to Text ? "
               description='Easily extract text from any PDF file using this free online PDF to Text converter!.
-              No software, no registration — just upload your PDF, click “Upload”, and Auto download your editable .txt file in seconds.'
+              No software, no registration- just upload your PDF, click “Upload”, and Auto download your editable .txt file in seconds.'
             />
           </section>
           <div className="converter-section">
-            <h2>🔒 Why Use Our PDF to Text Converter?</h2>
+            <h2>🔒Why Use Our PDF to Text Converter?</h2>
             <ul>
               <li>✅ Extracts raw text content from any PDF file.</li>
               <li>🔐 Secure: Files are auto-deleted after processing.</li>
               <li>⚡ Fast, accurate conversion with OCR for scanned PDFs.</li>
-              <li>🌐 Works on all browsers and devices – no installation needed.</li>
+              <li>🌐 Works on all browsers and devices - no installation needed.</li>
               <li>🆓 Completely free with no usage limits.</li>
             </ul>
           </div>
@@ -185,14 +221,14 @@ const PdfToTextConverter = () => {
 
 
           <div className="compresspdf-article-section">
-            <h2>📄 Convert PDF to Text – Extract Text from PDF Easily</h2>
+            <h2>📄 Convert PDF to Text - Extract Text from PDF Easily</h2>
             <p>
               Need to extract plain text from a PDF file? Our PDF to Text converter tool lets you instantly turn any PDF document into an editable .txt file. Whether you’re working with reports, articles, invoices, or scanned notes, this tool makes data extraction effortless and accurate.
             </p>
 
             <h3>🔍 Why Use a PDF to Text Converter?</h3>
             <p>
-              PDF files are great for viewing and sharing, but they’re not always easy to edit or reuse. Extracting the raw text from a PDF allows you to repurpose the content for research, editing, analysis, or record-keeping — all without losing formatting or layout accuracy.
+              PDF files are great for viewing and sharing, but they’re not always easy to edit or reuse. Extracting the raw text from a PDF allows you to repurpose the content for research, editing, analysis, or record-keeping- all without losing formatting or layout accuracy.
             </p>
 
             <h3>⚡ Key Features</h3>
@@ -228,7 +264,7 @@ const PdfToTextConverter = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Extract raw text from your PDFs easily – fast, secure, and completely free.</p>
+            <p>Extract raw text from your PDFs easily - fast, secure, and completely free.</p>
             <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
           </div>
         </div>

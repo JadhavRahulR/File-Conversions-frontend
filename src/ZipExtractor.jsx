@@ -15,6 +15,7 @@ import IntroPoster from "../src/assets/images/zip extract poster.png";
 
 const ZipExtractor = () => {
   const [file, setFile] = useState(null);
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -196,16 +197,16 @@ const ZipExtractor = () => {
           name="description"
           content="Extract files from ZIP archives online. Fast, secure, and free ZIP extractor tool with no signup or installation required."
         />
-        <link rel="canonical" href="https://fileunivers.in/zip-extractor" />
+        <link rel="canonical" href="https://fileunivers.com/zip-extractor" />
       </Helmet>
 
       <ScrollToTop />
 
       {/* ---- SAME UPLOAD UI ---- */}
       <div className="pagetitle">
-        <h1>Extract ZIP Files Online – Unzip and Access Your Files Instantly</h1>
+        <h1>Extract ZIP Files Online - Unzip and Access Your Files Instantly</h1>
         <p className="intro-paragraph">
-         Extract ZIP files online instantly with our fast, browser-based ZIP explorer. Upload any ZIP archive and instantly view all folders and sub-folders without extracting everything at once. You can open directories, preview files, and download individual files or entire folders as a ZIP with a single click. No installation, no upload to server, and completely private — everything is processed 100% on your device for maximum speed and security. Extract ZIP files online and access all your compressed files in seconds.
+         Extract ZIP files online instantly with our fast, browser-based ZIP explorer. Upload any ZIP archive and instantly view all folders and sub-folders without extracting everything at once. You can open directories, preview files, and download individual files or entire folders as a ZIP with a single click. No installation, no upload to server, and completely private- everything is processed 100% on your device for maximum speed and security. Extract ZIP files online and access all your compressed files in seconds.
         </p>
       </div>
 
@@ -220,8 +221,8 @@ const ZipExtractor = () => {
         <input type="file" accept=".zip" onChange={handleFileChange} className="file-input" />
 
         <div className="fileuploadcontainer">
-          <DriveFileInput onFilePicked={setFile} allowedTypes={[".zip"]} />
-          <DropboxFileInput onFilePicked={setFile} extensions={[".zip"]} />
+          <DriveFileInput onFilePicked={setFile}  setStatus={setStatus}  allowedTypes={[".zip"]}  useBackend={true}/>
+          <DropboxFileInput onFilePicked={setFile} setStatus={setStatus}extensions={[".zip"]} />
         </div>
 
         {file && (
@@ -250,7 +251,7 @@ const ZipExtractor = () => {
     {/* Back Button */}
     {currentPath !== "" && (
       <button className="download-link" onClick={goBack}>
-        ⬅ Back
+        â¬… Back
       </button>
     )}
 
@@ -275,7 +276,7 @@ const ZipExtractor = () => {
                 📁 {item.name}
               </span>
 
-              {/* 👉 FIXED — pass folder name, NOT entry */}
+              {/* ðŸ‘‰ FIXED- pass folder name, NOT entry */}
               <button
                 className="download-link"
                 onClick={() =>
@@ -310,7 +311,7 @@ const ZipExtractor = () => {
 
 
 
-      {/* 🔥 Entire page content kept SAME below */}
+      {/* ðŸ”¥ Entire page content kept SAME below */}
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Extract ZIP File Online</h2>
@@ -327,10 +328,10 @@ const ZipExtractor = () => {
 
           <h2 className="compressor-subheading">How to Extract a ZIP File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your .zip file</li>
+            <li>   📂 Upload or drag & drop your .zip file</li>
             <li>📄 View the list of files inside</li>
             <li>✅ Select specific files or extract all</li>
-            <li>⬇️ The extracted content will auto-download.</li>
+            <li>   ⬇️ The extracted content will auto-download.</li>
           </ol>
 
           <section>
@@ -339,9 +340,9 @@ const ZipExtractor = () => {
 
           <h2 className="compressor-subheading">Why Use Our ZIP Extractor?</h2>
           <ul className="compressor-benefits">
-            <li>🗂️ Supports all standard ZIP files</li>
+            <li>   🗂️Supports all standard ZIP files</li>
             <li>🔍 Preview file names before extraction</li>
-            <li>🔐 Fully private – processed in your browser</li>
+            <li>🔐 Fully private - processed in your browser</li>
             <li>⚡ Fast extraction</li>
 
             {/* Same internal links preserved */}

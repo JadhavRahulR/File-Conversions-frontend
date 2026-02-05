@@ -76,7 +76,7 @@ const BmpCompressor = () => {
       <Helmet>
         <title>Compress BMP | Reduce BMP Image File Size Online</title>
         <meta name="description" content="Easily compress BMP image files online without losing quality. Reduce BMP file size for faster uploads and sharing. Free, secure BMP compressor." />
-        <link rel="canonical" href="https://fileunivers.in/bmpcompressor" />
+        <link rel="canonical" href="https://fileunivers.com/bmpcompressor" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="compress bmp, bmp compressor, reduce bmp size, bmp image compression, shrink bmp file, compress bmp online" />
         <meta charset="utf-8" />
@@ -85,21 +85,24 @@ const BmpCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress BMP Files Online – Reduce Bitmap Image Size Free Fast and Secure  </h1>
+        <h1>Compress BMP Files Online - Reduce Bitmap Image Size Free Fast and Secure  </h1>
         <p className="intro-paragraph">
-          Quickly compress BMP images online and make your bitmap files smaller while keeping image clarity intact. This free online BMP compressor helps you reduce file size for faster uploads, easier sharing, and more storage space — without affecting image detail or color accuracy. No software installation or signup needed — just upload, compress, and download your optimized BMP in seconds.
+          Quickly compress BMP images online and make your bitmap files smaller while keeping image clarity intact. This free online BMP compressor helps you reduce file size for faster uploads, easier sharing, and more storage space- without affecting image detail or color accuracy. No software installation or signup needed- just upload, compress, and download your optimized BMP in seconds.
         </p>
       </div>
       <div
-        className="compressor-container drop-area"
+        className="compressor-container "
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
+        <div className="compressing">
+          <h2>Compress BMP</h2>
+        </div>
         <p
           className="file-label clickable-label"
           onClick={() => fileInputRef.current.click()}
         >
-          {file ? `✅ Selected: ${file.name}` : '📂 Drag & drop a .bmp file here, or click to select'}
+          {file ? `✅ Selected: ${file.name}` : '   📂 Drag & drop a .bmp file here, or click to select'}
         </p>
 
         <input
@@ -125,8 +128,8 @@ const BmpCompressor = () => {
             onChange={(e) => setQuality(parseInt(e.target.value))}
           />
           <div className="slider-labels">
-            <span>📉 Smaller</span>
-            <span>📸 Clearer</span>
+            <span>   📉 Smaller</span>
+            <span>     Clearer</span>
           </div>
         </div>
 
@@ -136,23 +139,23 @@ const BmpCompressor = () => {
           <label><input type="radio" name="format" value="bmp" checked={format === "bmp"} onChange={() => setFormat("bmp")} /> .bmp</label>
         </div>
 
-        <label>
+        <label style={{color:"white"}}>
           <input type="checkbox" checked={export7z} onChange={(e) => setExport7z(e.target.checked)} />
           Export as .7z
         </label>
 
         <button onClick={handleCompress} disabled={!file || status === "uploading"}>
-          {status === "uploading" ? `Compressing... (${progress}%)` : "🔽 Compress"}
+          {status === "uploading" ? `Compressing... (${progress}%)` : "    Compress"}
         </button>
 
         {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
-        {status === "error" && <p className="error-msg">❌ Compression failed</p>}
+        {status === "error" && <p className="error-msg">   ❌ Compression failed</p>}
       </div>
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress BMP File Online</h2>
           <p className="compressor-description">
-            Reduce the size of your BMP (.bmp) image files while keeping visual quality. Perfect for converting large bitmap images into smaller, more manageable files.Our smart BMP compression tool uses advanced optimization techniques to shrink your bitmap files efficiently while preserving sharpness and visual quality. Perfect for photographers, designers, and professionals who want to reduce BMP file size for websites, emails, or digital archives. Enjoy secure, fast, and high-quality compression powered by FileUnivers.in.
+            Reduce the size of your BMP (.bmp) image files while keeping visual quality. Perfect for converting large bitmap images into smaller, more manageable files.Our smart BMP compression tool uses advanced optimization techniques to shrink your bitmap files efficiently while preserving sharpness and visual quality. Perfect for photographers, designers, and professionals who want to reduce BMP file size for websites, emails, or digital archives. Enjoy secure, fast, and high-quality compression powered by fileunivers.com.
           </p>
            <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -167,10 +170,10 @@ const BmpCompressor = () => {
 
           <h2 className="compressor-subheading">How to Compress a BMP File?</h2>
           <ol className="compressor-steps">
-            <li>📂 Upload or drag & drop your <code>.bmp</code> file</li>
-            <li>🎚️ Select your preferred compression quality</li>
+            <li>   📂 Upload or drag & drop your <code>.bmp</code> file</li>
+            <li>   🎚️ Select your preferred compression quality</li>
             <li>🚀 Click <strong>Compress</strong> to start the process</li>
-            <li>⬇️ The compressed <code>.bmp</code> file will auto-download when ready</li>
+            <li>   ⬇️ The compressed <code>.bmp</code> file will auto-download when ready</li>
           </ol>
           <section>
           <LazyVideo src={IntroVideo} poster={IntroPoster}
@@ -181,8 +184,8 @@ const BmpCompressor = () => {
 
           <h2 className="compressor-subheading">Why Use Our BMP Compressor?</h2>
           <ul className="compressor-benefits">
-            <li>🖼️ Maintains image clarity while reducing file size</li>
-            <li>📉 Optimized for faster uploads and storage savings</li>
+            <li>     Maintains image clarity while reducing file size</li>
+            <li>   📉 Optimized for faster uploads and storage savings</li>
             <li>🔐 Your files remain private and are never stored</li>
             <li>⚡ Fast compression with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Bmp file  </h2>
@@ -197,13 +200,13 @@ const BmpCompressor = () => {
         <div className="compressor-article">
           <h2>Understanding BMP Files and Why You Should Compress Them</h2>
 
-          <h3>📂 What is a BMP File?</h3>
+          <h3>   📂 What is a BMP File?</h3>
           <p>
             BMP stands for <strong>Bitmap Image File</strong>, a raster graphics format created by Microsoft.
             It stores 2D digital images with high fidelity but no compression, resulting in large file sizes.
           </p>
 
-          <h3>📦 Why Are BMP Files So Large?</h3>
+          <h3>   📦 Why Are BMP Files So Large?</h3>
           <p>
             Unlike JPEG or PNG, BMP does not compress image data. Each pixel is stored individually, preserving
             quality but increasing file size. This format is ideal for editing and archiving, but not for web use
@@ -212,13 +215,13 @@ const BmpCompressor = () => {
 
           <h3>⚡ Why You Should Compress BMP Files</h3>
           <ul>
-            <li><strong>💾 Save Storage Space</strong> – Free up disk or cloud space by reducing file sizes.</li>
-            <li><strong>🚀 Faster Upload & Download</strong> – Greatly improves transfer speeds.</li>
-            <li><strong>📤 Better for Web & App Use</strong> – Speeds up site load time and SEO ranking.</li>
-            <li><strong>📱 Mobile Friendly</strong> – Smaller files load quicker on slow mobile networks.</li>
+            <li><strong>   💾   Save Storage Space</strong> - Free up disk or cloud space by reducing file sizes.</li>
+            <li><strong>🚀 Faster Upload & Download</strong> - Greatly improves transfer speeds.</li>
+            <li><strong>📤 Better for Web & App Use</strong> - Speeds up site load time and SEO ranking.</li>
+            <li><strong>📱 Mobile Friendly</strong> - Smaller files load quicker on slow mobile networks.</li>
           </ul>
 
-          <h3>🔍 BMP vs JPEG vs PNG – Which One Should You Use?</h3>
+          <h3>🔍 BMP vs JPEG vs PNG - Which One Should You Use?</h3>
           <div className="table-container">
             <table className="comparison-table">
               <thead>
@@ -253,7 +256,7 @@ const BmpCompressor = () => {
             </table>
           </div>
 
-          <h3>🛠️ How Does Our BMP Compressor Work?</h3>
+          <h3>   🛠️ How Does Our BMP Compressor Work?</h3>
           <p>
             Our online tool analyzes your <code>.bmp</code> file and applies optimized compression settings to
             reduce size while maintaining quality. Just upload, choose quality, and let us do the rest. The file
@@ -265,22 +268,22 @@ const BmpCompressor = () => {
             Absolutely. Our compression tool runs in your browser. Your files are:
           </p>
           <ul>
-            <li>🔒 <strong>Not stored</strong> on our servers</li>
+            <li>🔒<strong>Not stored</strong> on our servers</li>
             <li>🔐 <strong>Not accessed</strong> or viewed by anyone</li>
-            <li>♻️ <strong>Automatically removed</strong> after processing</li>
+            <li>   ♻️ <strong>Automatically removed</strong> after processing</li>
           </ul>
 
-          <h3>🧠 Pro Tip: Convert BMP to Other Formats After Compression</h3>
+          <h3>🧠  Pro Tip: Convert BMP to Other Formats After Compression</h3>
           <p>
             For even smaller files, you can compress and convert BMP to:
           </p>
           <ul>
-            <li><strong>JPEG</strong> – for photos</li>
-            <li><strong>PNG</strong> – for images with transparency</li>
-            <li><strong>.bmp.7z</strong> or <strong>.zip</strong> – for file archiving or email attachments</li>
+            <li><strong>JPEG</strong> - for photos</li>
+            <li><strong>PNG</strong> - for images with transparency</li>
+            <li><strong>.bmp.7z</strong> or <strong>.zip</strong> - for file archiving or email attachments</li>
           </ul>
 
-          <h3>💬 Final Thoughts</h3>
+          <h3>   💾 Final Thoughts</h3>
           <p>
             BMP is excellent for quality but inefficient for speed and sharing. Compressing your BMP files
             improves site performance, saves bandwidth, and enhances user experience. Try our tool today and

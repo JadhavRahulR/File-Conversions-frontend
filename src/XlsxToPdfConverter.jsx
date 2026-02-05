@@ -11,19 +11,23 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to convert xlsx to pdf.mp4";
 import IntroPoster from "../src/assets/images/xlsx to pdf poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const XlsxToPdfConverter = () => {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+
 
 
   const handleFileChange = (eOrFile) => {
     const file = eOrFile?.target?.files?.[0] || eOrFile;
     if (file) {
       setFile(file);
-      setStatus(status === "Done" ? "upload" : "convert");
+      setStatus("Convert");
     }
   };
 
@@ -48,7 +52,18 @@ const XlsxToPdfConverter = () => {
           },
         }
       );
+      const save = new Blob([response.data], {
+        type: "application/pdf",
+      });
 
+      const convertedFile = new File(
+        [save],
+        file.name.replace(/\.xlsx$/i, "") + ".pdf",
+        { type: "application/pdf" }
+      );
+
+      setConvertedFile(convertedFile);
+      
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -56,9 +71,10 @@ const XlsxToPdfConverter = () => {
       a.download = file.name.replace(".xlsx", ".pdf");
       a.click();
       window.URL.revokeObjectURL(url);
-      setStatus("✅ Conversion complete!");
+      setStatus("✅ Done");
+
     } catch (error) {
-      console.error("❌ Conversion failed", error);
+      console.error("   ❌ Conversion failed", error);
       alert("Conversion failed");
     }
   };
@@ -78,7 +94,7 @@ const XlsxToPdfConverter = () => {
       <Helmet>
         <title>XLSX To PDF Converter | Free Fast and Safe Excel To PDF Online Converter</title>
         <meta name="description" content="Convert XLSX Excel spreadsheets to PDF format quickly and securely. Free online XLSX to PDF converter with no email or signup required." />
-        <link rel="canonical" href="https://fileunivers.in/xlsx-to-pdf" />
+        <link rel="canonical" href="https://fileunivers.com/xlsx-to-pdf" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="xlsx to pdf, convert xlsx to pdf, excel to pdf, spreadsheet to pdf, free xlsx to pdf converter, online excel to pdf" />
         <meta charset="utf-8" />
@@ -87,13 +103,16 @@ const XlsxToPdfConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert XLSX To PDF Online – Free & Fast Excel To PDF Converter</h1>
+        <h1>Convert XLSX To PDF Online - Free & Fast Excel To PDF Converter</h1>
 
         <p className="intro-paragraph">
-          Easily convert your Excel spreadsheets (.xlsx) to PDF online with our free and reliable converter. Keep your tables, charts, and cell formatting perfectly intact while turning your Excel data into a professional, shareable PDF file. No software installation or signup needed — just upload your XLSX file, click Upload for conversion, and auto  download your ready-to-use PDF instantly. Ideal for students, accountants, and professionals who want clean, print-ready Excel reports in seconds.       </p>
+          Easily convert your Excel spreadsheets (.xlsx) to PDF online with our free and reliable converter. Keep your tables, charts, and cell formatting perfectly intact while turning your Excel data into a professional, shareable PDF file. No software installation or signup needed- just upload your XLSX file, click Upload for conversion, and auto  download your ready-to-use PDF instantly. Ideal for students, accountants, and professionals who want clean, print-ready Excel reports in seconds.       </p>
       </div>
       <section>
         <div className='converter'>
+          <div className="converterheading">
+            <h2>Convert XLSX To PDF </h2>
+          </div>
           <input type="file" accept=".xlsx" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
@@ -103,15 +122,28 @@ const XlsxToPdfConverter = () => {
           <DropzoneInput acceptedType={['xlsx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-            {status === 'Converting...' ? `Converting... (${progress}%)` : "Upload"}
+            {status === "Upload" && "Upload"}
+            {status === "Convert" && "Convert"}
+            {status === "Converting..." && `Converting... (${progress}%)`}
+            {status === "✅ Done" && "Download Again"}
           </button>
+
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} className="savetodropbox" />
+              </div>
+            </>
+          )}
         </div>
       </section>
       <section>
         <div className="converter-container">
-          <h2 className="converter-title">Convert XLSX to PDF – Preserve Tables & Layout</h2>
+          <h2 className="converter-title">Convert XLSX to PDF - Preserve Tables & Layout</h2>
           <p>
-            Our XLSX to PDF converter ensures high-quality conversion while maintaining your original layout, fonts, and formulas. Whether you’re exporting financial reports, invoices, data sheets, or business summaries, this tool guarantees accurate alignment and easy readability on any device. 100% secure, browser-based, and lightning-fast — convert your Excel to PDF online now and make your spreadsheets look professional and ready to share anywhere.
+            Our XLSX to PDF converter ensures high-quality conversion while maintaining your original layout, fonts, and formulas. Whether you’re exporting financial reports, invoices, data sheets, or business summaries, this tool guarantees accurate alignment and easy readability on any device. 100% secure, browser-based, and lightning-fast- convert your Excel to PDF online now and make your spreadsheets look professional and ready to share anywhere.
           </p>
           <div className="converterImg">
             <img src="xlsx.png" alt="xlsx Img" className='ConverterImgone' />
@@ -123,23 +155,23 @@ const XlsxToPdfConverter = () => {
           <div className="converter-section">
             <h2>🔄 How to Convert XLSX to PDF ?</h2>
             <ol>
-              <li>📤 Upload your Excel (.xlsx) file – drag & drop or click to select.</li>
+              <li>📤 Upload your Excel (.xlsx) file - drag & drop or click to select.</li>
               <li>⚙️ We’ll convert it to a well-formatted, printable PDF.</li>
               <li>📥 Auto Download the PDF instantly after conversion.</li>
             </ol>
-            <p><strong>📌 Note:</strong> Large files or spreadsheets with many sheets may take more time to process.</p>
+            <p><strong>📌Note:</strong> Large files or spreadsheets with many sheets may take more time to process.</p>
           </div>
           <section>
             <LazyVideo src={IntroVideo} poster={IntroPoster}
               title="How to Convert XLSX To PDF ? "
-              description='Learn how to convert XLSX to PDF online in just a few seconds with this easy step-by-step video!. Turn your Excel spreadsheet (.xlsx) into a clean, professional PDF file — perfect for reports, invoices, and business documents. No software, no registration — just fast and simple conversion.'
+              description='Learn how to convert XLSX to PDF online in just a few seconds with this easy step-by-step video!. Turn your Excel spreadsheet (.xlsx) into a clean, professional PDF file- perfect for reports, invoices, and business documents. No software, no registration- just fast and simple conversion.'
             />
           </section>
           <div className="converter-section">
-            <h2>🔒 Why Use Our XLSX to PDF Converter?</h2>
+            <h2>🔒Why Use Our XLSX to PDF Converter?</h2>
             <ul>
               <li>✅ Retains tables, charts, cell formatting, and layout.</li>
-              <li>🔐 Files are automatically deleted after conversion – privacy guaranteed.</li>
+              <li>🔐 Files are automatically deleted after conversion - privacy guaranteed.</li>
               <li>⚡ Fast conversion with precise output.</li>
               <li>🌐 Works on any browser, no Excel or plugins needed.</li>
               <li>🆓 Completely free and unlimited.</li>
@@ -178,17 +210,17 @@ const XlsxToPdfConverter = () => {
               <strong>A:</strong> Yes, we preserve all formatting and visuals as shown in Excel.</p>
           </div>
           <div className="compresspdf-article-section">
-            <h2>📊 Convert XLSX to PDF – Export Excel Spreadsheets to PDF Easily</h2>
+            <h2>📚 Convert XLSX to PDF - Export Excel Spreadsheets to PDF Easily</h2>
             <p>
               Turn your Excel files (.xlsx) into clean, professional PDF documents in just seconds. Perfect for reports, financial summaries, charts, or spreadsheets you want to preserve or share across any device.
             </p>
 
             <h3>📄 What is XLSX to PDF Conversion?</h3>
             <p>
-              XLSX is the default spreadsheet file format used by Microsoft Excel. Converting an XLSX to PDF means transforming your editable spreadsheet into a fixed-format document that maintains your data layout, styles, charts, and tables — ready for printing or sharing.
+              XLSX is the default spreadsheet file format used by Microsoft Excel. Converting an XLSX to PDF means transforming your editable spreadsheet into a fixed-format document that maintains your data layout, styles, charts, and tables- ready for printing or sharing.
             </p>
 
-            <h3>📌 Why Convert Excel Files to PDF?</h3>
+            <h3>📌Why Convert Excel Files to PDF?</h3>
             <ul>
               <li><strong>Universal Access:</strong> Anyone can open PDFs without needing Excel or spreadsheet software.</li>
               <li><strong>Protect Layout:</strong> Keep formatting, fonts, graphs, and rows exactly as they appear in Excel.</li>
@@ -214,9 +246,9 @@ const XlsxToPdfConverter = () => {
               <li>Completely free to use</li>
             </ul>
 
-            <h3>🖥️ Fully Online & Compatible</h3>
+            <h3>     Fully Online & Compatible</h3>
             <p>
-              This tool runs in your browser – no installation needed. Works on Windows, macOS, Linux, and all mobile devices with ease.
+              This tool runs in your browser - no installation needed. Works on Windows, macOS, Linux, and all mobile devices with ease.
             </p>
 
             <h3>🔐 Private & Secure</h3>
@@ -237,7 +269,7 @@ const XlsxToPdfConverter = () => {
 
           <div className="converter-section" style={{ textAlign: 'center' }}>
             <h2>🎯 Try It Now!</h2>
-            <p>Convert your Excel spreadsheets to PDF with perfect formatting – free and instant.</p>
+            <p>Convert your Excel spreadsheets to PDF with perfect formatting - free and instant.</p>
             <p className="converter-tagline">✅ Easy | ✅ Secure | ✅ No Sign-up Required</p>
           </div>
         </div>
