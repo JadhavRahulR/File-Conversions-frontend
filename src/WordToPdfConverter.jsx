@@ -9,8 +9,8 @@ import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "./assets/videos/how to convert  word to pdf .mp4";
-import IntroPoster from "./assets/images/Word-to-pdf-conversion-poster.png";
+import IntroVideo from "../src/assets/videos/how to convert  word to pdf .mp4";
+import IntroPoster from "../src/assets/images/Word-to-pdf-conversion-poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 

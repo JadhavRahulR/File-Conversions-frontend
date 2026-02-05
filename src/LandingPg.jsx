@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
-import IntroVideo from "./assets/videos/fileunivers-Introduction-Video.mp4"
-import IntroPoster from "./assets/images/fileunivers-intro-poster.png"
+import IntroVideo from "../src/assets/videos/Fileunivers-Introduction-Video.mp4";
+import IntroPoster from "../src/assets/images/Fileunivers-intro-poster.png";
 
 export default function LandingPage() {
   return (
