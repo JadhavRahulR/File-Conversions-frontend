@@ -9,8 +9,8 @@ import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to convert odt to pdf.mp4"
-import IntroPoster from "../src/assets/images/odt to pdf poster.png";
+import IntroVideo from "./assets/videos/how to convert odt to pdf.mp4"
+import IntroPoster from "./assets/images/odt to pdf poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 

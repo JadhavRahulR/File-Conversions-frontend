@@ -8,8 +8,8 @@ import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
 import "./CsvCompressor.css";
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to generate favicon.mp4";
-import IntroPoster from "../src/assets/images/generate favicon poster.png";
+import IntroVideo from "./assets/videos/how to generate favicon.mp4";
+import IntroPoster from "./assets/images/generate favicon poster.png";
 
 /* ---------------- ICO CREATOR ---------------- */
 function createICO(images) {

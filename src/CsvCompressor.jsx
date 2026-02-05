@@ -7,8 +7,8 @@ import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to compress csv.mp4";
-import IntroPoster from "../src/assets/images/csv compress poster.png";
+import IntroVideo from "./assets/videos/how to compress csv.mp4";
+import IntroPoster from "./assets/images/csv compress poster.png";
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 const CsvCompressor = () => {
   const [file, setFile] = useState(null);

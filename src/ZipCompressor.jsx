@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to create zip file.mp4";
-import IntroPoster from "../src/assets/images/zip file poster.png";
+import IntroVideo from "./assets/videos/how to create zip file.mp4";
+import IntroPoster from "./assets/images/zip file poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
