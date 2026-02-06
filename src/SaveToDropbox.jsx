@@ -13,7 +13,7 @@ export default function SaveToDropbox({ file }) {
       return;
     }
 
-    const redirectUri = "http://localhost:5173/dropbox-auth.html";
+    const redirectUri = `${window.location.origin}/dropbox-auth.html`;
 
     const authUrl =
   "https://www.dropbox.com/oauth2/authorize" +
