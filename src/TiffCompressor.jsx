@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to compress tiff.mp4";
 import IntroPoster from "../src/assets/images/tiff compress poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const TiffCompressor = () => {
@@ -17,6 +19,8 @@ const TiffCompressor = () => {
   const [export7z, setExport7z] = useState(false);
   const [status, setStatus] = useState("idle");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+  
 
   const fileInputRef = useRef();
 
@@ -56,6 +60,16 @@ const TiffCompressor = () => {
         },
       });
 
+       const compressedTIFF = new File(
+  [response.data],
+  file.name.replace(/\.(tif|tiff)$/i, "") + "_compressed.tiff",
+  {
+    type: "image/tiff",
+  }
+);
+
+setConvertedFile(compressedTIFF);
+
       const blob = new Blob([response.data]);
       const downloadLink = document.createElement("a");
       downloadLink.href = URL.createObjectURL(blob);
@@ -64,7 +78,7 @@ const TiffCompressor = () => {
         export7z ? "_compressed.tiff.7z" : "_compressed.tiff"
       );
       downloadLink.click();
-      setStatus("done");
+      setStatus("✅ Done");
     } catch (err) {
       console.error("   ❌ Compression failed", err);
       setStatus("error");
@@ -158,8 +172,17 @@ const TiffCompressor = () => {
           {status === "uploading" ? `Compressing... (${progress}%)` : "    Compress"}
         </button>
 
-        {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
+        {status === "✅ Done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
         {status === "error" && <p className="error-msg">   ❌ Compression failed</p>}
+        {status === "✅ Done" && convertedFile && (
+          <>
+            <p style={{color:'white'}} >Save To . . .</p>
+            <div className="saveTo">
+              <SaveToGoogleDrive file={convertedFile} />
+              <SaveToDropbox file={convertedFile} />
+            </div>
+          </>
+        )}
       </div>
       <section>
         <div className="compressor-page">

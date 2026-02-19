@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLoader } from "./LoaderContext";
 
 
-const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv','.docx','.html','.jpg','.png','.jpeg','.md','.odp','.odt','.pptx','.rtf','.tiff','.txt','.xlsx','.bmp'] }) => {
+const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv','.docx','.html','.jpg','.png','.jpeg','.md','.odp','.odt','.pptx','.rtf','.tiff','.txt','.xlsx','.bmp','.webp','.gif'] }) => {
   const { setLoading } = useLoader();
   
   useEffect(() => {

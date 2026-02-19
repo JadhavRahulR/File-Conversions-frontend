@@ -11,15 +11,19 @@ import DriveFileInput from "./DriveFileInput";
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to create zip file.mp4";
 import IntroPoster from "../src/assets/images/zip file poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const ZipCompressor = () => {
   const [files, setFiles] = useState([]);
-  const [status, setStatus] = useState("idle");
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [zipName, setZipName] = useState(""); // ✅ New state for rename
+  const [convertedFile, setConvertedFile] = useState(null);
+const [status, setStatus] = useState("upload");
+
 
   // ðŸ”¹ Handle drag & drop
   const onDrop = (acceptedFiles) => {
@@ -43,43 +47,61 @@ const ZipCompressor = () => {
     return name.replace(/[<>:"/\\|?*\x00-\x1F]/g, "").trim();
   };
 
-  // ðŸ”¹ Handle compression request
+  //  Handle compression request
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (files.length === 0) return alert("Please select at least one file.");
-    setProgress(10);
+  e.preventDefault();
 
-    const formData = new FormData();
-    files.forEach((file) => formData.append("files", file));
+  if (files.length === 0) {
+    alert("Please select at least one file.");
+    return;
+  }
 
-    setLoading(true);
-    try {
-      const res = await axios.post(`${BASE_URL}/convert-to-zip`, formData, {
-        responseType: "blob",
-        onUploadProgress: (event) => {
-          const percent = Math.round((event.loaded * 100) / event.total);
-          setProgress(Math.min(percent, 90));
-        },
-      });
+  setProgress(10);
 
-      const blob = new Blob([res.data], { type: "application/zip" });
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
+  const formData = new FormData();
+  files.forEach((file) => formData.append("files", file));
 
-      // ✅ Use custom rename if provided, otherwise fallback
-      const safeName = sanitizeFileName(zipName || "compressed_files");
-      a.href = url;
-      a.download = `${safeName}.zip`;
-      a.click();
-      window.URL.revokeObjectURL(url);
-    } catch (err) {
-      console.error("ZIP creation failed:", err);
-      alert("ZIP creation failed.");
-    } finally {
-      setLoading(false);
-      setProgress(0);
-    }
-  };
+  setLoading(true);
+
+  try {
+    const res = await axios.post(`${BASE_URL}/convert-to-zip`, formData, {
+      responseType: "blob",
+      onUploadProgress: (event) => {
+        const percent = Math.round((event.loaded * 100) / event.total);
+        setProgress(Math.min(percent, 90));
+      },
+    });
+
+    // ✅ Create File for Drive / Dropbox
+    const zipFile = new File(
+      [res.data],
+      "folder_compressed.zip",
+      { type: "application/zip" }
+    );
+
+    setConvertedFile(zipFile);
+
+    // ✅ Auto-download
+    const url = URL.createObjectURL(zipFile);
+    const a = document.createElement("a");
+
+    const safeName = sanitizeFileName(zipName || "compressed_files");
+    a.href = url;
+    a.download = `${safeName}.zip`;
+    a.click();
+
+    URL.revokeObjectURL(url);
+    setStatus("✅ Done");
+
+  } catch (err) {
+    console.error("ZIP creation failed:", err);
+    alert("ZIP creation failed.");
+  } finally {
+    setLoading(false);
+    setProgress(0);
+  }
+};
+
 
   return (
     <>
@@ -106,6 +128,8 @@ const ZipCompressor = () => {
       </div>
 
       <div className="zip-container">
+
+        <h2>Convert Files to zip</h2>
         <div
           {...getRootProps()}
           className={`dropzone ${isDragActive ? "active" : ""}`}
@@ -155,6 +179,16 @@ const ZipCompressor = () => {
         <button onClick={handleSubmit} disabled={loading}>
           {loading ? `Converting... (${progress}%)` : "Create ZIP"}
         </button>
+
+        {status === "✅ Done" && convertedFile && (
+          <>
+            <p style={{color:'white'}} >Save To . . .</p>
+            <div className="saveTo">
+              <SaveToGoogleDrive file={convertedFile} />
+              <SaveToDropbox file={convertedFile} />
+            </div>
+          </>
+        )}
       </div>
 
      

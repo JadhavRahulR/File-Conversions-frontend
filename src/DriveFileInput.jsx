@@ -33,6 +33,7 @@ const extensionToMimeType = {
   ".bmp": "image/bmp",
   ".tiff": "image/tiff",
   ".tif": "image/tiff",
+  ".webp":"image/webp"
 };
 
 // ==========================================================
@@ -54,16 +55,17 @@ const DriveFileInput = ({
     ".csv",
     ".docx",
     ".rtf",
-    ".tiff",
     ".txt",
     ".xlsx",
     ".html",
     ".jpg",
+    ".tiff",
     ".png",
     ".jpeg",
+    ".bmp",
+    ".webp",
     ".odt",
     ".odp",
-    ".bmp",
     ".md",
     ".zip",
   ],

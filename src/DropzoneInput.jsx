@@ -18,6 +18,14 @@ const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) =
     jpg: "image/jpeg",
     jpeg: "image/jpeg",
     png: "image/png",
+    bmp: "image/bmp",
+    tiff: "image/tiff",
+    tif: "image/tiff",
+    webp: "image/webp",
+    gif: "image/gif",
+    svg: "image/svg+xml",
+    zip: "application/zip",
+    "7z": "application/x-7z-compressed",
     md: "text/markdown",
     odp: "application/vnd.oasis.opendocument.presentation",
     odt: "application/vnd.oasis.opendocument.text",
@@ -52,7 +60,7 @@ const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) =
     onDrop,
     accept,
     multiple: false,
-    noClick:true
+    noClick: true
   });
 
   /* Detect global drag */
@@ -94,9 +102,17 @@ const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) =
         ) : (
           <div className="file-inside">
             <div className="file-icon">📄</div>
-            <p className="file-name">{file.name}</p>
+            {file && (
+              <ul className="file-list">
+                {[file].map((f, i) => (
+                  <li key={i} className="file-item">
+                    {f.name}
+                  </li>
+                ))}
+              </ul>
+            )}
             <span>Click Convert button for Conversion<p></p></span>
-            
+
           </div>
         )}
       </div>

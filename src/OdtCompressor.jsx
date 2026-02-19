@@ -9,14 +9,18 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to compress odt.mp4";
 import IntroPoster from "../src/assets/images/odt compress poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdtCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(70);
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState('upload');
   const [outputType, setOutputType] = useState('odt');
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+  
 
   const fileInputRef = useRef();
 
@@ -50,7 +54,15 @@ const OdtCompressor = () => {
           setProgress(Math.min(percent, 90));
         },
       });
+      const compressedODT = new File(
+  [response.data],
+  file.name.replace(/\.odt$/i, "") + "_compressed.odt",
+  {
+    type: "application/vnd.oasis.opendocument.text",
+  }
+);
 
+setConvertedFile(compressedODT);
       const url = window.URL.createObjectURL(response.data);
       const link = document.createElement('a');
       link.href = url;
@@ -60,7 +72,7 @@ const OdtCompressor = () => {
       );
       document.body.appendChild(link);
       link.click();
-      setStatus('done');
+      setStatus("✅ Done");
     } catch (err) {
       console.error(err);
       setStatus('error');
@@ -159,6 +171,16 @@ const OdtCompressor = () => {
 
         {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
         {status === 'error' && <p className="error-msg">   ❌ Compression failed</p>}
+
+        {status === "✅ Done" && convertedFile && (
+          <>
+            <p style={{color:'white'}} >Save To . . .</p>
+            <div className="saveTo">
+              <SaveToGoogleDrive file={convertedFile} />
+              <SaveToDropbox file={convertedFile} />
+            </div>
+          </>
+        )}
       </div>
       <section>
         <div className="compressor-page">

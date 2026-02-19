@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to compress img.mp4";
 import IntroPoster from "../src/assets/images/img compress poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 // update in progress for button to show percentage of file compression
 
@@ -22,6 +24,8 @@ const ImageCompressor = () => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("Upload");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+
 
 
 
@@ -63,6 +67,17 @@ const ImageCompressor = () => {
           setProgress(Math.min(percent, 90));
         },
       });
+
+      const compressedImage = new File(
+      [response.data],
+      file.name.replace(/\.(jpg|jpeg|png|webp)$/i, "") + "_compressed.webp",
+      {
+        type: response.data.type || "image/webp",
+      }
+    );
+
+    setConvertedFile(compressedImage);
+
       const blob = new Blob([response.data], { type: "image/jpeg" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -70,7 +85,7 @@ const ImageCompressor = () => {
       a.download = "compressed.jpg";
       a.click();
       URL.revokeObjectURL(url);
-      setStatus('done');
+      setStatus("✅ Done");
     } catch (err) {
       console.error("Compression failed", err);
       alert("Compression failed.");
@@ -131,8 +146,18 @@ const ImageCompressor = () => {
           {loading ? `Compressing... (${progress}%)`: "Compress Image"}
         </button>
 
-        {status === 'done' && <p className="success-msg">✅ Compression complete. File downloaded.</p>}
+        {status === '✅ Done' && <p className="success-msg">✅ Compression complete. File downloaded.</p>}
         {status === 'error' && <p className="error-msg">   ❌ Compression failed. Try again.</p>}
+
+        {status === "✅ Done" && convertedFile && (
+  <>
+    <p style={{color:'white'}} >Save To . . .</p>
+    <div className="saveTo">
+      <SaveToGoogleDrive file={convertedFile} />
+      <SaveToDropbox file={convertedFile} />
+    </div>
+  </>
+)}
       </div>
       <section>
         <section>

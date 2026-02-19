@@ -10,14 +10,19 @@ import DriveFileInput from './DriveFileInput';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to merge pdfs.mp4";
 import IntroPoster from "../src/assets/images/pdfs merge poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFMerger = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [file, setFile] = useState(null);
-  const [status, setStatus] = useState("idle");
   const [isMerging, setIsMerging] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+  const [status, setStatus] = useState("upload");
+  const [dragIndex, setDragIndex] = useState(null);
+
 
 
   const handleFileChange = (e) => {
@@ -66,6 +71,14 @@ const PDFMerger = () => {
         },
       });
 
+      const mergedPDF = new File(
+        [response.data],
+        "merged_pdf.pdf",
+        { type: "application/pdf" }
+      );
+
+      setConvertedFile(mergedPDF);
+
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -73,6 +86,7 @@ const PDFMerger = () => {
       a.download = "merged.pdf";
       a.click();
       URL.revokeObjectURL(url);
+      setStatus("✅ Done");
     } catch (err) {
       console.error("   ❌ Merge failed", err);
       alert("Merge failed. Try again.");
@@ -105,7 +119,7 @@ const PDFMerger = () => {
           onDrop={handleDrop}
           onDragOver={handleDragOver}
         >
-
+            <h2>Merg PDFs </h2>
           <input type="file" multiple accept=".pdf" onChange={handleFileChange} />
           <div className="fileuploadcontainer">
             <DriveFileInput onFilePicked={(file) => {
@@ -127,36 +141,69 @@ const PDFMerger = () => {
               extensions={['.pdf']}
             />
           </div>
-          <p>Drag & Drop your PDF files here</p>
+          <p className="dragndrop">Drag & Drop your PDF files here</p>
         </div>
 
 
         {selectedFiles.length > 0 && (
           <>
             <ul className="file-list">
+          <h5>Adjust PDF File As you want  - ☰
+ </h5>
               {selectedFiles.map((file, index) => (
-                <li key={index}>
+                <li
+                  key={index}
+                  draggable
+                  onDragStart={() => setDragIndex(index)}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={() => {
+                    if (dragIndex === null || dragIndex === index) return;
+
+                    setSelectedFiles((prev) => {
+                      const updated = [...prev];
+                      const draggedItem = updated[dragIndex];
+                      updated.splice(dragIndex, 1);
+                      updated.splice(index, 0, draggedItem);
+                      return updated;
+                    });
+
+                    setDragIndex(null);
+                  }}
+                  className="draggable-item"
+                >
+                  <span className="drag-handle"></span>
                   {file.name}
                   <button
                     className="remove-btn"
                     onClick={() => handleRemove(index)}
                   >
-                       ❌
+                    ❌
                   </button>
                 </li>
+
               ))}
             </ul>
             <button className="clear-btn" onClick={handleClearAll}>
-                 🗑️ Clear All
+              🗑️ Clear All
             </button>
           </>
         )}
-<div className="mergeb">
+        <div className="mergeb">
 
-        <button className="mergebtn" onClick={handleMerge} disabled={isMerging || selectedFiles.length < 2}>
-          {isMerging ? `Merging... (${progress}%)` : "Merge PDFs"}
-        </button>
-</div>
+          <button className="mergebtn" onClick={handleMerge} disabled={isMerging || selectedFiles.length < 2}>
+            {isMerging ? `Merging... (${progress}%)` : "Merge PDFs"}
+          </button>
+
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p>Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} />
+              </div>
+            </>
+          )}
+        </div>
       </div>
       <section>
         <div className="compressor-page">

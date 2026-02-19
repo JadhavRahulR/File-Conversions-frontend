@@ -151,8 +151,10 @@ export default function LandingPage() {
           <li><Link to="/zip-extractor" ><FeatureCard1 title="Extract Zip File " image1="unzip.png" /> </Link></li>
           <li><Link to="/favicon-generator" ><FeatureCard1 title="Favicon Generator" image1="Fav.png" /> </Link></li>
           <li><Link to="renamefile" ><FeatureCard1 title="Rename Your File" image1="rename.png" /> </Link></li>
-           {/* <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>
-           <li><Link to="/pdfpageremover" ><FeatureCard1 title="PDF Page Remover"  image1="pdf.png" /> </Link></li>
+          <li><Link to="/imageresizer" ><FeatureCard1 title="Image Resizer" image1="img.png" /> </Link></li>
+          <li><Link to="/pdfpageremover" ><FeatureCard1 title="PDF Page Remover"  image1="pdf.png" /> </Link></li>
+          <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>
+           {/*
            <li><Link to="/pdfurl" ><FeatureCard title="PDF To URL" image1="/pdf.png" image2="link.png" /> </Link></li>
            <li><Link to="/urlpdf" ><FeatureCard title="PDF URL To PDF" image1="/link.png" image2="pdf.png" /> </Link></li>
            <li><Link to="/tts" ><FeatureCard title="Text To Speech" image1="/link.png" image2="pdf.png" /> </Link></li> */}

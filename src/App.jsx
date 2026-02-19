@@ -52,6 +52,7 @@ import WebpageToPdf from './WebpageToPdf';
 import { PdfPageExtractor } from './PdfPageExtractor';
 import { PdfPageRemove } from './PdfPageRemove';
 import TTS from './TTS';
+import ImageResizerPage from './ImageResizerPage';
 
 
 function App() {
@@ -111,9 +112,10 @@ function App() {
           {/* <Route path="/pdfurl" element={<PdfUrlPage />} />
           <Route path="/urlpdf" element={<PdfUrlToPdf />} />
           <Route path="/webpagetopdf" element={<WebpageToPdf />} />
+          <Route path='tts' element={<TTS/>} /> */}
           <Route path='pdfextractor' element={<PdfPageExtractor />} />
           <Route path='pdfpageremover' element={<PdfPageRemove />} />
-          <Route path='tts' element={<TTS/>} /> */}
+          <Route path='imageresizer' element={<ImageResizerPage/>}/>
 
           {/* Above line is keep stop to due server load */}
 

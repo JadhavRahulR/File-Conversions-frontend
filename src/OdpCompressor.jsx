@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to compress odp.mp4";
 import IntroPoster from "../src/assets/images/odp compress poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdpCompressor = () => {
@@ -17,6 +19,8 @@ const OdpCompressor = () => {
   const [outputType, setOutputType] = useState("odp");
   const [status, setStatus] = useState("idle");
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
+  
 
   const fileInputRef = useRef();
 
@@ -54,13 +58,22 @@ const OdpCompressor = () => {
           setProgress(Math.min(percent, 90));
         },
       });
+       
+      const compressedODP = new File(
+  [response.data],
+  file.name.replace(/\.odp$/i, "") + "_compressed.odp",
+  {
+    type: "application/vnd.oasis.opendocument.presentation",
+  }
+);
 
+setConvertedFile(compressedODP);
       const blob = new Blob([response.data]);
       const downloadLink = document.createElement('a');
       downloadLink.href = URL.createObjectURL(blob);
       downloadLink.download = file.name.replace('.odp', `_compressed.${outputType === 'odp' ? 'odp' : 'odp.7z'}`);
       downloadLink.click();
-      setStatus("done");
+      setStatus("✅ Done");
     } catch (err) {
       console.error("   ❌ Compression failed", err);
       setStatus("error");
@@ -154,8 +167,18 @@ const OdpCompressor = () => {
           {status === "uploading" ? `Compressing... (${progress}%)` : "    Compress"}
         </button>
 
-        {status === "done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
+        {status === "✅ Done" && <p className="success-msg">✅ File compressed and downloaded!</p>}
         {status === "error" && <p className="error-msg">   ❌ Compression failed</p>}
+
+        {status === "✅ Done" && convertedFile && (
+          <>
+            <p style={{color:'white'}} >Save To . . .</p>
+            <div className="saveTo">
+              <SaveToGoogleDrive file={convertedFile} />
+              <SaveToDropbox file={convertedFile} />
+            </div>
+          </>
+        )}
       </div>
       <section>
         <div className="compressor-page">

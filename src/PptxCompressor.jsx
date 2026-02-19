@@ -10,14 +10,17 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to compress pptx.mp4";
 import IntroPoster from "../src/assets/images/pptx compress poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PptxCompressor = () => {
   const [file, setFile] = useState(null);
   const [quality, setQuality] = useState(30);
   const [outputType, setOutputType] = useState('pptx');
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState('upload');
   const [progress, setProgress] = useState(0);
+  const [convertedFile, setConvertedFile] = useState(null);
 
   const fileInputRef = useRef();
 
@@ -59,6 +62,16 @@ const PptxCompressor = () => {
         },
       });
 
+      const compressedPPTX = new File(
+    [response.data],
+    file.name.replace(/\.pptx$/i, "") + "_compressed.pptx",
+    {
+      type: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    }
+  );
+
+  setConvertedFile(compressedPPTX);
+
       const ext = outputType === '7z' ? '.pptx.7z' : '_compressed.pptx';
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
@@ -68,7 +81,7 @@ const PptxCompressor = () => {
       link.click();
       link.remove();
 
-      setStatus('done');
+      setStatus("✅ Done");
     } catch (err) {
       console.error(err);
       setStatus('error');
@@ -155,9 +168,21 @@ const PptxCompressor = () => {
           {status === 'uploading' ? `Compressing... (${progress}%)` : '    Compress'}
         </button>
 
-        {status === 'done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
+        {status === '✅ Done' && <p className="success-msg">✅ File compressed and downloaded!</p>}
         {status === 'error' && <p className="error-msg">   ❌ Compression failed</p>}
+        {status === "✅ Done" && convertedFile && (
+  <>
+    <p style={{color:'white'}}>Save To . . .</p>
+    <div className="saveTo">
+      <SaveToGoogleDrive file={convertedFile} />
+      <SaveToDropbox file={convertedFile} />
+    </div>
+  </>
+)}
       </div>
+
+      
+
       <section>
         <div className="compressor-page">
           <h2 className="compressor-heading">Compress PPTX Online</h2>

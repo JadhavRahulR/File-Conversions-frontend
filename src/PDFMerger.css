@@ -1,15 +1,14 @@
 .pdf-merger {
   max-width: 800px;
+  min-height: 500px;
   margin: auto;
   padding: 2rem;
   border-radius: 12px;
-  background-color: #f8f8f8;
+  background-color: #000000;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   text-align: center;
   font-family: sans-serif;
   display: flex;
-  justify-content: center;
-  /* align-items:center ; */
   flex-direction: column;
 }
 
@@ -18,24 +17,27 @@
   color: #007bfc;
 }
 .pdf-merger input {
-  background-color:black;
-  color: white;
+  background-color:rgb(255, 255, 255);
+  color: rgb(26, 34, 151);
   cursor: pointer;
   padding: 15px 5px;
   border-radius: 10px;
   margin: 10px 4px 60px 4px;
+  box-shadow:2px 2px 4px rgb(255, 0, 0);
 }
 
 .pdf-merger input #file-upload-button{
-  border: none;
+  border: 1px solid rgb(255, 0, 0);
 }
-
+.pdf-merger .Mdrop-area h2 {
+  color: white;
+}
 .pdf-merger .Mdrop-area {
   border: 2px dashed #999;
   padding: 30px;
   border-radius: 8px;
   margin-bottom: 1rem;
-  background: #fff;
+  background: #000000;
   cursor: pointer;
   max-width: 900px;
   height: 300px;
@@ -48,6 +50,10 @@
   margin: 20px;
 }
 
+.pdf-merger .Mdrop-area .dragndrop{
+  color: white;
+}
+
 .file-list {
   list-style: none;
   padding: 0;
@@ -56,8 +62,12 @@
   max-height: 150px;
   overflow-y: auto;
 }
-
+.file-list h5{
+  color: white;
+  margin: 20px 5px;
+}
 .file-list li {
+  color: white;
   padding: 0.3rem 0;
   border-bottom: 1px solid #ddd;
   font-size: 0.95rem;
@@ -139,6 +149,31 @@ button:disabled {
 .mergepdf-section ol li {
   margin-bottom: 0.6rem;
 }
+
+
+/* for drag pdfs  */
+.draggable-item {
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #000000;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.draggable-item:active {
+  cursor: grabbing;
+}
+
+.drag-handle {
+  margin-right: 10px;
+  cursor: grab;
+  font-size: 18px;
+}
+
 
 @media (max-width:500px){
   .pdf-merger{
