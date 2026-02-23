@@ -1,0 +1,255 @@
+/* ===============================
+   PNG to JPG TOOL – FileUnivers
+   =============================== */
+
+.imgtoimgcontainer .tool-container {
+  max-width: 800px;
+  margin: 0 auto;
+  /* padding: 24px 16px 60px; */
+  background-color: black;
+  color: white;
+}
+
+.imgtoimgcontainer .tool-container h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color:white;
+}
+
+/* ---------- file input ---------- */
+
+.imgtoimgcontainer .tool-container input[type="file"] {
+  display: block;
+  margin: 14px auto 20px;
+  padding: 10px;
+  border: 2px dashed #d0d7de;
+  border-radius: 10px;
+  background: #353434;
+  cursor: pointer;
+  max-width: 420px;
+  width: 100%;
+}
+
+/* ---------- external pickers ---------- */
+
+.imgtoimgcontainer .external-inputs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+  margin: 0;
+}
+
+/* ---------- preview ---------- */
+
+.imgtoimgcontainer .pngtojpgimg {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.imgtoimgcontainer .image-preview-box {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+/* ---------- controls ---------- */
+
+.imgtoimgcontainer .controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.imgtoimgcontainer .controls label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff5f5;
+}
+
+.imgtoimgcontainer .controls select,
+.controls input[type="color"],
+.controls input[type="range"] {
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* ---------- convert button ---------- */
+
+.imgtoimgcontainer .primary-btn {
+  display: block;
+  margin: 26px auto 10px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #26d5f4, #0e18ca);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.imgtoimgcontainer .primary-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgb(255, 255, 255);
+}
+
+.imgtoimgcontainer .primary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- save actions ---------- */
+
+.imgtoimgcontainer .save-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* ---------- mobile tweaks ---------- */
+
+@media (max-width: 600px) {
+  .tool-container h1 {
+    font-size: 22px;
+  }
+
+  .image-preview-box {
+    max-height: 240px;
+  }
+}
+
+
+
+/* content section */
+/* ===============================
+   PNG TO JPG CONTENT STYLES
+   =============================== */
+
+.pngtojpg-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 16px;
+  line-height: 1.7;
+}
+
+.pngtojpg-heading {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.pngtojpg-subheading {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 32px 0 12px;
+}
+
+.pngtojpg-paragraph {
+  font-size: 15.5px;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* ---------- table ---------- */
+
+.pngtojpg-table-wrapper {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.pngtojpg-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.pngtojpg-table th,
+.pngtojpg-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+.pngtojpg-table th {
+  background: #f6f8fa;
+  font-weight: 600;
+}
+
+.pngtojpg-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+
+.pngtojpg-faq {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 16px;
+}
+
+.pngtojpg-faq-heading {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.pngtojpg-faq-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 0;
+}
+
+.pngtojpg-faq-question {
+  font-size: 16.5px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.pngtojpg-faq-answer {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .pngtojpg-faq-heading {
+    font-size: 21px;
+  }
+
+  .pngtojpg-faq-question {
+    font-size: 15.5px;
+  }
+
+  .pngtojpg-faq-answer {
+    font-size: 14.5px;
+  }
+}
+/* ---------- mobile ---------- */
+
+@media (max-width: 600px) {
+  .pngtojpg-heading {
+    font-size: 22px;
+  }
+
+  .pngtojpg-subheading {
+    font-size: 18px;
+  }
+
+  .pngtojpg-paragraph {
+    font-size: 14.5px;
+  }
+}

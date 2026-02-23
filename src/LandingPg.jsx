@@ -62,6 +62,14 @@ export default function LandingPage() {
           <li><Link to="/csv-to-pdf" ><FeatureCard title="CSV  →  PDF" image1="/csv.png" image2="pdf.png" /> </Link></li>
           <li><Link to="/img-to-pdf" > <FeatureCard title="IMG  →  PDF" image1="/img.png" image2="pdf.png" /> </Link></li>
           <li><Link to="/tiff-to-pdf" ><FeatureCard title="TIFF  →  PDF" image1="/tiff.png" image2="pdf.png" /> </Link></li>
+          <li><Link to="/pngtojpg" ><FeatureCard title="PNG → JPG"  image1="png.png" image2="jpg.png"/> </Link></li>
+          <li><Link to="/jpgtopng" ><FeatureCard title="JPG → PNG"  image1="jpg.png" image2="png.png"/> </Link></li>
+          <li><Link to="/pngtowebp" ><FeatureCard title="PNG → WEBP"  image1="png.png" image2="webp.png"/> </Link></li>
+          <li><Link to="/pngtoavif" ><FeatureCard title="PNG → AVIF"  image1="png.png" image2="avif.png"/> </Link></li>
+          <li><Link to="/aviftopng" ><FeatureCard title="AVIF → PNG"  image1="avif.png" image2="png.png"/> </Link></li>
+          <li><Link to="/webptopng" ><FeatureCard title="WEBP → PNG"  image1="webp.png" image2="png.png"/> </Link></li>
+          <li><Link to="/webptojpg" ><FeatureCard title="WEBP → JPG"  image1="webp.png" image2="jpg.png"/> </Link></li>
+          <li><Link to="/jpgtowebp" ><FeatureCard title="JPG → WEBP"  image1="jpg.png" image2="webp.png"/> </Link></li>
         </div>
       </section>
 
@@ -154,6 +162,8 @@ export default function LandingPage() {
           <li><Link to="/imageresizer" ><FeatureCard1 title="Image Resizer" image1="img.png" /> </Link></li>
           <li><Link to="/pdfpageremover" ><FeatureCard1 title="PDF Page Remover"  image1="pdf.png" /> </Link></li>
           <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>
+
+          
            {/*
            <li><Link to="/pdfurl" ><FeatureCard title="PDF To URL" image1="/pdf.png" image2="link.png" /> </Link></li>
            <li><Link to="/urlpdf" ><FeatureCard title="PDF URL To PDF" image1="/link.png" image2="pdf.png" /> </Link></li>

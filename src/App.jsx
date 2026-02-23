@@ -53,6 +53,14 @@ import { PdfPageExtractor } from './PdfPageExtractor';
 import { PdfPageRemove } from './PdfPageRemove';
 import TTS from './TTS';
 import ImageResizerPage from './ImageResizerPage';
+import PngToJpgPage from './PngToJpgPage';
+import PngToWebpPage from './PngToWebpPage';
+import PngToAvifPage from './PngToAvifPage';
+import JpgToPngPage from './JpgToPngPage';
+import WebpToPngPage from './WebpToPngPage';
+import WebpToJpgPage from './WebpToJpgPage';
+import JpgToWebpPage from './JpgToWebpPage';
+import AvifToPngPage from './AvifToPngPage';
 
 
 function App() {
@@ -109,13 +117,25 @@ function App() {
           <Route path="/bmpcompressor" element={<BmpCompressor />} />
           <Route path="/favicon-generator" element={<FaviconGenerator />} />
           <Route path="/renamefile" element={<RenameFile />} />
+          
+          <Route path='pdfextractor' element={<PdfPageExtractor />} />
+          <Route path='pdfpageremover' element={<PdfPageRemove />} />
+          <Route path='imageresizer' element={<ImageResizerPage/>}/>
+          <Route path='pngtojpg' element={<PngToJpgPage/>}/>
+          <Route path='pngtowebp' element={<PngToWebpPage/>}/>
+          <Route path='pngtoavif' element={<PngToAvifPage/>}/>
+          <Route path='aviftopng' element={<AvifToPngPage/>}/>
+          <Route path='jpgtopng' element={<JpgToPngPage/>}/>
+          <Route path='webptopng' element={<WebpToPngPage/>}/>
+          <Route path='webptojpg' element={<WebpToJpgPage/>}/>
+          <Route path='jpgtowebp' element={<JpgToWebpPage/>}/>
+
+
+
           {/* <Route path="/pdfurl" element={<PdfUrlPage />} />
           <Route path="/urlpdf" element={<PdfUrlToPdf />} />
           <Route path="/webpagetopdf" element={<WebpageToPdf />} />
           <Route path='tts' element={<TTS/>} /> */}
-          <Route path='pdfextractor' element={<PdfPageExtractor />} />
-          <Route path='pdfpageremover' element={<PdfPageRemove />} />
-          <Route path='imageresizer' element={<ImageResizerPage/>}/>
 
           {/* Above line is keep stop to due server load */}
 
