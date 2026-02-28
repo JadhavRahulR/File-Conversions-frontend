@@ -77,14 +77,20 @@ const OdtToPdfConverter = () => {
       setStatus("Upload");
     }
   };
+  // useEffect(() => {
+    
+  //   if (status === "✅ Conversion complete!") {
+  //     setTimeout(() => {
+  //       setFile(null);
+  //       setStatus("Convert");
+  //     }, 4000);
+  //   }
+  // }, [status]);
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+  if (file) {
+    setStatus("Convert");
+  }
+}, [file]);
   return (
     <>
       <section>

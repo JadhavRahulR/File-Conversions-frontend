@@ -72,12 +72,12 @@ button:disabled {
 }
 
 .compressor-container .fileupload{
+  /* border: 2px solid red; */
   width: 350px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 40px auto;
-  margin-left: 50px;
 }
 
 
