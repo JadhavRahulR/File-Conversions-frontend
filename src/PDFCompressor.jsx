@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect ,useRef} from 'react';
 import DropzoneInput from "./DropzoneInput"; import axios from "axios";
 import "./PDFCompressor.css";
 import DropboxFileInput from './DropboxFileInput'
@@ -22,7 +22,9 @@ const PDFCompressor = () => {
   const [status, setStatus] = useState("upload");
   const [progress, setProgress] = useState(0);
   const [convertedFile, setConvertedFile] = useState(null);
-  const [compressionStats, setCompressionStats] = useState(null);
+  const startTimeRef = useRef(0);
+  const [extreme, setExtreme] = useState(false);
+  
 
 
   const handleFileDrop = (e) => {
@@ -40,79 +42,96 @@ const PDFCompressor = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!file) return alert("Please upload a PDF.");
+  e.preventDefault();
+  if (!file) return alert("Please upload a PDF.");
 
-    // ⏱ FRONTEND START TIME
-    const frontendStartTime = performance.now();
+  setLoading(true);
+  setStatus("uploading");
+  setProgress(0);
 
-    setProgress(10);
+  const startTime = Date.now();
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("quality", quality);
+  formData.append("mode", extreme ? "extreme" : "normal");
+
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/convert-compress-pdf`,
+      formData,
+      
+      {
+        responseType: "blob",
+        
+
+        // ✅ ONLY UPLOAD BAR (0–100)
+        onUploadProgress: (e) => {
+          if (!e.total) return;
+          const percent = Math.round((e.loaded * 100) / e.total);
+          setProgress(percent);
+        },
+      }
+    );
+
+    /* 🔒 UPLOAD FINISHED COMPLETELY */
+    setProgress(100);
+
+    // 🔁 SWITCH UI PHASE (NO EXTRA BACKEND TIME)
     setStatus("compressing");
-    setLoading(true);
+    setProgress(0);
 
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("quality", quality);
+    /* ⏱️ Dynamic compress UI time (based on total time) */
+    const totalTime = Date.now() - startTime;
+    const compressUITime = Math.max(totalTime / 2, 800); // min smooth time
 
-    try {
-      const response = await axios.post(
-        `${BASE_URL}/convert-compress-pdf`,
-        formData,
-        {
-          onUploadProgress: (event) => {
-            const percent = Math.round(
-              (event.loaded * 100) / event.total
-            );
-            setProgress(Math.min(percent, 80));
-          },
-        }
-      );
+    const compressStart = Date.now();
 
-      // ⏱ FRONTEND END TIME (response received)
-      const frontendEndTime = performance.now();
-      const totalFrontendMs = Math.round(frontendEndTime - frontendStartTime);
+    const compressTimer = setInterval(() => {
+      const elapsed = Date.now() - compressStart;
+      const percent = Math.min((elapsed / compressUITime) * 100, 100);
+      setProgress(Math.round(percent));
 
-      console.log("⏱ Frontend total time (ms):", totalFrontendMs);
-      console.log("⏱ Frontend total time (sec):", (totalFrontendMs / 1000).toFixed(2));
+      if (percent >= 100) {
+        clearInterval(compressTimer);
 
-      console.log("⏱ Backend Ghostscript time (ms):", response.data.compressionTimeMs);
+        // ✅ CREATE FILE AFTER UI FINISH
+        const blob = new Blob([response.data], {
+          type: "application/pdf",
+        });
 
-      const { fileId, downloadUrl } = response.data;
-      // console.log(convertedFile.downloadUrl);
+        const compressedFile = new File(
+          [blob],
+          file.name.replace(/\.pdf$/i, "") + "_compressed.pdf",
+          { type: "application/pdf" }
+        );
 
-      // Auto download
-      const a = document.createElement("a");
-      a.href = `${BASE_URL}${downloadUrl}`;
-      a.download = file.name.replace(/\.pdf$/i, "") + "_compressed.pdf";
-      a.click();
+        setConvertedFile(compressedFile);
+        setStatus("done");
+        setLoading(false);
 
-      setStatus("✅ Done");
-      setProgress(100);
+        // auto download
+        const url = URL.createObjectURL(compressedFile);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = compressedFile.name;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    }, 60);
 
-      // const { fileId, downloadUrl } = response.data;
+  } catch (err) {
+    console.error(err);
+    alert("Compression failed");
+    setLoading(false);
+  }
+};
 
-      const cloudFile = {
-        fileId,
-        fileName: file.name.replace(/\.pdf$/i, "") + "_compressed.pdf",
-        downloadUrl: `${BASE_URL}${downloadUrl}`,
-        mimeType: "application/pdf"
-      };
-
-      setConvertedFile(cloudFile);
-      // OPTIONAL: store for UI
-      setCompressionStats({
-        frontendMs: totalFrontendMs,
-        backendMs: response.data.compressionTimeMs
-      });
-
-    } catch (error) {
-      console.error("Compression failed:", error);
-      alert("Compression failed.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
+useEffect(() => {
+  if (file) {
+    setStatus("upload");
+  }
+}, [file]);
   return (
     <>
       <Helmet>
@@ -173,25 +192,51 @@ const PDFCompressor = () => {
           </div>
 
 
-          {/* <button type="submit" disabled={loading}>
-            {loading ? `Compressing... (${progress}%)` : "Compress PDF"}
-            </button> */}
-          <button type="button" onClick={handleSubmit} disabled={loading}>
-            {loading ? `Compressing... (${progress}%)` : "Compress PDF"}
+          <div className="extreme-toggle">
+  <label>
+    <input
+      type="checkbox"
+      checked={extreme}
+      onChange={(e) => setExtreme(e.target.checked)}
+    />
+    <span>
+      ⚠️ Extreme Compression (Smallest size, lower quality)
+    </span>
+  </label>
+</div>
+
+          {(status === "uploading" || status === "compressing") && (
+            <div className="progress-box" style={{color:"white"}}>
+              <h5>
+                {status === "uploading" && "Uploading PDF…"}
+                {status === "compressing" && "Compressing PDF…"}
+              </h5>
+
+              <progress value={progress} max="100" />
+            </div>
+          )}
+
+
+
+
+
+          <button type="button" onClick={handleSubmit} >
+            {status === "uploading" && `Uploading… (${progress}%)`}
+            {status === "compressing" && `Compressing PDF…(${progress}%)`}
+            {status === "done" && "Compress PDF"}
+            {status === "upload" && "Compress PDF"}
           </button>
 
-          {status === "✅ Done" && convertedFile && (
+          {status === "done" && (
+            <h5 style={{ color: "green" }}>✅ Compression complete</h5>
+          )}
+
+          {status === "done" && convertedFile && (
             <>
-              <p style={{ color: "white" }}>Save To . . .</p>
+              <p style={{ color: 'white' }} >Save To . . .</p>
               <div className="saveTo">
-                <SaveToGoogleDriveCloud
-                  fileId={convertedFile.fileId}
-                  fileName={convertedFile.fileName}
-                />
-                <SaveToDropboxCloud
-                  downloadUrl={convertedFile.downloadUrl}
-                  fileName={convertedFile.fileName}
-                />
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} />
               </div>
             </>
           )}
