@@ -50,6 +50,75 @@
 .slider-labels span{
   color: white;
 }
+
+.extreme-toggle {
+  margin-top: 10px;
+}
+
+/* wrapper */
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 14px;
+  color: #333;
+}
+
+/* hide default checkbox */
+.toggle input {
+  display: none;
+}
+
+/* switch background */
+.slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+/* knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  left: 3px;
+  top: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* checked state */
+.toggle input:checked + .slider {
+  background-color: #009dff; /* red = danger/extreme */
+}
+
+.toggle input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* text */
+.label-text {
+  font-weight: 500;
+}
+
+.label-text  {
+  display: block;
+  font-size: 15px;
+  color: #fffdfd;
+}
+
+/* hover effect */
+.toggle:hover .slider {
+  box-shadow: 0 0 0 4px rgba(229,57,53,0.12);
+}
 .compressor-container button {
   background-color: #007bff;
   color: white;

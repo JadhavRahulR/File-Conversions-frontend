@@ -192,15 +192,16 @@ useEffect(() => {
           </div>
 
 
-          <div className="extreme-toggle">
-  <label>
+         <div className="extreme-toggle">
+  <label className="toggle">
     <input
       type="checkbox"
       checked={extreme}
       onChange={(e) => setExtreme(e.target.checked)}
     />
-    <span>
-      ⚠️ Extreme Compression (Smallest size, lower quality)
+    <span className="slider"></span>
+    <span className="label-text">
+      Extreme Compression Smallest size, lower quality
     </span>
   </label>
 </div>
@@ -233,7 +234,7 @@ useEffect(() => {
 
           {status === "done" && convertedFile && (
             <>
-              <p style={{ color: 'white' }} >Save To . . .</p>
+              <p style={{ color: 'white' }} >Save File To . . .</p>
               <div className="saveTo">
                 <SaveToGoogleDrive file={convertedFile} />
                 <SaveToDropbox file={convertedFile} />
