@@ -12,7 +12,7 @@ export default function LandingPage() {
     <>
     <Helmet>
         <title>F I L E - U N I V E R S - Free Online PDF Converter & File Compressor Tool</title>
-        <meta name="description" content="Free online file converter & compressor. Convert PDF, Word, Excel, images & more in seconds with FileUnivers ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…“ fast, secure & easy-to-use tools." />
+        <meta name="description" content="Free online file converter & compressor. Convert PDF, Word, Excel, images & more in seconds with FileUnivers “ fast, secure & easy-to-use tools." />
         <link rel="canonical" href="https://fileunivers.com/" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="file converter, file compressor, convert files online, compress files online, pdf converter, image to pdf, doc to pdf, zip extractor, pdf merger, folder to zip" />

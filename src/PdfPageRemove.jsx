@@ -12,6 +12,8 @@ import ScrollToTop from "./ScrollToTop";
 import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
+
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
@@ -243,7 +245,9 @@ export function PdfPageRemove() {
         {/* To Save to Google Drive */}
         {downloadedFile && (
           <div className="save-drive-section">
+             <p style={{ color: "white" }}>Save File To . . .</p>
             <SaveToGoogleDrive file={downloadedFile} />
+             <SaveToDropbox file={downloadedFile} />
           </div>
         )}
 
@@ -278,18 +282,25 @@ export function PdfPageRemove() {
           </div>
         </div>
       )}
+
+       
+
       {pagePreviews.length > 0 && (
+        <>
         <div className="action-buttons">
           <button
             onClick={removePages}
             className="extract-btn"
             disabled={selectedPages.length === 0}
-          >
+            >
             Download PDF
           </button>
         </div>
+         
+        </>
       )}
 
+       
       {pagePreviews.length === 0 && (
         <div className="pdf-extractor-container">
           <p className="intro">

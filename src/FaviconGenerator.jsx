@@ -10,6 +10,8 @@ import "./CsvCompressor.css";
 import LazyVideo from "./LazyVideo";
 import IntroVideo from "../src/assets/videos/how to generate favicon.mp4";
 import IntroPoster from "../src/assets/images/generate favicon poster.png";
+import SaveToGoogleDrive from "./SaveToGoogleDrive";
+import SaveToDropbox from "./SaveToDropbox";
 
 /* ---------------- ICO CREATOR ---------------- */
 function createICO(images) {
@@ -51,6 +53,7 @@ const FaviconGenerator = () => {
     const [preview, setPreview] = useState(null);
 
     const [generatedFiles, setGeneratedFiles] = useState([]); // <-- NEW
+    const [zipFile, setZipFile] = useState(null);
 
     const fileInputRef = useRef(null);
 
@@ -130,6 +133,15 @@ const FaviconGenerator = () => {
 
             // Auto download Zip
             const zipBlob = await zip.generateAsync({ type: "blob" });
+
+            const generatedZip = new File(
+                [zipBlob],
+                "favicons.zip",
+                { type: "application/zip" }
+            );
+
+            setZipFile(generatedZip);
+
             saveAs(zipBlob, "favicons.zip");
 
             setStatus("done");
@@ -217,6 +229,21 @@ const FaviconGenerator = () => {
                     <p className="success-msg">✅ Favicons generated and downloaded!</p>
                 )}
 
+                {/* {status === "done" && (
+                    <h5 style={{ color: "green" }}>✅ Favicon generated</h5>
+                )} */}
+
+                {status === "done" && zipFile && (
+                    <>
+                        <p style={{ color: "white" }}>Save File To . . .</p>
+
+                        <div className="saveTo">
+                            <SaveToGoogleDrive file={zipFile} />
+                            <SaveToDropbox file={zipFile} />
+                        </div>
+                    </>
+                )}
+
 
             </div>
             <div className="favlist">
@@ -284,7 +311,9 @@ const FaviconGenerator = () => {
                     <div className="otherlinks">
 
                         <h2>Try Other Free Tools on FileUnivers</h2>
+
                         <ul>
+                        <div className="unzipPagelink">
                             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
                             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
                             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -301,6 +330,7 @@ const FaviconGenerator = () => {
                             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
                             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
                             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+                        </div>
                         </ul>
 
                     </div>
