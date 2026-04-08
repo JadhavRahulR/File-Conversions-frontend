@@ -82,13 +82,10 @@ const PdfToPptxConverter = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+          if (file) {
+            setStatus("Upload");
+          }
+        }, [file]);
   return (
     <>
       <ScrollToTop />
@@ -118,8 +115,8 @@ const PdfToPptxConverter = () => {
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} />
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} />
+            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']} />
+            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']}/>
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
@@ -164,7 +161,8 @@ const PdfToPptxConverter = () => {
             <p><strong>📌Note:</strong> Large PDFs or scanned documents may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="cFTr47vsjaU"
               title="How to Convert PDF To PPTX ? "
               description='Convert PDF to PPTX easily with our free online PDF to PowerPoint converter. This quick tutorial shows how to turn your PDF documents into fully editable PowerPoint (.pptx) slides in just a few seconds- no software installation, no sign-up, and completely free. Perfect for students, teachers, and professionals who want to reuse or edit presentation content effortlessly.'
             />
@@ -185,6 +183,8 @@ const PdfToPptxConverter = () => {
             <p><strong>Input:</strong> .pdf</p>
             <p><strong>Output:</strong> .pptx (PowerPoint Presentation)</p>
             <h2>Also check other features Related to PDF file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -201,6 +201,7 @@ const PdfToPptxConverter = () => {
             <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
             <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+            </div>
           </div>
 
           <div className="converter-section">

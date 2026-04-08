@@ -85,13 +85,10 @@ setConvertedFile(convertedFile);
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
+    if (file) {
+      setStatus("Upload");
     }
-  }, [status]);
+  }, [file]);
   return (
     <>
       <ScrollToTop />
@@ -122,8 +119,8 @@ setConvertedFile(convertedFile);
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} />
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} />
+            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']}/>
+            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']}/>
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
           
@@ -166,7 +163,8 @@ setConvertedFile(convertedFile);
             <p><strong>📌Note:</strong> Large or scanned PDF files may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+               youtubeId="5OpjVx9iFjo"
               title="How to Convert PDF to ODT ? "
               description='Easily convert your PDF files into editable ODT documents using this free online converter!.No registration- just upload your PDF, click "Upload”, and get your .odt file in seconds. Perfect for editing PDFs in OpenOffice or LibreOffice while keeping your fonts and formatting exactly the same.'
             />
@@ -188,6 +186,8 @@ setConvertedFile(convertedFile);
             <p><strong>Output:</strong> .odt (OpenDocument Text)</p>
 
             <h2>Also check other features Related to PDF file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -205,6 +205,7 @@ setConvertedFile(convertedFile);
             <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <Link></Link>
+            </div>
           </div>
 
           <div className="converter-section">

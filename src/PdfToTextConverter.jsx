@@ -84,13 +84,11 @@ const PdfToTextConverter = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+        if (file) {
+          setStatus("Upload");
+        }
+      }, [file]);
+  
   return (
     <>
       <ScrollToTop />
@@ -121,8 +119,8 @@ const PdfToTextConverter = () => {
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} />
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} />
+            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']}/>
+            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']}/>
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
@@ -167,7 +165,8 @@ const PdfToTextConverter = () => {
             <p><strong>📌Note:</strong> Large or scanned PDFs may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+            youtubeId="z83ObafFsnw"
               title="How to Convert PDF to Text ? "
               description='Easily extract text from any PDF file using this free online PDF to Text converter!.
               No software, no registration- just upload your PDF, click “Upload”, and Auto download your editable .txt file in seconds.'
@@ -189,6 +188,8 @@ const PdfToTextConverter = () => {
             <p><strong>Input:</strong> .pdf</p>
             <p><strong>Output:</strong> .txt (Plain Text)</p>
             <h2>Also check other features Related to PDF file formate </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -207,6 +208,7 @@ const PdfToTextConverter = () => {
             <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <Link></Link>
+            </div>
           </div>
 
           <div className="converter-section">

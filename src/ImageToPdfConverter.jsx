@@ -162,7 +162,8 @@ const ImageToPdfConverter = () => {
             <p><strong>📌Note:</strong> Large or high-resolution images may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="RQHR8Y3O8Lg"
               title="How to Convert IMG to PDF ? "
               description='Convert your JPG, JPEG, or PNG images to PDF in just a few seconds with this easy step-by-step video!.Learn how to turn your photos, screenshots, or scanned documents into a single, professional PDF file- without installing any software.'
             />
@@ -183,6 +184,8 @@ const ImageToPdfConverter = () => {
             <p><strong>Input:</strong> .jpg, .jpeg, .png, .bmp, .webp, .tiff</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PDF and Image file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -200,6 +203,7 @@ const ImageToPdfConverter = () => {
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </div>
 
           <div className="converter-section">

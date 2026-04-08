@@ -54,14 +54,14 @@ function WordToPdfConverter() {
         type: 'application/pdf',
       });
 
-const convertedFile = new File(
-  [blob],
-  file.name.replace(/\.(docx|doc)$/i, "") + ".pdf",
-  {
-    type: "application/pdf",
-  }
-);
-setConvertedFile(convertedFile); 
+      const convertedFile = new File(
+        [blob],
+        file.name.replace(/\.(docx|doc)$/i, "") + ".pdf",
+        {
+          type: "application/pdf",
+        }
+      );
+      setConvertedFile(convertedFile);
 
 
       const url = window.URL.createObjectURL(blob);
@@ -77,43 +77,41 @@ setConvertedFile(convertedFile);
       setStatus("Upload")
     }
   };
+
   useEffect(() => {
-    if (status === " ✅  Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
+    if (file) {
+      setStatus("Upload");
     }
-  }, [status]);
+  }, [file]);
 
   return (
     <div>
       <section>
-      <ScrollToTop />
+        <ScrollToTop />
         <Tools />
-      <Helmet>
-        <title>Word To PDF |Word TO PDF Converter</title>
-        <meta name="description" content="Convert Word documents (.doc, .docx) to PDF easily and securely. Free online Word to PDF converter with no email or signup needed." />
-        <link rel="canonical" href="https://fileunivers.com/word-to-pdf" />
-        <meta name="robots" content="index, follow" />
-        <meta name="keywords" content="word to pdf, convert word to pdf, doc to pdf, docx to pdf, free word to pdf converter, secure word to pdf" />
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <Helmet>
+          <title>Word To PDF |Word TO PDF Converter</title>
+          <meta name="description" content="Convert Word documents (.doc, .docx) to PDF easily and securely. Free online Word to PDF converter with no email or signup needed." />
+          <link rel="canonical" href="https://fileunivers.com/word-to-pdf" />
+          <meta name="robots" content="index, follow" />
+          <meta name="keywords" content="word to pdf, convert word to pdf, doc to pdf, docx to pdf, free word to pdf converter, secure word to pdf" />
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      </Helmet>
-      
-        
+        </Helmet>
+
+
         <div className="pagetitle">
 
-        <h1>WORD To PDF Converter - Convert WORD (DOCX) To PDF Online Free</h1>
+          <h1>WORD To PDF Converter - Convert WORD (DOCX) To PDF Online Free</h1>
 
-        <p className="intro-paragraph">
-          Word to PDF Converter is a simple and reliable online tool that helps you convert Word documents (DOC or DOCX) into high-quality PDF files within seconds. It preserves original formatting, fonts, images, and layout, making it perfect for sharing, printing, or professional use. No installation or sign-up is required   —just upload your Word file and download a secure, perfectly converted PDF instantly.
-        </p>
+          <p className="intro-paragraph">
+            Word to PDF Converter is a simple and reliable online tool that helps you convert Word documents (DOC or DOCX) into high-quality PDF files within seconds. It preserves original formatting, fonts, images, and layout, making it perfect for sharing, printing, or professional use. No installation or sign-up is required   —just upload your Word file and download a secure, perfectly converted PDF instantly.
+          </p>
         </div>
         <div className='converter'>
           <div className="converterheading">
-          <h2>Convert Word To PDF </h2>
+            <h2>Convert Word To PDF </h2>
           </div>
           <input type="file" accept=".docx" onChange={handleFileChange} />
           <br /><br />
@@ -124,33 +122,33 @@ setConvertedFile(convertedFile);
           <DropzoneInput acceptedType={['docx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
-           {status === "Upload" && "Upload"}
+            {status === "Upload" && "Upload"}
             {status === "Convert" && "Convert"}
             {status === "Converting..." && `Converting... (${progress}%)`}
             {status === " ✅  Done" && "Download Again"}
           </button>
 
-           {status === " ✅  Done" && convertedFile && (<>
-                    <p>Save To . . .</p>
-                    <div className="saveTo">
-                      <SaveToGoogleDrive file={convertedFile} />
-                      <SaveToDropbox file={convertedFile} className='savetodropbox'/>
-          
-                    </div>
-                    </>)}
+          {status === " ✅  Done" && convertedFile && (<>
+            <p>Save To . . .</p>
+            <div className="saveTo">
+              <SaveToGoogleDrive file={convertedFile} />
+              <SaveToDropbox file={convertedFile} className='savetodropbox' />
+
+            </div>
+          </>)}
         </div>
       </section>
 
-       <div className="converter-container">
+      <div className="converter-container">
         <h2 className="converter-title">Convert Word to PDF – Free & Easy Online Tool</h2>
         <p className="converter-intro" style={{ marginTop: "20px" }}>
           Easily convert Word documents (.doc, .docx) into secure, high-quality PDFs online. No registration, no watermarks – just a fast, free tool you can trust.
         </p>
         <div className="converterImg">
-          <img src="word.png" alt="Word Img" className='ConverterImgone'/>
-          <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg'/>
+          <img src="word.png" alt="Word Img" className='ConverterImgone' />
+          <img src="Arrow.png" alt="Arrow Symbol" className='ConverterArrowImg' />
 
-          <img src="pdf.png" alt="Pdf Img" className='ConverterImgtwo'/>
+          <img src="pdf.png" alt="Pdf Img" className='ConverterImgtwo' />
 
         </div>
 
@@ -165,7 +163,8 @@ setConvertedFile(convertedFile);
         </div>
 
         <section>
-          <LazyVideo src={IntroVideo} poster={IntroPoster}
+          <LazyVideo
+            youtubeId="7UspAInEKME"
             title="How to Convert WORD to PDF ? "
             description='Convert your Word documents (.docx) to PDF instantly with our free online tool "File-Univers". Preserve formatting, protect content, and download in seconds.'
           />
@@ -187,10 +186,13 @@ setConvertedFile(convertedFile);
           <p><strong>Input:</strong> .doc, .docx</p>
           <p><strong>Output:</strong> .pdf</p>
           <h2>Also check other features Related to word / DOC file  </h2>
+          <div className="unzipPagelink">
+
           <li><Link to="/pdf-to-word" className='btn'>PDF To WORD Converter </Link></li>
           <li><Link to="/doc-to-odt" className='btn'>DOC To ODT Converter </Link></li>
           <li><Link to="/odt-to-doc" className='btn'> ODT To DOC  Converter </Link></li>
           <li><Link to="/docxcompressor" className='btn'> Compress DOC / WORD  </Link></li>
+          </div>
         </div>
 
         <div className="converter-section">

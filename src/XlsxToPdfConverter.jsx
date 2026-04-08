@@ -162,7 +162,8 @@ const XlsxToPdfConverter = () => {
             <p><strong>📌Note:</strong> Large files or spreadsheets with many sheets may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+               youtubeId="3pZ-aWyk3IY"
               title="How to Convert XLSX To PDF ? "
               description='Learn how to convert XLSX to PDF online in just a few seconds with this easy step-by-step video!. Turn your Excel spreadsheet (.xlsx) into a clean, professional PDF file- perfect for reports, invoices, and business documents. No software, no registration- just fast and simple conversion.'
             />
@@ -183,6 +184,8 @@ const XlsxToPdfConverter = () => {
             <p><strong>Input:</strong> .xlsx (Excel Workbook)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PDF and Xlsx file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -198,6 +201,7 @@ const XlsxToPdfConverter = () => {
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
 
+            </div>
           </div>
 
           <div className="converter-section">

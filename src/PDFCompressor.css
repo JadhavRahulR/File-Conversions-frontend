@@ -141,7 +141,6 @@ button:disabled {
 }
 
 .compressor-container .fileupload{
-  /* border: 2px solid red; */
   width: 350px;
   display: flex;
   justify-content: center;
@@ -235,7 +234,6 @@ button:disabled {
   }
 
   .compressor-container .fileupload{
-    margin-left: 0;
     width: 300px;
   }
 }

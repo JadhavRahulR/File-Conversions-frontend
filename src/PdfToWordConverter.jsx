@@ -102,14 +102,12 @@ setConvertedFile(convertedFile);
       setStatus("   ❌ Error");
     }
   };
+  
   useEffect(() => {
-    if (status === " ✅  Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+      if (file) {
+        setStatus("Upload");
+      }
+    }, [file]);
   return (
     <div>
 
@@ -182,7 +180,8 @@ setConvertedFile(convertedFile);
           </div>
 
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+            youtubeId="zT0_4ivW4D4"
               title="How to Convert PDF to Word ? "
               description='Easily convert any PDF to Word (DOCX) online for free — no software, no sign-up, and no watermark!.
                  In this video, you’ll learn how to convert a PDF file into an editable Word document in just a few seconds using a simple online tool. Perfect for students, office users, and anyone who needs to edit or update text in a PDF.'
@@ -212,6 +211,8 @@ setConvertedFile(convertedFile);
             <p><strong>Input:</strong> .pdf</p>
             <p><strong>Output:</strong> .docx</p>
             <h2>Also check other features Related to PDF file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -230,6 +231,7 @@ setConvertedFile(convertedFile);
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <Link></Link>
+            </div>
           </div>
 
           <div className="converter-section">

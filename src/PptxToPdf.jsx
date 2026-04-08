@@ -78,13 +78,10 @@ const PptxToPdf = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+        if (file) {
+          setStatus("Upload");
+        }
+      }, [file]);
 
   return (
     <>
@@ -158,7 +155,8 @@ const PptxToPdf = () => {
             <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+            youtubeId="TL6rPVFzi84"
               title="How to Convert PPTX To PDF ? "
               description='Convert PPTX to PDF in seconds with our free online PowerPoint to PDF converter. This video shows a simple step-by-step process to turn your Microsoft PowerPoint (.pptx) presentations into professional, shareable PDF files- fast, secure, and 100% free. No software installation or sign-up required.'
             />
@@ -179,11 +177,14 @@ const PptxToPdf = () => {
             <p><strong>Input:</strong> .pptx (PowerPoint Presentation)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PPTX file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/pptx-to-odp" className='btn'> PPTX To ODP  Converter </Link></li>
             <li><Link to="/odp-to-pptx" className='btn'> ODP To PPTX  Converter </Link></li>
             <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
             <li><Link to="/pptxcompress" className='btn'> Compress PPTX </Link></li>
             <Link></Link>
+            </div>
           </div>
 
           <div className="converter-section">

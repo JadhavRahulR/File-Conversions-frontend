@@ -11,6 +11,7 @@ import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import { Link } from "react-router-dom";
 
 export default function PngToJpgPage() {
     const [files, setFiles] = useState([]);
@@ -170,11 +171,11 @@ export default function PngToJpgPage() {
         <>
             <Helmet>
                 <title>PNG To JPG  | Convert Multiple PNG To JPEG Free Online</title>
-                <meta   name="description"
-               content="Convert PNG images to JPG or JPEG online for free. Easily change PNG to JPEG with high quality, transparent background support, batch conversion, and instant download. No signup required." />
-                <link  rel="canonical"  href="https://fileunivers.com/pngtojpg"/>
+                <meta name="description"
+                    content="Convert PNG images to JPG or JPEG online for free. Easily change PNG to JPEG with high quality, transparent background support, batch conversion, and instant download. No signup required." />
+                <link rel="canonical" href="https://fileunivers.com/pngtojpg" />
                 <meta name="robots" content="index, follow" />
-                <meta    name="keywords"
+                <meta name="keywords"
                     content="png to jpg, png to jpeg, convert png to jpg online, png to jpeg converter, png to jpg free, png image converter, transparent png to jpg, batch png to jpg"
                 />
             </Helmet>
@@ -205,8 +206,8 @@ export default function PngToJpgPage() {
                     />
 
                     <div className="external-inputs">
-                        <DriveFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} allowedTypes ={[".png"]} />
-                        <DropboxFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} extensions ={[".png"]} />
+                        <DriveFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} allowedTypes={[".png"]} />
+                        <DropboxFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} extensions={[".png"]} />
                     </div>
 
                     {previewUrl && (
@@ -284,6 +285,30 @@ export default function PngToJpgPage() {
                     JPG, you can significantly reduce image size while maintaining excellent visual quality.
                     FileUnivers makes this conversion simple, fast, and completely free.
                 </p>
+
+                <div className="converter-section">
+
+                    <h2>Also check other features Related to PDF and Image file  </h2>
+                    <div className="unzipPagelink">
+
+                        <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                        <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
+                        <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
+                        <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
+                        <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
+                        <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
+                        <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
+                        <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
+                        <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
+                        <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
+                        <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+                        <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
+                        <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
+                        <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                        <li><Link to="/tiffcompressor" className='btn' > Compress Tiff  </Link></li>
+                        <Link></Link>
+                    </div>
+                </div>
 
                 <h3 className="pngtojpg-subheading">Why Convert PNG to JPG?</h3>
 

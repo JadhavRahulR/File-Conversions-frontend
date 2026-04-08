@@ -129,7 +129,7 @@ const DriveFileInput = ({
   // OPEN PICKER
   // ==========================================================
   const openPicker = () => {
-    setStatus("Opening Google Drive...");
+    setStatus("Upload");
 
     const mimeTypes = allowedTypes
       .map((ext) => extensionToMimeType[ext])

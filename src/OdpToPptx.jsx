@@ -154,7 +154,8 @@ const OdpToPptx = () => {
             <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+            youtubeId="PEk6GiuWLBk"
               title="How to Convert ODP To PPTX ? "
               description='Easily convert your ODP file to PPTX format online with this simple step-by-step guide!     🔄 This video shows you how to turn your OpenOffice or LibreOffice presentation (.odp) into a PowerPoint file (.pptx) in just a few clicks- no software or registration required.'
             />
@@ -183,10 +184,13 @@ const OdpToPptx = () => {
             <p><strong>Output:</strong> .pptx (PowerPoint Presentation)</p>
 
             <h2>Also check other features Related to ODP file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/pptx-to-pdf" className='btn'> PPTX To PDF  Converter </Link></li>
             <li><Link to="/odp-to-pptx" className='btn'> PPTX To ODP  Converter </Link></li>
             <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
             <li><Link to="/pptxcompress" className='btn'> Compress ODP </Link></li>
+            </div>
           </div>
 
           <div className="converter-section">

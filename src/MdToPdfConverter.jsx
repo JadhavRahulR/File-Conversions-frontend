@@ -160,7 +160,8 @@ const [convertedFile, setConvertedFile] = useState(null);
             <p><strong>📌Note:</strong> Large files or heavily formatted Markdown may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+             youtubeId="CFuyDszIFCc"
               title="How to Convert MD to PDF ? "
               description='Convert your Markdown (.md) file to PDF in just a few seconds with this simple step-by-step video!. Learn how to turn your Markdown documents into beautifully formatted PDF files- perfect for sharing, printing, or publishing your work. No software installation or coding required!.'
             />
@@ -181,6 +182,8 @@ const [convertedFile, setConvertedFile] = useState(null);
             <p><strong>Input:</strong> .md (Markdown)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PDF file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -196,6 +199,7 @@ const [convertedFile, setConvertedFile] = useState(null);
             <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+            </div>
           </div>
 
           <div className="converter-section">

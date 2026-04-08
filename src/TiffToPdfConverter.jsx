@@ -154,7 +154,8 @@ const TiffToPdfConverter = () => {
             <p><strong>📌Note:</strong> Large or multi-page TIFF files may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="PksZIXWa9TE"
               title="How to Convert TIFF to PDF ? "
               description='Convert your TIFF images to PDF in just a few seconds with this simple step-by-step video!. Learn how to turn your TIFF or TIF files into clean, high-quality PDF documents- perfect for printing, sharing, or archiving. No software installation or signup required!'
             />
@@ -175,6 +176,8 @@ const TiffToPdfConverter = () => {
             <p><strong>Input:</strong> .tiff, .tif</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PDF and Image file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
             <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
@@ -190,6 +193,7 @@ const TiffToPdfConverter = () => {
             <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/tiffcompressor" className='btn' > Compress Tiff  </Link></li>
+            </div>
           </div>
 
           <div className="converter-section">

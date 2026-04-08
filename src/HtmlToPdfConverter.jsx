@@ -160,7 +160,8 @@ const HtmlToPdfConverter = () => {
             <p><strong>📌Note:</strong> Large files or pages with heavy styling may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+             youtubeId="-kPRPVIVCK0"
               title="How to Convert HTML to PDF ? "
               description='Learn how to convert HTML to PDF online in just a few seconds with this quick step-by-step video!. Whether you have a webpage, code-based HTML file, or online report, this tutorial shows you how to turn it into a professional, print-ready PDF- all without installing any software.'
             />
@@ -182,6 +183,8 @@ const HtmlToPdfConverter = () => {
             <p><strong>Input:</strong> .html, .htm</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PDF file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -199,6 +202,7 @@ const HtmlToPdfConverter = () => {
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <Link></Link>
+            </div>
           </div>
 
           <div className="converter-section">

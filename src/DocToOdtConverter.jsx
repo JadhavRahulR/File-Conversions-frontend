@@ -84,14 +84,10 @@ const DocToOdtConverter = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
+    if (file) {
+      setStatus("Upload");
     }
-  }, [status]);
-
+  }, [file]);
   return (
     <>
       <ScrollToTop />
@@ -178,7 +174,8 @@ const DocToOdtConverter = () => {
             <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+            youtubeId="vs3RDf7Plbw"
               title="How to Convert DOC To ODT ? "
               description='Convert your DOC files to ODT format easily using our free online DOC to ODT converter. This video shows a simple step-by-step method to change Microsoft Word (.doc) files into OpenDocument Text (.odt) without installing any software. It’s fast, secure, and completely free- ideal for anyone using LibreOffice or OpenOffice.'
             />
@@ -199,10 +196,13 @@ const DocToOdtConverter = () => {
             <p><strong>Input:</strong> .doc (Microsoft Word)</p>
             <p><strong>Output:</strong> .odt (OpenDocument Text)</p>
             <h2>Also check other features Related to word / doc file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/odt-to-doc" className='btn'> ODT To DOC  Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn' >PDF To ODT Converter </Link></li>
             <li><Link to="/docxcompressor" className='btn'> Compress DOC / Word  </Link></li>
+            </div>
           </div>
 
           <div className="converter-section">

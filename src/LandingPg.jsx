@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
+
 import IntroVideo from "../src/assets/videos/Fileunivers-Introduction-Video.mp4";
 import IntroPoster from "../src/assets/images/Fileunivers-intro-poster.png";
+import LazyVideo from "./LazyVideo";
 
 export default function LandingPage() {
   return (
@@ -37,6 +39,7 @@ export default function LandingPage() {
     PowerPoint slides, and images into any format - no signup, no limits, just instant conversion.
   </p>
 </header>
+
 
 
       <section className="features">
@@ -82,53 +85,21 @@ export default function LandingPage() {
       </section>
       {/* Intro Video Section */}
 <section className="intro-video-section">
-  <div className="intro-text">
-    <h2>What is FileUnivers?</h2>
-    <p>
-      Watch a quick introduction to see various FileUnivers conversion options  & this options are  free, fast, and secure.
-    </p>
-  </div>
+      
+      <div className="intro-text">
+        <h2>What is FileUnivers?</h2>
+        <p>
+          Watch a quick introduction to see various FileUnivers conversion options & these options are free, fast, and secure.
+        </p>
+      </div>
 
-  <div className="intro-video-container">
-    <video
-      id="introVideo"
-      className="intro-video"
-      playsInline
-      muted
-      // loop
-      // autoPlay
-      preload="none"
-      poster={IntroPoster}
-      controls
-    >
-      <source src={IntroVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
+      <LazyVideo
+        youtubeId="F6KFDsITQ_8"
+        title="FileUnivers Introduction"
+        description="Learn how to use FileUnivers tools for fast and secure file conversion."
+      />
+    </section>
 
-{/* Lazy-load logic */}
-<script dangerouslySetInnerHTML={{
-  __html: `
-  document.addEventListener("DOMContentLoaded", function() {
-    const video = document.getElementById("introVideo");
-    if (!video) return;
-    if ("IntersectionObserver" in window) {
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            video.load(); // starts loading when visible
-            observer.unobserve(video);
-          }
-        });
-      });
-      observer.observe(video);
-    } else {
-      video.load();
-    }
-  });
-  `
-}} />
 
       <section className="cta">
         <h2>Compress Files, Images & Documents Online  Free ZIP & PDF Tools</h2>

@@ -54,18 +54,18 @@ const TxtToPdfConverter = () => {
         }
       );
       const save = new Blob([response.data], {
-  type: "application/pdf",
-});
+        type: "application/pdf",
+      });
 
-const convertedFile = new File(
-  [save],
-  file.name.replace(/\.txt$/i, "") + ".pdf",
-  {
-    type: "application/pdf",
-  }
-);
+      const convertedFile = new File(
+        [save],
+        file.name.replace(/\.txt$/i, "") + ".pdf",
+        {
+          type: "application/pdf",
+        }
+      );
 
-setConvertedFile(convertedFile);
+      setConvertedFile(convertedFile);
 
 
       const blob = new Blob([response.data], { type: "application/pdf" });
@@ -82,13 +82,10 @@ setConvertedFile(convertedFile);
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
+    if (file) {
+      setStatus("Upload");
     }
-  }, [status]);
+  }, [file]);
 
   return (
     <>
@@ -114,7 +111,7 @@ setConvertedFile(convertedFile);
         </div>
         <div className='converter'>
           <div className="converterheading">
-          <h2>Convert TEXT To PDF </h2>
+            <h2>Convert TEXT To PDF </h2>
           </div>
           <input type="file" accept=".txt" onChange={handleFileChange} />
           <br /><br />
@@ -124,7 +121,7 @@ setConvertedFile(convertedFile);
           </div>
           <DropzoneInput acceptedType={['txt']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
-          
+
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
             {status === "Upload" && "Upload"}
             {status === "Convert" && "Convert"}
@@ -167,7 +164,8 @@ setConvertedFile(convertedFile);
             <p><strong>📌Note:</strong> Large files may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo
+              youtubeId="pthCHkfZ_F0"
               title="How to Convert Text to PDF ? "
               description='Easily convert your text files (.txt) into PDF documents with this free online Text to PDF converter!.
               No software installation or sign-up required- just upload your text file, click "Upload”, and download your formatted PDF instantly.'
@@ -189,9 +187,24 @@ setConvertedFile(convertedFile);
             <h2>📁 Supported Formats</h2>
             <p><strong>Input:</strong> .txt (Plain Text)</p>
             <p><strong>Output:</strong> .pdf</p>
-            <h2>Also check other features Related to Text file formate </h2>
+            <h2>Also check other features Related to Text/pdf file formate </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
+            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+            <li><Link to="/rtf-to-pdf" className='btn' > RTF To PDF Converter </Link></li>
+            <li><Link to="/html-to-pdf" className='btn' > HTML To PDF Converter </Link></li>
+            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+            <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
+            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <Link></Link>
+            </div>
           </div>
 
           <div className="converter-section">
