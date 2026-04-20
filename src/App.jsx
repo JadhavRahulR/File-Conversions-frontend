@@ -44,8 +44,8 @@ import FaviconGenerator from './FaviconGenerator';
 import RenameFile from './RenameFile';
 import Footer from './Footer';
 import GlobalLoader from './GlobalLoader';
-import { PdfPageRemove } from './PdfPageRemove';
-import { PdfPageExtractor } from './PdfPageExtractor';
+import  PdfPageRemove from './PdfPageRemove';
+import  PdfPageExtractor  from './PdfPageExtractor';
 import "./App.css"
 import ImageResizerPage from './ImageResizerPage';
 import PngToJpgPage from './PngToJpgPage';
