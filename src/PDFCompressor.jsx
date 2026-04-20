@@ -275,7 +275,8 @@ useEffect(() => {
             <li>   ⬇️ Auto Download the optimized PDF or `.pdf.7z` archive</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+             youtubeId="ZBJlgtvpOiY"
               title="How to Compress PDF ? "
               description='Reduce your PDF file size in seconds with this simple step-by-step video!. Learn how to compress PDF online without losing quality- perfect for emailing, uploading, or saving storage space. No software, no sign-up- just fast and secure compression.'
             />
@@ -291,7 +292,7 @@ useEffect(() => {
 
 
             <h2 style={{ marginBottom: "4px" }}>Also check other features Related to PDF file  </h2>
-            <div className="otherlink">
+            <div className="unzipPagelink">
               <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
               <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
               <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>

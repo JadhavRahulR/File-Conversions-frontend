@@ -9,6 +9,7 @@ import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import { Link } from "react-router-dom";
 
 
 export default function ImageResizerPage() {
@@ -440,6 +441,31 @@ a.click();
           values. The tool supports multiple image formats and batch processing,
           making it ideal for both personal and professional use.
         </p>
+          
+           <ul className="ImgResizerLinks">
+                     
+          
+                      <h2 style={{ marginBottom: "6px" }}>Also check other features related to PDF and File Tools</h2>
+                      <div className="unzipPagelink">
+          
+                      <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+                      <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                      <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+                      <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                      <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                      <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                      <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                      <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                      <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                      <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                      <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+                      <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                      <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                      <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+                      <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                      <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+                      </div>
+                    </ul>
 
         <h2>Why Use Our Image Resizer?</h2>
 

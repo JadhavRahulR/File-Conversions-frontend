@@ -208,7 +208,8 @@ const PptxCompressor = () => {
             <li>   ⬇️ Your compressed PPTX will auto-download once it's ready</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="8yVFhIb8OXI"
               title="How to Compress PPTX ? "
               description='Compress your PPTX files online in seconds with this quick and easy tutorial! Learn how to reduce PowerPoint file size without losing slide quality, animations, or images- no software required.In this video, you’ll see-How to upload your PPTX file Choose your compression level Instantly download your smaller, optimized presentation.'
             />
@@ -221,6 +222,8 @@ const PptxCompressor = () => {
             <li>🔒Your presentation stays secure and private</li>
             <li>📥 Automatic download after compression completes</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and pptx file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -238,6 +241,7 @@ const PptxCompressor = () => {
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </ul>
         </div>
         <section>

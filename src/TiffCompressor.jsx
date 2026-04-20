@@ -209,7 +209,8 @@ setConvertedFile(compressedTIFF);
             <li>   ⬇️ Your compressed <code>.tiff</code> will auto-download once ready</li>
           </ol>
           <section>
-          <LazyVideo src={IntroVideo} poster={IntroPoster}
+          <LazyVideo 
+              youtubeId="XIsVbvTw9kI"
               title="How to Compress TIFF ? "
               description='Reduce your TIFF file size in seconds!. Watch this quick video to learn how to compress TIFF images online without losing quality. Perfect for photographers, designers, and professionals who want smaller but sharp image files. In this video, you’ll learn: How to upload and compress TIFF files easily Maintain image clarity and resolution after compression Download your optimized TIFF instantly'
             />
@@ -222,6 +223,8 @@ setConvertedFile(compressedTIFF);
             <li>🔐 Safe and secure- files are not stored</li>
             <li>⚡ Fast image compression with auto-download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Tiff file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -239,6 +242,7 @@ setConvertedFile(compressedTIFF);
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
 
           </ul>
         </div>

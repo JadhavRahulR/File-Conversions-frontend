@@ -198,7 +198,8 @@ setConvertedFile(compressedBMP);
             <li>   ⬇️ The compressed <code>.bmp</code> file will auto-download when ready</li>
           </ol>
           <section>
-          <LazyVideo src={IntroVideo} poster={IntroPoster}
+          <LazyVideo 
+              youtubeId="I2ymafwzgzM"
               title="How to Compress BMP ? "
               description='Make your BMP files lighter in just a few clicks!. Watch this video to learn how to compress BMP images online without losing image quality or color depth.In this video, you’ll see: How to upload and compress BMP files instantly ,Maintain clear and detailed image quality and Download your optimized BMP image right away.'
             />
@@ -211,12 +212,15 @@ setConvertedFile(compressedBMP);
             <li>🔐 Your files remain private and are never stored</li>
             <li>⚡ Fast compression with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Bmp file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
             <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
             <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
             <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </ul>
         </div>
         <div className="compressor-article">

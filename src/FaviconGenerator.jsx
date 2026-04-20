@@ -156,7 +156,7 @@ const FaviconGenerator = () => {
     return (
         <>
             <Helmet>
-                <title> Favicon Generator |Free (ICO, PNG, ,JPG , JPEG ,SVG) ico maker</title>
+                <title> Favicon Generator |Free (ICO, PNG,JPG , JPEG ,SVG) ico maker</title>
                 <meta name="description" content="Free Favicon Generator - Create favicons of all sizes (16x16, 32x32, 48x48 & more) instantly online. Fast, secure, and privacy-safe favicon.ico maker- no uploads required." />
                 <link rel="canonical" href="https://fileunivers.com/favicon-generator" />
                 <meta name="robots" content="index, follow" />
@@ -295,7 +295,8 @@ const FaviconGenerator = () => {
                         converts it into compatible favicon formats- ready for download and use.
                     </p>
                     <section>
-                        <LazyVideo src={IntroVideo} poster={IntroPoster}
+                        <LazyVideo 
+                            youtubeId="_DBlP2uk53U"
                             title="How to Generate Favicon ? "
                             description='Create your website icon in seconds!. This video shows how to generate favicons online (ICO, PNG, SVG) from your logo or image- no design skills required. In this video, you’ll learn: How to upload an image or logo ,Generate favicon in multiple formats (ICO, PNG, SVG) Download and add it to your website easily.'
                         />

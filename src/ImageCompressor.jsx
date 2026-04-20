@@ -186,7 +186,8 @@ const ImageCompressor = () => {
               <li>   ⬇️ The optimized image will automatically download when done</li>
             </ol>
             <section>
-              <LazyVideo src={IntroVideo} poster={IntroPoster}
+              <LazyVideo 
+                 youtubeId="0gSTr77e5yY"
                 title="How to Compress IMAGES ? "
                 description='Shrink your JPG, JPEG, or PNG images without losing quality in this quick tutorial!. Learn how to compress images online for faster uploads, website speed, or easy sharing- no app or software needed.'
               />
@@ -198,6 +199,8 @@ const ImageCompressor = () => {
               <li>🔐 100% secure - files are not stored or shared</li>
               <li>⚡ Quick processing with auto-download for convenience</li>
               <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Image file  </h2>
+              <div className="unzipPagelink">
+
               <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
               <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
               <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -214,6 +217,7 @@ const ImageCompressor = () => {
               <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
               <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
               <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              </div>
             </ul>
           </div>
 

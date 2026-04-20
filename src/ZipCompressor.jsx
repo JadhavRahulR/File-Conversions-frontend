@@ -220,7 +220,8 @@ const ZipCompressor = () => {
             <li>   ⬇️ Your ZIP archive will auto-download once it's ready</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="oH1xYbVTPvA"
               title="How to create zip file ? "
               description='Shrink your files and folders in seconds!    🗜️⚡ This video shows how to compress files into ZIP format online easily and securely. In this video, you’ll learn: How to upload and compress files into a ZIP ,Combine multiple files into one archive Download your ZIP instantly .'
             />

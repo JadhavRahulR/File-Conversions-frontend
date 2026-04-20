@@ -171,7 +171,8 @@ const CsvCompressor = () => {
             <li>   ⬇️ Auto Download the compressed <code>.csv</code> file</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="Ttv3sHZHv54"
               title="How to Compress PDF ? "
               description='Compress your CSV files online quickly and easily with this step-by-step video!. Learn how to reduce CSV file size without losing data, making it perfect for faster uploads, sharing, and storage- no software needed.'
             />
@@ -184,6 +185,8 @@ const CsvCompressor = () => {
             <li>⚡ Fast processing with instant download</li>
             <li>     Works on all devices with a browser</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and CSV file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -201,6 +204,7 @@ const CsvCompressor = () => {
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </ul>
         </div>
 

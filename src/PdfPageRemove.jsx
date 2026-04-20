@@ -13,6 +13,7 @@ import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import { Link } from "react-router-dom";
 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
@@ -111,39 +112,39 @@ export function PdfPageRemove() {
   };
 
   // ---------- REMOVE SELECTED PAGES ----------
- const removePages = async () => {
-  if (!file) return;
+  const removePages = async () => {
+    if (!file) return;
 
-  const bytes = await file.arrayBuffer();
-  const pdfDoc = await PDFDocument.load(bytes);
-  const total = pdfDoc.getPageCount();
+    const bytes = await file.arrayBuffer();
+    const pdfDoc = await PDFDocument.load(bytes);
+    const total = pdfDoc.getPageCount();
 
-  const keepPages = [];
-  for (let i = 0; i < total; i++) {
-    if (!selectedPages.includes(i + 1)) keepPages.push(i);
-  }
+    const keepPages = [];
+    for (let i = 0; i < total; i++) {
+      if (!selectedPages.includes(i + 1)) keepPages.push(i);
+    }
 
-  const newPdf = await PDFDocument.create();
-  const copied = await newPdf.copyPages(pdfDoc, keepPages);
-  copied.forEach((p) => newPdf.addPage(p));
+    const newPdf = await PDFDocument.create();
+    const copied = await newPdf.copyPages(pdfDoc, keepPages);
+    copied.forEach((p) => newPdf.addPage(p));
 
-  const pdfBytes = await newPdf.save();
+    const pdfBytes = await newPdf.save();
 
-  // ðŸ”¹ Safe filename
-  const finalName =
-    outputFileName.trim() !== ""
-      ? outputFileName.trim()
-      : "pages-removed";
+    // ðŸ”¹ Safe filename
+    const finalName =
+      outputFileName.trim() !== ""
+        ? outputFileName.trim()
+        : "pages-removed";
 
-  //    ⬇️ Download
-  download(pdfBytes, `${finalName}.pdf`);
+    //    ⬇️ Download
+    download(pdfBytes, `${finalName}.pdf`);
 
-  //    ⬇️ Save for Google Drive
-  const fileObj = new File([pdfBytes], `${finalName}.pdf`, {
-    type: "application/pdf",
-  });
-  setDownloadedFile(fileObj);
-};
+    //    ⬇️ Save for Google Drive
+    const fileObj = new File([pdfBytes], `${finalName}.pdf`, {
+      type: "application/pdf",
+    });
+    setDownloadedFile(fileObj);
+  };
 
   // ---------- DOWNLOAD ----------
   const download = (bytes, filename) => {
@@ -225,17 +226,17 @@ export function PdfPageRemove() {
         </div>
 
         {/* {file && ( */}
-  <div className="filename-box" >
-    <p>Rename Your File</p>
-    <input
-      type="text"
-      className="file-input"
-      placeholder="Enter File Name without .pdf"
-      value={outputFileName}
-      onChange={(e) => setOutputFileName(e.target.value) }
-    />
-  </div>
-{/* )} */}
+        <div className="filename-box" >
+          <p>Rename Your File</p>
+          <input
+            type="text"
+            className="file-input"
+            placeholder="Enter File Name without .pdf"
+            value={outputFileName}
+            onChange={(e) => setOutputFileName(e.target.value)}
+          />
+        </div>
+        {/* )} */}
 
 
         <div className="drop-zone">
@@ -245,9 +246,9 @@ export function PdfPageRemove() {
         {/* To Save to Google Drive */}
         {downloadedFile && (
           <div className="save-drive-section">
-             <p style={{ color: "white" }}>Save File To . . .</p>
+            <p style={{ color: "white" }}>Save File To . . .</p>
             <SaveToGoogleDrive file={downloadedFile} />
-             <SaveToDropbox file={downloadedFile} />
+            <SaveToDropbox file={downloadedFile} />
           </div>
         )}
 
@@ -283,24 +284,24 @@ export function PdfPageRemove() {
         </div>
       )}
 
-       
+
 
       {pagePreviews.length > 0 && (
         <>
-        <div className="action-buttons">
-          <button
-            onClick={removePages}
-            className="extract-btn"
-            disabled={selectedPages.length === 0}
+          <div className="action-buttons">
+            <button
+              onClick={removePages}
+              className="extract-btn"
+              disabled={selectedPages.length === 0}
             >
-            Download PDF
-          </button>
-        </div>
-         
+              Download PDF
+            </button>
+          </div>
+
         </>
       )}
 
-       
+
       {pagePreviews.length === 0 && (
         <div className="pdf-extractor-container">
           <p className="intro">
@@ -313,7 +314,7 @@ export function PdfPageRemove() {
             install software or create an account.
           </p>
           <div className="deletpdfimg">
-          <img src="delete.png" alt="" />
+            <img src="delete.png" alt="" />
           </div>
 
           <p>
@@ -325,6 +326,31 @@ export function PdfPageRemove() {
             This helps reduce file size, improve readability, and simplify document
             management.
           </p>
+
+          <ul className="ImgResizerLinks">
+
+
+            <h2 style={{ marginBottom: "6px" }}>Also check other features related to PDF and File Tools</h2>
+            <div className="unzipPagelink">
+
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
+          </ul>
 
           <h2>How PDF Page Remover Works</h2>
           <p>

@@ -205,7 +205,8 @@ setConvertedFile(compressedODP);
             <li>   ⬇️ Your compressed <code>.odp</code> will auto-download once it's ready</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="JMSN5-_K8b8"
               title="How to Compress ODP ? "
               description='Shrink your presentation in seconds!.Learn how to compress ODP files online without losing quality. This quick video shows the fastest way to make your OpenDocument presentations smaller and easier to share.In this video, you’ll see: How to upload and compress an ODP presentation Preserve image and slide quality after compression ,Download your reduced-size ODP instantly.'
             />
@@ -218,6 +219,8 @@ setConvertedFile(compressedODP);
             <li>🔐 Private and secure- no files stored</li>
             <li>⚡ Quick compression with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odp file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -235,6 +238,7 @@ setConvertedFile(compressedODP);
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
 
           </ul>
         </div>

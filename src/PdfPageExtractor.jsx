@@ -11,6 +11,7 @@ import DriveFileInput from "./DriveFileInput";
 import { useRef, useEffect } from "react";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import { Link } from "react-router-dom";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
@@ -204,15 +205,15 @@ export function PdfPageExtractor() {
 
         <div>
           <div className="file-status-text">
-  {!file ? (
-    <p className="selectFile">   📂 Drag & Drop PDF here</p>
-  ) : (
-    <>
-      <p className="selectFile">✅ Selected File:</p>
-      <p className="file-name">{file.name}</p>
-    </>
-  )}
-</div>
+            {!file ? (
+              <p className="selectFile">   📂 Drag & Drop PDF here</p>
+            ) : (
+              <>
+                <p className="selectFile">✅ Selected File:</p>
+                <p className="file-name">{file.name}</p>
+              </>
+            )}
+          </div>
 
         </div>
 
@@ -220,13 +221,16 @@ export function PdfPageExtractor() {
 
         {status === "done" && downloadedFile && (
           <>
-            <p style={{color:"white",marginTop:'30px'}}>Save To . . .</p>
+            <p style={{ color: "white", marginTop: '30px' }}>Save To . . .</p>
             <div className="saveTo">
               <SaveToGoogleDrive file={downloadedFile} />
               <SaveToDropbox file={downloadedFile} />
             </div>
           </>
         )}
+
+         {status && <p className="status" style={{'color':"white",'marginTop':"20px"}}>{status}</p>}
+        {error && <p className="error">{error}</p>}
       </div>
 
       {pagePreviews.length > 0 && (
@@ -237,9 +241,8 @@ export function PdfPageExtractor() {
             {pagePreviews.map((p) => (
               <div
                 key={p.pageNumber}
-                className={`page-preview ${
-                  selectedPages.includes(p.pageNumber) ? "active" : ""
-                }`}
+                className={`page-preview ${selectedPages.includes(p.pageNumber) ? "active" : ""
+                  }`}
                 onClick={() => togglePage(p.pageNumber)}
               >
                 <img src={p.image} alt={`Page ${p.pageNumber}`} />
@@ -260,8 +263,8 @@ export function PdfPageExtractor() {
             {status === "extracting"
               ? "Extracting..."
               : selectedPages.length === 0
-              ? "Select pages first"
-              : "Extract Pages"}
+                ? "Select pages first"
+                : "Extract Pages"}
           </button>
         </div>
       )}
@@ -290,7 +293,31 @@ export function PdfPageExtractor() {
             This saves storage space, reduces file size, and makes document sharing
             more efficient.
           </p>
+          <ul className="ImgResizerLinks">
 
+
+            <h2 style={{ marginBottom: "6px" }}>Also check other features related to PDF and File Tools</h2>
+            <div className="unzipPagelink">
+
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              
+            </div>
+          </ul>
           <h2>How PDF Page Extractor Works</h2>
           <p>
             Using the PDF Page Extractor is simple and straightforward. First,

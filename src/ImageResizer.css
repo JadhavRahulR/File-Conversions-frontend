@@ -104,6 +104,10 @@ label {
 .resizeimg-img img{
   width: 80px;
 }
+
+.image-resizer-content .ImgResizerLinks li {
+list-style: none;
+}
 /* css for content of image resizer
  */
  .image-resizer-content {

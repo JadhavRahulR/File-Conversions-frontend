@@ -226,7 +226,8 @@ const PDFMerger = () => {
             <li>   ⬇️ Download your final merged PDF instantly</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="oH1xYbVTPvA"
               title="How to Merge PDFs ? "
               description='Combine all your PDFs into one file in seconds!. This video shows how to merge PDF files online quickly, securely, and for free.'
             />
@@ -240,6 +241,8 @@ const PDFMerger = () => {
             <li>⚡ Fast merging with auto-download</li>
             <li>   🗂️Rearrangement and removal options for full control</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF File  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -256,6 +259,7 @@ const PDFMerger = () => {
             <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </ul>
         </div>
         <section>

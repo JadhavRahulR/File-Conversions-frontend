@@ -207,7 +207,8 @@ setConvertedFile(compressedODT);
             <li>   ⬇️ Your compressed <code>.odt</code> file will auto-download when ready</li>
           </ol>
              <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="YlW5hbtVkhM"
               title="How to Compress ODT ? "
               description='Shrink your OpenDocument (.odt) files in seconds!. This video shows how to compress ODT files online without losing text quality or formatting. In this video, you’ll learn:How to upload and compress ODT files easily Choose the best compression level Download your optimized ODT document instantly.'
             />
@@ -219,6 +220,8 @@ setConvertedFile(compressedODT);
             <li>🔐 Secure processing with no data stored</li>
             <li>⚡ Fast compression with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odt file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -236,6 +239,7 @@ setConvertedFile(compressedODT);
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
 
           </ul>
         </div>

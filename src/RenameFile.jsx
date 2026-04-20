@@ -163,7 +163,8 @@ const RenameFile = () => {
             <li>   ⬇️ Instantly get your file with the new name</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+               youtubeId="saHvQ8nOgwI"
               title="How to Re-name yours Files ? "
               description='Rename all your files in seconds!. This video shows how to rename files online quickly and easily,no software required. In this video, you’ll learn: How to upload and rename multiple files at once Add prefixes, suffixes, or numbering automatically Download all renamed files instantly .'
             />
@@ -177,6 +178,8 @@ const RenameFile = () => {
             <li>🌐 Works on any browser or device</li>
 
             <h2 style={{ marginBottom: "6px" }}>Also check other features related to PDF and File Tools</h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -193,6 +196,7 @@ const RenameFile = () => {
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </ul>
         </div>
 

@@ -335,7 +335,11 @@ const ZipExtractor = () => {
           </ol>
 
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster} title="How to extract zip file ? " />
+            <LazyVideo 
+            youtubeId="q7liN4ZYMfQ" 
+            title="How to extract zip file ? " 
+            description="Easily extract your ZIP files in just a few clicks with our powerful and user-friendly ZIP Extractor tool. Whether you're working with documents images or large compressed files this tool makes the process smooth fast "
+            />
           </section>
 
           <h2 className="compressor-subheading">Why Use Our ZIP Extractor?</h2>

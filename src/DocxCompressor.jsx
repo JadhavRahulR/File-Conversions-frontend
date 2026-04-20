@@ -201,7 +201,8 @@ const DocxCompressor = () => {
             <li>   ⬇️ The compressed <code>.docx</code> will auto-download once ready</li>
           </ol>
           <section>
-            <LazyVideo src={IntroVideo} poster={IntroPoster}
+            <LazyVideo 
+              youtubeId="ZbonE4bzzn0"
               title="How to Compress DOC ? "
               description='Learn how to compress DOC files online in just a few seconds!. This tutorial shows you how to reduce Word file size without losing formatting or content quality- fast, free, and secure.In this video, you’ll learn:How to upload your DOC fileChoose a compression quality Download your smaller, optimized Word document instantly.'
             />
@@ -213,6 +214,8 @@ const DocxCompressor = () => {
             <li>🔐 Your document remains secure and private</li>
             <li>⚡ Fast processing with automatic download</li>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Word file  </h2>
+            <div className="unzipPagelink">
+
             <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
             <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
             <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
@@ -230,6 +233,7 @@ const DocxCompressor = () => {
             <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
             <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
             <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+            </div>
           </ul>
         </div>
         <section>
