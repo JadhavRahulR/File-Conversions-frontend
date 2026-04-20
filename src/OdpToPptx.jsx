@@ -9,10 +9,10 @@ import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to convert odp to pptx.mp4"
-import IntroPoster from "../src/assets/images/odp to pptx poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+// import IntroVideo from "../src/assets/videos/how to convert odp to pptx.mp4"
+// import IntroPoster from "../src/assets/images/odp to pptx poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const OdpToPptx = () => {

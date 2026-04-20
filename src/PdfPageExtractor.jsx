@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
-export function PdfPageExtractor() {
+export default function PdfPageExtractor() {
   const previewRef = useRef(null);
 
   const [file, setFile] = useState(null);

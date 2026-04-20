@@ -6,10 +6,10 @@ import DropboxFileInput from "./DropboxFileInput";
 import './CsvCompressor.css';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to rename your files.mp4";
-import IntroPoster from "../src/assets/images/Rename your files poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+// import IntroVideo from "../src/assets/videos/how to rename your files.mp4";
+// import IntroPoster from "../src/assets/images/Rename your files poster.png";
 
 
 const RenameFile = () => {

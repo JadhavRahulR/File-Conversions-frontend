@@ -2,6 +2,27 @@
    PNG to JPG TOOL – FileUnivers
    =============================== */
 
+   .pagetitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pagetitle h1 {
+  text-align: center;
+  max-width: 900px;
+  font-size: 2rem;
+  color:#2e86de;
+
+}
+.pagetitle p{
+  text-align: center;
+  max-width: 800px;
+  margin: 10px;
+  
+}
+
 .imgtoimgcontainer .tool-container {
   max-width: 800px;
   margin: 0 auto;
@@ -165,6 +186,27 @@
   margin-bottom: 14px;
 }
 
+
+.img-converter-section .unzipPagelink{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.img-converter-section .unzipPagelink li{
+  margin: 10px;
+  /* width: 200px; */
+  list-style: none;
+  border: 1px solid blue;
+  border-radius: 10px;
+}
+.img-converter-section .unzipPagelink li a:hover{
+  background-color: #000000;
+  border:none;
+  color: white;
+  box-shadow: 6px 15px 20px rgb(0, 0, 0);
+}
 /* ---------- table ---------- */
 
 .pngtojpg-table-wrapper {

@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to merge pdfs.mp4";
-import IntroPoster from "../src/assets/images/pdfs merge poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+// import IntroVideo from "../src/assets/videos/how to merge pdfs.mp4";
+// import IntroPoster from "../src/assets/images/pdfs merge poster.png";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFMerger = () => {

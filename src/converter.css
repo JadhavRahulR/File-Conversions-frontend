@@ -122,6 +122,23 @@
   display: none !important;
 }
 
+.converter-section .unzipPagelink{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.converter-section  .unzipPagelink li{
+  margin: 10px;
+}
+.converter-section  .unzipPagelink li a:hover{
+  background-color: #000000;
+  border:none;
+  color: white;
+  box-shadow: 6px 15px 20px rgb(0, 0, 0);
+}
+
 @keyframes border-top{
     0%{
         width: 0;

@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
-export function PdfPageRemove() {
+export default function PdfPageRemove() {
   const previewRef = useRef(null);
   const [file, setFile] = useState(null);
   const [pagePreviews, setPagePreviews] = useState([]);

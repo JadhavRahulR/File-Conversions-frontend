@@ -5,9 +5,10 @@ import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
 
-import IntroVideo from "../src/assets/videos/Fileunivers-Introduction-Video.mp4";
-import IntroPoster from "../src/assets/images/Fileunivers-intro-poster.png";
 import LazyVideo from "./LazyVideo";
+
+// import IntroVideo from "../src/assets/videos/Fileunivers-Introduction-Video.mp4";
+// import IntroPoster from "../src/assets/images/Fileunivers-intro-poster.png";
 
 export default function LandingPage() {
   return (

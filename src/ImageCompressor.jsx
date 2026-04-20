@@ -8,10 +8,10 @@ import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
 import { Link } from "react-router-dom";
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to compress img.mp4";
-import IntroPoster from "../src/assets/images/img compress poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+// import IntroVideo from "../src/assets/videos/how to compress img.mp4";
+// import IntroPoster from "../src/assets/images/img compress poster.png";
 
 // update in progress for button to show percentage of file compression
 

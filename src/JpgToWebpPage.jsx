@@ -287,7 +287,7 @@ export default function JpgToWebpPage() {
                 </p>
 
 
-                <div className="converter-section">
+                <div className="img-converter-section">
 
                     <h2>Also check other features Related to PDF and Image file  </h2>
                     <div className="unzipPagelink">

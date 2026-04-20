@@ -7,12 +7,12 @@ import ScrollToTop from './ScrollToTop';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
-import IntroVideo from "../src/assets/videos/how to compress pdf.mp4";
-import IntroPoster from "../src/assets/images/pdf compress poster.png";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
-import SaveToGoogleDriveCloud from './SaveToGoogleDriveCloud';
-import SaveToDropboxCloud from './SaveToDropboxCloud';
+// import IntroVideo from "../src/assets/videos/how to compress pdf.mp4";
+// import IntroPoster from "../src/assets/images/pdf compress poster.png";
+// import SaveToGoogleDriveCloud from './SaveToGoogleDriveCloud';
+// import SaveToDropboxCloud from './SaveToDropboxCloud';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const PDFCompressor = () => {
