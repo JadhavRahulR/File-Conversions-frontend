@@ -186,7 +186,11 @@ const ZipExtractor = () => {
     console.error("Download Folder Error:", err);
   }
 };
-
+useEffect(() => {
+    if (file) {
+      setStatus("Upload");
+    }
+  }, [file]);
 
   return (
     <>

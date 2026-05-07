@@ -82,7 +82,7 @@ const RenameFile = () => {
       <div className="pagetitle">
         <h1>Rename Files Online - Free Fast and Secure  Rename Your File Instantly </h1>
         <p className="intro-paragraph">
-          Easily rename multiple files online in seconds using this free and secure file renaming tool. Whether you want to rename images, documents, videos, or any file type, this tool lets you change filenames in bulk- no downloads or installations needed. Simply upload your files, set your naming pattern or prefix, and download the renamed files instantly.
+          Easily rename multiple files online in seconds using this free and secure file renaming tool. Whether you want to rename images, documents, videos, or any file type, this tool lets you change filenames faster- no downloads or installations needed. Simply upload your files, set your naming pattern or prefix, and download the renamed files instantly.
         </p>
       </div>
 

@@ -156,7 +156,7 @@ const FaviconGenerator = () => {
     return (
         <>
             <Helmet>
-                <title> Favicon Generator |Free (ICO, PNG,JPG , JPEG ,SVG) ico maker</title>
+                <title> Favicon Generator |Free (ICO, PNG, JPG, JPEG, SVG) ico maker</title>
                 <meta name="description" content="Free Favicon Generator - Create favicons of all sizes (16x16, 32x32, 48x48 & more) instantly online. Fast, secure, and privacy-safe favicon.ico maker- no uploads required." />
                 <link rel="canonical" href="https://fileunivers.com/favicon-generator" />
                 <meta name="robots" content="index, follow" />
@@ -164,7 +164,7 @@ const FaviconGenerator = () => {
 
             <ScrollToTop />
             <div className="pagetitle">
-                <h1> Favicon Generator -Free, Fast & Online Icon Maker (ICO, PNG,JPG , JPEG ,SVG)</h1>
+                <h1> Favicon Generator -Free, Fast & Online Icon Maker (ICO, PNG, JPG, JPEG, SVG)</h1>
                 <p className="intro-paragraph">
                     Easily generate favicons online and create beautiful website icons in formats like ICO, PNG, or SVG within seconds. Whether you’re designing a new website or refreshing your brand identity, this free favicon generator helps you create professional icons directly from images, logos, or text- no design software needed. Just upload your image, choose the size, and download your ready-to-use favicon instantly.
                 </p>

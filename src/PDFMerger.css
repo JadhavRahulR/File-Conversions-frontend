@@ -71,6 +71,7 @@
   padding: 0.3rem 0;
   border-bottom: 1px solid #ddd;
   font-size: 0.95rem;
+  text-align: left;
 }
 
 .pdf-merger .mergebtn {

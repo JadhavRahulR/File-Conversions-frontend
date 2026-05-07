@@ -89,7 +89,7 @@ const OdtToPdfConverter = () => {
         <ScrollToTop />
         <Tools />
         <Helmet>
-          <title>ODT To PDF Converter-Online Free ,Safe & Easy ODT to PDF File Converter</title>
+          <title>ODT To PDF Converter | Online  ODT to PDF File Converter</title>
           <meta name="description" content="Convert ODT files to PDF format instantly. Free and secure ODT to PDF converter with no registration or email required." />
           <link rel="canonical" href="https://fileunivers.com/odt-to-pdf" />
           <meta name="robots" content="index, follow" />
@@ -100,7 +100,7 @@ const OdtToPdfConverter = () => {
         </Helmet>
         <div className="pagetitle">
 
-          <h1>ODT To PDF Converter - Free, Fast & Secure Online Conversion of ODT to PDF </h1>
+          <h1>ODT To PDF Converter - Free Fast & Secure Online Conversion of ODT To PDF </h1>
 
           <p className="intro-paragraph">
             Convert your ODT files to professional-quality PDFs instantly with our free ODT to PDF converter. This fast and secure online tool preserves your original formatting, fonts, and layout while generating a print-ready PDF in seconds. No registrations required- simply upload your ODT document, click "Upload" button , and get your high-quality PDF file.

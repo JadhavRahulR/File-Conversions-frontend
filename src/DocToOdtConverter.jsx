@@ -93,7 +93,7 @@ const DocToOdtConverter = () => {
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>Convert DOC To ODT | Free and Secure Word To OpenDocument Online Converter</title>
+        <title>Convert DOC To ODT | Free Word To OpenDocument Online Converter</title>
         <meta name="description" content="Convert DOC files to ODT format online for free. Fast, secure, and easy DOC to ODT converter with no email or signup needed." />
         <link rel="canonical" href="https://fileunivers.com/doc-to-odt" />
         <meta name="robots" content="index, follow" />
@@ -104,7 +104,7 @@ const DocToOdtConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert DOC To ODT Online - Free Word To ODT Converter (Fast & Secure)</h1>
+        <h1>Convert DOC To ODT Online - Free  Word To ODT Converter (Fast & Secure)</h1>
 
         <p className="intro-paragraph">
           Convert your Microsoft Word DOC files to ODT format instantly with our free online DOC to ODT converter. This tool works directly in your browser- no software installation needed and sign up . Just upload your Word document, click “Upload”, and auto download your ODT file in seconds.It’s fast, secure, and  ideal for LibreOffice or OpenOffice users who need compatibility without losing quality.

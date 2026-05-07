@@ -36,7 +36,7 @@ function ToolsPg() {
         </div></Link>
 
          <Link to="/xlsxcompressor"><div className="toolcard">
-          <p>Compress Xsls </p>
+          <p>Compress XLSX </p>
         </div></Link>
         <Link to="/odtcompressor" ><div className="toolcard">
           <p>Compress Odt </p>

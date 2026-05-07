@@ -168,7 +168,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
   return (
     <>
       <Helmet>
-        <title>PDF Page Remover | delete pages from pdf</title>
+        <title>PDF Page Remover | Remove pages from pdf</title>
         <meta
           name="description"
           content="Remove unwanted pages from PDF files easily and securely. Free online PDF page remover to delete single or multiple pages without affecting quality."

@@ -80,14 +80,13 @@ const RtfToPdfConverter = () => {
       alert("Conversion failed");
     }
   };
-  useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+
+ useEffect(() => {
+     if (file) {
+       setStatus("Upload");
+     }
+   }, [file]);
+ 
 
   return (
     <>

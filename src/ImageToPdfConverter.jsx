@@ -78,20 +78,17 @@ const ImageToPdfConverter = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+      if (file) {
+        setStatus("Upload");
+      }
+    }, [file]);
 
   return (
     <>
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>IMG To PDF Converter | Free and Secure Image To PDF Online Converter</title>
+        <title>IMG To PDF Converter | Free Image To PDF Online Converter</title>
         <meta name="description" content="Convert images (JPG, PNG, BMP, etc.) to PDF format quickly and securely. Free online IMG to PDF converter with no signup or email required." />
         <link rel="canonical" href="https://fileunivers.com/img-to-pdf" />
         <meta name="robots" content="index, follow" />
@@ -103,7 +100,7 @@ const ImageToPdfConverter = () => {
       <div className="pagetitle">
 
 
-        <h1>Convert Image to PDF Online - Free and Secure JPG, PNG, or JPEG To PDF Converter </h1>
+        <h1>Convert Image to PDF Online - Free and Secure JPG, PNG, or JPEG To PDF fast Converter </h1>
         <p className="intro-paragraph">
           Easily convert your images (JPG, PNG, JPEG, or WebP) to PDF online with our fast and free converter. Combine multiple photos or documents into a single, professional PDF file in seconds. No software installation or signup required- just upload your images, click Upload for conversion, and auto download your high-quality PDF instantly. Perfect for students, photographers, and professionals who need to quickly turn images into printable or shareable PDF documents.   </p>
       </div>

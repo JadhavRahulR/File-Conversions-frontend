@@ -43,7 +43,7 @@ const TermsAndConditions = () => {
 
       <section>
         <h2>7. Contact Us</h2>
-        <p>If you have any questions, please contact us at <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
+        <p>If you have any questions, please contact us at <a href="mailto:fileunivers@gmail.com">fileunivers@gmail.com</a>.</p>
       </section>
     </div>
     </>

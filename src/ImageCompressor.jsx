@@ -97,7 +97,7 @@ const ImageCompressor = () => {
   return (
     <>
       <Helmet>
-        <title>Compress Image | Reduce Image File Size Online Free</title>
+        <title>Compress Image | Reduce Image Size Online Free</title>
         <meta name="description" content="Compress JPG, PNG image formats online for free. Reduce image file size without compromising quality." />
         <link rel="canonical" href="https://fileunivers.com/img-compressor" />
         <meta name="robots" content="index, follow" />
@@ -108,7 +108,7 @@ const ImageCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress Image Online - Free JPG, JPEG, and PNG Image Compressor</h1>
+        <h1>Compress Image Online - Free and secure  JPG, JPEG, and PNG Image Compressor</h1>
         <p className="intro-paragraph">
           Quickly compress JPG, JPEG, and PNG images online without losing quality using our free image compressor tool. Reduce image file size for faster uploads, sharing, and website performance while keeping sharpness and color intact. No software or registration required- simply upload your image, adjust compression quality, and download your optimized photo instantly. Perfect for photographers, web designers, and anyone who needs high-quality images at smaller sizes.
         </p>

@@ -77,14 +77,12 @@ const PdfToRtfConverter = () => {
       setStatus("   ❌ Conversion failed");
     }
   };
-  useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
+ useEffect(() => {
+    if (file) {
+      setStatus("Upload");
     }
-  }, [status]);
+  }, [file]);
+
   return (
     <>
       <ScrollToTop />
@@ -115,8 +113,8 @@ const PdfToRtfConverter = () => {
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} />
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} />
+            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={[".pdf"]}/>
+            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']}/>
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 

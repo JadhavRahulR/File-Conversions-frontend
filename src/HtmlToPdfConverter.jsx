@@ -78,14 +78,11 @@ const HtmlToPdfConverter = () => {
       alert("Conversion failed");
     }
   };
-  useEffect(() => {
-    if (status === " ✅  Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
+useEffect(() => {
+    if (file) {
+      setStatus("Upload");
     }
-  }, [status]);
+  }, [file]);
   return (
     <>
       <ScrollToTop />

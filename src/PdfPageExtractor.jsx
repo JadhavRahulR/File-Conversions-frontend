@@ -155,7 +155,7 @@ const PdfPageExtractor = () => {
   return (
     <>
       <Helmet>
-        <title>PDF Page Extractor | PDF Document Extractor</title>
+        <title>PDF Page Extractor | Extract pages from PDF </title>
         <meta name="description" content="Extract selected pages from PDF files easily and securely. Free online PDF page extractor to split, save, or remove pages with no signup required." />
         <link rel="canonical" href="https://fileunivers.com/pdfextractor" />
         <meta name="robots" content="index, follow" />

@@ -102,7 +102,7 @@ const DocxCompressor = () => {
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress DOC File Online - Free Word Document Size Reducer</h1>
+        <h1>Compress DOC File Online - Free Fast and Secure  Word file  Size Reducer</h1>
         <p className="intro-paragraph">
           Quickly compress DOC files online to reduce file size while preserving document quality, formatting, and content. Whether you’re uploading assignments, sharing reports, or sending official documents, this tool makes your Word files lighter and faster to share- all without installing any software. Simply upload your DOC file, select the compression level, and download your optimized Word document instantly.
         </p>
@@ -132,7 +132,7 @@ const DocxCompressor = () => {
           <input type="range" min="10" max="100" step="5" value={quality} onChange={(e) => setQuality(parseInt(e.target.value))} />
           <div className="slider-labels">
             <span>   📉 Compress More</span>
-            <span>ðŸ“– Compress Less</span>
+            <span> Compress Less</span>
           </div>
         </div>
 

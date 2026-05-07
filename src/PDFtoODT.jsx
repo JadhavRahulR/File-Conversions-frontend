@@ -95,7 +95,7 @@ setConvertedFile(convertedFile);
       <Tools />
       <section>
         <Helmet>
-          <title>Convert PDF To ODT | Free PDF To OpenDocument Converter</title>
+          <title>Convert PDF To ODT | Free PDF To ODT Converter</title>
           <meta name="description" content="Convert PDF to ODT online for free. Fast, secure, and accurate- keep original formatting, fonts, and layout. No sign-up or software needed. Upload, convert, and Auto download instantly." />
           <link rel="canonical" href="https://fileunivers.com/pdf-to-odt" />
           <meta name="robots" content="index, follow" />
@@ -106,7 +106,7 @@ setConvertedFile(convertedFile);
         </Helmet>
         <div className="pagetitle">
 
-          <h1>PDF To ODT Converter - Convert PDF TO OpenDocument Free, Fast & Accurate Online Tool </h1>
+          <h1>PDF To ODT Converter - Convert PDF TO OpenDocument Free, Fast & Accurate Online  </h1>
 
           <p className="intro-paragraph">
             Convert your PDF files to editable ODT documents instantly with our free PDF to ODT converter. This secure online tool keeps your text, formatting, and layout perfectly intact while transforming your PDF into a fully editable OpenDocument Text (.odt) file.

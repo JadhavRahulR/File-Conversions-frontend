@@ -79,20 +79,17 @@ const XlsxToPdfConverter = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+      if (file) {
+        setStatus("Upload");
+      }
+    }, [file]);
 
   return (
     <>
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>XLSX To PDF Converter | Free Fast and Safe Excel To PDF Online Converter</title>
+        <title>XLSX To PDF Converter | Free Excel To PDF Online Converter</title>
         <meta name="description" content="Convert XLSX Excel spreadsheets to PDF format quickly and securely. Free online XLSX to PDF converter with no email or signup required." />
         <link rel="canonical" href="https://fileunivers.com/xlsx-to-pdf" />
         <meta name="robots" content="index, follow" />

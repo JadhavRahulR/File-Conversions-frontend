@@ -80,20 +80,17 @@ const [convertedFile, setConvertedFile] = useState(null);
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+      if (file) {
+        setStatus("Upload");
+      }
+    }, [file]);
 
   return (
     <>
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>MD To PDF Convert Online | Secure and Free Markdown To PDF Converter</title>
+        <title>MD To PDF Convert Online | Free Markdown To PDF Converter</title>
         <meta name="description" content="Convert Markdown (.md) files to PDF easily and securely. Free online MD to PDF converter with no email or registration required." />
         <link rel="canonical" href="https://fileunivers.com/md-to-pdf" />
         <meta name="robots" content="index, follow" />
@@ -104,7 +101,7 @@ const [convertedFile, setConvertedFile] = useState(null);
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert MD To PDF Online - Free Markdown To PDF Converter For Clean Formatting</h1>
+        <h1>Convert MD To PDF Online - Fast Markdown To PDF Converter </h1>
 
         <p className="intro-paragraph">
           Easily convert your Markdown (.md) files to PDF online with our fast, accurate, and free converter. Preserve your document’s headings, lists, code blocks, and formatting style exactly as written in Markdown. No installation or setup required- just upload your MD file, click Upload for Conversion, and instantly Auto download a professional PDF version. Perfect for developers, writers, and technical professionals who want to share or print Markdown documents in a clean, readable PDF format.   </p>

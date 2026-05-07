@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import "./converter.css"
 import Tools from "./Tools";
@@ -79,6 +79,11 @@ const TiffToPdfConverter = () => {
       alert("Conversion failed");
     }
   };
+  useEffect(() => {
+      if (file) {
+        setStatus("Upload");
+      }
+    }, [file]);
 
   return (
     <>
@@ -86,7 +91,7 @@ const TiffToPdfConverter = () => {
       <Tools />
       <Helmet>
 
-        <title>TIFF To PDF Online Converter | Free anf Fast TIFF Image To PDF Converter</title>
+        <title>TIFF To PDF Converter | Free TIFF Image To PDF Converter</title>
         <meta name="description" content="Convert TIFF images to PDF files quickly and securely. Free online TIFF to PDF converter with no email or registration required." />
         <link rel="canonical" href="https://fileunivers.com/tiff-to-pdf" />
         <meta name="robots" content="index, follow" />
@@ -97,7 +102,7 @@ const TiffToPdfConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert TIFF To PDF Online - Free & High-Quality TIFF Image To PDF Converter</h1>
+        <h1>Convert TIFF To PDF Online - Free & High-Quality TIFF Image To PDF online Converter</h1>
 
         <p className="intro-paragraph">
           Easily convert your TIFF (Tagged Image File Format) images to PDF online with our fast and reliable converter. Preserve image clarity, color, and resolution while transforming your TIFF files into professional, print-ready PDF documents. No software installation or account required- simply upload your TIFF file, click convert, and download your high-quality PDF instantly. Ideal for designers, photographers, and professionals who need accurate TIFF to PDF conversion in seconds.   </p>

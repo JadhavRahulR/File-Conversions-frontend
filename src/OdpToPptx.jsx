@@ -80,20 +80,17 @@ const OdpToPptx = () => {
     }
   };
   useEffect(() => {
-    if (status === "✅ Conversion complete!") {
-      setTimeout(() => {
-        setFile(null);
-        setStatus("Convert");
-      }, 4000);
-    }
-  }, [status]);
+      if (file) {
+        setStatus("Upload");
+      }
+    }, [file]);
 
   return (
     <>
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>Convert ODP To PPTX | Free OpenDocument To PowerPoint Online Converter</title>
+        <title>Convert ODP To PPTX | Free ODP To PPT Online Converter</title>
         <meta name="description" content="Convert ODP files to PPTX format quickly and securely. Free online ODP to PPTX converter with no signup or email required." />
         <link rel="canonical" href="https://fileunivers.com/odp-to-pptx" />
         <meta name="robots" content="index, follow" />
@@ -104,7 +101,7 @@ const OdpToPptx = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1> Convert ODP to PPTX Online - Free and Secure OpenOffice to PowerPoint Converter </h1>
+        <h1> Convert ODP to PPTX Online - Free Fast and Secure OpenOffice to PowerPoint Converter </h1>
 
         <p className="intro-paragraph">
           Convert your PowerPoint presentations (.pptx) to OpenDocument Presentation (.odp) format easily with our free online PPTX to ODP converter. This tool provides a fast, accurate, and secure way to make your slides compatible with LibreOffice Impress and OpenOffice. No software installation is needed- just upload your PPTX file, click “Upload”, and auto download your ODP presentation within seconds. It preserves your original formatting, animations, and slide design perfectly for smooth cross-platform editing.

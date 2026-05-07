@@ -91,7 +91,7 @@ const PdfToPptxConverter = () => {
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>Convert PDF To PPTX |Online Secure and Free PDF To PowerPoint Converter</title>
+        <title>Convert PDF To PPTX | Free PDF To PowerPoint Converter</title>
         <meta name="description" content="Convert PDF files to PowerPoint (.pptx) presentations easily and securely. Free online PDF to PPTX converter with no registration required." />
         <link rel="canonical" href="https://fileunivers.com/pdf-to-pptx" />
         <meta name="robots" content="index, follow" />
@@ -102,7 +102,7 @@ const PdfToPptxConverter = () => {
       </Helmet>
       <div className="pagetitle">
 
-        <h1>Convert PDF to PPTX Online - Free PDF to PowerPoint Converter (Fast & Accurate) </h1>
+        <h1>Convert PDF to PPTX Online - Free PDF to PowerPoint Converter online (Fast & Accurate) </h1>
 
         <p className="intro-paragraph">
           Convert your PDF files into editable PowerPoint presentations instantly with our free online PDF to PPTX converter. This fast and reliable tool transforms your PDF slides into fully editable PowerPoint (.pptx) files without losing quality, design, or formatting. No software installation required- just upload your PDF, click “Upload”, and auto download your ready-to-edit PPTX file within seconds. Perfect for students, professionals, and teachers who want to reuse presentation content easily and save time.    </p>

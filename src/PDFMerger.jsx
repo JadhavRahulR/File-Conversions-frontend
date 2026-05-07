@@ -196,7 +196,7 @@ const PDFMerger = () => {
 
           {status === "✅ Done" && convertedFile && (
             <>
-              <p>Save To . . .</p>
+              <p style={{color:'white'}}>Save To . . .</p>
               <div className="saveTo">
                 <SaveToGoogleDrive file={convertedFile} />
                 <SaveToDropbox file={convertedFile} />

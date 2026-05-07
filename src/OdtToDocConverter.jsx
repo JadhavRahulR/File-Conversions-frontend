@@ -93,7 +93,7 @@ const OdtToDocConverter = () => {
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>Convert ODT To DOC | Free OpenDocument To Word Online and Secure Converter</title>
+        <title>Convert ODT To DOC | Free OpenDocument To Word Online Converter</title>
         <meta name="description" content="Convert ODT files to DOC format easily and securely. Free online ODT to DOC converter with no email or registration required." />
         <link rel="canonical" href="https://fileunivers.com/odt-to-doc" />
         <meta name="robots" content="index, follow" />

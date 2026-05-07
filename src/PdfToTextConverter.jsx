@@ -94,7 +94,7 @@ const PdfToTextConverter = () => {
       <ScrollToTop />
       <Tools />
       <Helmet>
-        <title>PDF to TXT | Free and Easy PDF To Text Online Converter</title>
+        <title>PDF To TXT | Free  PDF To Text Online Converter</title>
         <meta name="description" content="Convert PDF files to plain text (.txt) quickly and securely. Free online PDF to TXT converter with no email or signup required." />
         <link rel="canonical" href="https://fileunivers.com/pdf-to-txt" />
         <meta name="robots" content="index, follow" />
