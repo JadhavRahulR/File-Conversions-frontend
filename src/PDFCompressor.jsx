@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DropzoneInput from "./DropzoneInput"; import axios from "axios";
 import "./PDFCompressor.css";
 import DropboxFileInput from './DropboxFileInput'
@@ -24,7 +24,7 @@ const PDFCompressor = () => {
   const [convertedFile, setConvertedFile] = useState(null);
   const startTimeRef = useRef(0);
   const [extreme, setExtreme] = useState(false);
-  
+
 
 
   const handleFileDrop = (e) => {
@@ -42,100 +42,100 @@ const PDFCompressor = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!file) return alert("Please upload a PDF.");
+    e.preventDefault();
+    if (!file) return alert("Please upload a PDF.");
 
-  setLoading(true);
-  setStatus("uploading");
-  setProgress(0);
-
-  const startTime = Date.now();
-
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("quality", quality);
-  formData.append("mode", extreme ? "extreme" : "normal");
-
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/convert-compress-pdf`,
-      formData,
-      
-      {
-        responseType: "blob",
-        
-
-        // ✅ ONLY UPLOAD BAR (0–100)
-        onUploadProgress: (e) => {
-          if (!e.total) return;
-          const percent = Math.round((e.loaded * 100) / e.total);
-          setProgress(percent);
-        },
-      }
-    );
-
-    /* 🔒 UPLOAD FINISHED COMPLETELY */
-    setProgress(100);
-
-    // 🔁 SWITCH UI PHASE (NO EXTRA BACKEND TIME)
-    setStatus("compressing");
+    setLoading(true);
+    setStatus("uploading");
     setProgress(0);
 
-    /* ⏱️ Dynamic compress UI time (based on total time) */
-    const totalTime = Date.now() - startTime;
-    const compressUITime = Math.max(totalTime / 2, 800); // min smooth time
+    const startTime = Date.now();
 
-    const compressStart = Date.now();
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("quality", quality);
+    formData.append("mode", extreme ? "extreme" : "normal");
 
-    const compressTimer = setInterval(() => {
-      const elapsed = Date.now() - compressStart;
-      const percent = Math.min((elapsed / compressUITime) * 100, 100);
-      setProgress(Math.round(percent));
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/convert-compress-pdf`,
+        formData,
 
-      if (percent >= 100) {
-        clearInterval(compressTimer);
+        {
+          responseType: "blob",
 
-        // ✅ CREATE FILE AFTER UI FINISH
-        const blob = new Blob([response.data], {
-          type: "application/pdf",
-        });
 
-        const compressedFile = new File(
-          [blob],
-          file.name.replace(/\.pdf$/i, "") + "_compressed.pdf",
-          { type: "application/pdf" }
-        );
+          // ✅ ONLY UPLOAD BAR (0–100)
+          onUploadProgress: (e) => {
+            if (!e.total) return;
+            const percent = Math.round((e.loaded * 100) / e.total);
+            setProgress(percent);
+          },
+        }
+      );
 
-        setConvertedFile(compressedFile);
-        setStatus("done");
-        setLoading(false);
+      /* 🔒 UPLOAD FINISHED COMPLETELY */
+      setProgress(100);
 
-        // auto download
-        const url = URL.createObjectURL(compressedFile);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = compressedFile.name;
-        a.click();
-        URL.revokeObjectURL(url);
-      }
-    }, 60);
+      // 🔁 SWITCH UI PHASE (NO EXTRA BACKEND TIME)
+      setStatus("compressing");
+      setProgress(0);
 
-  } catch (err) {
-    console.error(err);
-    alert("Compression failed");
-    setLoading(false);
-  }
-};
+      /* ⏱️ Dynamic compress UI time (based on total time) */
+      const totalTime = Date.now() - startTime;
+      const compressUITime = Math.max(totalTime / 2, 800); // min smooth time
 
-useEffect(() => {
-  if (file) {
-    setStatus("upload");
-  }
-}, [file]);
+      const compressStart = Date.now();
+
+      const compressTimer = setInterval(() => {
+        const elapsed = Date.now() - compressStart;
+        const percent = Math.min((elapsed / compressUITime) * 100, 100);
+        setProgress(Math.round(percent));
+
+        if (percent >= 100) {
+          clearInterval(compressTimer);
+
+          // ✅ CREATE FILE AFTER UI FINISH
+          const blob = new Blob([response.data], {
+            type: "application/pdf",
+          });
+
+          const compressedFile = new File(
+            [blob],
+            file.name.replace(/\.pdf$/i, "") + "_compressed.pdf",
+            { type: "application/pdf" }
+          );
+
+          setConvertedFile(compressedFile);
+          setStatus("done");
+          setLoading(false);
+
+          // auto download
+          const url = URL.createObjectURL(compressedFile);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = compressedFile.name;
+          a.click();
+          URL.revokeObjectURL(url);
+        }
+      }, 60);
+
+    } catch (err) {
+      console.error(err);
+      alert("Compression failed");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (file) {
+      setStatus("upload");
+    }
+  }, [file]);
   return (
     <>
       <Helmet>
-        <title>Compress PDF | Reduce PDF File Size Online Free and Secure</title>
+        <title>Compress PDF Online | Reduce PDF File Size Online Free and Secure</title>
         <meta name="description" content="Compress your PDF files to reduce file size without losing quality. Free online PDF compressor with fast and secure compression." />
         <link rel="canonical" href="https://fileunivers.com/pdf-compressor" />
         <meta name="robots" content="index, follow" />
@@ -192,22 +192,22 @@ useEffect(() => {
           </div>
 
 
-         <div className="extreme-toggle">
-  <label className="toggle">
-    <input
-      type="checkbox"
-      checked={extreme}
-      onChange={(e) => setExtreme(e.target.checked)}
-    />
-    <span className="slider"></span>
-    <span className="label-text">
-      Extreme Compression Smallest size, lower quality
-    </span>
-  </label>
-</div>
+          <div className="extreme-toggle">
+            <label className="toggle">
+              <input
+                type="checkbox"
+                checked={extreme}
+                onChange={(e) => setExtreme(e.target.checked)}
+              />
+              <span className="slider"></span>
+              <span className="label-text">
+                Extreme Compression Smallest size, lower quality
+              </span>
+            </label>
+          </div>
 
           {(status === "uploading" || status === "compressing") && (
-            <div className="progress-box" style={{color:"white"}}>
+            <div className="progress-box" style={{ color: "white" }}>
               <h5>
                 {status === "uploading" && "Uploading PDF…"}
                 {status === "compressing" && "Compressing PDF…"}
@@ -275,8 +275,8 @@ useEffect(() => {
             <li>   ⬇️ Auto Download the optimized PDF or `.pdf.7z` archive</li>
           </ol>
           <section>
-            <LazyVideo 
-             youtubeId="ZBJlgtvpOiY"
+            <LazyVideo
+              youtubeId="ZBJlgtvpOiY"
               title="How to Compress PDF ? "
               description='Reduce your PDF file size in seconds with this simple step-by-step video!. Learn how to compress PDF online without losing quality- perfect for emailing, uploading, or saving storage space. No software, no sign-up- just fast and secure compression.'
             />
@@ -288,14 +288,18 @@ useEffect(() => {
             <li>🔒Your files stay private - processed locally or securely deleted</li>
             <li>⚡ Fast compression powered by Python backend</li>
             <li>📱 Works on mobile and desktop</li>
+          </ul>
 
 
 
-            <h2 style={{ marginBottom: "4px" }}>Also check other features Related to PDF file  </h2>
+            <h2 style={{ marginBottom: "4px" }}>Also Related PDF Conversion & Compression Tools </h2>
+            <div className="pdfpageslinks">
+
             <div className="unzipPagelink">
-              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <ul>
+
+              <li><Link to="/word-to-pdf" className='btn' >Word To PDF Converter </Link></li>
               <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
               <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
               <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
               <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
@@ -309,10 +313,209 @@ useEffect(() => {
               <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
               <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
               <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              </ul>
             </div>
-          </ul>
+            </div>
 
         </div>
+
+
+        {/* =========================
+   SEO CONTENT SECTION
+========================= */}
+
+        <section className="pdf-seo-section">
+
+          {/* Compression Types */}
+          <div className="pdf-seo-card">
+            <h2>PDF Compression Modes</h2>
+            <p>
+              Choose the best compression mode based on your needs. Whether you want the
+              smallest file size or the best visual quality, our PDF compressor gives you
+              full control.
+            </p>
+
+            <div className="pdf-grid">
+              <div className="pdf-box">
+                <h3>High Compression</h3>
+                <p>
+                  Reduce PDF size aggressively for email attachments, WhatsApp sharing,
+                  and quick uploads.
+                </p>
+              </div>
+
+              <div className="pdf-box">
+                <h3>Balanced Compression</h3>
+                <p>
+                  Maintain good image quality while significantly reducing file size.
+                  Perfect for most users.
+                </p>
+              </div>
+
+              <div className="pdf-box">
+                <h3>Best Quality Compression</h3>
+                <p>
+                  Optimize PDF files with minimal quality loss for professional
+                  documents and portfolios.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Use Cases */}
+          <div className="pdf-seo-card">
+            <h2>Common Uses for PDF Compression</h2>
+
+            <ul className="pdf-list">
+              <li>Email attachments</li>
+              <li>WhatsApp and Telegram sharing</li>
+              <li>Resume and CV uploads</li>
+              <li>Government form submissions</li>
+              <li>College assignments</li>
+              <li>Website document optimization</li>
+            </ul>
+          </div>
+
+          {/* Supported PDF Types */}
+          <div className="pdf-seo-card">
+            <h2>Supported PDF Types</h2>
+
+            <div className="pdf-tags">
+              <span>Scanned PDFs</span>
+              <span>Image-heavy PDFs</span>
+              <span>eBooks</span>
+              <span>Invoices</span>
+              <span>Reports</span>
+              <span>Presentations</span>
+            </div>
+          </div>
+
+          {/* Compression Examples */}
+          <div className="pdf-seo-card">
+            <h2>Real Compression Examples</h2>
+
+            <table className="pdf-table">
+              <thead>
+                <tr>
+                  <th>Original Size</th>
+                  <th>Compressed Size</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>25MB</td>
+                  <td>5MB</td>
+                </tr>
+
+                <tr>
+                  <td>10MB</td>
+                  <td>2MB</td>
+                </tr>
+
+                <tr>
+                  <td>50MB</td>
+                  <td>8MB</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Tips */}
+          <div className="pdf-seo-card">
+            <h2>Tips to Reduce PDF Size</h2>
+
+            <ul className="pdf-list">
+              <li>Compress images before creating PDFs</li>
+              <li>Avoid high DPI scanned documents</li>
+              <li>Remove unnecessary pages</li>
+              <li>Use grayscale scans where possible</li>
+              <li>Optimize embedded fonts and graphics</li>
+            </ul>
+          </div>
+
+          {/* Why Compress */}
+          <div className="pdf-seo-card">
+            <h2>Why Compress PDF Before Sending?</h2>
+
+            <div className="pdf-grid">
+              <div className="pdf-box">
+                <h3>Faster Uploads</h3>
+                <p>Compressed PDFs upload much faster on websites and forms.</p>
+              </div>
+
+              <div className="pdf-box">
+                <h3>Easier Sharing</h3>
+                <p>Send lightweight PDFs through email and messaging apps easily.</p>
+              </div>
+
+              <div className="pdf-box">
+                <h3>Save Storage Space</h3>
+                <p>Smaller PDF files consume less device and cloud storage.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Before After */}
+          <div className="pdf-seo-card">
+            <h2>Before vs After Compression</h2>
+
+            <div className="before-after-box">
+              <div>
+                <h3>Before</h3>
+                <p>25MB PDF File</p>
+              </div>
+
+              <span>→</span>
+
+              <div>
+                <h3>After</h3>
+                <p>4MB Optimized PDF</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Educational */}
+          <div className="pdf-seo-card">
+            <h2>What Causes Large PDF Files?</h2>
+
+            <p>
+              Large PDF files are usually created by high-resolution images, embedded
+              fonts, scanned pages, vector graphics, and unnecessary metadata. Our PDF
+              compressor intelligently optimizes these elements to reduce file size while
+              maintaining readability and quality.
+            </p>
+          </div>
+
+          {/* Security */}
+          <div className="pdf-seo-card">
+            <h2>Security & Privacy</h2>
+
+            <ul className="pdf-list">
+              <li>Encrypted file transfer</li>
+              <li>Automatic file deletion</li>
+              <li>No manual file access</li>
+              <li>No registration required</li>
+              <li>Secure browser-based processing</li>
+            </ul>
+          </div>
+
+          {/* Device Compatibility */}
+          <div className="pdf-seo-card">
+            <h2>Works on All Devices</h2>
+
+            <div className="pdf-tags">
+              <span>Android</span>
+              <span>iPhone</span>
+              <span>Windows</span>
+              <span>Mac</span>
+              <span>Linux</span>
+              <span>Tablet</span>
+            </div>
+          </div>
+
+
+        </section>
 
         <section className="pdf-compressor-section">
           <div className="pdf-compressor-container">
