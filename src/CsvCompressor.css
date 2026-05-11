@@ -361,3 +361,150 @@ h2{
     max-width: 500px;
   }
 }
+
+
+
+
+/* ....csv file only frontend page  */
+/* ========================================= */
+/* COMPRESSION MODE TOGGLE */
+/* ========================================= */
+
+.compressionMode {
+
+  width: 60%;
+
+  /* background: rgba(255, 255, 255, 0.164); */
+  background: transparent;
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 14px;
+
+  padding: 16px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+}
+
+.compressionMode h3 {
+
+  color: white;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  margin: 0;
+
+}
+
+/* ========================================= */
+/* MODE OPTION */
+/* ========================================= */
+
+.modeOption {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  background: rgba(255,255,255,0.03);
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  transition: all 0.25s ease;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+}
+
+.modeOption:hover {
+
+  background: rgba(255,255,255,0.08);
+
+  transform: translateY(-1px);
+
+}
+
+/* ========================================= */
+/* RADIO BUTTON */
+/* ========================================= */
+
+.modeOption input[type="radio"] {
+
+  width: 18px;
+
+  height: 18px;
+
+  cursor: pointer;
+
+  accent-color: #4ade80;
+
+}
+
+.compression-info {
+  color: white;
+}
+
+.cloudSaveInfo{
+  margin-bottom: 50px;
+}
+
+.fileStats {
+  color: white;
+}
+/* ========================================= */
+/* ACTIVE SELECTED LOOK */
+/* ========================================= */
+
+.modeOption:has(input[type="radio"]:checked) {
+
+  border: 1px solid #4ade80;
+
+  background: rgba(74, 222, 128, 0.12);
+
+  box-shadow: 0 0 10px rgba(74,222,128,0.15);
+
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+  .compressionMode {
+
+    padding: 14px;
+    width: 100%;
+
+  }
+
+  .modeOption {
+
+    font-size: 14px;
+
+    padding: 12px;
+
+  }
+
+}
