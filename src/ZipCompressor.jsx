@@ -23,6 +23,7 @@ const ZipCompressor = () => {
   const [zipName, setZipName] = useState(""); // ✅ New state for rename
   const [convertedFile, setConvertedFile] = useState(null);
   const [status, setStatus] = useState("upload");
+  const [remainingTime, setRemainingTime] = useState("");
 
 
   // ðŸ”¹ Handle drag & drop
@@ -63,12 +64,31 @@ const ZipCompressor = () => {
 
     setLoading(true);
 
+    const startTime = Date.now();
+
     try {
       const res = await axios.post(`${BASE_URL}/convert-to-zip`, formData, {
         responseType: "blob",
         onUploadProgress: (event) => {
           const percent = Math.round((event.loaded * 100) / event.total);
           setProgress(Math.min(percent, 90));
+
+          const elapsedTime = (Date.now() - startTime) / 1000;
+
+          const uploadSpeed = event.loaded / elapsedTime;
+
+          const remainingBytes = event.total - event.loaded;
+
+          const remainingSeconds =
+            remainingBytes / uploadSpeed;
+
+          if (percent >= 90) {
+            setRemainingTime("Finalizing ZIP...");
+          } else if (remainingSeconds > 0) {
+            setRemainingTime(
+              `${Math.ceil(remainingSeconds)} sec remaining`
+            );
+          }
         },
       });
 
@@ -126,14 +146,14 @@ const ZipCompressor = () => {
           Quickly compress files to ZIP online and reduce file sizes for easier sharing and storage. Whether you have documents, images, videos, or folders, this free online ZIP compressor lets you bundle multiple files into a single compact ZIP archive- all without installing any software. Just upload your files, compress them, and download your new ZIP in seconds.
         </p>
       </div>
- <div
-          {...getRootProps()}
-          className={`dropzone ${isDragActive ? "active" : ""}`}
-        >
-      <div className="zip-container">
+      <div
+        {...getRootProps()}
+        className={`dropzone ${isDragActive ? "active" : ""}`}
+      >
+        <div className="zip-container">
 
-        <h2>Convert Files to zip</h2>
-       
+          <h2>Convert Files to zip</h2>
+
           <input {...getInputProps()} />
           <p className="zipinput">
             {isDragActive
@@ -152,51 +172,59 @@ const ZipCompressor = () => {
               extensions={["*"]}
             />
           </div>
-        
 
 
 
-        {/* ✅ Rename input */}
-        <div className="rename-container">
-          <label htmlFor="zipName">Rename ZIP file (optional):</label>
-          <input
-            id="zipName"
-            type="text"
-            value={zipName}
-            onChange={(e) => setZipName(e.target.value)}
-            placeholder="Enter new file name (e.g. MyProject)"
-          />
+
+          {/* ✅ Rename input */}
+          <div className="rename-container">
+            <label htmlFor="zipName">Rename ZIP file (optional):</label>
+            <input
+              id="zipName"
+              type="text"
+              value={zipName}
+              onChange={(e) => setZipName(e.target.value)}
+              placeholder="Enter new file name (e.g. MyProject)"
+            />
+          </div>
+
+          {files.length > 0 && (
+            <ul className="file-list">
+              {files.map((f, i) => (
+                <li key={i}>📄 {f.name}</li>
+              ))}
+            </ul>
+          )}
+
+          <button type="button" disabled={loading}
+            onClick={(e) => { e.stopPropagation(); handleSubmit(e); }}  >
+            {loading ? `Converting... (${progress}%)` : "Create ZIP"}
+          </button>
+
+
+          {loading && (
+            <p className="remaining-time">
+              {remainingTime}
+            </p>
+          )}
+
+          {status === "✅ Done" && convertedFile && (
+            <>
+              <p style={{ color: 'white' }} >Save To . . .</p>
+              <div className="saveTo">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} />
+              </div>
+            </>
+          )}
         </div>
-
-        {files.length > 0 && (
-          <ul className="file-list">
-            {files.map((f, i) => (
-              <li key={i}>📄 {f.name}</li>
-            ))}
-          </ul>
-        )}
-
-        <button onClick={handleSubmit} disabled={loading}>
-          {loading ? `Converting... (${progress}%)` : "Create ZIP"}
-        </button>
-
-        {status === "✅ Done" && convertedFile && (
-          <>
-            <p style={{ color: 'white' }} >Save To . . .</p>
-            <div className="saveTo">
-              <SaveToGoogleDrive file={convertedFile} />
-              <SaveToDropbox file={convertedFile} />
-            </div>
-          </>
-        )}
-      </div>
       </div>
 
 
 
       <section>
         <div className="compressor-page">
-          <h2 className="compressor-heading">Convert Folder to ZIP Online</h2>
+          <h2 className="compressor-heading">Convert Files and Folders to ZIP Online</h2>
           <p className="compressor-description">
             Easily compress an entire folder into a ZIP archive. Perfect for
             sharing multiple files or backing up projects in one compact package.Our online ZIP compression tool ensures your files are safely compressed without losing quality or data integrity. It’s perfect for students, professionals, and businesses who want to share large files easily via email or cloud storage. With fileunivers.com, you get a fast, secure, and efficient ZIP compression experience right from your browser- anytime, anywhere.
@@ -207,6 +235,16 @@ const ZipCompressor = () => {
               <p style={{ textAlign: "center" }}>ZIP</p>
             </div>
           </div>
+
+          <h2 className="compressor-subheading">
+            Supported File Types
+          </h2>
+
+          <p className="compressor-description">
+            Our ZIP creator supports images, videos, PDFs, Word documents,
+            Excel sheets, PowerPoint files, text files, source code files,
+            and many more formats.
+          </p>
 
           <h2 className="compressor-subheading">How to Convert a Folder to ZIP?</h2>
           <ol className="compressor-steps">
@@ -219,11 +257,24 @@ const ZipCompressor = () => {
             </li>
             <li>   ⬇️ Your ZIP archive will auto-download once it's ready</li>
           </ol>
+
+          <h2 className="compressor-subheading">
+            Features of Our ZIP Compressor
+          </h2>
+
+          <ul className="compressor-benefits">
+            <li>📂 Compress multiple files into one ZIP</li>
+            <li>⚡ Quickly compress files into ZIP archives</li>
+            <li>☁️ Google Drive and Dropbox support</li>
+            <li>🔒 Secure file processing</li>
+            <li>📱 Mobile-friendly ZIP converter</li>
+            <li>💻 Works on Windows, Mac, Android, and iPhone</li>
+          </ul>
           <section>
-            <LazyVideo 
+            <LazyVideo
               youtubeId="oH1xYbVTPvA"
               title="How to create zip file ? "
-              description='Shrink your files and folders in seconds!    🗜️⚡ This video shows how to compress files into ZIP format online easily and securely. In this video, you’ll learn: How to upload and compress files into a ZIP ,Combine multiple files into one archive Download your ZIP instantly .'
+              description='Shrink your files and folders in seconds!. This video shows how to compress files into ZIP format online easily and securely. In this video, you’ll learn: How to upload and compress files into a ZIP ,Combine multiple files into one archive Download your ZIP instantly .'
             />
           </section>
 
@@ -240,31 +291,45 @@ const ZipCompressor = () => {
             </h2>
             <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-            <li>
-              <Link to="/zip-extractor" className="btn">
-                Extract Zip
-              </Link>
-            </li>
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li>
+                <Link to="/zip-extractor" className="btn">
+                  Extract Zip
+                </Link>
+              </li>
             </div>
           </ul>
+
+          <h2 className="compressor-subheading">
+  Common Uses of ZIP Files
+</h2>
+
+<ul className="compressor-benefits">
+  <li>📧 Share files through email</li>
+  <li>💾 Backup project folders</li>
+  <li>🚀 Upload files faster</li>
+  <li>📁 Organize multiple documents</li>
+  <li>🎓 Submit assignments and projects</li>
+</ul>
         </div>
+
+        
 
         <section>
           <div className="tool-container">
