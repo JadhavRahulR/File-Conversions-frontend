@@ -155,11 +155,13 @@ const ZipCompressor = () => {
           <h2>Convert Files to zip</h2>
 
           <input {...getInputProps()} />
-          <p className="zipinput">
-            {isDragActive
-              ? "Drop your files here..."
-              : "Drag & drop files here, or click to browse"}
-          </p>
+         <p className="zipinput">
+  {isDragActive
+    ? "Drop your files here..."
+    : files.length > 0
+    ? `${files.length} file(s) selected`
+    : "Drag & drop files here, or click to browse"}
+</p>
           <div className="fileuploadcontainer">
             <DriveFileInput
               onFilePicked={handleExternalFile}
@@ -183,6 +185,7 @@ const ZipCompressor = () => {
               id="zipName"
               type="text"
               value={zipName}
+               onClick={(e) => e.stopPropagation()}
               onChange={(e) => setZipName(e.target.value)}
               placeholder="Enter new file name (e.g. MyProject)"
             />

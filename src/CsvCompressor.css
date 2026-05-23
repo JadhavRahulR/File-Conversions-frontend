@@ -508,3 +508,14 @@ h2{
   }
 
 }
+
+
+
+.pdfpageslinks ul{
+  margin: 0;
+  padding: 0;
+}
+.unzipPagelink{
+  padding: 0;
+  margin: 0;
+}
