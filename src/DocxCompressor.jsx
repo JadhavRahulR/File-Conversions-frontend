@@ -22,6 +22,7 @@ const DocxCompressor = () => {
   const [progress, setProgress] = useState(0);
   const fileInputRef = useRef();
   const [convertedFile, setConvertedFile] = useState(null);
+  
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -62,15 +63,15 @@ const DocxCompressor = () => {
         },
       });
       const compressedDOCX = new File(
-    [response.data],
-    file.name.replace(/\.docx$/i, "") + "_compressed.docx",
-    {
-      type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    }
-  );
+        [response.data],
+        file.name.replace(/\.docx$/i, "") + "_compressed.docx",
+        {
+          type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        }
+      );
 
-  setConvertedFile(compressedDOCX);
-      console.log(BASE_URL); 
+      setConvertedFile(compressedDOCX);
+      console.log(BASE_URL);
       const ext = outputType === '7z' ? '.docx.7z' : '_compressed.docx';
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
@@ -101,12 +102,19 @@ const DocxCompressor = () => {
 
       </Helmet>
       <ScrollToTop />
-      <div className="pagetitle">
-        <h1>Compress DOC File Online - Free Fast and Secure  Word file  Size Reducer</h1>
-        <p className="intro-paragraph">
-          Quickly compress DOC files online to reduce file size while preserving document quality, formatting, and content. Whether you’re uploading assignments, sharing reports, or sending official documents, this tool makes your Word files lighter and faster to share- all without installing any software. Simply upload your DOC file, select the compression level, and download your optimized Word document instantly.
-        </p>
-      </div>
+     <div className="pagetitle">
+  <h1>
+    Compress DOC Files Online – Fast & Secure Word File Reducer
+  </h1>
+
+  <p className="intro-paragraph">
+    Easily compress DOC and DOCX files online without losing formatting,
+    fonts, images, or document quality. Reduce Word file size instantly
+    for faster email sharing, cloud uploads, office use, and storage saving.
+    Simply upload your Word document, choose a compression level, and
+    download the optimized file in seconds — no software installation required.
+  </p>
+</div>
 
       <div
         className="compressor-container"
@@ -168,7 +176,7 @@ const DocxCompressor = () => {
 
         {status === "✅ Done" && convertedFile && (
           <>
-            <p style={{color:'white'}} >Save To . . .</p>
+            <p style={{ color: 'white' }} >Save To . . .</p>
             <div className="saveTo">
               <SaveToGoogleDrive file={convertedFile} />
               <SaveToDropbox file={convertedFile} />
@@ -193,6 +201,8 @@ const DocxCompressor = () => {
             </div>
           </div>
 
+
+
           <h2 className="compressor-subheading">How to Compress a DOCX File?</h2>
           <ol className="compressor-steps">
             <li>   📂 Upload or drag & drop your <code>.docx</code> file</li>
@@ -200,13 +210,50 @@ const DocxCompressor = () => {
             <li>🚀 Click <strong>Compress</strong> to begin the process</li>
             <li>   ⬇️ The compressed <code>.docx</code> will auto-download once ready</li>
           </ol>
+
+          <h3>📊 Example Compression Results</h3>
+          <table className="compression-table">
+            <thead>
+              <tr>
+                <th>Original Size</th>
+                <th>Compressed Size</th>
+                <th>Reduction</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>25 MB</td>
+                <td>6 MB</td>
+                <td>76%</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>📑 Supported DOCX Elements</h3>
+          <ol>
+            <li>Images & Graphics</li>
+            <li>Tables</li>
+            <li>Headers & Footers</li>
+            <li>Custom Fonts</li>
+            <li>Charts & SmartArt</li>
+            <li>Page Layouts</li>
+          </ol>
+
+
+          
           <section>
-            <LazyVideo 
+            <LazyVideo
               youtubeId="ZbonE4bzzn0"
               title="How to Compress DOC ? "
               description='Learn how to compress DOC files online in just a few seconds!. This tutorial shows you how to reduce Word file size without losing formatting or content quality- fast, free, and secure.In this video, you’ll learn:How to upload your DOC fileChoose a compression quality Download your smaller, optimized Word document instantly.'
             />
           </section>
+
+          <h3>📈 Optimize DOCX Files for Email & Web</h3>
+          <p>
+            Our online DOCX compressor helps reduce Microsoft Word document size for
+            email attachments, Google Drive uploads, websites, office sharing,
+            WhatsApp sharing, and cloud storage optimization.
+          </p>
           <h2 className="compressor-subheading">Why Use Our DOCX Compressor?</h2>
           <ul className="compressor-benefits">
             <li>📄 Keeps formatting, fonts, and layout intact</li>
@@ -216,23 +263,28 @@ const DocxCompressor = () => {
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Word file  </h2>
             <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li><Link to='/pdfextractor' className='btn' >PDF Page Extractor</Link></li>
+              <li><Link to='/pdfpageremover' className='btn' >PDF Page Remover</Link></li>
+              <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
+
+
             </div>
           </ul>
         </div>
@@ -245,6 +297,12 @@ const DocxCompressor = () => {
               DOCX is the default file format used by Microsoft Word. It contains formatted text, images, tables,
               styles, and other elements. While DOCX files are more efficient than the older DOC format, they can
               still become large   —especially when filled with images or embedded objects.
+            </p>
+
+            <h3>🆚 DOC vs DOCX – What’s the Difference?</h3>
+            <p>
+              DOC is the older Microsoft Word format, while DOCX is the newer XML-based
+              format that offers better compression, smaller file sizes, and improved compatibility.
             </p>
 
             <h3>   📦 Why Do DOCX Files Get So Large?</h3>
@@ -269,6 +327,14 @@ const DocxCompressor = () => {
               layout and formatting. Upload, compress, and download instantly.
             </p>
 
+
+            <h3>🎚️ Compression Levels Explained</h3>
+            <ul>
+              <li><strong>Low Compression</strong> – Better quality, slightly smaller size</li>
+              <li><strong>Balanced Compression</strong> – Recommended for most documents</li>
+              <li><strong>High Compression</strong> – Maximum size reduction for sharing</li>
+            </ul>
+
             <h3>🔐 Is it Safe to Compress DOCX Files Online?</h3>
             <p>
               Yes, your document is processed safely in your browser or over an encrypted connection. We do not
@@ -280,11 +346,18 @@ const DocxCompressor = () => {
               <li>   ♻️ Automatic cleanup after processing</li>
             </ul>
 
-            <h3>   🔚 Final Thoughts</h3>
+            <h3>🛡️ Privacy & Security</h3>
             <p>
-              DOCX is one of the most commonly used formats for documentation. If your Word files are too large
-              to share or store comfortably, compressing them is a quick and effective solution. Try our DOCX
-              compressor today   —it's fast, secure, and completely free.
+              Your uploaded files are automatically deleted after processing.
+              We never read, store, or share your documents.
+              All uploads are protected with secure encryption.
+            </p>
+
+            <h3>💻 Works on All Devices</h3>
+            <p>
+              Compress DOCX files directly from Windows, Mac, Linux, Android,
+              or iPhone devices using any modern browser.
+              No software installation required.
             </p>
 
             <h2>📚 Frequently Asked Questions</h2>

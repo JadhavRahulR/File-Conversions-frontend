@@ -20,7 +20,7 @@ const OdpCompressor = () => {
   const [status, setStatus] = useState("idle");
   const [progress, setProgress] = useState(0);
   const [convertedFile, setConvertedFile] = useState(null);
-  
+
 
   const fileInputRef = useRef();
 
@@ -58,16 +58,16 @@ const OdpCompressor = () => {
           setProgress(Math.min(percent, 90));
         },
       });
-       
-      const compressedODP = new File(
-  [response.data],
-  file.name.replace(/\.odp$/i, "") + "_compressed.odp",
-  {
-    type: "application/vnd.oasis.opendocument.presentation",
-  }
-);
 
-setConvertedFile(compressedODP);
+      const compressedODP = new File(
+        [response.data],
+        file.name.replace(/\.odp$/i, "") + "_compressed.odp",
+        {
+          type: "application/vnd.oasis.opendocument.presentation",
+        }
+      );
+
+      setConvertedFile(compressedODP);
       const blob = new Blob([response.data]);
       const downloadLink = document.createElement('a');
       downloadLink.href = URL.createObjectURL(blob);
@@ -83,7 +83,7 @@ setConvertedFile(compressedODP);
   return (
     <>
       <Helmet>
-        <title>Compress ODP | Reduce OpenDocument Presentation File Size</title>
+        <title>Compress ODP Online | Reduce OpenDocument Presentation File Size</title>
         <meta name="description" content="Compress your ODP (OpenDocument Presentation) files online to minimize size while keeping layout intact. Free, fast, and secure ODP compressor." />
         <link rel="canonical" href="https://fileunivers.com/odpcompressor" />
         <meta name="robots" content="index, follow" />
@@ -94,9 +94,18 @@ setConvertedFile(compressedODP);
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress ODP File Online - Reduce Presentation Size Without Losing Quality</h1>
+        <h1>
+          Compress ODP Files Online – Reduce Presentation Size Without Losing Quality
+        </h1>
+
         <p className="intro-paragraph">
-          Compress ODP files online and make your OpenDocument presentations smaller, faster to share, and easier to upload. Whether you created it in LibreOffice Impress or OpenOffice, this free online tool reduces your ODP file size while keeping slides, text, and images perfectly intact. No software download needed- just upload, compress, and download your optimized presentation instantly.
+          Compress ODP (OpenDocument Presentation) files online for free and
+          reduce presentation size without affecting slide quality, formatting,
+          images, or animations. Whether your presentation was created in
+          LibreOffice Impress or OpenOffice, our secure ODP compressor helps
+          make files smaller, faster to upload, and easier to share.
+          No software installation required — simply upload, compress,
+          and download your optimized presentation instantly.
         </p>
       </div>
       <div
@@ -172,7 +181,7 @@ setConvertedFile(compressedODP);
 
         {status === "✅ Done" && convertedFile && (
           <>
-            <p style={{color:'white'}} >Save To . . .</p>
+            <p style={{ color: 'white' }} >Save To . . .</p>
             <div className="saveTo">
               <SaveToGoogleDrive file={convertedFile} />
               <SaveToDropbox file={convertedFile} />
@@ -182,9 +191,13 @@ setConvertedFile(compressedODP);
       </div>
       <section>
         <div className="compressor-page">
-          <h2 className="compressor-heading">Compress ODP File Online</h2>
+          <h2 className="compressor-heading">Free ODP Compressor – Reduce OpenDocument Presentation File Size</h2>
           <p className="compressor-description">
-            Reduce the size of your OpenDocument Presentation (.odp) files by optimizing embedded images and media without affecting slide layout or content.Our smart ODP compressor automatically optimizes embedded images, removes unnecessary data, and reduces file size without affecting slide quality or transitions. Ideal for students, teachers, and professionals who share presentations frequently. Save space, upload faster, and keep your presentations crisp and professional- all with the reliable tools at fileunivers.com.
+            Compress ODP (OpenDocument Presentation) files online without losing
+            slide quality, formatting, animations, or layout. Our free ODP compressor
+            optimizes embedded images and removes unnecessary metadata to reduce
+            presentation file size for faster sharing, uploads, and storage.
+            Works securely in your browser with no software installation required.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -204,8 +217,46 @@ setConvertedFile(compressedODP);
             <li>🚀 Click <strong>Compress</strong> to begin the process</li>
             <li>   ⬇️ Your compressed <code>.odp</code> will auto-download once it's ready</li>
           </ol>
+
+           <h3>📊 Example Compression Results</h3>
+
+          <table className="compression-table">
+            <thead>
+              <tr>
+                <th>Original Size</th>
+                <th>Compressed Size</th>
+                <th>Reduction</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>40 MB</td>
+                <td>11 MB</td>
+                <td>72%</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>🎚️ ODP Compression Levels</h3>
+          <ul>
+            <li><strong>Low Compression</strong> – Best presentation quality</li>
+            <li><strong>Balanced Compression</strong> – Recommended for most users</li>
+            <li><strong>High Compression</strong> – Maximum size reduction</li>
+          </ul>
+
+          <h3>📑 Supported ODP Presentation Elements</h3>
+          <ul>
+            <li>Slides & Layouts</li>
+            <li>Embedded Images</li>
+            <li>Charts & Tables</li>
+            <li>Animations & Transitions</li>
+            <li>Text Formatting</li>
+            <li>LibreOffice Impress Files</li>
+          </ul>
+
+         
           <section>
-            <LazyVideo 
+            <LazyVideo
               youtubeId="JMSN5-_K8b8"
               title="How to Compress ODP ? "
               description='Shrink your presentation in seconds!.Learn how to compress ODP files online without losing quality. This quick video shows the fastest way to make your OpenDocument presentations smaller and easier to share.In this video, you’ll see: How to upload and compress an ODP presentation Preserve image and slide quality after compression ,Download your reduced-size ODP instantly.'
@@ -221,23 +272,26 @@ setConvertedFile(compressedODP);
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odp file  </h2>
             <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li><Link to='/pdfextractor' className='btn' >PDF Page Extractor</Link></li>
+              <li><Link to='/pdfpageremover' className='btn' >PDF Page Remover</Link></li>
+              <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
             </div>
 
           </ul>
@@ -279,6 +333,31 @@ setConvertedFile(compressedODP);
               <li>🌐 Cross-platform compatibility</li>
             </ul>
 
+            <h3>👨‍🏫 Who Uses ODP Presentation Files?</h3>
+            <p>
+              ODP files are commonly used by students, teachers, office professionals,
+              and LibreOffice Impress users for creating presentations, slideshows,
+              reports, and educational materials.
+            </p>
+
+            <h3>💻 Works on All Devices</h3>
+            <p>
+              Compress ODP presentation files directly from Windows, Mac, Linux,
+              Android, or iPhone devices using any modern browser.
+            </p>
+
+            <h3>🛡️ Secure ODP File Compression</h3>
+            <p>
+              Your presentation files are processed securely and automatically deleted
+              after compression. We never store, read, or share your uploaded files.
+            </p>
+
+            <h3>☁️ No Software Installation Required</h3>
+            <p>
+              Our browser-based ODP compressor works instantly online without installing
+              LibreOffice, OpenOffice, or other presentation software.
+            </p>
+
             <h3>📌Final Tip</h3>
             <p>
               Compress your ODP files before submitting slides, uploading to learning portals, or sharing with colleagues to ensure a smooth and professional experience.
@@ -300,6 +379,17 @@ setConvertedFile(compressedODP);
             <p>
               You can choose to download the compressed `.odp` file directly or get a `.odp.7z` archive for maximum size reduction.
             </p>
+
+            <h3>❓ Is the ODP compressor free to use?</h3>
+            <p>
+              Yes, you can compress ODP presentation files online for free.
+            </p>
+
+            <h3>❓ Will animations and transitions remain?</h3>
+            <p>
+              Yes, slide animations and transitions are preserved during compression.
+            </p>
+
           </div>
         </section>
 

@@ -20,7 +20,7 @@ const OdtCompressor = () => {
   const [outputType, setOutputType] = useState('odt');
   const [progress, setProgress] = useState(0);
   const [convertedFile, setConvertedFile] = useState(null);
-  
+
 
   const fileInputRef = useRef();
 
@@ -55,14 +55,14 @@ const OdtCompressor = () => {
         },
       });
       const compressedODT = new File(
-  [response.data],
-  file.name.replace(/\.odt$/i, "") + "_compressed.odt",
-  {
-    type: "application/vnd.oasis.opendocument.text",
-  }
-);
+        [response.data],
+        file.name.replace(/\.odt$/i, "") + "_compressed.odt",
+        {
+          type: "application/vnd.oasis.opendocument.text",
+        }
+      );
 
-setConvertedFile(compressedODT);
+      setConvertedFile(compressedODT);
       const url = window.URL.createObjectURL(response.data);
       const link = document.createElement('a');
       link.href = url;
@@ -93,7 +93,7 @@ setConvertedFile(compressedODT);
       </Helmet>
       <ScrollToTop />
       <div className="pagetitle">
-        <h1>Compress ODT File Online -Free Reduce OpenDocument File Size Secure and Instantly</h1>
+        <h1>Compress ODT Files Online for Free – Reduce OpenDocument File Size Instantly</h1>
         <p className="intro-paragraph">
           Quickly compress ODT files online and reduce document size without affecting content, layout, or text formatting. Whether it’s an OpenOffice or LibreOffice document, this free online tool helps you make your ODT files lighter and easier to share- no software installation or registration required. Upload your file, choose the compression level, and get a smaller version in seconds.
         </p>
@@ -174,7 +174,7 @@ setConvertedFile(compressedODT);
 
         {status === "✅ Done" && convertedFile && (
           <>
-            <p style={{color:'white'}} >Save To . . .</p>
+            <p style={{ color: 'white' }} >Save To . . .</p>
             <div className="saveTo">
               <SaveToGoogleDrive file={convertedFile} />
               <SaveToDropbox file={convertedFile} />
@@ -184,9 +184,13 @@ setConvertedFile(compressedODT);
       </div>
       <section>
         <div className="compressor-page">
-          <h2 className="compressor-heading">Compress ODT File Online</h2>
+          <h2 className="compressor-heading"> Compress ODT Files Online for Free</h2>
           <p className="compressor-description">
-            Reduce the size of your OpenDocument Text (.odt) files without affecting formatting or content. Perfect for optimizing documents with images or media.Our smart ODT compressor removes unnecessary elements like embedded metadata and optimizes images for maximum file size reduction while maintaining top-quality visuals. Perfect for students, writers, and professionals who frequently work with OpenDocument files. Enjoy faster uploads, easier sharing, and reliable compression- all within a secure, browser-based tool powered by fileunivers.com.
+            Compress ODT (OpenDocument Text) files online without losing formatting,
+            images, or document quality. Our free ODT compressor reduces file size
+            by optimizing embedded images and removing unnecessary metadata,
+            making documents easier to upload, share, and store.
+            Works directly in your browser with fast, secure processing and no software installation required.
           </p>
           <div className="converterImg">
             <div style={{ textAlign: "center" }}>
@@ -206,13 +210,50 @@ setConvertedFile(compressedODT);
             <li>🚀 Click <strong>Compress</strong> to start the process</li>
             <li>   ⬇️ Your compressed <code>.odt</code> file will auto-download when ready</li>
           </ol>
-             <section>
-            <LazyVideo 
+
+          <h3>🎚️ ODT Compression Levels</h3>
+          <ul>
+            <li><strong>Low Compression</strong> – Better visual quality</li>
+            <li><strong>Balanced Compression</strong> – Best mix of size and quality</li>
+            <li><strong>High Compression</strong> – Maximum file size reduction</li>
+          </ul>
+
+          <h3>📊 Example Compression Results</h3>
+
+          <table className="compression-table">
+            <thead>
+              <tr>
+                <th>Original File</th>
+                <th>Compressed File</th>
+                <th>Saved Space</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>18 MB</td>
+                <td>5 MB</td>
+                <td>72%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>📑 Supported ODT Content</h3>
+          <ul>
+            <li>Formatted Text</li>
+            <li>Embedded Images</li>
+            <li>Tables & Charts</li>
+            <li>Headers & Footers</li>
+            <li>LibreOffice Documents</li>
+            <li>OpenOffice Documents</li>
+          </ul>
+          <section>
+            <LazyVideo
               youtubeId="YlW5hbtVkhM"
               title="How to Compress ODT ? "
               description='Shrink your OpenDocument (.odt) files in seconds!. This video shows how to compress ODT files online without losing text quality or formatting. In this video, you’ll learn:How to upload and compress ODT files easily Choose the best compression level Download your optimized ODT document instantly.'
             />
-            </section>
+          </section>
           <h2 className="compressor-subheading">Why Use Our ODT Compressor?</h2>
           <ul className="compressor-benefits">
             <li>📝 Preserves original content and layout</li>
@@ -222,23 +263,26 @@ setConvertedFile(compressedODT);
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and odt file  </h2>
             <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+              <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              <li><Link to='/pdfextractor' className='btn' >PDF Page Extractor</Link></li>
+              <li><Link to='/pdfpageremover' className='btn' >PDF Page Remover</Link></li>
+              <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
             </div>
 
           </ul>
@@ -257,6 +301,8 @@ setConvertedFile(compressedODT);
               If your ODT file has embedded images, charts, or unnecessary formatting, it can become too bulky for quick sharing or uploading. Compressing it helps you keep things efficient.
             </p>
 
+
+
             <h3>💡 Benefits of Compressing ODT Files</h3>
             <ul>
               <li><strong>   📉 Smaller Size</strong> - Reduce large document size without quality loss</li>
@@ -264,6 +310,12 @@ setConvertedFile(compressedODT);
               <li><strong>   💾   Save Space</strong> - Keep your device or cloud storage tidy</li>
               <li><strong>📱 Easier Access</strong> - Open and edit documents more smoothly</li>
             </ul>
+            <h3>📦 Why Large ODT Files Can Be a Problem</h3>
+            <p>
+              Large OpenDocument files can be difficult to upload, share through email,
+              or store on limited devices. Compressing ODT files helps improve upload speed,
+              reduce storage usage, and simplify online sharing.
+            </p>
 
             <h3>⚙️ How Our ODT Compressor Works</h3>
             <p>
@@ -279,6 +331,18 @@ setConvertedFile(compressedODT);
               <li>🧹 Auto-delete after processing</li>
               <li> 🖥️Works on all platforms</li>
             </ul>
+
+            <h3>💻 Works on All Devices</h3>
+            <p>
+              Use the ODT compressor on Windows, Mac, Linux, Android, or iPhone devices.
+              The tool works in all modern browsers without installation.
+            </p>
+
+            <h3>☁️ Browser-Based ODT Compression</h3>
+            <p>
+              No need to install LibreOffice or additional software.
+              Compress ODT documents directly from your browser in seconds.
+            </p>
 
             <h3>📌Final Tip</h3>
             <p>
@@ -300,6 +364,22 @@ setConvertedFile(compressedODT);
             <h3>❓ What file formats are available after compression?</h3>
             <p>
               You can download the file as compressed `.odt` or as a `.odt.7z` archive for further space saving.
+            </p>
+
+            <h3>❓ Is this ODT compressor free?</h3>
+            <p>
+              Yes, you can compress ODT files online for free without registration.
+            </p>
+
+            <h3>❓ Can I compress LibreOffice files?</h3>
+            <p>
+              Yes, LibreOffice Writer ODT files are fully supported.
+            </p>
+
+            <h3>❓ Will image quality decrease?</h3>
+            <p>
+              Image optimization depends on the selected compression level.
+              Balanced compression preserves high visual quality.
             </p>
           </div>
         </section>

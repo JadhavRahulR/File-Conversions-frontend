@@ -13,10 +13,15 @@
   margin-bottom: 20px;
   color: #1565c0;
 }
+
 .compressor-container .compressing h2{
   color: #c2e0ff;
   letter-spacing: 3px;
   margin-bottom: 50px;
+}
+.compressor-page h3 {
+  color:#007acc ;
+  font-size: 20px;
 }
 
 .file-label {
@@ -518,4 +523,76 @@ h2{
 .unzipPagelink{
   padding: 0;
   margin: 0;
+}
+
+
+
+/* docx css for table  */
+.compression-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  margin-bottom: 25px;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+
+.compression-table thead {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+}
+
+.compression-table th {
+  padding: 16px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.compression-table td {
+  padding: 14px;
+  text-align: center;
+  font-size: 15px;
+  color: #333;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background 0.3s ease;
+}
+
+.compression-table tbody tr:hover td {
+  background: #f3f7ff;
+}
+
+.compression-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Reduction column highlight */
+.compression-table td:last-child {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .compression-table {
+    border-radius: 10px;
+  }
+
+  .compression-table th,
+  .compression-table td {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .compression-table th,
+  .compression-table td {
+    font-size: 13px;
+    padding: 10px 6px;
+  }
 }
