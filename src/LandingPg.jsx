@@ -14,14 +14,14 @@ export default function LandingPage() {
   return (
     <>
     <Helmet>
-        <title>F I L E - U N I V E R S - Free Online PDF Converter & File Compressor Tool</title>
+        <title>FileUnivers - Free Online PDF Converter & File Compressor Tool</title>
         <meta name="description" content="Free online file converter & compressor. Convert PDF, Word, Excel, images & more in seconds with FileUnivers “ fast, secure & easy-to-use tools." />
         <link rel="canonical" href="https://fileunivers.com/" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="file converter, file compressor, convert files online, compress files online, pdf converter, image to pdf, doc to pdf, zip extractor, pdf merger, folder to zip" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-         <meta property="og:title" content="Convert & Compress Files Online | FileUnivers Tools" />
+         <meta property="og:title" content="FileUnivers - Free Online PDF Converter & File Compressor" />
         <meta property="og:description" content="Use our complete toolset to convert and compress PDFs, DOCX, PPTX, Excel, images, and more in one place. Fast, free, and user-friendly." />
         <meta property="og:url" content="https://fileunivers.com" />
         <meta property="og:type" content="website" />
@@ -32,15 +32,16 @@ export default function LandingPage() {
       </Helmet>
       <ScrollToTop />
         <div className="landing-page">
-     <header className="hero">
-  <h1>Free & Secure Online File Converter - Convert PDF, Word, Excel & Images Instantly</h1>
-  <p>
-    Convert your files quickly and securely with FileUnivers. 
-    Our free online converter lets you turn PDFs, Word docs, Excel sheets, 
-    PowerPoint slides, and images into any format - no signup, no limits, just instant conversion.
-  </p>
-</header>
-
+  <header className="hero">
+    {/* Brand Name shamil kiya gaya H1 mein */}
+    <h1>FileUnivers - Free & Secure Online File Converter</h1>
+    <h2>Convert and Compress PDF, Word, Excel, Odt, Odp, Pptx, Csv, Md, Rtf & Images Instantly</h2>
+    <p>
+      Convert your files quickly and securely with <strong>FileUnivers</strong>. 
+      Our free online converter lets you turn PDFs, Word docs, Excel sheets, 
+      PowerPoint slides, and images into any format - no signup, no limits, just instant conversion.
+    </p>
+  </header>
 
 
       <section className="features">
@@ -130,7 +131,7 @@ export default function LandingPage() {
           <li><Link to="/zip-compressor" ><FeatureCard1 title="Convert File to Zip" image1="zip.png" /> </Link></li>
           <li><Link to="/zip-extractor" ><FeatureCard1 title="Extract Zip File " image1="unzip.png" /> </Link></li>
           <li><Link to="/favicon-generator" ><FeatureCard1 title="Favicon Generator" image1="Fav.png" /> </Link></li>
-          <li><Link to="renamefile" ><FeatureCard1 title="Rename Your File" image1="rename.png" /> </Link></li>
+          <li><Link to="/renamefile" ><FeatureCard1 title="Rename Your File" image1="rename.png" /> </Link></li>
           <li><Link to="/imageresizer" ><FeatureCard1 title="Image Resizer" image1="img.png" /> </Link></li>
           <li><Link to="/pdfpageremover" ><FeatureCard1 title="PDF Page Remover"  image1="pdf.png" /> </Link></li>
           <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>

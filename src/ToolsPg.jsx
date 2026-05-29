@@ -63,6 +63,21 @@ function ToolsPg() {
         <Link to="/favicon-generator" ><div className="toolcard">
           <p>Favicon Generator  </p>
         </div></Link>
+
+        <Link to="/renamefile" ><div className="toolcard">
+          <p>Change file name  </p>
+        </div></Link>
+
+        <Link to="/imageresizer" ><div className="toolcard">
+          <p>Image Resizer  </p>
+        </div></Link>
+        <Link to="/pdfextractor" ><div className="toolcard">
+          <p>Pdf Page Extractor  </p>
+        </div></Link>
+
+        <Link to="/pdfpageremover" ><div className="toolcard">
+          <p>Pdf Page Remover  </p>
+        </div></Link>
       </div>
     </div>
   )
