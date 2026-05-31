@@ -139,8 +139,8 @@ const DocxCompressor = () => {
           <label>Image Quality: {quality}</label>
           <input type="range" min="10" max="100" step="5" value={quality} onChange={(e) => setQuality(parseInt(e.target.value))} />
           <div className="slider-labels">
-            <span>   📉 Compress More</span>
-            <span> Compress Less</span>
+            <span>   📉 Compress Less</span>
+            <span> Compress More</span>
           </div>
         </div>
 

@@ -33,12 +33,12 @@ function PdfToWordConverter() {
     if (!selected) return;
 
     console.log("📄 File selected:", selected.name, selected.size, "bytes");
-    console.time("📤 File â†’ Ready to Convert");
+    console.time("📤 File †’ Ready to Convert");
 
     setFile(selected);
     setStatus("Convert");
 
-    console.timeEnd("📤 File â†’ Ready to Convert");
+    console.timeEnd("📤 File †’ Ready to Convert");
   };
 
 

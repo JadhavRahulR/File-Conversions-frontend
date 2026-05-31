@@ -10,7 +10,7 @@ export default function PdfUrlToPdf() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [downloadedFile, setDownloadedFile] = useState(null);
-  const [fileName, setFileName] = useState(""); // â† custom filename
+  const [fileName, setFileName] = useState(""); // † custom filename
 
   const handleDownload = async () => {
     if (!url) return alert("Please enter PDF URL");
@@ -105,7 +105,7 @@ export default function PdfUrlToPdf() {
               setDownloadedFile(null);
             }}
           >
-            âœ–
+            œ–
           </button>
         )}
       </div>

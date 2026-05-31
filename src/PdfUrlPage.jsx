@@ -152,7 +152,7 @@ export default function PdfUrlPage() {
               <img src="pdf.png" alt="" />
               <p>PDF</p>
             </div>
-            <p > â†’ </p>
+            <p > †’ </p>
 
             <div>
               <img src="link.png" alt="" />
