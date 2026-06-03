@@ -2,9 +2,9 @@
 // ----- PAGE REMOVER (With Preview) -----
 
 import React, { useState } from "react";
-import { PDFDocument } from "pdf-lib";
-import * as pdfjsLib from "pdfjs-dist";
-import pdfWorker from "pdfjs-dist/build/pdf.worker?url";
+// import { PDFDocument } from "pdf-lib";
+// import * as pdfjsLib from "pdfjs-dist";
+// import pdfWorker from "pdfjs-dist/build/pdf.worker?url";
 import { useRef, useEffect } from "react";
 import "./PdfTools.css";
 import { Helmet } from "react-helmet-async";
@@ -16,7 +16,7 @@ import SaveToDropbox from "./SaveToDropbox";
 import { Link } from "react-router-dom";
 
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+// pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
  const PdfPageRemove =() => {
   const previewRef = useRef(null);
@@ -65,10 +65,18 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
   const renderPdfPreviews = async (pdfFile) => {
     try {
       setStatus("Rendering previews...");
-      const buffer = await pdfFile.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
 
-      const previews = [];
+    const pdfjsLib = await import("pdfjs-dist");
+    const pdfWorker = (
+      await import("pdfjs-dist/build/pdf.worker?url")
+    ).default;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+
+    const buffer = await pdfFile.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+
+    const previews = [];
 
       for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);
@@ -114,6 +122,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
   // ---------- REMOVE SELECTED PAGES ----------
   const removePages = async () => {
     if (!file) return;
+
+     const { PDFDocument } = await import("pdf-lib");
 
     const bytes = await file.arrayBuffer();
     const pdfDoc = await PDFDocument.load(bytes);

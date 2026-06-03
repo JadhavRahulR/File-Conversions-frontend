@@ -1,8 +1,8 @@
 // File: PdfPageExtractor.jsx
 import React, { useState } from "react";
-import { PDFDocument } from "pdf-lib";
-import * as pdfjsLib from "pdfjs-dist";
-import pdfWorker from "pdfjs-dist/build/pdf.worker?url";
+// import { PDFDocument } from "pdf-lib";
+// import * as pdfjsLib from "pdfjs-dist";
+// import pdfWorker from "pdfjs-dist/build/pdf.worker?url";
 import "./PdfTools.css";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from "react-helmet-async";
@@ -13,7 +13,7 @@ import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 import { Link } from "react-router-dom";
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+// pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 const PdfPageExtractor = () => {
   const previewRef = useRef(null);
@@ -54,9 +54,15 @@ const PdfPageExtractor = () => {
   /* ---------- RENDER PREVIEWS ---------- */
   const renderPdfPreviews = async (pdfFile) => {
     try {
-      setStatus("rendering");
-      const buffer = await pdfFile.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+      const pdfjsLib = await import("pdfjs-dist");
+    const pdfWorker = (
+      await import("pdfjs-dist/build/pdf.worker?url")
+    ).default;
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+
+    const buffer = await pdfFile.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
 
       const previews = [];
 
@@ -107,6 +113,7 @@ const PdfPageExtractor = () => {
 
     try {
       setStatus("extracting");
+      const { PDFDocument } = await import("pdf-lib");
 
       const bytes = await file.arrayBuffer();
       const pdfDoc = await PDFDocument.load(bytes);
@@ -229,7 +236,7 @@ const PdfPageExtractor = () => {
           </>
         )}
 
-         {status && <p className="status" style={{'color':"white",'marginTop':"20px"}}>{status}</p>}
+        {status && <p className="status" style={{ 'color': "white", 'marginTop': "20px" }}>{status}</p>}
         {error && <p className="error">{error}</p>}
       </div>
 
@@ -315,7 +322,7 @@ const PdfPageExtractor = () => {
               <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
               <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
               <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-              
+
             </div>
           </ul>
           <h2>How PDF Page Extractor Works</h2>
