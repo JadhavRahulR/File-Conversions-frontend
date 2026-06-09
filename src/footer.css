@@ -50,7 +50,8 @@ footer{
 .toollinks a {
     margin: 10px;
     color: white;
-    /* border: 1px solid grey; */
+    text-decoration: none;
+    border-bottom: 1px solid grey;
     padding: 2px 10px;
     border-radius: 10px;
     letter-spacing: 2px;

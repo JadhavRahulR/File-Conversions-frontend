@@ -17,7 +17,10 @@ export default defineConfig(({ mode }) => ({
   },
 
   optimizeDeps: {
-    exclude: ["@jsquash/avif"],
+    exclude: ["@jsquash/avif",
+      "@ffmpeg/ffmpeg",
+      "@ffmpeg/util",
+      "@ffmpeg/core", ],
   },
 
   server: {
@@ -28,8 +31,8 @@ export default defineConfig(({ mode }) => ({
       mode === "development"
         ? {}
         : {
-            "Cross-Origin-Opener-Policy": "same-origin",
-            "Cross-Origin-Embedder-Policy": "require-corp",
-          },
+          "Cross-Origin-Opener-Policy": "same-origin",
+          "Cross-Origin-Embedder-Policy": "require-corp",
+        },
   },
 }));

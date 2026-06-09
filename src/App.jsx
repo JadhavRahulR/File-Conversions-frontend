@@ -249,6 +249,7 @@ const WebpToPngPage = lazy(() => import("./WebpToPngPage"));
 const WebpToJpgPage = lazy(() => import("./WebpToJpgPage"));
 const JpgToWebpPage = lazy(() => import("./JpgToWebpPage"));
 const AvifToPngPage = lazy(() => import("./AvifToPngPage"));
+const Mp3Joiner = lazy(() => import("./Mp3Joiner"));
 
 function App() {
   return (
@@ -324,6 +325,7 @@ function App() {
             <Route path="/webptopng" element={<WebpToPngPage />} />
             <Route path="/webptojpg" element={<WebpToJpgPage />} />
             <Route path="/jpgtowebp" element={<JpgToWebpPage />} />
+            <Route path="/mp3-joiner" element={<Mp3Joiner/>}/>
           </Routes>
         </Suspense>
       </div>
