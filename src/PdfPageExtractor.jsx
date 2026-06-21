@@ -53,50 +53,94 @@ const PdfPageExtractor = () => {
 
   /* ---------- RENDER PREVIEWS ---------- */
   const renderPdfPreviews = async (pdfFile) => {
-    try {
-      const pdfjsLib = await import("pdfjs-dist");
-    const pdfWorker = (
-      await import("pdfjs-dist/build/pdf.worker?url")
-    ).default;
+  try {
+    setStatus("loading . . .");
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+    // Load pdf.js only once
+    const pdfjsLib = await import("pdfjs-dist");
+    if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
+      const pdfWorker = (
+        await import("pdfjs-dist/build/pdf.worker?url")
+      ).default;
+      pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+    }
 
     const buffer = await pdfFile.arrayBuffer();
-    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
 
-      const previews = [];
+    const pdf = await pdfjsLib.getDocument({
+      data: buffer,
+      disableFontFace: true,
+      useSystemFonts: true,
+    }).promise;
 
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale: 1 });
-        const scale = Math.min(150 / viewport.width, 200 / viewport.height);
+    const previews = new Array(pdf.numPages);
 
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
+    // Process 4 pages simultaneously
+    const CONCURRENT = 12;
 
-        const scaledViewport = page.getViewport({ scale });
-        canvas.width = scaledViewport.width;
-        canvas.height = scaledViewport.height;
+    for (let start = 1; start <= pdf.numPages; start += CONCURRENT) {
+      const batch = [];
 
-        await page.render({
-          canvasContext: ctx,
-          viewport: scaledViewport,
-        }).promise;
+      for (
+        let pageNum = start;
+        pageNum < start + CONCURRENT && pageNum <= pdf.numPages;
+        pageNum++
+      ) {
+        batch.push(
+          (async () => {
+            const page = await pdf.getPage(pageNum);
 
-        previews.push({
-          pageNumber: i,
-          image: canvas.toDataURL("image/png"),
-        });
+            const viewport = page.getViewport({ scale: 1 });
+
+            const scale = Math.min(
+              150 / viewport.width,
+              200 / viewport.height
+            );
+
+            const scaledViewport = page.getViewport({ scale });
+
+            const canvas = document.createElement("canvas");
+            const ctx = canvas.getContext("2d", {
+              alpha: false,
+              willReadFrequently: false,
+            });
+
+            canvas.width = scaledViewport.width;
+            canvas.height = scaledViewport.height;
+
+            await page.render({
+              canvasContext: ctx,
+              viewport: scaledViewport,
+            }).promise;
+
+            const blob = await new Promise((resolve) =>
+              canvas.toBlob(resolve, "image/webp", 0.7)
+            );
+
+            previews[pageNum - 1] = {
+              pageNumber: pageNum,
+              image: URL.createObjectURL(blob),
+            };
+
+            canvas.width = 0;
+            canvas.height = 0;
+          })()
+        );
       }
 
-      setPagePreviews(previews);
-      setStatus("ready");
-    } catch (err) {
-      console.error(err);
-      setError("Failed to read PDF file");
-      setStatus("upload");
+      await Promise.all(batch);
+
+      // Progressive UI update
+      setPagePreviews([...previews.filter(Boolean)]);
     }
-  };
+
+    setStatus("ready");
+  } catch (err) {
+    console.error(err);
+    setError("Failed to read PDF file");
+    setStatus("upload");
+  }
+};
 
   /* ---------- SELECT PAGE ---------- */
   const togglePage = (pageNumber) => {
@@ -154,11 +198,22 @@ const PdfPageExtractor = () => {
   }, [status, downloadedFile]);
 
   /* ---------- SCROLL TO PREVIEW ---------- */
-  useEffect(() => {
-    if (pagePreviews.length > 0 && previewRef.current) {
-      previewRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [pagePreviews]);
+  const hasScrolled = useRef(false);
+ 
+ useEffect(() => {
+   if (
+     pagePreviews.length > 0 &&
+     previewRef.current &&
+     !hasScrolled.current
+   ) {
+     hasScrolled.current = true;
+ 
+     previewRef.current.scrollIntoView({
+       behavior: "smooth",
+       block: "start",
+     });
+   }
+ }, [pagePreviews]);
   return (
     <>
       <Helmet>

@@ -79,92 +79,92 @@ const RenameFile = () => {
 
 
         <script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://fileunivers.com",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Rename Files Online",
-        item: "https://fileunivers.com/renamefile",
-      },
-    ],
-  })}
-</script>
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://fileunivers.com",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Rename Files Online",
+                item: "https://fileunivers.com/renamefile",
+              },
+            ],
+          })}
+        </script>
 
-{/* WebApplication Schema */}
-<script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    name: "FileUnivers Rename File Tool",
-    url: "https://fileunivers.com/renamefile",
-    applicationCategory: "UtilitiesApplication",
-    operatingSystem: "Any",
-    browserRequirements: "Requires JavaScript",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  })}
-</script>
+        {/* WebApplication Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "FileUnivers Rename File Tool",
+            url: "https://fileunivers.com/renamefile",
+            applicationCategory: "UtilitiesApplication",
+            operatingSystem: "Any",
+            browserRequirements: "Requires JavaScript",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "USD",
+            },
+          })}
+        </script>
 
-<script type="application/ld+json">
-  {JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Can I rename files without changing the extension?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. Our tool keeps the original extension like .pdf, .docx, .jpg, or .zip while changing only the file name.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Is this file renaming tool free?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, FileUnivers Rename Tool is completely free and works directly in your browser.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Do files upload to a server?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "No. All renaming happens locally on your device for maximum privacy and security.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I rename PDF files online?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, you can rename PDF files instantly without changing file content or quality.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Can I rename image files like JPG or PNG?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes. The tool supports JPG, PNG, WEBP, TIFF, BMP, and many other image formats.",
-        },
-      },
-    ],
-  })}
-</script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Can I rename files without changing the extension?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Our tool keeps the original extension like .pdf, .docx, .jpg, or .zip while changing only the file name.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Is this file renaming tool free?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, FileUnivers Rename Tool is completely free and works directly in your browser.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Do files upload to a server?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "No. All renaming happens locally on your device for maximum privacy and security.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I rename PDF files online?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes, you can rename PDF files instantly without changing file content or quality.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I rename image files like JPG or PNG?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. The tool supports JPG, PNG, WEBP, TIFF, BMP, and many other image formats.",
+                },
+              },
+            ],
+          })}
+        </script>
 
       </Helmet>
 
@@ -282,26 +282,28 @@ const RenameFile = () => {
           <h2 style={{ marginBottom: "6px" }}>Also check other tools related to PDF and File Tools</h2>
           <div className="pdfpageslinks">
 
-          <ul>
-            <div className="unzipPagelink">
-              <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-              <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-              <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-              <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-              <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-              <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-              <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-              <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-              <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-              <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-              <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-              <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-              <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-              <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-              <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-              <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-            </div>
-          </ul>
+            <ul>
+              <div className="unzipPagelink">
+                <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
+                <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
+                <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+                <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+                <li><Link to='/pdfpageremover' className='btn' > PDF Page Extractor  </Link></li>
+                <li><Link to='/pdfextractor' className='btn' > PDF Page Remover </Link></li>
+                <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
+              </div>
+            </ul>
           </div>
           <section>
             <h2>Works on All Modern Browsers</h2>

@@ -8,6 +8,7 @@ import SaveToDropbox from "./SaveToDropbox";
 import DriveMediaInput from "./DriveMediaInput";
 import DropboxMediaFileInput from "./DropboxMediaFileInput";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 export default function Mp3Joiner() {
   const [files, setFiles] = useState([]);
@@ -460,7 +461,7 @@ export default function Mp3Joiner() {
   </p>
       <div className="mp3imageicon">
 
-      <img src="music-app.png" alt="not found"   />
+      <img src="music-app.png" alt="Mp3 music Icon"   />
       </div>
 
   <p>
@@ -508,6 +509,32 @@ export default function Mp3Joiner() {
     creating playlists, educational recordings, guided meditations,
     audiobooks, interviews, and long-form audio presentations.
   </p>
+
+   <h2 style={{ marginBottom: "4px" }}>Also Related PDF Conversion & Compression Tools </h2>
+              <div className="pdfpageslinks">
+  
+              <div className="unzipPagelink">
+                <ul>
+  
+                <li><Link to="/word-to-pdf" className='btn' >Word To PDF Converter </Link></li>
+                <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+                <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+                <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+                <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+                </ul>
+              </div>
+              </div>
+  
 
   <h2>Perfect for Podcasts and Voice Recordings</h2>
 

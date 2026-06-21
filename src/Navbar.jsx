@@ -25,11 +25,13 @@ function Navbar1() {
           <Link to="/pdf-compressor" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Compress PDF </Navbar.Toggle></Link>
           <Link to="/merge-pdf" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Merge PDF </Navbar.Toggle></Link>
           <NavLink to="/aboutus" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> About US </Navbar.Toggle></NavLink>
+          <NavLink to="/blog/BlogHome" className="pages" > <Navbar.Toggle aria-controls="basic-navbar-nav" className='hello'> Blogs </Navbar.Toggle></NavLink>
           <div className="displaynone">
               <NavLink to="/tools" className="pages">Tools </NavLink>
               <NavLink to="/pdf-compressor" className="pages"> Compress PDF </NavLink>
               <NavLink to="/merge-pdf" className="pages"> Merge PDFs </NavLink>
               <NavLink to="/aboutus" className="pages"  >About Us </NavLink>
+              <NavLink to="/blog/BlogHome" className="pages"  >Blogs </NavLink>
           </div>
             </Nav>
           </Navbar.Collapse>

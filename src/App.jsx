@@ -180,6 +180,10 @@ import "./UrlPages.css";
 import "./urltofile.css";
 import "./ZipCompressor.css";
 import "./ZipExtractor.css";
+import HowToConvertWordToPdf from "./blog/HowToConvertWordToPdf";
+import HowToConvertPdfToWord from "./blog/HowToConvertPdfToWord";
+import HowToJoinMp3File from "./blog/HowToJoinMp3File";
+// import BlogHome from "./blog/BlogHome";
 
 
 
@@ -250,11 +254,15 @@ const WebpToJpgPage = lazy(() => import("./WebpToJpgPage"));
 const JpgToWebpPage = lazy(() => import("./JpgToWebpPage"));
 const AvifToPngPage = lazy(() => import("./AvifToPngPage"));
 const Mp3Joiner = lazy(() => import("./Mp3Joiner"));
+const BlogHome = lazy(()=>import("./blog/BlogHome"))
+
+
 
 function App() {
   return (
     <div className="app-container">
       <Navbar1 />
+      
 
       <div className="main-content">
         <GlobalLoader />
@@ -264,6 +272,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/aboutus" element={<About />} />
+            <Route path="/blog/BlogHome"  element= {<BlogHome/>}/>
             <Route path="/tools" element={<ToolsPg />} />
 
             <Route path="/word-to-pdf" element={<WordToPdfConverter />} />
@@ -326,6 +335,11 @@ function App() {
             <Route path="/webptojpg" element={<WebpToJpgPage />} />
             <Route path="/jpgtowebp" element={<JpgToWebpPage />} />
             <Route path="/mp3-joiner" element={<Mp3Joiner/>}/>
+
+          <Route path='/blog/how-to-convert-word-to-pdf' element={<HowToConvertWordToPdf/>}/>            
+          <Route path='/blog/how-to-convert-pdf-to-word' element={<HowToConvertPdfToWord/>}/>            
+          <Route path='/blog/how-to-join-mp3-file' element={<HowToJoinMp3File/>}/>            
+
           </Routes>
         </Suspense>
       </div>

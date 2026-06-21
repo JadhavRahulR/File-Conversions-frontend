@@ -63,8 +63,9 @@ import { Link } from "react-router-dom";
 
   // ---------- RENDER PAGE PREVIEWS ----------
   const renderPdfPreviews = async (pdfFile) => {
-    try {
-      setStatus("Rendering previews...");
+  try {
+    setStatus("Rendering previews...");
+    setPagePreviews([]);
 
     const pdfjsLib = await import("pdfjs-dist");
     const pdfWorker = (
@@ -76,39 +77,85 @@ import { Link } from "react-router-dom";
     const buffer = await pdfFile.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
 
-    const previews = [];
+    const totalPages = pdf.numPages;
 
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const page = await pdf.getPage(i);
+    // Render one page
+    const renderPage = async (pageNumber) => {
+      const page = await pdf.getPage(pageNumber);
 
-        const viewport = page.getViewport({ scale: 1 });
-        const scale = Math.min(150 / viewport.width, 200 / viewport.height);
+      // Smaller thumbnails = much faster
+      const viewport = page.getViewport({ scale: 0.4 });
 
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
 
-        const scaledViewport = page.getViewport({ scale });
-        canvas.width = scaledViewport.width;
-        canvas.height = scaledViewport.height;
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
 
-        await page.render({
-          canvasContext: ctx,
-          viewport: scaledViewport,
-        }).promise;
+      await page.render({
+        canvasContext: ctx,
+        viewport,
+      }).promise;
 
-        previews.push({
-          pageNumber: i,
-          image: canvas.toDataURL("image/png"),
-        });
-      }
+      return {
+        pageNumber,
+        image: canvas.toDataURL("image/webp", 0.4), // smaller than PNG
+      };
+    };
 
-      setPagePreviews(previews);
-      setStatus("");
-    } catch (err) {
-      console.error(err);
-      setError("Could not read PDF");
+    // ---------- First 10 pages ----------
+    const firstBatch = Math.min(20, totalPages);
+
+    for (let i = 1; i <= firstBatch; i++) {
+      const preview = await renderPage(i);
+
+      setPagePreviews((prev) => [...prev, preview]);
     }
-  };
+
+    setStatus("Loading remaining pages...");
+
+    // ---------- Remaining pages ----------
+    const loadRemaining = async () => {
+  const BATCH_SIZE = 12;
+
+  console.time(`Batch Size ${BATCH_SIZE}`);
+
+  const start = performance.now();
+
+  for (let i = firstBatch + 1; i <= totalPages; i += BATCH_SIZE) {
+    const promises = [];
+
+    for (
+      let j = i;
+      j < Math.min(i + BATCH_SIZE, totalPages + 1);
+      j++
+    ) {
+      promises.push(renderPage(j));
+    }
+
+    const previews = await Promise.all(promises);
+
+    setPagePreviews(prev => [...prev, ...previews]);
+  }
+
+  const end = performance.now();
+
+  console.timeEnd(`Batch Size ${BATCH_SIZE}`);
+  console.log(`Total time: ${((end - start) / 1000).toFixed(2)} sec`);
+
+  setStatus("");
+};
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadRemaining);
+    } else {
+      setTimeout(loadRemaining, 100);
+    }
+  } catch (err) {
+    console.error(err);
+    setError("Could not read PDF");
+    setStatus("");
+  }
+};
 
   // ---------- SELECT / UNSELECT PAGE ----------
   const togglePage = (pageNumber) => {
@@ -166,15 +213,22 @@ import { Link } from "react-router-dom";
   };
 
   // For prew sroll up
-  useEffect(() => {
-    if (pagePreviews.length > 0 && previewRef.current) {
-      previewRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  }, [pagePreviews]);
+  const hasScrolled = useRef(false);
 
+useEffect(() => {
+  if (
+    pagePreviews.length > 0 &&
+    previewRef.current &&
+    !hasScrolled.current
+  ) {
+    hasScrolled.current = true;
+
+    previewRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+}, [pagePreviews]);
   return (
     <>
       <Helmet>
@@ -262,7 +316,7 @@ import { Link } from "react-router-dom";
           </div>
         )}
 
-        {status && <p className="status">{status}</p>}
+        {status && <p className="status" style={{ color: "white" }} >{status}</p>}
         {error && <p className="error">{error}</p>}
       </div>
       {/* PAGE PREVIEWS */}
