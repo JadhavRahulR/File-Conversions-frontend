@@ -183,6 +183,11 @@ import "./ZipExtractor.css";
 import HowToConvertWordToPdf from "./blog/HowToConvertWordToPdf";
 import HowToConvertPdfToWord from "./blog/HowToConvertPdfToWord";
 import HowToJoinMp3File from "./blog/HowToJoinMp3File";
+import HowToConvertOdtToPdf from "./blog/HowToConvertOdtToPdf";
+import HowToConvertPdfToOdt from "./blog/HowToConvertPdfToOdt";
+import HowToConvertTextToPdf from "./blog/HowToConvertTextToPdf";
+import HowToConvertPdfToText from "./blog/HowToConvertPdfToText";
+import NotFound from "./NotFound";
 // import BlogHome from "./blog/BlogHome";
 
 
@@ -338,8 +343,16 @@ function App() {
 
           <Route path='/blog/how-to-convert-word-to-pdf' element={<HowToConvertWordToPdf/>}/>            
           <Route path='/blog/how-to-convert-pdf-to-word' element={<HowToConvertPdfToWord/>}/>            
-          <Route path='/blog/how-to-join-mp3-file' element={<HowToJoinMp3File/>}/>            
+          <Route path='/blog/how-to-join-mp3-file' element={<HowToJoinMp3File/>}/>  
+          <Route path='/blog/how-to-convert-odt-to-pdf' element={<HowToConvertOdtToPdf/>}/>  
+          <Route path='/blog/how-to-convert-pdf-to-odt' element={<HowToConvertPdfToOdt/>}/>  
+          <Route path='/blog/how-to-convert-text-to-pdf' element={<HowToConvertTextToPdf/>}/>  
+          <Route path='/blog/how-to-convert-pdf-to-text' element={<HowToConvertPdfToText/>}/>  
+                    
 
+
+          {/* Page Not Link  */}
+          <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </div>

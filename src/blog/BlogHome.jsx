@@ -22,6 +22,30 @@ function BlogHome() {
         "Combine multiple MP3 files into a single audio track online.",
       slug: "/blog/how-to-join-mp3-file",
     },
+    {
+  title: "How to Convert ODT to PDF",
+  description:
+    "Convert ODT documents into high-quality PDF files quickly and easily.",
+  slug: "/blog/how-to-convert-odt-to-pdf",
+},
+{
+  title: "How to Convert PDF to ODT",
+  description:
+    "Convert PDF files into editable ODT documents in a few simple steps.",
+  slug: "/blog/how-to-convert-pdf-to-odt",
+},
+{
+  title: "How to Convert Text to PDF",
+  description:
+    "Convert plain text files into professional PDF documents online.",
+  slug: "/blog/how-to-convert-text-to-pdf",
+},
+{
+  title: "How to Convert PDF to Text",
+  description:
+    "Extract plain text from PDF files quickly and save it as a TXT document.",
+  slug: "/blog/how-to-convert-pdf-to-text",
+},
     
   ];
 

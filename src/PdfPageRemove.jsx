@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 
 // pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
- const PdfPageRemove =() => {
+const PdfPageRemove = () => {
   const previewRef = useRef(null);
   const [file, setFile] = useState(null);
   const [pagePreviews, setPagePreviews] = useState([]);
@@ -63,100 +63,110 @@ import { Link } from "react-router-dom";
 
   // ---------- RENDER PAGE PREVIEWS ----------
   const renderPdfPreviews = async (pdfFile) => {
-  try {
-    setStatus("Rendering previews...");
-    setPagePreviews([]);
+    try {
+      setStatus("Rendering previews...");
+      setPagePreviews([]);
 
-    const pdfjsLib = await import("pdfjs-dist");
-    const pdfWorker = (
-      await import("pdfjs-dist/build/pdf.worker?url")
-    ).default;
+      const pdfjsLib = await import("pdfjs-dist");
+      const pdfWorker = (
+        await import("pdfjs-dist/build/pdf.worker?url")
+      ).default;
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+      pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
-    const buffer = await pdfFile.arrayBuffer();
-    const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+      const buffer = await pdfFile.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
 
-    const totalPages = pdf.numPages;
+      const totalPages = pdf.numPages;
 
-    // Render one page
-    const renderPage = async (pageNumber) => {
-      const page = await pdf.getPage(pageNumber);
+      // Create placeholders instantly
+      const placeholders = Array.from({ length: totalPages }, (_, i) => ({
+        pageNumber: i + 1,
+        image: null,
+      }));
 
-      // Smaller thumbnails = much faster
-      const viewport = page.getViewport({ scale: 0.4 });
+      setPagePreviews(placeholders);
 
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+      // Render one page
+      const renderPage = async (pageNumber) => {
+        const page = await pdf.getPage(pageNumber);
 
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
+        const viewport = page.getViewport({ scale: 0.4 });
 
-      await page.render({
-        canvasContext: ctx,
-        viewport,
-      }).promise;
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
 
-      return {
-        pageNumber,
-        image: canvas.toDataURL("image/webp", 0.4), // smaller than PNG
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({
+          canvasContext: ctx,
+          viewport,
+        }).promise;
+
+        return {
+          pageNumber,
+          image: canvas.toDataURL("image/webp", 0.4),
+        };
       };
-    };
 
-    // ---------- First 10 pages ----------
-    const firstBatch = Math.min(20, totalPages);
+      // Replace placeholder with thumbnail
+      const updatePreview = (preview) => {
+        setPagePreviews((prev) =>
+          prev.map((p) =>
+            p.pageNumber === preview.pageNumber ? preview : p
+          )
+        );
+      };
 
-    for (let i = 1; i <= firstBatch; i++) {
-      const preview = await renderPage(i);
+      // ---------- First batch ----------
+      const firstBatch = Math.min(20, totalPages);
 
-      setPagePreviews((prev) => [...prev, preview]);
+      for (let i = 1; i <= firstBatch; i++) {
+        const preview = await renderPage(i);
+        updatePreview(preview);
+      }
+
+      setStatus("Loading remaining pages...");
+
+      // ---------- Remaining ----------
+      const loadRemaining = async () => {
+        const BATCH_SIZE = 12;
+
+        for (let i = firstBatch + 1; i <= totalPages; i += BATCH_SIZE) {
+          const promises = [];
+
+          for (
+            let j = i;
+            j < Math.min(i + BATCH_SIZE, totalPages + 1);
+            j++
+          ) {
+            promises.push(renderPage(j));
+          }
+
+          const previews = await Promise.all(promises);
+
+          previews.forEach(updatePreview);
+        }
+
+        setStatus("");
+      };
+
+      if (totalPages > firstBatch) {
+        if ("requestIdleCallback" in window) {
+          requestIdleCallback(loadRemaining);
+        } else {
+          setTimeout(loadRemaining, 100);
+        }
+      } else {
+        setStatus("");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Could not read PDF");
+      setStatus("");
     }
-
-    setStatus("Loading remaining pages...");
-
-    // ---------- Remaining pages ----------
-    const loadRemaining = async () => {
-  const BATCH_SIZE = 12;
-
-  console.time(`Batch Size ${BATCH_SIZE}`);
-
-  const start = performance.now();
-
-  for (let i = firstBatch + 1; i <= totalPages; i += BATCH_SIZE) {
-    const promises = [];
-
-    for (
-      let j = i;
-      j < Math.min(i + BATCH_SIZE, totalPages + 1);
-      j++
-    ) {
-      promises.push(renderPage(j));
-    }
-
-    const previews = await Promise.all(promises);
-
-    setPagePreviews(prev => [...prev, ...previews]);
-  }
-
-  const end = performance.now();
-
-  console.timeEnd(`Batch Size ${BATCH_SIZE}`);
-  console.log(`Total time: ${((end - start) / 1000).toFixed(2)} sec`);
-
-  setStatus("");
-};
-    if ("requestIdleCallback" in window) {
-      requestIdleCallback(loadRemaining);
-    } else {
-      setTimeout(loadRemaining, 100);
-    }
-  } catch (err) {
-    console.error(err);
-    setError("Could not read PDF");
-    setStatus("");
-  }
-};
-
+  };
   // ---------- SELECT / UNSELECT PAGE ----------
   const togglePage = (pageNumber) => {
     setSelectedPages((prev) =>
@@ -170,7 +180,7 @@ import { Link } from "react-router-dom";
   const removePages = async () => {
     if (!file) return;
 
-     const { PDFDocument } = await import("pdf-lib");
+    const { PDFDocument } = await import("pdf-lib");
 
     const bytes = await file.arrayBuffer();
     const pdfDoc = await PDFDocument.load(bytes);
@@ -215,20 +225,20 @@ import { Link } from "react-router-dom";
   // For prew sroll up
   const hasScrolled = useRef(false);
 
-useEffect(() => {
-  if (
-    pagePreviews.length > 0 &&
-    previewRef.current &&
-    !hasScrolled.current
-  ) {
-    hasScrolled.current = true;
+  useEffect(() => {
+    if (
+      pagePreviews.length > 0 &&
+      previewRef.current &&
+      !hasScrolled.current
+    ) {
+      hasScrolled.current = true;
 
-    previewRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
-}, [pagePreviews]);
+      previewRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [pagePreviews]);
   return (
     <>
       <Helmet>
@@ -335,12 +345,18 @@ useEffect(() => {
                 }
                 onClick={() => togglePage(p.pageNumber)}
               >
-                <img
-                  src={p.image}
-                  alt={`Page ${p.pageNumber}`}
-                  width={150}
-                  height={200}
-                />
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={`Page ${p.pageNumber}`}
+                    width={150}
+                    height={200}
+                  />
+                ) : (
+                  <div className="page-skeleton">
+                    Loading...
+                  </div>
+                )}
                 <span>Page {p.pageNumber}</span>
               </div>
             ))}

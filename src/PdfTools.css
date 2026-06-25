@@ -322,6 +322,34 @@ padding: 16px;
 }
 
 
+/* .page-skeleton {
+  width: 150px;
+  height: 200px;
+  background: #ececec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: #777;
+  font-size: 14px;
+} */
+
+.page-skeleton {
+  width: 150px;
+  height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f3f3f3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #888;
+  font-size: 14px;
+}
+
+
 @media (max-width: 600px) {
   .tool-title {
     font-size: 26px;

@@ -54,14 +54,17 @@ const PdfPageExtractor = () => {
   /* ---------- RENDER PREVIEWS ---------- */
   const renderPdfPreviews = async (pdfFile) => {
   try {
-    setStatus("loading . . .");
+    setStatus("Loading...");
+    setError("");
 
-    // Load pdf.js only once
+    // Load pdf.js once
     const pdfjsLib = await import("pdfjs-dist");
+
     if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
       const pdfWorker = (
         await import("pdfjs-dist/build/pdf.worker?url")
       ).default;
+
       pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
     }
 
@@ -73,17 +76,24 @@ const PdfPageExtractor = () => {
       useSystemFonts: true,
     }).promise;
 
-    const previews = new Array(pdf.numPages);
+    const totalPages = pdf.numPages;
 
-    // Process 4 pages simultaneously
+    // ✅ Show placeholders instantly
+    const placeholders = Array.from({ length: totalPages }, (_, i) => ({
+      pageNumber: i + 1,
+      image: null,
+    }));
+
+    setPagePreviews(placeholders);
+
     const CONCURRENT = 12;
 
-    for (let start = 1; start <= pdf.numPages; start += CONCURRENT) {
+    for (let start = 1; start <= totalPages; start += CONCURRENT) {
       const batch = [];
 
       for (
         let pageNum = start;
-        pageNum < start + CONCURRENT && pageNum <= pdf.numPages;
+        pageNum < start + CONCURRENT && pageNum <= totalPages;
         pageNum++
       ) {
         batch.push(
@@ -102,7 +112,6 @@ const PdfPageExtractor = () => {
             const canvas = document.createElement("canvas");
             const ctx = canvas.getContext("2d", {
               alpha: false,
-              willReadFrequently: false,
             });
 
             canvas.width = scaledViewport.width;
@@ -117,28 +126,34 @@ const PdfPageExtractor = () => {
               canvas.toBlob(resolve, "image/webp", 0.7)
             );
 
-            previews[pageNum - 1] = {
-              pageNumber: pageNum,
-              image: URL.createObjectURL(blob),
-            };
+            const image = URL.createObjectURL(blob);
 
             canvas.width = 0;
             canvas.height = 0;
+
+            // Replace only this page
+            setPagePreviews((prev) =>
+              prev.map((p) =>
+                p.pageNumber === pageNum
+                  ? {
+                      pageNumber: pageNum,
+                      image,
+                    }
+                  : p
+              )
+            );
           })()
         );
       }
 
       await Promise.all(batch);
-
-      // Progressive UI update
-      setPagePreviews([...previews.filter(Boolean)]);
     }
 
-    setStatus("ready");
+    setStatus("Ready");
   } catch (err) {
     console.error(err);
     setError("Failed to read PDF file");
-    setStatus("upload");
+    setStatus("Upload");
   }
 };
 
@@ -296,25 +311,37 @@ const PdfPageExtractor = () => {
       </div>
 
       {pagePreviews.length > 0 && (
-        <div className="pages-box" ref={previewRef}>
-          <h3>Select Pages to Extract</h3>
+  <div className="pages-box" ref={previewRef}>
+    <h3>Select Pages to Extract</h3>
 
-          <div className="pages-preview-grid">
-            {pagePreviews.map((p) => (
-              <div
-                key={p.pageNumber}
-                className={`page-preview ${selectedPages.includes(p.pageNumber) ? "active" : ""
-                  }`}
-                onClick={() => togglePage(p.pageNumber)}
-              >
-                <img src={p.image} alt={`Page ${p.pageNumber}`} />
-                <span>Page {p.pageNumber}</span>
-              </div>
-            ))}
-          </div>
+    <div className="pages-preview-grid">
+      {pagePreviews.map((p) => (
+        <div
+          key={p.pageNumber}
+          className={`page-preview ${
+            selectedPages.includes(p.pageNumber) ? "active" : ""
+          }`}
+          onClick={() => togglePage(p.pageNumber)}
+        >
+          {p.image ? (
+            <img
+              src={p.image}
+              alt={`Page ${p.pageNumber}`}
+              width={150}
+              height={200}
+            />
+          ) : (
+            <div className="page-skeleton">
+              <span>Loading...</span>
+            </div>
+          )}
+
+          <span>Page {p.pageNumber}</span>
         </div>
-      )}
-
+      ))}
+    </div>
+  </div>
+)}
       {pagePreviews.length > 0 && (
         <div className="action-buttons">
           <button

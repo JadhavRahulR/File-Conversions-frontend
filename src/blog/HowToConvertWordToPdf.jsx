@@ -1,10 +1,12 @@
 import React from 'react';
 import "./bloghome.css";
 import { Link } from 'react-router-dom';
+import ScrollToTop from '../ScrollToTop';
 
 const HowToConvertWordToPdf = () => {
     return (
         <>
+        <ScrollToTop/>
             <div className="blog-content">
                 <h1 className="blog-title">How to Convert Word to PDF</h1>
 
