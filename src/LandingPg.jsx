@@ -6,6 +6,7 @@ import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
 
 import LazyVideo from "./LazyVideo";
+import ProcessSection from "./ProcessSection";
 
 // import IntroVideo from "../src/assets/videos/Fileunivers-Introduction-Video.mp4";
 // import IntroPoster from "../src/assets/images/Fileunivers-intro-poster.png";
@@ -146,6 +147,8 @@ export default function LandingPage() {
            {/* <li><Link to="/webpagetopdf" ><FeatureCard title="web Page to PDF" image1="/Favicon.png" image2="pdf.png" /> </Link></li> */}
         </div>
       </section>
+
+      <ProcessSection/>
       <section className="faq-section">
         <h2>Frequently Asked Questions</h2>
 

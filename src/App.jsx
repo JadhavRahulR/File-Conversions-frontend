@@ -188,6 +188,9 @@ import HowToConvertPdfToOdt from "./blog/HowToConvertPdfToOdt";
 import HowToConvertTextToPdf from "./blog/HowToConvertTextToPdf";
 import HowToConvertPdfToText from "./blog/HowToConvertPdfToText";
 import NotFound from "./NotFound";
+import HowToConvertDocToOdt from "./blog/HowToConvertDocToOdt";
+import HowToConvertOdtToDoc from "./blog/HowToConvertOdtToDoc";
+import HowToConvertPptxToPdf from "./blog/HowToConvertPptxToPdf";
 // import BlogHome from "./blog/BlogHome";
 
 
@@ -348,6 +351,9 @@ function App() {
           <Route path='/blog/how-to-convert-pdf-to-odt' element={<HowToConvertPdfToOdt/>}/>  
           <Route path='/blog/how-to-convert-text-to-pdf' element={<HowToConvertTextToPdf/>}/>  
           <Route path='/blog/how-to-convert-pdf-to-text' element={<HowToConvertPdfToText/>}/>  
+          <Route path='/blog/how-to-convert-doc-to-odt' element={<HowToConvertDocToOdt/>}/>  
+          <Route path='/blog/how-to-convert-odt-to-doc' element={<HowToConvertOdtToDoc/>}/>  
+          <Route path='/blog/how-to-convert-pptx-to-pdf' element={<HowToConvertPptxToPdf/>}/>  
                     
 
 

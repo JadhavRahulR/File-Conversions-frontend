@@ -46,6 +46,27 @@ function BlogHome() {
     "Extract plain text from PDF files quickly and save it as a TXT document.",
   slug: "/blog/how-to-convert-pdf-to-text",
 },
+
+{
+  title: "How to Convert Doc to Odt",
+  description:
+    "Learn how to convert DOC files to ODT format quickly while preserving text, formatting, images, and document quality.",
+  slug: "/blog/how-to-convert-doc-to-odt",
+},
+{
+  title: "How to Convert Odt to Doc",
+  description:
+    "Convert ODT files to DOC format online for free while maintaining formatting, fonts, images, and document compatibility.",
+  slug: "/blog/how-to-convert-odt-to-doc",
+},
+{
+  title: "How to Convert Pptx to Pdf",
+  description:
+    "Convert PPTX presentations to PDF online in seconds while preserving slide layouts, fonts, images, and formatting.",
+  slug: "/blog/how-to-convert-pptx-to-pdf",
+},
+
+
     
   ];
 

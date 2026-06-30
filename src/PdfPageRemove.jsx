@@ -63,110 +63,195 @@ const PdfPageRemove = () => {
 
   // ---------- RENDER PAGE PREVIEWS ----------
   const renderPdfPreviews = async (pdfFile) => {
-    try {
-      setStatus("Rendering previews...");
-      setPagePreviews([]);
+  let pdf = null;
 
-      const pdfjsLib = await import("pdfjs-dist");
+  try {
+    setStatus("Rendering previews...");
+    setError("");
+
+    const pdfjsLib = await import("pdfjs-dist");
+
+    if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
       const pdfWorker = (
         await import("pdfjs-dist/build/pdf.worker?url")
       ).default;
 
       pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+    }
 
-      const buffer = await pdfFile.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
+    const buffer = await pdfFile.arrayBuffer();
 
-      const totalPages = pdf.numPages;
+    pdf = await pdfjsLib.getDocument({
+      data: buffer,
+      disableFontFace: true,
+      useSystemFonts: true,
+    }).promise;
 
-      // Create placeholders instantly
-      const placeholders = Array.from({ length: totalPages }, (_, i) => ({
+    const totalPages = pdf.numPages;
+
+    setPagePreviews(
+      Array.from({ length: totalPages }, (_, i) => ({
         pageNumber: i + 1,
         image: null,
-      }));
+      }))
+    );
 
-      setPagePreviews(placeholders);
+    const isMobile = window.innerWidth < 768;
 
-      // Render one page
-      const renderPage = async (pageNumber) => {
-        const page = await pdf.getPage(pageNumber);
+    const FIRST_BATCH = isMobile ? 8 : 20;
+    const BATCH_SIZE = isMobile ? 1 : 4;
 
-        const viewport = page.getViewport({ scale: 0.4 });
+    const MAX_WIDTH = isMobile ? 100 : 150;
+    const MAX_HEIGHT = isMobile ? 140 : 200;
+
+    const renderPage = async (pageNumber) => {
+      let page = null;
+
+      try {
+        page = await pdf.getPage(pageNumber);
+
+        const viewport = page.getViewport({ scale: 1 });
+
+        const scale = Math.min(
+          MAX_WIDTH / viewport.width,
+          MAX_HEIGHT / viewport.height
+        );
+
+        const scaledViewport = page.getViewport({ scale });
 
         const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
 
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+        const ctx = canvas.getContext("2d", {
+          alpha: false,
+        });
+
+        canvas.width = scaledViewport.width;
+        canvas.height = scaledViewport.height;
 
         await page.render({
           canvasContext: ctx,
-          viewport,
+          viewport: scaledViewport,
         }).promise;
+
+        const blob = await new Promise((resolve) =>
+          canvas.toBlob(resolve, "image/webp", 0.7)
+        );
+
+        const image = blob ? URL.createObjectURL(blob) : null;
+
+        ctx?.clearRect(0, 0, canvas.width, canvas.height);
+
+        canvas.width = 0;
+        canvas.height = 0;
+
+        page.cleanup();
 
         return {
           pageNumber,
-          image: canvas.toDataURL("image/webp", 0.4),
+          image,
         };
-      };
+      } catch (err) {
+        console.error(`Failed rendering page ${pageNumber}`, err);
 
-      // Replace placeholder with thumbnail
-      const updatePreview = (preview) => {
-        setPagePreviews((prev) =>
-          prev.map((p) =>
-            p.pageNumber === preview.pageNumber ? preview : p
-          )
-        );
-      };
-
-      // ---------- First batch ----------
-      const firstBatch = Math.min(20, totalPages);
-
-      for (let i = 1; i <= firstBatch; i++) {
-        const preview = await renderPage(i);
-        updatePreview(preview);
+        return {
+          pageNumber,
+          image: null,
+        };
       }
+    };
 
-      setStatus("Loading remaining pages...");
+    const updateBatch = (results) => {
+      const map = new Map(
+        results.map((item) => [item.pageNumber, item.image])
+      );
 
-      // ---------- Remaining ----------
-      const loadRemaining = async () => {
-        const BATCH_SIZE = 12;
+      setPagePreviews((prev) =>
+        prev.map((page) =>
+          map.has(page.pageNumber)
+            ? {
+                ...page,
+                image: map.get(page.pageNumber),
+              }
+            : page
+        )
+      );
+    };
 
-        for (let i = firstBatch + 1; i <= totalPages; i += BATCH_SIZE) {
-          const promises = [];
+    // Render first batch immediately
+    for (let i = 1; i <= Math.min(FIRST_BATCH, totalPages); i++) {
+      const preview = await renderPage(i);
+      updateBatch([preview]);
+    }
+
+    const loadRemaining = async () => {
+      try {
+        if (totalPages > FIRST_BATCH) {
+          setStatus("Loading remaining pages...");
+        }
+
+        for (
+          let start = FIRST_BATCH + 1;
+          start <= totalPages;
+          start += BATCH_SIZE
+        ) {
+          const batch = [];
 
           for (
-            let j = i;
-            j < Math.min(i + BATCH_SIZE, totalPages + 1);
-            j++
+            let page = start;
+            page < start + BATCH_SIZE && page <= totalPages;
+            page++
           ) {
-            promises.push(renderPage(j));
+            batch.push(renderPage(page));
           }
 
-          const previews = await Promise.all(promises);
+          const results = await Promise.all(batch);
 
-          previews.forEach(updatePreview);
+          updateBatch(results);
+
+          // Allow browser to breathe
+          await new Promise((resolve) => setTimeout(resolve, 0));
         }
-
+      } catch (err) {
+        console.error("Background rendering failed", err);
+      } finally {
         setStatus("");
-      };
 
-      if (totalPages > firstBatch) {
-        if ("requestIdleCallback" in window) {
-          requestIdleCallback(loadRemaining);
-        } else {
-          setTimeout(loadRemaining, 100);
+        if (pdf) {
+          try {
+            pdf.destroy();
+          } catch (e) {
+            console.error(e);
+          }
         }
-      } else {
-        setStatus("");
       }
-    } catch (err) {
-      console.error(err);
-      setError("Could not read PDF");
-      setStatus("");
+    };
+
+    if (totalPages > FIRST_BATCH) {
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(async () => {
+          await loadRemaining();
+        });
+      } else {
+        setTimeout(async () => {
+          await loadRemaining();
+        }, 50);
+      }
+    } else {
+      await loadRemaining();
     }
-  };
+  } catch (err) {
+    console.error(err);
+    setError("Could not read PDF");
+    setStatus("");
+
+    if (pdf) {
+      try {
+        pdf.destroy();
+      } catch {}
+    }
+  }
+};
+
   // ---------- SELECT / UNSELECT PAGE ----------
   const togglePage = (pageNumber) => {
     setSelectedPages((prev) =>
@@ -221,6 +306,24 @@ const PdfPageRemove = () => {
     link.download = filename;
     link.click();
   };
+
+
+  // for pdf page thumbnail
+  const pagePreviewsRef = useRef([]);
+
+useEffect(() => {
+  pagePreviewsRef.current = pagePreviews;
+}, [pagePreviews]);
+
+useEffect(() => {
+  return () => {
+    pagePreviewsRef.current.forEach((page) => {
+      if (page.image) {
+        URL.revokeObjectURL(page.image);
+      }
+    });
+  };
+}, []);
 
   // For prew sroll up
   const hasScrolled = useRef(false);

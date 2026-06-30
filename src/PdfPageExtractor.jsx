@@ -12,6 +12,7 @@ import { useRef, useEffect } from "react";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 import { Link } from "react-router-dom";
+import ProcessSection from "./ProcessSection";
 
 // pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
@@ -52,12 +53,14 @@ const PdfPageExtractor = () => {
   };
 
   /* ---------- RENDER PREVIEWS ---------- */
-  const renderPdfPreviews = async (pdfFile) => {
+  
+const renderPdfPreviews = async (pdfFile) => {
+  let pdf = null;
+
   try {
     setStatus("Loading...");
     setError("");
 
-    // Load pdf.js once
     const pdfjsLib = await import("pdfjs-dist");
 
     if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
@@ -70,7 +73,7 @@ const PdfPageExtractor = () => {
 
     const buffer = await pdfFile.arrayBuffer();
 
-    const pdf = await pdfjsLib.getDocument({
+    pdf = await pdfjsLib.getDocument({
       data: buffer,
       disableFontFace: true,
       useSystemFonts: true,
@@ -78,15 +81,21 @@ const PdfPageExtractor = () => {
 
     const totalPages = pdf.numPages;
 
-    // ✅ Show placeholders instantly
-    const placeholders = Array.from({ length: totalPages }, (_, i) => ({
-      pageNumber: i + 1,
-      image: null,
-    }));
+    // Placeholders
+    setPagePreviews(
+      Array.from({ length: totalPages }, (_, i) => ({
+        pageNumber: i + 1,
+        image: null,
+      }))
+    );
 
-    setPagePreviews(placeholders);
+    // Mobile gets much lower concurrency
+    const isMobile = window.innerWidth < 768;
+    const CONCURRENT = isMobile ? 1 : 4;
 
-    const CONCURRENT = 12;
+    // Smaller thumbnails on mobile
+    const MAX_WIDTH = isMobile ? 100 : 150;
+    const MAX_HEIGHT = isMobile ? 140 : 200;
 
     for (let start = 1; start <= totalPages; start += CONCURRENT) {
       const batch = [];
@@ -98,55 +107,79 @@ const PdfPageExtractor = () => {
       ) {
         batch.push(
           (async () => {
-            const page = await pdf.getPage(pageNum);
+            try {
+              const page = await pdf.getPage(pageNum);
 
-            const viewport = page.getViewport({ scale: 1 });
+              const viewport = page.getViewport({ scale: 1 });
 
-            const scale = Math.min(
-              150 / viewport.width,
-              200 / viewport.height
-            );
+              const scale = Math.min(
+                MAX_WIDTH / viewport.width,
+                MAX_HEIGHT / viewport.height
+              );
 
-            const scaledViewport = page.getViewport({ scale });
+              const scaledViewport = page.getViewport({ scale });
 
-            const canvas = document.createElement("canvas");
-            const ctx = canvas.getContext("2d", {
-              alpha: false,
-            });
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d", {
+                alpha: false,
+              });
 
-            canvas.width = scaledViewport.width;
-            canvas.height = scaledViewport.height;
+              canvas.width = scaledViewport.width;
+              canvas.height = scaledViewport.height;
 
-            await page.render({
-              canvasContext: ctx,
-              viewport: scaledViewport,
-            }).promise;
+              await page.render({
+                canvasContext: ctx,
+                viewport: scaledViewport,
+              }).promise;
 
-            const blob = await new Promise((resolve) =>
-              canvas.toBlob(resolve, "image/webp", 0.7)
-            );
+              const blob = await new Promise((resolve) =>
+                canvas.toBlob(resolve, "image/webp", 0.7)
+              );
 
-            const image = URL.createObjectURL(blob);
+              const image = blob ? URL.createObjectURL(blob) : null;
 
-            canvas.width = 0;
-            canvas.height = 0;
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              canvas.width = 0;
+              canvas.height = 0;
 
-            // Replace only this page
-            setPagePreviews((prev) =>
-              prev.map((p) =>
-                p.pageNumber === pageNum
-                  ? {
-                      pageNumber: pageNum,
-                      image,
-                    }
-                  : p
-              )
-            );
+              page.cleanup();
+
+              return {
+                pageNumber: pageNum,
+                image,
+              };
+            } catch (err) {
+              console.error("Failed page:", pageNum, err);
+
+              return {
+                pageNumber: pageNum,
+                image: null,
+              };
+            }
           })()
         );
       }
 
-      await Promise.all(batch);
+      const results = await Promise.all(batch);
+
+      // One React render per batch
+      setPagePreviews((prev) => {
+        const map = new Map(
+          results.map((item) => [item.pageNumber, item.image])
+        );
+
+        return prev.map((page) =>
+          map.has(page.pageNumber)
+            ? {
+                ...page,
+                image: map.get(page.pageNumber),
+              }
+            : page
+        );
+      });
+
+      // Give the browser a chance to breathe
+      await new Promise((r) => setTimeout(r, 0));
     }
 
     setStatus("Ready");
@@ -154,8 +187,16 @@ const PdfPageExtractor = () => {
     console.error(err);
     setError("Failed to read PDF file");
     setStatus("Upload");
+  } finally {
+    if (pdf) {
+      try {
+        pdf.destroy();
+      } catch {}
+    }
   }
 };
+
+
 
   /* ---------- SELECT PAGE ---------- */
   const togglePage = (pageNumber) => {
@@ -211,6 +252,24 @@ const PdfPageExtractor = () => {
       URL.revokeObjectURL(url);
     }
   }, [status, downloadedFile]);
+
+
+  // this is for pdf thumbnails
+  const pagePreviewsRef = useRef([]);
+
+useEffect(() => {
+  pagePreviewsRef.current = pagePreviews;
+}, [pagePreviews]);
+
+useEffect(() => {
+  return () => {
+    pagePreviewsRef.current.forEach((page) => {
+      if (page.image) {
+        URL.revokeObjectURL(page.image);
+      }
+    });
+  };
+}, []);
 
   /* ---------- SCROLL TO PREVIEW ---------- */
   const hasScrolled = useRef(false);
@@ -407,6 +466,8 @@ const PdfPageExtractor = () => {
 
             </div>
           </ul>
+
+          <ProcessSection/>
           <h2>How PDF Page Extractor Works</h2>
           <p>
             Using the PDF Page Extractor is simple and straightforward. First,
