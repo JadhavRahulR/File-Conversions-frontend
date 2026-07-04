@@ -191,6 +191,12 @@ import NotFound from "./NotFound";
 import HowToConvertDocToOdt from "./blog/HowToConvertDocToOdt";
 import HowToConvertOdtToDoc from "./blog/HowToConvertOdtToDoc";
 import HowToConvertPptxToPdf from "./blog/HowToConvertPptxToPdf";
+import HowToConvertPdfToPptx from "./blog/HowToConvertPdfToPptx";
+import HowToConvertPptxToOdp from "./blog/HowToConvertPptxToOdp";
+import HowToConvertOdpToPptx from "./blog/HowToConvertOdpToPptx";
+import HowToConvertRtfToPdf from "./blog/HowToConvertRtfToPdf";
+import HowToConvertPdfToRtf from "./blog/HowToConvertPdfToRtf";
+import HowToConvertHtmlToPdf from "./blog/HowToConvertHtmlToPdf";
 // import BlogHome from "./blog/BlogHome";
 
 
@@ -354,6 +360,12 @@ function App() {
           <Route path='/blog/how-to-convert-doc-to-odt' element={<HowToConvertDocToOdt/>}/>  
           <Route path='/blog/how-to-convert-odt-to-doc' element={<HowToConvertOdtToDoc/>}/>  
           <Route path='/blog/how-to-convert-pptx-to-pdf' element={<HowToConvertPptxToPdf/>}/>  
+          <Route path='/blog/how-to-convert-pdf-to-pptx' element={<HowToConvertPdfToPptx/>}/>  
+          <Route path='/blog/how-to-convert-pptx-to-odp' element={<HowToConvertPptxToOdp/>}/>  
+          <Route path='/blog/how-to-convert-odp-to-pptx' element={<HowToConvertOdpToPptx/>}/>  
+          <Route path='/blog/how-to-convert-rtf-to-pdf' element={<HowToConvertRtfToPdf/>}/>  
+          <Route path='/blog/how-to-convert-pdf-to-rtf' element={<HowToConvertPdfToRtf/>}/>  
+          <Route path='/blog/how-to-convert-html-to-pdf' element={<HowToConvertHtmlToPdf/>}/>  
                     
 
 

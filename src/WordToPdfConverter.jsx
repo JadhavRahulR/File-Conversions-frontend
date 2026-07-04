@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import ProcessSection from './ProcessSection';
 // import IntroVideo from "../src/assets/videos/how to convert  word to pdf .mp4";
 // import IntroPoster from "../src/assets/images/Word-to-pdf-conversion-poster.png";
 
@@ -180,6 +181,8 @@ function WordToPdfConverter() {
             <li>🆓 Totally free, forever.</li>
           </ul>
         </div>
+
+        <ProcessSection/>
 
         <div className="converter-section">
           <h2>📁 Supported Formats</h2>

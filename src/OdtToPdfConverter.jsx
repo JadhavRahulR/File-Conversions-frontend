@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import ProcessSection from './ProcessSection';
 
 // import IntroVideo from "../src/assets/videos/how to convert odt to pdf.mp4"
 // import IntroPoster from "../src/assets/images/odt to pdf poster.png";
@@ -166,6 +167,7 @@ const OdtToPdfConverter = () => {
                No software installation, no sign-up, and no watermark- just upload your .odt file and download a perfectly formatted PDF in seconds. Whether you’re a student, writer, or professional, this tool helps you save and share your ODT documents as secure, print-ready PDFs with just one click.'
             />
           </section>
+          <ProcessSection/>
           <div className="converter-section">
             <h2>🔒Why Use Our ODT to PDF Converter?</h2>
             <ul>

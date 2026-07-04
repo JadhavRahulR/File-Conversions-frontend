@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import ProcessSection from './ProcessSection';
 // import IntroVideo from "../src/assets/videos/how to convert pdf to odt.mp4";
 // import IntroPoster from "../src/assets/images/pdf to odt poster.png";
 
@@ -169,6 +170,7 @@ setConvertedFile(convertedFile);
               description='Easily convert your PDF files into editable ODT documents using this free online converter!.No registration- just upload your PDF, click "Upload”, and get your .odt file in seconds. Perfect for editing PDFs in OpenOffice or LibreOffice while keeping your fonts and formatting exactly the same.'
             />
           </section>
+          <ProcessSection/>
           <div className="converter-section">
             <h2>🔒Why Use Our PDF to ODT Converter?</h2>
             <ul>

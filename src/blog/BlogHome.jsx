@@ -65,6 +65,42 @@ function BlogHome() {
     "Convert PPTX presentations to PDF online in seconds while preserving slide layouts, fonts, images, and formatting.",
   slug: "/blog/how-to-convert-pptx-to-pdf",
 },
+{
+  title: "How to Convert PDF to PPTX",
+  description:
+    "Convert PDF files to editable PPTX presentations online while preserving text, images, layouts, and formatting.",
+  slug: "/blog/how-to-convert-pdf-to-pptx",
+},
+{
+  title: "How to Convert PPTX to ODP",
+  description:
+    "Convert PPTX presentations to ODP format online while maintaining slide layouts, fonts, images, and presentation quality.",
+  slug: "/blog/how-to-convert-pptx-to-odp",
+},
+{
+  title: "How to Convert ODP to PPTX",
+  description:
+    "Convert ODP presentations to PPTX online with accurate formatting, images, animations, and slide layouts preserved.",
+  slug: "/blog/how-to-convert-odp-to-pptx",
+},
+{
+  title: "How to Convert RTF to PDF",
+  description:
+    "Convert RTF documents to PDF online while preserving fonts, formatting, images, and document structure.",
+  slug: "/blog/how-to-convert-rtf-to-pdf",
+},
+{
+  title: "How to Convert PDF to RTF",
+  description:
+    "Convert PDF files to editable RTF documents online while retaining text formatting, images, and layout whenever possible.",
+  slug: "/blog/how-to-convert-pdf-to-rtf",
+},
+{
+  title: "How to Convert HTML to PDF",
+  description:
+    "Convert HTML files or web pages to PDF online while preserving styles, images, links, and page formatting.",
+  slug: "/blog/how-to-convert-html-to-pdf",
+},
 
 
     

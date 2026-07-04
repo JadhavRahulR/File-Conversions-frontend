@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import ProcessSection from './ProcessSection';
 // import IntroVideo from "../src/assets/videos/how to convert pdf to word.mp4"
 // import IntroPoster from "../src/assets/images/pdf to word poster .png";
 
@@ -199,6 +200,8 @@ setConvertedFile(convertedFile);
               <li>🆓 100% free, unlimited conversions.</li>
             </ul>
           </div>
+
+          <ProcessSection/>
           <div className="converterImg">
             <img src="pdf.png" alt="Pdf Img" className='ConverterImgone' />
             <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
