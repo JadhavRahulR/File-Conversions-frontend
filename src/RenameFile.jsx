@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import ProcessSection from "./ProcessSection";
 // import IntroVideo from "../src/assets/videos/how to rename your files.mp4";
 // import IntroPoster from "../src/assets/images/Rename your files poster.png";
 
@@ -263,6 +264,8 @@ const RenameFile = () => {
             <li>🚀 Click <strong>Rename & Download</strong></li>
             <li>   ⬇️ Instantly get your file with the new name</li>
           </ol>
+
+          <ProcessSection/>
           <section>
             <LazyVideo
               youtubeId="saHvQ8nOgwI"
