@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import ProcessSection from "./ProcessSection"
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -564,7 +565,7 @@ const CsvCompressor = () => {
             <div className="fileStats">
               <p>
                 📄 File:
-                <strong> {file.name}</strong>
+                <strong className='filenametitle'> {file.name}</strong>
               </p>
               <p>
                 📦 Original Size:
@@ -660,7 +661,33 @@ const CsvCompressor = () => {
       <section>
         <div className="compressor-page">
 
-          <section>
+          <h2 className="compressor-heading">Compress CSV File Online</h2>
+          <p className="compressor-description">
+            Quickly reduce the size of your CSV files without altering the data. Ideal for large spreadsheet exports or data backups.
+            Our online CSV compression tool uses smart optimization to reduce file size while keeping every value, column, and format intact. Whether you’re compressing large data files, reports, or analytics sheets, this tool ensures accurate and safe results every time. 100% free, browser-based, and secure- works on all devices. Start compressing your CSV files now with fileunivers.com and make your data lighter, faster, and easier to store or share.
+          </p>
+
+          <div className="converterImg">
+            <div style={{ textAlign: "center" }}>
+              <img src="compression.png" alt="Arrow Symbol" className='ConverterArrowImg' />
+              <p>Compress</p>
+            </div>
+            <div >
+              <img src="csv.png" alt="Pdf Img" className='ConverterImgtwo' />
+              <p style={{ textAlign: "center" }}>CSV</p>
+            </div>
+          </div>
+
+          <h2 className="compressor-subheading">How to Compress a CSV File?</h2>
+          <ol className="compressor-steps">
+            <li>   📂 Upload or drag & drop your <code>.csv</code> file</li>
+            <li>⚙️ Choose your preferred compression level</li>
+            <li>🚀 Click <strong>Compress</strong> to process the file</li>
+            <li>   ⬇️ Auto Download the compressed <code>.csv</code> file</li>
+          </ol>
+
+
+           <section>
             {/* ================================= */}
             {/* COMPRESSION INFO */}
             {/* ================================= */}
@@ -734,34 +761,11 @@ const CsvCompressor = () => {
             </div>
           </section>
 
+          <section>
+            <ProcessSection/>
+          </section>
 
-
-
-          <h2 className="compressor-heading">Compress CSV File Online</h2>
-          <p className="compressor-description">
-            Quickly reduce the size of your CSV files without altering the data. Ideal for large spreadsheet exports or data backups.
-            Our online CSV compression tool uses smart optimization to reduce file size while keeping every value, column, and format intact. Whether you’re compressing large data files, reports, or analytics sheets, this tool ensures accurate and safe results every time. 100% free, browser-based, and secure- works on all devices. Start compressing your CSV files now with fileunivers.com and make your data lighter, faster, and easier to store or share.
-          </p>
-
-          <div className="converterImg">
-            <div style={{ textAlign: "center" }}>
-              <img src="compression.png" alt="Arrow Symbol" className='ConverterArrowImg' />
-              <p>Compress</p>
-            </div>
-            <div >
-              <img src="csv.png" alt="Pdf Img" className='ConverterImgtwo' />
-              <p style={{ textAlign: "center" }}>CSV</p>
-            </div>
-          </div>
-
-          <h2 className="compressor-subheading">How to Compress a CSV File?</h2>
-          <ol className="compressor-steps">
-            <li>   📂 Upload or drag & drop your <code>.csv</code> file</li>
-            <li>⚙️ Choose your preferred compression level</li>
-            <li>🚀 Click <strong>Compress</strong> to process the file</li>
-            <li>   ⬇️ Auto Download the compressed <code>.csv</code> file</li>
-          </ol>
-
+          
           <section>
             <div className="cloudSaveInfo">
 

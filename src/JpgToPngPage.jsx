@@ -8,205 +8,276 @@ import { Helmet } from "react-helmet-async";
 
 import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
+import DriveMediaInput from "./DriveMediaInput";
+import DropboxMediaFileInput from "./DropboxMediaFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 import { Link } from "react-router-dom";
 
 export default function JpgToPngPage() {
-    const [files, setFiles] = useState([]);
-    const [processing, setProcessing] = useState(false);
-    const [previewUrl, setPreviewUrl] = useState(null);
-    const [convertedFile, setConvertedFile] = useState(null);
-    const [status, setStatus] = useState("");
+  const [files, setFiles] = useState([]);
+  const [mode, setMode] = useState("single"); // "single" | "multiple"
+  const [processing, setProcessing] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState(null);
+  const [convertedFile, setConvertedFile] = useState(null);
+  const [status, setStatus] = useState("");
 
-    /* ================= file handlers ================= */
+  /* ================= mode switch ================= */
 
-    const handleDropzoneFile = (input) => {
-        if (input?.target?.files) {
-            const selected = Array.from(input.target.files);
-            const jpgFiles = selected.filter(
-                (f) => f.type === "image/jpeg"
-            );
-            if (!jpgFiles.length) return;
+  const handleModeChange = (newMode) => {
+    setMode(newMode);
+    setFiles([]);
+    setPreviewUrl(null);
+    setConvertedFile(null);
+  };
 
-            setFiles((p) => [...p, ...jpgFiles]);
-            setPreviewUrl(URL.createObjectURL(jpgFiles[0]));
-            return;
-        }
+  /* ================= file handlers ================= */
 
-        if (input instanceof File) {
-            if (input.type !== "image/jpeg") return;
-            setFiles((p) => [...p, input]);
-            setPreviewUrl(URL.createObjectURL(input));
-        }
-    };
+  const handleDropzoneFile = (input) => {
+    if (input?.target?.files) {
+      const selected = Array.from(input.target.files);
+      const jpgFiles = selected.filter(
+        (f) => f.type === "image/jpeg"
+      );
+      if (!jpgFiles.length) return;
 
-    const handleExternalFilePick = async (picked) => {
-        const pickedFiles = Array.isArray(picked) ? picked : [picked];
-        const normalized = [];
+      if (mode === "single") {
+        setFiles([jpgFiles[0]]);
+        setPreviewUrl(URL.createObjectURL(jpgFiles[0]));
+      } else {
+        setFiles((p) => [...p, ...jpgFiles]);
+        setPreviewUrl(URL.createObjectURL(jpgFiles[0]));
+      }
+      return;
+    }
 
-        for (const item of pickedFiles) {
-            if (item instanceof File) {
-                if (/\.(jpg|jpeg)$/i.test(item.name)) normalized.push(item);
-                continue;
-            }
+    if (input instanceof File) {
+      if (input.type !== "image/jpeg") return;
 
-            if (item?.url || item?.downloadUrl) {
-                const res = await fetch(item.url || item.downloadUrl);
-                const blob = await res.blob();
-                if (!blob.type.includes("jpeg")) continue;
+      if (mode === "single") {
+        setFiles([input]);
+      } else {
+        setFiles((p) => [...p, input]);
+      }
+      setPreviewUrl(URL.createObjectURL(input));
+    }
+  };
 
-                normalized.push(
-                    new File([blob], item.name || "image.jpg", {
-                        type: "image/jpeg",
-                    })
-                );
-            }
-        }
+  const handleExternalFilePick = async (picked) => {
+    const pickedFiles = Array.isArray(picked) ? picked : [picked];
+    const normalized = [];
 
-        if (!normalized.length) return;
-        setFiles((p) => [...p, ...normalized]);
-        setPreviewUrl(URL.createObjectURL(normalized[0]));
-    };
+    for (const item of pickedFiles) {
+      if (item instanceof File) {
+        if (/\.(jpg|jpeg)$/i.test(item.name)) normalized.push(item);
+        continue;
+      }
 
-    /* ================= image loader ================= */
+      if (item?.url || item?.downloadUrl) {
+        const res = await fetch(item.url || item.downloadUrl);
+        const blob = await res.blob();
+        if (!blob.type.includes("jpeg")) continue;
 
-    const loadImage = (file) =>
-        new Promise((resolve, reject) => {
-            const img = new Image();
-            const url = URL.createObjectURL(file);
+        normalized.push(
+          new File([blob], item.name || "image.jpg", {
+            type: "image/jpeg",
+          })
+        );
+      }
+    }
 
-            img.onload = () => {
-                URL.revokeObjectURL(url);
-                resolve(img);
-            };
-            img.onerror = reject;
-            img.src = url;
-        });
+    if (!normalized.length) return;
 
-    /* ================= convert ================= */
+    if (mode === "single") {
+      setFiles([normalized[0]]);
+      setPreviewUrl(URL.createObjectURL(normalized[0]));
+    } else {
+      setFiles((p) => [...p, ...normalized]);
+      setPreviewUrl(URL.createObjectURL(normalized[0]));
+    }
+  };
 
-    const convertImages = async () => {
-        if (!files.length) return;
-        setProcessing(true);
+  /* ================= image loader ================= */
 
-        const processOne = async (file, zip = null) => {
-            const img = await loadImage(file);
+  const loadImage = (file) =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
 
-            const canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
-            canvas.getContext("2d").drawImage(img, 0, 0);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        resolve(img);
+      };
+      img.onerror = reject;
+      img.src = url;
+    });
 
-            return new Promise((resolve) => {
-                canvas.toBlob((blob) => {
-                    const name = file.name.replace(/\.[^/.]+$/, "");
+  /* ================= convert ================= */
 
-                    if (zip) {
-                        zip.file(`${name}.png`, blob);
-                    } else {
-                        const outFile = new File([blob], `${name}.png`, {
-                            type: "image/png",
-                        });
+  const convertImages = async () => {
+    if (!files.length) return;
+    setProcessing(true);
 
-                        setConvertedFile(outFile);
-                        const a = document.createElement("a");
-                        a.href = URL.createObjectURL(blob);
-                        a.download = outFile.name;
-                        a.click();
-                    }
-                    resolve();
-                }, "image/png");
+    const processOne = async (file, zip = null) => {
+      const img = await loadImage(file);
+
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      canvas.getContext("2d").drawImage(img, 0, 0);
+
+      return new Promise((resolve) => {
+        canvas.toBlob((blob) => {
+          const name = file.name.replace(/\.[^/.]+$/, "");
+
+          if (zip) {
+            zip.file(`${name}.png`, blob);
+          } else {
+            const outFile = new File([blob], `${name}.png`, {
+              type: "image/png",
             });
-        };
 
-        if (files.length === 1) {
-            await processOne(files[0]);
-            setProcessing(false);
-            return;
-        }
-
-        const zip = new JSZip();
-        for (const f of files) await processOne(f, zip);
-
-        const zipBlob = await zip.generateAsync({ type: "blob" });
-        const zipFile = new File([zipBlob], "jpg-to-png.zip", {
-            type: "application/zip",
-        });
-
-        setConvertedFile(zipFile);
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(zipBlob);
-        a.download = zipFile.name;
-        a.click();
-
-        setProcessing(false);
+            setConvertedFile(outFile);
+            const a = document.createElement("a");
+            a.href = URL.createObjectURL(blob);
+            a.download = outFile.name;
+            a.click();
+          }
+          resolve();
+        }, "image/png");
+      });
     };
 
-    useEffect(() => () => previewUrl && URL.revokeObjectURL(previewUrl), [
-        previewUrl,
-    ]);
+    // single file
+    if (files.length === 1) {
+      await processOne(files[0]);
+      setProcessing(false);
+      return;
+    }
 
-    /* ================= UI ================= */
+    // multiple files → ZIP
+    const zip = new JSZip();
+    for (const f of files) await processOne(f, zip);
 
-    return (
-        <>
-            <Helmet>
-                <title>JPG To PNG | Convert Multiple JPG Images To PNG Free </title>
-                <meta name="description" content="Convert JPG or JPEG images to PNG online for free. Easily change JPG to PNG with high quality, transparent background support, batch conversion, and instant download. No signup required." />
-                <link rel="canonical" href="https://fileunivers.com/jpgtopng" />
-                <meta name="robots" content="index, follow" />
+    const zipBlob = await zip.generateAsync({ type: "blob" });
+    const zipFile = new File([zipBlob], "jpg-to-png.zip", {
+      type: "application/zip",
+    });
 
-                <meta name="keywords" content="jpg to png, jpeg to png, convert jpg to png online, jpg to png converter, jpg to png free, jpg image converter, jpeg to png converter, batch jpg to png" />
-            </Helmet>
+    setConvertedFile(zipFile);
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(zipBlob);
+    a.download = zipFile.name;
+    a.click();
 
-            <ScrollToTop />
+    setProcessing(false);
+  };
 
-            <div className="pagetitle">
-                <h1>JPG to PNG Converter – Convert Multiple JPG Images to PNG Online for Free</h1>
-                <p className="intro-paragraph">
-                    Convert JPG or JPEG images to high-quality PNG format instantly using FileUnivers’s
-                    free JPG to PNG converter. This online tool works directly in your browser, allowing
-                    you to convert single or multiple JPG images to PNG without uploading files to any
-                    server. The conversion process is fast, secure, and completely private, producing
-                    lossless PNG images that are perfect for editing, design work, transparent
-                    backgrounds, and professional use.
-                </p>
-            </div>
+  useEffect(() => () => previewUrl && URL.revokeObjectURL(previewUrl), [
+    previewUrl,
+  ]);
 
-            <div className="imgtoimgcontainer">
-                <div className="tool-container">
-                    <h2>JPG To PNG Converter</h2>
+  /* ================= UI ================= */
 
-                    <input type="file" multiple accept=".jpg,.jpeg" onChange={handleDropzoneFile} />
+  return (
+    <>
+      <Helmet>
+        <title>JPG To PNG | Convert Multiple JPG Images To PNG Free </title>
+        <meta name="description" content="Convert JPG or JPEG images to PNG online for free. Easily change JPG to PNG with high quality, transparent background support, batch conversion, and instant download. No signup required." />
+        <link rel="canonical" href="https://fileunivers.com/jpgtopng" />
+        <meta name="robots" content="index, follow" />
 
-                    <DropzoneInput
-                        accept="image/jpeg"
-                        multiple
-                        onFileAccepted={handleDropzoneFile}
-                    />
+        <meta name="keywords" content="jpg to png, jpeg to png, convert jpg to png online, jpg to png converter, jpg to png free, jpg image converter, jpeg to png converter, batch jpg to png" />
+      </Helmet>
 
-                    <div className="external-inputs">
-                        <DriveFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} allowedTypes={[".jpg", ".jpeg"]} />
-                        <DropboxFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} extensions={[".jpg", ".jpeg"]} />
-                    </div>
+      <ScrollToTop />
 
-                    {previewUrl && (
-                        <img src={previewUrl} alt="preview" className="image-preview-box" />
-                    )}
+      <div className="pagetitle">
+        <h1>JPG to PNG Converter – Convert Single or Multiple JPG Images to PNG Online for Free</h1>
+        <p className="intro-paragraph">
+          FileUnivers now gives you full control over how you convert your images with a simple
+          Single / Multiple toggle option. Choose <strong>Single File</strong> mode when you only
+          need to convert one JPG image at a time — perfect for quick, one-off conversions.
+          Switch to <strong>Multiple Files</strong> mode when you're working with a batch of
+          images, allowing you to select and upload several JPG files at once and download them
+          together as a single ZIP archive. This flexible toggle makes the tool equally efficient
+          for individual users and professionals handling bulk image conversions.
+        </p>
+      </div>
 
-                    <button className="primary-btn" onClick={convertImages} disabled={processing}>
-                        {processing ? "Converting..." : "Convert JPG to PNG"}
-                    </button>
+      <div className="imgtoimgcontainer">
+        <div className="tool-container">
+          <h2>
+            {mode === "single"
+              ? "Convert JPG Image To PNG"
+              : "Convert Multiple JPG Images To PNG"}
+          </h2>
 
-                    {convertedFile && (
-                        <div className="save-actions">
-                            <SaveToGoogleDrive file={convertedFile} />
-                            <SaveToDropbox file={convertedFile} />
-                        </div>
-                    )}
-                </div>
-            </div>
+          <div className="mode-toggle">
+            <button
+              type="button"
+              className={mode === "single" ? "toggle-btn active" : "toggle-btn"}
+              onClick={() => handleModeChange("single")}
+            >
+              Single File
+            </button>
+            <button
+              type="button"
+              className={mode === "multiple" ? "toggle-btn active" : "toggle-btn"}
+              onClick={() => handleModeChange("multiple")}
+            >
+              Multiple Files
+            </button>
+          </div>
+
+          <input
+            type="file"
+            multiple={mode === "multiple"}
+            accept=".jpg,.jpeg"
+            onChange={handleDropzoneFile}
+          />
+
+          <DropzoneInput
+            accept="image/jpeg"
+            multiple={mode === "multiple"}
+            onFileAccepted={handleDropzoneFile}
+          />
+
+          <div className="external-inputs">
+            {mode === "single" ? (
+              <>
+                <DriveFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} allowedTypes={[".jpg", ".jpeg"]} />
+                <DropboxFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} extensions={[".jpg", ".jpeg"]} />
+              </>
+            ) : (
+              <>
+                <DriveMediaInput onFilePicked={handleExternalFilePick} setStatus={setStatus} allowedTypes={[".jpg", ".jpeg"]} />
+                <DropboxMediaFileInput onFilePicked={handleExternalFilePick} setStatus={setStatus} extensions={[".jpg", ".jpeg"]} />
+              </>
+            )}
+          </div>
+
+          {previewUrl && (
+            <img src={previewUrl} alt="preview" className="image-preview-box" />
+          )}
+
+          <button className="primary-btn" onClick={convertImages} disabled={processing}>
+            {processing ? "Converting..." : "Convert JPG to PNG"}
+          </button>
+
+          {convertedFile && (
+            <>
+              <p>SAVE FILE TO : </p>
+              <div className="save-actions">
+                <SaveToGoogleDrive file={convertedFile} />
+                <SaveToDropbox file={convertedFile} />
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      
 
             <section className="pngtojpg-content">
 
@@ -241,7 +312,7 @@ export default function JpgToPngPage() {
 
                     <h2>Also check other features Related to PDF and Image file  </h2>
                     <div className="unzipPagelink">
-
+                        <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
                         <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
                         <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
                         <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>

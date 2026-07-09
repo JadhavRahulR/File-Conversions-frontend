@@ -87,6 +87,14 @@
     padding:70px 20px;
 }
 
+.process-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+}
+
 .process-heading h2{
     font-size:30px;
 }

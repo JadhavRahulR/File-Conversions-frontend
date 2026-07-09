@@ -1,6 +1,38 @@
 /* ===============================
+
+
+
    PNG to JPG TOOL – FileUnivers
    =============================== */
+
+
+   /* Toggle button  */
+ .mode-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.toggle-btn {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #e5e7eb;   /* grey background for inactive */
+  color: #9ca3af;         /* dimmed text for inactive */
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: #d1d5db;
+}
+
+.toggle-btn.active {
+  background: #2563eb;   /* highlighted blue for active */
+  color: #ffffff;
+  border-color: #2563eb;
+}
 
    .pagetitle{
   display: flex;
@@ -141,6 +173,9 @@
   margin-top: 20px;
 }
 
+.imgtoimgcontainer .save-actions p {
+  border: 2px solid red;
+}
 /* ---------- mobile tweaks ---------- */
 
 @media (max-width: 600px) {
@@ -198,7 +233,7 @@
   margin: 10px;
   /* width: 200px; */
   list-style: none;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   border-radius: 10px;
 }
 .img-converter-section .unzipPagelink li a:hover{

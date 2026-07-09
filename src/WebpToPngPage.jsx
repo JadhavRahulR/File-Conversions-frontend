@@ -8,16 +8,29 @@ import { Helmet } from "react-helmet-async";
 
 import DropboxFileInput from "./DropboxFileInput";
 import DriveFileInput from "./DriveFileInput";
+import DriveMediaInput from "./DriveMediaInput";
+import DropboxMediaFileInput from "./DropboxMediaFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 import { Link } from "react-router-dom";
+import ProcessSection from "./ProcessSection"
 
 export default function WebpToPngPage() {
     const [files, setFiles] = useState([]);
+    const [mode, setMode] = useState("single"); // "single" | "multiple"
     const [processing, setProcessing] = useState(false);
     const [previewUrl, setPreviewUrl] = useState(null);
     const [convertedFile, setConvertedFile] = useState(null);
     const [status, setStatus] = useState("");
+
+    /* ================= mode switch ================= */
+
+    const handleModeChange = (newMode) => {
+        setMode(newMode);
+        setFiles([]);
+        setPreviewUrl(null);
+        setConvertedFile(null);
+    };
 
     /* ================= file handlers ================= */
 
@@ -29,14 +42,24 @@ export default function WebpToPngPage() {
             );
             if (!webpFiles.length) return;
 
-            setFiles((p) => [...p, ...webpFiles]);
-            setPreviewUrl(URL.createObjectURL(webpFiles[0]));
+            if (mode === "single") {
+                setFiles([webpFiles[0]]);
+                setPreviewUrl(URL.createObjectURL(webpFiles[0]));
+            } else {
+                setFiles((p) => [...p, ...webpFiles]);
+                setPreviewUrl(URL.createObjectURL(webpFiles[0]));
+            }
             return;
         }
 
         if (input instanceof File) {
             if (input.type !== "image/webp") return;
-            setFiles((p) => [...p, input]);
+
+            if (mode === "single") {
+                setFiles([input]);
+            } else {
+                setFiles((p) => [...p, input]);
+            }
             setPreviewUrl(URL.createObjectURL(input));
         }
     };
@@ -65,8 +88,14 @@ export default function WebpToPngPage() {
         }
 
         if (!normalized.length) return;
-        setFiles((p) => [...p, ...normalized]);
-        setPreviewUrl(URL.createObjectURL(normalized[0]));
+
+        if (mode === "single") {
+            setFiles([normalized[0]]);
+            setPreviewUrl(URL.createObjectURL(normalized[0]));
+        } else {
+            setFiles((p) => [...p, ...normalized]);
+            setPreviewUrl(URL.createObjectURL(normalized[0]));
+        }
     };
 
     /* ================= image loader ================= */
@@ -152,7 +181,7 @@ export default function WebpToPngPage() {
     return (
         <>
             <Helmet>
-                <title>WEBP To PNG | Convert WEBP To PNG Free Online</title>
+                <title>WEBP To PNG | Convert Single or Multiple WEBP To PNG Free Online</title>
 
                 <meta
                     name="description"
@@ -175,54 +204,96 @@ export default function WebpToPngPage() {
             <ScrollToTop />
 
             <div className="pagetitle">
-                <h1>WEBP To PNG Converter – Convert WEBP Images to PNG Online for Free</h1>
+                <h1>WEBP to PNG Converter – Convert Single or Multiple WEBP Images To PNG Free</h1>
 
                 <p className="intro-paragraph">
-                    Convert WEBP images to high-quality PNG format instantly using FileUnivers’s
-                    free WEBP to PNG converter. This online tool runs directly in your browser,
-                    allowing you to convert single or multiple WEBP images to PNG without uploading
-                    files to any server. The conversion process is fast, secure, and fully private,
-                    producing lossless PNG images that are ideal for image editing, transparent
-                    backgrounds, graphic design, and professional use.
+                    FileUnivers now gives you full control over how you convert your images with a
+                    simple Single / Multiple toggle option. Choose <strong>Single File</strong> mode
+                    when you only need to convert one WEBP image at a time — perfect for quick,
+                    one-off conversions. Switch to <strong>Multiple Files</strong> mode when you're
+                    working with a batch of images, allowing you to select and upload several WEBP
+                    files at once and download them together as a single ZIP archive. This flexible
+                    toggle makes the tool equally efficient for individual users and professionals
+                    handling bulk image conversions.
                 </p>
             </div>
 
             <div className="imgtoimgcontainer">
                 <div className="tool-container">
-                    <h2>WEBP To PNG Converter</h2>
+                    <h2>
+                        {mode === "single"
+                            ? "Convert WEBP Image To PNG"
+                            : "Convert Multiple WEBP Images To PNG"}
+                    </h2>
+
+                    <div className="mode-toggle">
+                        <button
+                            type="button"
+                            className={mode === "single" ? "toggle-btn active" : "toggle-btn"}
+                            onClick={() => handleModeChange("single")}
+                        >
+                            Single File
+                        </button>
+                        <button
+                            type="button"
+                            className={mode === "multiple" ? "toggle-btn active" : "toggle-btn"}
+                            onClick={() => handleModeChange("multiple")}
+                        >
+                            Multiple Files
+                        </button>
+                    </div>
 
                     <input
                         type="file"
-                        multiple
+                        multiple={mode === "multiple"}
                         accept=".webp"
                         onChange={handleDropzoneFile}
                     />
 
                     <DropzoneInput
                         accept="image/webp"
-                        multiple
+                        multiple={mode === "multiple"}
                         onFileAccepted={handleDropzoneFile}
                     />
 
                     <div className="external-inputs">
-                        <DriveFileInput
-                            onFilePicked={handleExternalFilePick}
-                            setStatus={setStatus}
-                            allowedTypes={[".webp"]}
-                        />
-                        <DropboxFileInput
-                            onFilePicked={handleExternalFilePick}
-                            setStatus={setStatus}
-                            extensions={[".webp"]}
-                        />
+                        {mode === "single" ? (
+                            <>
+                                <DriveFileInput
+                                    onFilePicked={handleExternalFilePick}
+                                    setStatus={setStatus}
+                                    allowedTypes={[".webp"]}
+                                />
+                                <DropboxFileInput
+                                    onFilePicked={handleExternalFilePick}
+                                    setStatus={setStatus}
+                                    extensions={[".webp"]}
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <DriveMediaInput
+                                    onFilePicked={handleExternalFilePick}
+                                    setStatus={setStatus}
+                                    allowedTypes={[".webp"]}
+                                />
+                                <DropboxMediaFileInput
+                                    onFilePicked={handleExternalFilePick}
+                                    setStatus={setStatus}
+                                    extensions={[".webp"]}
+                                />
+                            </>
+                        )}
                     </div>
 
                     {previewUrl && (
-                        <img
-                            src={previewUrl}
-                            alt="preview"
-                            className="image-preview-box"
-                        />
+                        <div className="pngtojpgimg">
+                            <img
+                                src={previewUrl}
+                                alt="preview"
+                                className="image-preview-box"
+                            />
+                        </div>
                     )}
 
                     <button
@@ -234,13 +305,17 @@ export default function WebpToPngPage() {
                     </button>
 
                     {convertedFile && (
-                        <div className="save-actions">
-                            <SaveToGoogleDrive file={convertedFile} />
-                            <SaveToDropbox file={convertedFile} />
-                        </div>
+                        <>
+                            <p>SAVE FILE TO : </p>
+                            <div className="save-actions">
+                                <SaveToGoogleDrive file={convertedFile} />
+                                <SaveToDropbox file={convertedFile} />
+                            </div>
+                        </>
                     )}
                 </div>
             </div>
+
             <section className="pngtojpg-content">
 
                 <h2 className="pngtojpg-heading">
@@ -270,12 +345,16 @@ export default function WebpToPngPage() {
                     quality and supports transparency, making it ideal for editing, printing,
                     and professional design workflows.
                 </p>
+
+
+                <ProcessSection />
                 <div className="converter-section">
 
                     <h2>Also check other features Related to PDF and Image file  </h2>
                     <div className="unzipPagelink">
 
                         <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
+                         <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
                         <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
                         <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
                         <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
@@ -286,6 +365,7 @@ export default function WebpToPngPage() {
                         <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
                         <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
                         <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
+                        <li><Link to='/pdfpageremover' className='btn' > PDF Page Remover  </Link></li>
                         <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
                         <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
                         <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
