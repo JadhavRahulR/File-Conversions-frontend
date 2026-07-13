@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertOdpToPptx = () => {
   return (
     <>
+      <Helmet>
+        <title>How to Convert ODP to PPTX Online | Free ODP to PowerPoint Converter Guide</title>
+
+        <meta
+          name="description"
+          content="Learn how to convert ODP to PPTX online for free. Follow this step-by-step guide to convert LibreOffice Impress presentations into Microsoft PowerPoint format while preserving formatting."
+        />
+
+        <link
+          rel="canonical"
+          href="https://fileunivers.com/blog/how-to-convert-odp-to-pptx"
+        />
+
+        <meta name="robots" content="index, follow" />
+
+        <meta
+          name="keywords"
+          content="how to convert ODP to PPTX, ODP to PPTX, convert ODP to PowerPoint, LibreOffice Impress to PPTX, ODP file to PPTX, free ODP to PPTX converter, OpenDocument Presentation to PowerPoint"
+        />
+
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:title"
+          content="How to Convert ODP to PPTX Online | Free Step-by-Step Guide"
+        />
+        <meta
+          property="og:description"
+          content="Convert ODP presentations to Microsoft PowerPoint (PPTX) online for free while preserving slides, formatting, images, and layouts."
+        />
+        <meta
+          property="og:url"
+          content="https://fileunivers.com/blog/how-to-convert-odp-to-pptx"
+        />
+        <meta property="og:site_name" content="FileUnivers" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="How to Convert ODP to PPTX Online"
+        />
+        <meta
+          name="twitter:description"
+          content="Free guide to convert LibreOffice Impress ODP presentations into Microsoft PowerPoint (PPTX) format while maintaining formatting."
+        />
+      </Helmet>
       <ScrollToTop />
 
       <div className="blog-content">

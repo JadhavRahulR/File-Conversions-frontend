@@ -2,10 +2,61 @@ import React from 'react';
 import "./bloghome.css";
 import { Link } from 'react-router-dom';
 import ScrollToTop from '../ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const HowToConvertWordToPdf = () => {
     return (
         <>
+<Helmet>
+  <title>How to Convert Word to PDF Online | Free DOCX to PDF Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert Word to PDF online for free. Follow this step-by-step guide to convert Microsoft Word (DOC and DOCX) documents into PDF while preserving formatting, fonts, and layout."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-word-to-pdf"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert Word to PDF, Word to PDF, DOC to PDF, DOCX to PDF, convert Word to PDF online, Microsoft Word to PDF, free Word to PDF converter"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert Word to PDF Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert Microsoft Word (DOC and DOCX) documents to PDF online for free while preserving text, formatting, fonts, images, and document layout."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-word-to-pdf"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert Word to PDF Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert Microsoft Word documents into PDF while maintaining formatting, fonts, images, and document quality."
+  />
+</Helmet>
         <ScrollToTop/>
             <div className="blog-content">
                 <h1 className="blog-title">How to Convert Word to PDF</h1>

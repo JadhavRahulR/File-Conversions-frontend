@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertPdfToOdt = () => {
   return (
     <>
+<Helmet>
+  <title>How to Convert PDF to ODT Online | Free PDF to ODT Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert PDF to ODT online for free. Follow this step-by-step guide to convert PDF files into editable OpenDocument Text (ODT) documents for LibreOffice and OpenOffice while preserving formatting."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-pdf-to-odt"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert PDF to ODT, PDF to ODT, convert PDF to ODT online, PDF to OpenDocument Text, editable ODT, LibreOffice ODT, OpenOffice ODT, free PDF to ODT converter"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert PDF to ODT Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert PDF files into editable ODT documents online for free while preserving text, formatting, images, and document layout."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-pdf-to-odt"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert PDF to ODT Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert PDF documents into editable OpenDocument Text (ODT) files for LibreOffice and OpenOffice while maintaining formatting and document quality."
+  />
+</Helmet>
     <ScrollToTop/>
       <div className="blog-content">
         <h1 className="blog-title">How to Convert PDF to ODT</h1>

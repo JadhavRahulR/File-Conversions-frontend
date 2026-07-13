@@ -2,10 +2,63 @@
 import React from 'react';
 import "./bloghome.css";
 import { Link } from 'react-router-dom';
+import ScrollToTop from '../ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const HowToJoinMp3File = () => {
     return (
         <>
+<Helmet>
+  <title>How to Merge MP3 Files Online | Free MP3 Joiner Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to merge MP3 files online for free. Follow this step-by-step guide to combine multiple audio files into a single MP3 for podcasts, audiobooks, music playlists, lectures, and voice recordings."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-merge-mp3-files"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to merge MP3 files, merge MP3 online, MP3 joiner, combine MP3 files, audio merger, join audio files, free MP3 merger, merge music files"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Merge MP3 Files Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Combine multiple MP3 files into a single audio file online for free. Perfect for podcasts, audiobooks, lectures, playlists, and voice recordings."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-join-mp3-file"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Merge MP3 Files Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to merge multiple MP3 files into one audio file while maintaining audio quality and playback compatibility."
+  />
+</Helmet>
+        <ScrollToTop/>
             <div className="blog-content">
                 <h1 className="blog-title">How to Merge MP3 Files</h1>
 

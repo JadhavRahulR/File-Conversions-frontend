@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertPptxToPdf = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert PPTX to PDF Online | Free PowerPoint to PDF Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert PPTX to PDF online for free. Follow this step-by-step guide to convert Microsoft PowerPoint presentations into PDF while preserving slides, images, fonts, and formatting."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-pptx-to-pdf"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert PPTX to PDF, PPTX to PDF, convert PowerPoint to PDF, Microsoft PowerPoint to PDF, PPTX file to PDF, free PPTX to PDF converter, PowerPoint presentation to PDF"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert PPTX to PDF Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert Microsoft PowerPoint (PPTX) presentations to PDF online for free while preserving slides, images, fonts, and document layout."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-pptx-to-pdf"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert PPTX to PDF Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert Microsoft PowerPoint presentations into PDF while maintaining formatting, fonts, images, and slide quality."
+  />
+</Helmet>
       <ScrollToTop />
       <div className="blog-content">
         <h1 className="blog-title">How to Convert PPTX to PDF</h1>

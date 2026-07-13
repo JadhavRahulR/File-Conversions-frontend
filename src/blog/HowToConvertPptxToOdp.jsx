@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertPptxToOdp = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert PPTX to ODP Online | Free PowerPoint to ODP Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert PPTX to ODP online for free. Follow this step-by-step guide to convert Microsoft PowerPoint presentations into LibreOffice Impress and OpenOffice compatible ODP files."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-pptx-to-odp"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert PPTX to ODP, PPTX to ODP, convert PowerPoint to ODP, Microsoft PowerPoint to LibreOffice Impress, PPTX file to ODP, free PPTX to ODP converter, OpenDocument Presentation"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert PPTX to ODP Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert Microsoft PowerPoint (PPTX) presentations to ODP online for free while preserving slides, images, layouts, and formatting."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-pptx-to-odp"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert PPTX to ODP Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert PowerPoint (PPTX) presentations into LibreOffice Impress compatible ODP files while maintaining formatting."
+  />
+</Helmet>
       <ScrollToTop />
 
       <div className="blog-content">

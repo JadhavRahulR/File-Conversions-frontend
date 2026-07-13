@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertTextToPdf = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert Text to PDF Online | Free TXT to PDF Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert Text (TXT) to PDF online for free. Follow this step-by-step guide to create professional PDF documents from plain text files while preserving content and formatting."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-text-to-pdf"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert text to PDF, text to PDF, TXT to PDF, convert TXT to PDF online, plain text to PDF, free text to PDF converter, text file to PDF"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert Text to PDF Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert TXT files into PDF online for free while preserving text formatting and creating professional, shareable PDF documents."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-text-to-pdf"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert Text to PDF Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert TXT files into PDF documents while maintaining content, readability, and formatting."
+  />
+</Helmet>
     <ScrollToTop/>
       <div className="blog-content">
         <h1 className="blog-title">How to Convert Text to PDF</h1>

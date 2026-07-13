@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertOdtToPdf = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert ODT to PDF Online | Free ODT to PDF Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert ODT to PDF online for free. Follow this step-by-step guide to convert LibreOffice and OpenOffice ODT documents into PDF while preserving formatting, fonts, and layout."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-odt-to-pdf"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert ODT to PDF, ODT to PDF, convert ODT to PDF online, LibreOffice to PDF, OpenOffice to PDF, ODT file to PDF, free ODT to PDF converter, OpenDocument Text to PDF"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert ODT to PDF Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert ODT documents to PDF online for free while preserving text, formatting, fonts, images, and document layout."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-odt-to-pdf"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert ODT to PDF Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert LibreOffice and OpenOffice ODT files into PDF while maintaining formatting, fonts, and document quality."
+  />
+</Helmet>
     <ScrollToTop/>
       <div className="blog-content">
         <h1 className="blog-title">How to Convert ODT to PDF</h1>

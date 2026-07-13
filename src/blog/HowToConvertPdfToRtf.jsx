@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertPdfToRtf = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert PDF to RTF Online | Free PDF to RTF Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert PDF to RTF online for free. Follow this step-by-step guide to edit PDF content in Microsoft Word, LibreOffice Writer, WordPad, and other word processors."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-pdf-to-rtf"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert PDF to RTF, PDF to RTF, convert PDF to RTF online, PDF to Rich Text Format, editable PDF, free PDF to RTF converter, PDF document to RTF"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert PDF to RTF Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert PDF files to editable RTF documents online while preserving formatting. A free and easy step-by-step guide."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-pdf-to-rtf"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert PDF to RTF Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert PDF files into editable RTF documents while maintaining formatting and text quality."
+  />
+</Helmet>
       <ScrollToTop />
 
       <div className="blog-content">

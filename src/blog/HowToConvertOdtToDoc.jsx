@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertOdtToDoc = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert ODT to DOC Online | Free ODT to DOC Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert ODT to DOC online for free. Follow this step-by-step guide to convert LibreOffice and OpenOffice documents into Microsoft Word DOC format while preserving formatting."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-odt-to-doc"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert ODT to DOC, ODT to DOC, convert ODT to Word, LibreOffice to DOC, OpenOffice to DOC, ODT file to DOC, free ODT to DOC converter, OpenDocument Text to DOC"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert ODT to DOC Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert ODT documents to Microsoft Word DOC format online for free while preserving text, formatting, images, and document layout."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-odt-to-doc"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert ODT to DOC Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert LibreOffice and OpenOffice ODT files into Microsoft Word DOC format while maintaining formatting and document quality."
+  />
+</Helmet>
       <ScrollToTop />
       <div className="blog-content">
         <h1 className="blog-title">How to Convert ODT to DOC</h1>

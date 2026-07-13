@@ -2,10 +2,61 @@ import React from "react";
 import "./bloghome.css";
 import { Link } from "react-router-dom";
 import ScrollToTop from "../ScrollToTop";
+import { Helmet } from "react-helmet-async";
 
 const HowToConvertDocToOdt = () => {
   return (
     <>
+    <Helmet>
+  <title>How to Convert DOC to ODT Online | Free DOC to ODT Converter Guide</title>
+
+  <meta
+    name="description"
+    content="Learn how to convert DOC to ODT online for free. Follow this step-by-step guide to convert Microsoft Word DOC files into LibreOffice and OpenOffice compatible ODT documents while preserving formatting."
+  />
+
+  <link
+    rel="canonical"
+    href="https://fileunivers.com/blog/how-to-convert-doc-to-odt"
+  />
+
+  <meta name="robots" content="index, follow" />
+
+  <meta
+    name="keywords"
+    content="how to convert DOC to ODT, DOC to ODT, convert DOC to ODT online, Microsoft Word DOC to ODT, LibreOffice ODT, OpenOffice ODT, free DOC to ODT converter, Word to ODT"
+  />
+
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {/* Open Graph */}
+  <meta property="og:type" content="article" />
+  <meta
+    property="og:title"
+    content="How to Convert DOC to ODT Online | Free Step-by-Step Guide"
+  />
+  <meta
+    property="og:description"
+    content="Convert Microsoft Word DOC files to ODT online for free while preserving text, formatting, images, and document layout."
+  />
+  <meta
+    property="og:url"
+    content="https://fileunivers.com/blog/how-to-convert-doc-to-odt"
+  />
+  <meta property="og:site_name" content="FileUnivers" />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="How to Convert DOC to ODT Online"
+  />
+  <meta
+    name="twitter:description"
+    content="Free guide to convert Microsoft Word DOC documents into LibreOffice and OpenOffice compatible ODT files while maintaining formatting and document quality."
+  />
+</Helmet>
       <ScrollToTop />
 
       <div className="blog-content">
