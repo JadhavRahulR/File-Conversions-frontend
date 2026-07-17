@@ -9,6 +9,7 @@ import DriveMediaInput from "./DriveMediaInput";
 import DropboxMediaFileInput from "./DropboxMediaFileInput";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import ScrollToTop from "./ScrollToTop";
 
 export default function Mp3Joiner() {
   const [files, setFiles] = useState([]);
@@ -298,6 +299,8 @@ export default function Mp3Joiner() {
     })}
   </script>
 </Helmet>
+
+<ScrollToTop/>
     <div className="headingsection">
       <h1>MP3 Joiner – Merge Multiple MP3 Files Online for Free</h1>
       <p>Join multiple MP3 files into a single audio file online without installing any software. This free MP3 Joiner lets you merge songs, podcasts, voice recordings, audiobooks, and other MP3 files directly in your browser. Upload your files, arrange them in the desired order, and combine them into one high-quality MP3 in seconds. Fast, secure, and easy to use on Windows, Mac, Android, and iPhone.</p>
@@ -394,6 +397,7 @@ export default function Mp3Joiner() {
         <MediaDropzoneInput
         onFilesAccepted={handleFilesAccepted}
         multiple={true}
+        filenam='Mp3'
         overlayText="🎵 Drop MP3 Files Here"
         accept={{
           "audio/mpeg": [".mp3"],

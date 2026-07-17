@@ -137,6 +137,7 @@ export default function LandingPage() {
           <li><Link to="/pdfpageremover" ><FeatureCard1 title="PDF Page Remover"  image1="pdf.png" /> </Link></li>
           <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>
           <li><Link to="/mp3-joiner" ><FeatureCard1 title="mp3 Joiner"  image1="music-app.png" /> </Link></li>
+          <li><Link to="/video-to-gif" ><FeatureCard1 title="Video to Gif"  image1="play.png" /> </Link></li>
 
           
            {/*

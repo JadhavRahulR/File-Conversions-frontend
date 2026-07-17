@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import "./bloghome.css";
+import ScrollToTop from "../ScrollToTop";
 
 function BlogHome() {
   const blogs = [
@@ -123,6 +124,8 @@ function BlogHome() {
 
         <meta name="robots" content="index,follow" />
       </Helmet>
+
+      <ScrollToTop/>
 
       <div className="blogHome">
         <div className="blogHero">

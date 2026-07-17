@@ -73,7 +73,7 @@ const HowToJoinMp3File = () => {
                  <div className="blog-cta">
 
 
-                    <Link to="/mp3-joinner" className="blog-cta-btn">
+                    <Link to="/mp3-joiner" className="blog-cta-btn">
                         Merge Mp3 Files →
                     </Link>
                 </div>

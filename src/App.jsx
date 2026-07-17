@@ -197,6 +197,7 @@ import HowToConvertOdpToPptx from "./blog/HowToConvertOdpToPptx";
 import HowToConvertRtfToPdf from "./blog/HowToConvertRtfToPdf";
 import HowToConvertPdfToRtf from "./blog/HowToConvertPdfToRtf";
 import HowToConvertHtmlToPdf from "./blog/HowToConvertHtmlToPdf";
+import VideoToGif from "./VideoToGif";
 // import BlogHome from "./blog/BlogHome";
 
 
@@ -349,6 +350,12 @@ function App() {
             <Route path="/webptojpg" element={<WebpToJpgPage />} />
             <Route path="/jpgtowebp" element={<JpgToWebpPage />} />
             <Route path="/mp3-joiner" element={<Mp3Joiner/>}/>
+            <Route path="/video-to-gif" element={<VideoToGif/>}/>
+
+
+
+
+            {/* Blogs */}
 
           <Route path='/blog/how-to-convert-word-to-pdf' element={<HowToConvertWordToPdf/>}/>            
           <Route path='/blog/how-to-convert-pdf-to-word' element={<HowToConvertPdfToWord/>}/>            
@@ -366,6 +373,9 @@ function App() {
           <Route path='/blog/how-to-convert-rtf-to-pdf' element={<HowToConvertRtfToPdf/>}/>  
           <Route path='/blog/how-to-convert-pdf-to-rtf' element={<HowToConvertPdfToRtf/>}/>  
           <Route path='/blog/how-to-convert-html-to-pdf' element={<HowToConvertHtmlToPdf/>}/>  
+
+
+
                     
 
 

@@ -13,6 +13,7 @@ export default function MediaDropzoneInput({
   accept = {},
   multiple = false,
   overlayText = "📂 Drop Files Here",
+  filenam=''
 }) {
   const [showOverlay, setShowOverlay] =
     useState(false);
@@ -74,13 +75,13 @@ export default function MediaDropzoneInput({
       window.removeEventListener("drop", drop);
     };
   }, []);
-const isMobile = window.innerWidth <= 768;
+const isMobile = window.innerWidth <= 468;
 
 return (
   <>
     {!isMobile && (
       <div className="dropzone-big">
-        <p>🎵 Drag & Drop MP3 files anywhere on screen</p>
+        <p>🎵 Drag & Drop {filenam} files anywhere on screen</p>
       </div>
     )}
 
