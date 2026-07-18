@@ -357,6 +357,7 @@ function App() {
 
             {/* Blogs */}
 
+          <Route path='/blog' element={<BlogHome/>}/>            
           <Route path='/blog/how-to-convert-word-to-pdf' element={<HowToConvertWordToPdf/>}/>            
           <Route path='/blog/how-to-convert-pdf-to-word' element={<HowToConvertPdfToWord/>}/>            
           <Route path='/blog/how-to-join-mp3-file' element={<HowToJoinMp3File/>}/>  

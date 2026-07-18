@@ -31,7 +31,7 @@ function Navbar1() {
               <NavLink to="/pdf-compressor" className="pages"> Compress PDF </NavLink>
               <NavLink to="/merge-pdf" className="pages"> Merge PDFs </NavLink>
               <NavLink to="/aboutus" className="pages"  >About Us </NavLink>
-              <NavLink to="/blog/BlogHome" className="pages"  >Blogs </NavLink>
+              <NavLink to="/blog" className="pages"  >Blogs </NavLink>
           </div>
             </Nav>
           </Navbar.Collapse>
