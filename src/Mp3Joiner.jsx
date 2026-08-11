@@ -533,6 +533,7 @@ export default function Mp3Joiner() {
                 <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
                 <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
                 <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
                 <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
                 <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
                 </ul>

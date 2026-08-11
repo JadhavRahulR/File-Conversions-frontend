@@ -12,6 +12,7 @@ import { fetchFile } from "@ffmpeg/util";
 
 import { Helmet } from "react-helmet-async";
 import ScrollToTop from "./ScrollToTop";
+import { Link } from "react-router-dom";
 
 export default function VideoToGif() {
 
@@ -871,6 +872,37 @@ export default function VideoToGif() {
             makes it easy to organize your files, access them from multiple devices, and
             share them with others without performing an extra upload later.
           </p>
+
+           <h2 style={{ marginBottom: "4px" }}>Also Related PDF Conversion & Compression Tools </h2>
+                      <div className="pdfpageslinks">
+          
+                      <div className="unzipPagelink">
+                        <ul>
+          
+                        <li><Link to="/word-to-pdf" className='btn' >Word To PDF Converter </Link></li>
+                        <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
+                        <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
+                        <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
+                        <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
+                        <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
+                        <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
+                        <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
+                        <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
+                        <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
+                        <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
+                        <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
+                        <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
+                        <li><Link to='/pdfpageremover' className='btn' > PDF Page Extractor  </Link></li>
+                        <li><Link to='/pdfextractor' className='btn' > PDF Page Remover </Link></li>
+                        <li><Link to='/video-to-gif' className='btn' > Video to GIF </Link></li>
+                        <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
+
+                        <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+                        </ul>
+                      </div>
+                      </div>
+          
+                  
 
           <h2 className="blog-heading">Why Use This Video to GIF Converter?</h2>
 

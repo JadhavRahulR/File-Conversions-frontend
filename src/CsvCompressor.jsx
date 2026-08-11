@@ -28,7 +28,7 @@ const CsvCompressor = () => {
 
   const [convertedFile, setConvertedFile] = useState(null);
 
-  const [compressionMode, setCompressionMode] = useState("frontend");
+  const [compressionMode, setCompressionMode] = useState("backend");
 
   const [dragActive, setDragActive] = useState(false);
 
@@ -314,7 +314,7 @@ const CsvCompressor = () => {
 
       <Helmet>
 
-        <title> Compress CSV online | Reduce CSV File Size Online Free </title>
+        <title> Compress CSV file online | Reduce CSV File Size Online Free </title>
 
         <meta name="description" content="Compress your CSV files online using fast browser ZIP compression or advanced server compression." />
 
@@ -333,16 +333,23 @@ const CsvCompressor = () => {
 
       <div className="pagetitle">
 
+
         <h1>
-          Compress CSV Online -
-          Free CSV Compressor
+          Compress CSV Files Online - Free CSV Compressor
         </h1>
 
         <p className="intro-paragraph">
-          Compress CSV files online to reduce file size without losing data accuracy or structure. Our free and secure CSV compressor helps you shrink large spreadsheets for faster uploads, sharing, and storage. No software installation or registration required- just upload your CSV file, click compress, and download your optimized version in seconds. Perfect for data analysts, developers, and professionals who manage large datasets. Compress CSV files instantly using browser ZIP compression or advanced server compression
-          for maximum size reduction.
-
+          Compress CSV files online and reduce CSV file size without losing your
+          data or changing its structure. Our free CSV file compressor helps you
+          compress large CSV files and make CSV files smaller for faster uploads,
+          sharing, and storage. Reduce CSV file size online without installing any
+          software or creating an account. Simply upload your CSV file, choose your
+          preferred compression method, compress your CSV file, and download the
+          smaller compressed file. Our CSV compressor supports large CSV files and
+          provides both maximum server-side compression and fast browser-based ZIP
+          compression for convenient online CSV file size reduction.
         </p>
+
 
       </div>
 
@@ -432,6 +439,28 @@ const CsvCompressor = () => {
 
             <input
               type="radio"
+              value="backend"
+
+              checked={
+                compressionMode ===
+                "backend"
+              }
+
+              onChange={(e) =>
+                setCompressionMode(
+                  e.target.value
+                )
+              }
+            />
+
+            🗜 Maximum Compression
+
+          </label>
+
+          <label className="modeOption">
+
+            <input
+              type="radio"
               value="frontend"
 
               checked={
@@ -450,27 +479,7 @@ const CsvCompressor = () => {
 
           </label>
 
-          <label className="modeOption">
 
-            <input
-              type="radio"
-              value="backend"
-
-              checked={
-                compressionMode ===
-                "backend"
-              }
-
-              onChange={(e) =>
-                setCompressionMode(
-                  e.target.value
-                )
-              }
-            />
-
-            🗜 Maximum Compression
-
-          </label>
 
         </div>
 
@@ -687,7 +696,7 @@ const CsvCompressor = () => {
           </ol>
 
 
-           <section>
+          <section>
             {/* ================================= */}
             {/* COMPRESSION INFO */}
             {/* ================================= */}
@@ -762,10 +771,10 @@ const CsvCompressor = () => {
           </section>
 
           <section>
-            <ProcessSection/>
+            <ProcessSection />
           </section>
 
-          
+
           <section>
             <div className="cloudSaveInfo">
 
@@ -819,7 +828,7 @@ const CsvCompressor = () => {
             <li>🔒Your CSV stays secure and private</li>
             <li>⚡ Fast processing with instant download</li>
             <li>     Works on all devices with a browser</li>
-            <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and CSV file  </h2>
+            <h2 style={{ marginBottom: '6px' }}>Also check other Tools Related to PDF and CSV file  </h2>
             <div className="unzipPagelink">
 
               <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
@@ -838,6 +847,8 @@ const CsvCompressor = () => {
               <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
               <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
               <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
+              <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
+               <li><Link to='/video-to-gif' className='btn' > Video to GIF </Link></li>
               <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
             </div>
           </ul>

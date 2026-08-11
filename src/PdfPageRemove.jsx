@@ -14,6 +14,7 @@ import DriveFileInput from "./DriveFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
 import { Link } from "react-router-dom";
+import ProcessSection from "./ProcessSection";
 
 
 // pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
@@ -345,7 +346,7 @@ useEffect(() => {
   return (
     <>
       <Helmet>
-        <title>PDF Page Remover | Remove pages from pdf</title>
+        <title>PDF Page Remover | Delete Pages from PDF Online Free</title>
         <meta
           name="description"
           content="Remove unwanted pages from PDF files easily and securely. Free online PDF page remover to delete single or multiple pages without affecting quality."
@@ -509,6 +510,9 @@ useEffect(() => {
             This helps reduce file size, improve readability, and simplify document
             management.
           </p>
+
+
+          <ProcessSection/>
 
           <ul className="ImgResizerLinks">
 

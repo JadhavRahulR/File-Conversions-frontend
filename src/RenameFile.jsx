@@ -67,7 +67,7 @@ const RenameFile = () => {
   return (
     <>
       <Helmet>
-        <title>Change File Name | Rename File Name Online </title>
+        <title>Rename Any File | Change File Name Online </title>
         <meta
           name="description"
           content="Rename any type of file online- PDF, Word, Excel, Image, PPT, or ZIP. Fast and free file renamer tool with drag & drop support."
@@ -302,6 +302,7 @@ const RenameFile = () => {
                 <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
                 <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
                 <li><Link to='/pdfpageremover' className='btn' > PDF Page Remover  </Link></li>
+                <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
                 <li><Link to='/pdfextractor' className='btn' > PDF Page  Extractor </Link></li>
                 <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
                 <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>

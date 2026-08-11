@@ -314,6 +314,7 @@ const PDFCompressor = () => {
               <li><Link to='/pdfpageremover' className='btn' > PDF Page Extractor  </Link></li>
               <li><Link to='/pdfextractor' className='btn' > PDF Page Remover </Link></li>
               <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
+              <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
               </ul>
             </div>
             </div>

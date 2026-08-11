@@ -388,6 +388,36 @@ progress::-moz-progress-bar {
   text-align: center;
 }
 
+
+/* css for pages links */
+.pdfpageslinks .unzipPagelink{
+  margin: 0px;
+  padding: 0px;
+}
+.pdfpageslinks .unzipPagelink ul{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+.pdfpageslinks .unzipPagelink li{
+  margin: 10px;
+  margin-left: 0px;
+}
+.pdfpageslinks .unzipPagelink li a{
+  text-decoration: none;
+  color: #444;
+}
+.pdfpageslinks .unzipPagelink li a:hover{
+  background-color: #000000;
+  border:none;
+  color: white;
+  box-shadow: 6px 15px 20px rgb(0, 0, 0);
+}
+
+
 @media (max-width:768px){
 
     .gifControls{
