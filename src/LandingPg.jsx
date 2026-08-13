@@ -15,8 +15,8 @@ export default function LandingPage() {
   return (
     <>
     <Helmet>
-        <title>FileUnivers - Free Online PDF Converter & File Compressor Tool</title>
-        <meta name="description" content="Free online file converter & compressor. Convert PDF, Word, Excel, images & more in seconds with FileUnivers “ fast, secure & easy-to-use tools." />
+        <title>FileUnivers | Free Online File Converter & Compressor Tools</title>
+        <meta name="description" content=        "Access all-in-one file tools at FileUnivers. Convert PDFs, Word, Excel, PowerPoint, images and compress them efficiently. Free, secure, and fast."/>
         <link rel="canonical" href="https://fileunivers.com/" />
         <meta name="robots" content="index, follow" />
         <meta name="keywords" content="file converter, file compressor, convert files online, compress files online, pdf converter, image to pdf, doc to pdf, zip extractor, pdf merger, folder to zip" />
@@ -138,6 +138,7 @@ export default function LandingPage() {
           <li><Link to="/pdfextractor" ><FeatureCard1 title="PDF Page Extractor"  image1="pdf.png" /> </Link></li>
           <li><Link to="/mp3-joiner" ><FeatureCard1 title="mp3 Joiner"  image1="music-app.png" /> </Link></li>
           <li><Link to="/video-to-gif" ><FeatureCard1 title="Video to Gif"  image1="play.png" /> </Link></li>
+          <li><Link to="/bulk-renamer" ><FeatureCard1 title="Bulk Renamer"  image1="bulk rename.png" /> </Link></li>
 
           
            {/*

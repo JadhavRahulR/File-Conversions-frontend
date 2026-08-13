@@ -1,0 +1,334 @@
+.bulk-renamer {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px 70px;
+    box-sizing: border-box;
+}
+
+.bulk-renamer-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.bulk-renamer-header h1 {
+    margin: 0 0 10px;
+    font-size: 38px;
+}
+
+.bulk-renamer-header p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Upload */
+
+.upload-area {
+    border: 2px dashed #cfcfcf;
+    border-radius: 16px;
+    padding: 55px 20px;
+    text-align: center;
+    background: #fafafa;
+    transition: 0.2s;
+}
+
+.upload-area:hover {
+    border-color: #999;
+    background: #f7f7f7;
+}
+
+.upload-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.upload-area h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.upload-area p {
+    margin: 5px 0 15px;
+    color: #777;
+}
+
+.browse-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #111;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.upload-note {
+    display: block;
+    margin-top: 15px;
+    color: #777;
+    font-size: 13px;
+}
+
+/* Settings */
+
+.rename-settings {
+    margin-top: 30px;
+    padding: 25px;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    background: white;
+}
+
+.setting-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.setting-group label {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.setting-group input,
+.setting-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: rgb(255, 253, 253);
+    color: #0d0d0d;
+     outline: none;
+    transition: 0.2s;
+}
+
+.setting-group input,
+.setting-group select input:focus {
+     background: #fff;
+    border-color: #0d21ff;
+}
+
+.setting-group input {
+    color: #0d0d0d;
+    background-color: rgb(255, 253, 253);
+    border: 1px solid #ccc;
+     outline: none;
+    transition: 0.2s;
+}
+
+.setting-group input:focus {
+    background: #fff;
+    border-color: #0d21ff;
+}
+
+.settings-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+/* Preview */
+
+.preview-section {
+    margin-top: 30px;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.preview-header h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.preview-header span {
+    color: #666;
+    font-size: 14px;
+}
+
+.preview-table {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+}
+
+.preview-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 45px;
+    gap: 15px;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+
+
+.preview-row:last-child {
+    border-bottom: none;
+}
+
+.preview-heading {
+    background: #f6f6f6;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.original-name {
+    color: #555;
+    word-break: break-all;
+}
+
+.preview-row .new-name  {
+    border: none;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.new-name input {
+    width: 100%;
+    padding: 11px 13px;
+    box-sizing: border-box;
+
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+
+    background: #f8f8f8;
+    color: #222;
+
+    font-size: 14px;
+
+    outline: none;
+    transition: 0.2s;
+}
+
+.new-name input:focus {
+    background: #fff;
+    border-color: #0d21ff;
+}
+.remove-file {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    color: #999;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.remove-file:hover {
+    color: #d00;
+}
+
+/* Actions */
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.clear-button,
+.rename-button {
+    border: none;
+    border-radius: 8px;
+    padding: 13px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clear-button {
+    background: #eee;
+    color: #222;
+}
+
+.bulk-rename-button {
+    width: 220px;
+    height: 48px;
+
+    background:linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.bulk-rename-button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+@media (max-width: 700px) {
+    .bulk-renamer {
+        padding: 25px 14px 50px;
+    }
+
+    .bulk-renamer-header h1 {
+        font-size: 30px;
+    }
+
+    .settings-row {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-row {
+        grid-template-columns: 1fr 1fr 35px;
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .clear-button,
+    .rename-button {
+        width: 100%;
+    }
+}
+
+
+
+/* Content  */
+.bulk-renamer-content {
+  max-width: 1000px;
+  margin: 50px auto 0;
+  padding: 35px;
+  line-height: 1.7;
+  color: #333;
+}
+
+.bulk-renamer-content h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.bulk-renamer-content h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+
+.bulk-renamer-content p {
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.bulk-renamer-content strong {
+  font-weight: 600;
+}
