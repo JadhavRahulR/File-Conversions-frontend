@@ -115,7 +115,7 @@ const BulkRenamer = () => {
         <>
 
         <Helmet>
-  <title>Bulk Renamer - Rename Multiple Files Online Free</title>
+  <title>Bulk Renamer | Bulk Rename Utility</title>
 
   <meta
     name="description"
@@ -124,7 +124,7 @@ const BulkRenamer = () => {
 
   <meta
     name="keywords"
-    content="bulk renamer, bulk file renamer, bulk rename files, rename multiple files, rename multiple files online, batch rename files, batch file renaming, online file renamer, file renaming tool, bulk renaming tool, rename files online, bulk file renaming, rename files in bulk, multiple file renamer, free bulk renamer"
+    content="bulk renamer , bulk file renamer, bulk rename files, rename multiple files, rename multiple files online, batch rename files, batch file renaming, online file renamer, file renaming tool, bulk renaming tool, rename files online, bulk file renaming, rename files in bulk, multiple file renamer, free bulk renamer"
   />
 
   <link
