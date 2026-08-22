@@ -199,6 +199,7 @@ import HowToConvertPdfToRtf from "./blog/HowToConvertPdfToRtf";
 import HowToConvertHtmlToPdf from "./blog/HowToConvertHtmlToPdf";
 import VideoToGif from "./VideoToGif";
 import BulkRenamer from "./BulkRenamer";
+import RingtoneMaker from "./RingtoneMaker";
 // import BlogHome from "./blog/BlogHome";
 
 
@@ -352,6 +353,8 @@ function App() {
             <Route path="/jpgtowebp" element={<JpgToWebpPage />} />
             <Route path="/mp3-joiner" element={<Mp3Joiner/>}/>
             <Route path="/video-to-gif" element={<VideoToGif/>}/>
+          <Route path='/bulk-renamer' element={<BulkRenamer/>}/>  
+          <Route path='/ringtone-maker' element={<RingtoneMaker/>}/>  
 
 
 
@@ -375,7 +378,7 @@ function App() {
           <Route path='/blog/how-to-convert-rtf-to-pdf' element={<HowToConvertRtfToPdf/>}/>  
           <Route path='/blog/how-to-convert-pdf-to-rtf' element={<HowToConvertPdfToRtf/>}/>  
           <Route path='/blog/how-to-convert-html-to-pdf' element={<HowToConvertHtmlToPdf/>}/>  
-          <Route path='/bulk-renamer' element={<BulkRenamer/>}/>  
+
 
 
 

@@ -139,6 +139,7 @@ export default function LandingPage() {
           <li><Link to="/mp3-joiner" ><FeatureCard1 title="mp3 Joiner"  image1="music-app.png" /> </Link></li>
           <li><Link to="/video-to-gif" ><FeatureCard1 title="Video to Gif"  image1="play.png" /> </Link></li>
           <li><Link to="/bulk-renamer" ><FeatureCard1 title="Bulk Renamer"  image1="bulk rename.png" /> </Link></li>
+          <li><Link to="/ringtone-maker" ><FeatureCard1 title="Ringtone Maker"  image1="bulk rename.png" /> </Link></li>
 
           
            {/*

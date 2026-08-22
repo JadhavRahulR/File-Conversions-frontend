@@ -1,0 +1,382 @@
+.ringtone-waveform-wrapper {
+  width: 100%;
+  margin: 25px 0;
+  padding: 18px;
+
+  box-sizing: border-box;
+
+  background: #111827;
+  border-radius: 12px;
+
+  user-select: none;
+}
+
+
+/* Time above waveform */
+
+.ringtone-waveform-time {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* Main waveform */
+
+.ringtone-waveform {
+  position: relative;
+
+  width: 100%;
+  height: 150px;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #1f2937;
+
+  cursor: default;
+
+  touch-action: none;
+}
+
+
+/* Bars */
+
+.ringtone-bars {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2px;
+
+  padding: 20px 8px;
+
+  box-sizing: border-box;
+}
+
+
+/* Individual bar */
+
+.ringtone-bar {
+  flex: 1;
+
+  min-width: 2px;
+
+  max-width: 5px;
+
+  border-radius: 4px;
+
+  background: #6b7280;
+
+  opacity: 0.55;
+
+  transition:
+    background 0.1s ease,
+    opacity 0.1s ease;
+}
+
+
+/* Selected bars */
+
+.ringtone-bar.selected {
+  background: #00aaff;
+  opacity: 1;
+}
+
+
+/* Selected region */
+
+.ringtone-selection {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  background: rgba(
+    0,
+    170,
+    255,
+    0.08
+  );
+
+  pointer-events: none;
+
+  z-index: 2;
+}
+
+
+/* Drag handles */
+
+.ringtone-handle {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 4px;
+
+  background: #00c6ff;
+
+  transform: translateX(-50%);
+
+  cursor: ew-resize;
+
+  z-index: 5;
+
+  box-shadow:
+    0 0 8px rgba(0, 198, 255, 0.8),
+    0 0 18px rgba(0, 198, 255, 0.45);
+}
+
+
+/* Handle top/bottom knobs */
+
+.ringtone-handle::before,
+.ringtone-handle::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  width: 16px;
+  height: 16px;
+
+  background: #00c6ff;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 8px rgba(0, 198, 255, 0.8);
+}
+
+
+.ringtone-handle::before {
+  top: -3px;
+}
+
+
+.ringtone-handle::after {
+  bottom: -3px;
+}
+
+
+/* Handle label */
+
+.ringtone-handle-label {
+  position: absolute;
+
+  top: -27px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  padding: 3px 7px;
+
+  border-radius: 4px;
+
+  background: #00aaff;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* Scale */
+
+.ringtone-waveform-scale {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 8px;
+
+  color: #9ca3af;
+
+  font-size: 12px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .ringtone-waveform-wrapper {
+    padding: 12px;
+  }
+
+  .ringtone-waveform {
+    height: 120px;
+  }
+
+  .ringtone-bars {
+    gap: 1px;
+    padding: 15px 5px;
+  }
+
+  .ringtone-bar {
+    min-width: 1px;
+    max-width: 4px;
+  }
+
+  .ringtone-handle {
+    width: 5px;
+  }
+
+  .ringtone-handle::before,
+  .ringtone-handle::after {
+    width: 18px;
+    height: 18px;
+  }
+
+  .ringtone-handle-label {
+    font-size: 10px;
+    top: -24px;
+  }
+
+}
+
+
+
+.selected-ringtone-info {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+
+  background: #182235;
+  border: 1px solid rgba(0, 198, 255, 0.25);
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 12px rgba(0, 198, 255, 0.08);
+}
+
+.selected-ringtone-title {
+  margin-bottom: 12px;
+
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.selected-ringtone-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.selected-time {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding: 9px 12px;
+
+  background: #202c3d;
+  border-radius: 7px;
+}
+
+.selected-time span {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.selected-time strong {
+  color: #00c6ff;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+  .selected-ringtone-details {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .selected-ringtone-info {
+    padding: 12px;
+  }
+
+  .selected-ringtone-title {
+    font-size: 15px;
+  }
+
+}
+
+
+
+.ringtone-waveform-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 0 14px;
+}
+
+.ringtone-play-btn {
+  min-width: 130px;
+  height: 44px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 22px;
+
+  background: #00aaff;
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 8px rgba(0, 170, 255, 0.55),
+    0 0 20px rgba(0, 170, 255, 0.25);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.ringtone-play-btn:hover {
+  background: #0095df;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 0 10px rgba(0, 170, 255, 0.7),
+    0 0 25px rgba(0, 170, 255, 0.35);
+}
+
+.ringtone-play-btn:active {
+  transform: translateY(0);
+}
+
+
+.ringtone-selection {
+  cursor: grab;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.ringtone-selection:active {
+  cursor: grabbing;
+}

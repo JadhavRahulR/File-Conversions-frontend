@@ -1,0 +1,919 @@
+/* =========================================================
+   Ringtone Maker
+   Responsive CSS
+   ========================================================= */
+
+.ringtone-maker-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 30px auto 60px;
+  padding: 30px;
+  box-sizing: border-box;
+  background: #858484;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   Title
+   ========================================================= */
+
+.ringtone-maker-title {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+}
+
+
+/* =========================================================
+   Hidden Normal File Input
+   ========================================================= */
+
+.ringtone-maker-input {
+  display: block;
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto 25px;
+  padding: 14px 16px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+  color: #333;
+
+  border: 2px solid #007bff;
+  border-radius: 12px;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 8px rgba(0, 123, 255, 0.25),
+    0 0 20px rgba(0, 123, 255, 0.12);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+
+/* File choose button */
+
+.ringtone-maker-input::file-selector-button {
+  margin-right: 15px;
+
+  padding: 11px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #007bff;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Hover on file button */
+
+.ringtone-maker-input::file-selector-button:hover {
+  background: #0069d9;
+
+  box-shadow:
+    0 0 8px rgba(0, 123, 255, 0.5),
+    0 0 18px rgba(0, 123, 255, 0.3);
+
+  transform: translateY(-1px);
+}
+
+
+/* Hover on complete input */
+
+.ringtone-maker-input:hover {
+  border-color: #0069d9;
+
+  box-shadow:
+    0 0 10px rgba(0, 123, 255, 0.35),
+    0 0 25px rgba(0, 123, 255, 0.18);
+}
+
+
+/* Focus */
+
+.ringtone-maker-input:focus {
+  outline: none;
+
+  border-color: #0056b3;
+
+  box-shadow:
+    0 0 10px rgba(0, 123, 255, 0.45),
+    0 0 28px rgba(0, 123, 255, 0.22);
+}
+
+.ringtone-maker-container .filecontainer {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ringtone-maker-container .filecontainer .fileuploadcontainer{
+    display: flex;
+}
+/* Mobile */
+
+@media (max-width: 480px) {
+
+  .ringtone-maker-input {
+    width: 100%;
+    padding: 12px;
+    margin: 15px auto 20px;
+    font-size: 13px;
+  }
+
+  .ringtone-maker-input::file-selector-button {
+    margin-right: 8px;
+    padding: 9px 13px;
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   Google Drive / Dropbox Area
+   ========================================================= */
+
+
+
+/* =========================================================
+   Audio Preview
+   ========================================================= */
+
+.audioPreviewContainer {
+  width: 100%;
+  margin-top: 25px;
+  padding: 22px;
+  box-sizing: border-box;
+  background: #f8f9fa;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.audioPreview {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 18px;
+  display: block;
+}
+
+.audioPreviewContainer p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #444;
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   Remove Button
+   ========================================================= */
+
+.ringtone-remove-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 7px;
+  background: #dc3545;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.ringtone-remove-btn:hover {
+  background: #c82333;
+}
+
+
+/* =========================================================
+   Controls
+   ========================================================= */
+
+.ringtoneControls {
+  width: 100%;
+  margin-top: 25px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+
+  padding: 25px;
+  box-sizing: border-box;
+
+  background: #f8f9fa;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+}
+
+
+/* =========================================================
+   Individual Control
+   ========================================================= */
+
+.controlItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.controlItem label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+/* =========================================================
+   Inputs / Select
+   ========================================================= */
+
+.controlItem input[type="number"],
+.controlItem input[type="text"],
+.controlItem select {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #cfcfcf;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #222;
+
+  font-size: 14px;
+  outline: none;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.controlItem input[type="number"]:focus,
+.controlItem input[type="text"]:focus,
+.controlItem select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.12);
+}
+
+
+/* =========================================================
+   Checkbox Controls
+   ========================================================= */
+
+.checkboxItem {
+  justify-content: center;
+}
+
+.checkboxItem label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 44px;
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxItem input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   Create Ringtone Button
+   ========================================================= */
+
+.ringtone-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 28px;
+}
+
+.ringtone-create-btn {
+  min-width: 220px;
+  min-height: 48px;
+
+  padding: 12px 28px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #007bff;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    opacity 0.2s ease;
+}
+
+.ringtone-create-btn:hover:not(:disabled) {
+  background: #0069d9;
+  transform: translateY(-1px);
+}
+
+.ringtone-create-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ringtone-create-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   Status
+   ========================================================= */
+
+.mediafilestatuscontaner{
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mediafilestatus {
+  width: 50%;
+  margin-top: 20px;
+  padding: 12px 15px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: #f1f3f5;
+  border-radius: 7px;
+
+  color: #444;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   Progress
+   ========================================================= */
+
+.ringtone-progress {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.ringtone-progress progress {
+  width: 100%;
+  height: 10px;
+}
+
+.ringtone-progress p {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+}
+
+
+/* =========================================================
+   Ringtone Result
+   ========================================================= */
+
+.ringtoneResult {
+  width: 100%;
+  margin-top: 30px;
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: #f8f9fa;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+}
+
+.ringtoneResult h3 {
+  margin: 0 0 20px;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+
+/* =========================================================
+   Generated Audio Player
+   ========================================================= */
+
+.ringtoneResultAudio {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+
+  display: block;
+}
+
+
+/* =========================================================
+   Download
+   ========================================================= */
+
+.ringtone-download-container {
+  margin-top: 22px;
+}
+
+.ringtone-download-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 200px;
+  min-height: 45px;
+
+  padding: 10px 24px;
+  box-sizing: border-box;
+
+  border-radius: 7px;
+
+  background: #28a745;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.ringtone-download-link:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   Save To Google Drive / Dropbox
+   ========================================================= */
+
+/* .saveToTitle {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.saveTo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+  flex-wrap: wrap;
+
+  margin-top: 10px;
+} */
+
+
+/* =========================================================
+   Tablet
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .ringtone-maker-container {
+    width: calc(100% - 30px);
+    margin: 25px auto 45px;
+    padding: 22px;
+  }
+
+  .ringtone-maker-title {
+    font-size: 24px;
+  }
+
+  .ringtoneControls {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .audioPreviewContainer {
+    padding: 18px;
+  }
+
+  .ringtoneResult {
+    padding: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   Mobile
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .ringtone-maker-container {
+    width: calc(100% - 20px);
+
+    margin: 18px auto 35px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+  }
+
+  .ringtone-maker-title {
+    margin-bottom: 18px;
+    font-size: 21px;
+  }
+
+
+  .audioPreviewContainer {
+    margin-top: 18px;
+    padding: 14px;
+  }
+
+  .audioPreviewContainer p {
+    font-size: 13px;
+  }
+
+  .ringtoneControls {
+    margin-top: 18px;
+    padding: 15px;
+    gap: 14px;
+    border-radius: 9px;
+  }
+
+  .controlItem label {
+    font-size: 13px;
+  }
+
+  .controlItem input[type="number"],
+  .controlItem input[type="text"],
+  .controlItem select {
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .ringtone-create-btn {
+    width: 100%;
+    min-width: 0;
+    min-height: 46px;
+    font-size: 15px;
+  }
+
+  .ringtone-btn-container {
+    margin-top: 20px;
+  }
+
+  .ringtoneResult {
+    margin-top: 22px;
+    padding: 15px;
+  }
+
+  .ringtoneResult h3 {
+    font-size: 18px;
+  }
+
+  .ringtone-download-link {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+}
+
+
+/* =========================================================
+   Very Small Screens
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .ringtone-maker-container {
+    width: calc(100% - 12px);
+    padding: 12px;
+  }
+
+  .ringtone-maker-title {
+    font-size: 19px;
+  }
+
+  .ringtoneControls {
+    padding: 12px;
+  }
+
+  .audioPreviewContainer {
+    padding: 11px;
+  }
+
+  .ringtone-create-btn {
+    font-size: 14px;
+  }
+
+}
+
+
+/* =========================================
+   Current Audio Playhead
+========================================= */
+
+.ringtone-playhead {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background: #ff2d2d;
+
+  transform: translateX(-50%);
+
+  z-index: 6;
+
+  pointer-events: none;
+
+  box-shadow:
+    0 0 6px rgba(255, 45, 45, 0.9),
+    0 0 14px rgba(255, 45, 45, 0.55);
+}
+
+
+/* Red circle on top */
+
+.ringtone-playhead::before {
+  content: "";
+
+  position: absolute;
+
+  top: -4px;
+  left: 50%;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+
+  background: #ff2d2d;
+
+  transform: translateX(-50%);
+
+  box-shadow:
+    0 0 7px rgba(255, 45, 45, 0.9);
+}
+
+
+/* Current second */
+
+.ringtone-playhead-time {
+  position: absolute;
+
+  top: 8px;
+  left: 8px;
+
+  padding: 3px 6px;
+
+  border-radius: 4px;
+
+  background: #ff2d2d;
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+
+
+/* ==========================================
+   Ringtone SEO Content
+========================================== */
+
+.ringtone-seo-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 50px auto 40px;
+    padding: 32px 34px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    color: #333333;
+
+    line-height: 1.75;
+    font-size: 16px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================
+   H2 Headings
+========================================== */
+
+.ringtone-seo-content h2 {
+    margin: 30px 0 14px;
+
+    color: #007777;
+
+    font-size: 25px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.ringtone-seo-content h2:first-child {
+    margin-top: 0;
+}
+
+
+/* ==========================================
+   Paragraphs
+========================================== */
+
+.ringtone-seo-content p {
+    margin: 0 0 18px;
+
+    color: #555555;
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+
+/* ==========================================
+   Strong Text
+========================================== */
+
+.ringtone-seo-content strong {
+    color: #222222;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   Ordered List
+========================================== */
+
+.ringtone-seo-content ol {
+    margin: 10px 0 25px;
+    padding-left: 25px;
+
+    color: #555555;
+}
+
+.ringtone-seo-content li {
+    margin-bottom: 10px;
+    padding-left: 5px;
+
+    color: #555555;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   Heading Hover
+========================================== */
+
+.ringtone-seo-content h2 {
+    transition: color 0.2s ease;
+}
+
+.ringtone-seo-content h2:hover {
+    color: #1677ff;
+}
+
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 850px) {
+
+    .ringtone-seo-content {
+        width: calc(100% - 30px);
+        max-width: 800px;
+
+        margin: 40px auto 30px;
+        padding: 28px 24px;
+    }
+
+    .ringtone-seo-content h2 {
+        font-size: 23px;
+    }
+
+    .ringtone-seo-content p {
+        font-size: 15.5px;
+    }
+}
+
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 600px) {
+
+    .ringtone-seo-content {
+        width: calc(100% - 20px);
+
+        margin: 30px auto 25px;
+        padding: 22px 18px;
+
+        border-radius: 12px;
+    }
+
+    .ringtone-seo-content h2 {
+        margin-top: 25px;
+        margin-bottom: 12px;
+
+        font-size: 21px;
+    }
+
+    .ringtone-seo-content p {
+        margin-bottom: 16px;
+
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .ringtone-seo-content ol {
+        padding-left: 22px;
+    }
+
+    .ringtone-seo-content li {
+        font-size: 15px;
+        margin-bottom: 9px;
+    }
+}
+
+
+/* ==========================================
+   Small Mobile
+========================================== */
+
+@media (max-width: 400px) {
+
+    .ringtone-seo-content {
+        width: calc(100% - 16px);
+        padding: 19px 15px;
+    }
+
+    .ringtone-seo-content h2 {
+        font-size: 20px;
+    }
+
+    .ringtone-seo-content p,
+    .ringtone-seo-content li {
+        font-size: 14px;
+    }
+}
