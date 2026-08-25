@@ -997,6 +997,10 @@ export default function RingtoneMaker() {
         a voice recording or another supported audio file, you can make your
         own ringtone in just a few simple steps.
     </p>
+<div className="ringtoneimage">
+
+    <img src="music-app.png" alt="" />
+</div>
 
     <p>
         Our online ringtone maker is designed to make audio editing simple
@@ -1039,6 +1043,12 @@ export default function RingtoneMaker() {
         start and end time manually or use the draggable waveform controls
         for a faster and more convenient editing experience.
     </p>
+
+
+    <div className="ringtoneimage">
+
+    <img src="cut audio.png" alt="" className="ringtonecut"/>
+</div>
 
     <p>
         The ringtone generator is useful for creating short music ringtones,

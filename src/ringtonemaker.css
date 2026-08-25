@@ -734,6 +734,21 @@
    Ringtone SEO Content
 ========================================== */
 
+
+
+.ringtoneimage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ringtoneimage img{
+  width: 200px;
+}
+
+.ringtoneimage .ringtonecut{
+  width: 600px;
+}
 .ringtone-seo-content {
     width: 100%;
     max-width: 900px;
