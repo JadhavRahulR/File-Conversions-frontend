@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import "./ringtonemaker.css";
+import "./common.css";
 
 import MediaDropzoneInput from "./MediaDropzoneInput";
 import DriveMediaInput from "./DriveMediaInput";
 import DropboxMediaFileInput from "./DropboxMediaFileInput";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
 import SaveToDropbox from "./SaveToDropbox";
+import { Link } from 'react-router-dom';
 
 import { FFmpeg } from "@ffmpeg/ffmpeg";
 import { fetchFile } from "@ffmpeg/util";
@@ -1112,6 +1114,75 @@ export default function RingtoneMaker() {
         these features in one convenient place. You can create a ringtone
         online without installing a separate desktop application.
     </p>
+
+     <h2>Also check other Tools  </h2>
+    <div className="unzipPagelink">
+
+  <Link to="/word-to-pdf" className="fu-tool-link">
+    WORD To PDF Converter
+  </Link>
+
+  <Link to="/odt-to-pdf" className="fu-tool-link">
+    ODT To PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-odt" className="fu-tool-link">
+    PDF To ODT Converter
+  </Link>
+
+  <Link to="/text-to-pdf" className="fu-tool-link">
+    TEXT To PDF Converter
+  </Link>
+
+  <Link to="/pptx-to-pdf" className="fu-tool-link">
+    PPTX To PDF Converter
+  </Link>
+
+  <Link to="/md-to-pdf" className="fu-tool-link">
+    MD To PDF Converter
+  </Link>
+
+  <Link to="/xlsx-to-pdf" className="fu-tool-link">
+    XLSX To PDF Converter
+  </Link>
+
+  <Link to="/csv-to-pdf" className="fu-tool-link">
+    CSV To PDF Converter
+  </Link>
+
+  <Link to="/img-to-pdf" className="fu-tool-link">
+    IMG To PDF Converter
+  </Link>
+
+  <Link to="/tiff-to-pdf" className="fu-tool-link">
+    TIFF To PDF Converter
+  </Link>
+
+  <Link to="/merge-pdf" className="fu-tool-link">
+    Merge PDF
+  </Link>
+
+  <Link to="/pdfpageremover" className="fu-tool-link">
+    PDF Page Remover
+  </Link>
+
+  <Link to="/favicon-generator" className="fu-tool-link">
+    Favicon Generator
+  </Link>
+
+  <Link to="/pdfextractor" className="fu-tool-link">
+    PDF Page Extractor
+  </Link>
+
+  <Link to="/pdf-compressor" className="fu-tool-link">
+    Compress PDF
+  </Link>
+
+  <Link to="/img-compressor" className="fu-tool-link">
+    Compress Image
+  </Link>
+
+</div>
 
 
     <h2>Secure Online Ringtone Maker</h2>

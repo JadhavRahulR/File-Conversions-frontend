@@ -1,7 +1,9 @@
 .process-section{
-    width:100%;
+    width:80%;
+    margin: 20px auto;
     padding:90px 20px;
     background:#ffffff;
+
 }
 
 .process-heading{
@@ -103,10 +105,11 @@
 
 
 /* choose section css */
-.choose-section{
-    width:100%;
-    padding:90px 20px;
-    background:#f8fafc;
+.choose-section {
+    width: 80%;
+    padding: 90px 20px;
+    background: #f8fafc;
+    margin: 20px auto;
 }
 
 .choose-heading{

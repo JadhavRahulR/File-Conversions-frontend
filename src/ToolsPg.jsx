@@ -75,9 +75,26 @@ function ToolsPg() {
           <p>Pdf Page Extractor  </p>
         </div></Link>
 
-        <Link to="/pdfpageremover" ><div className="toolcard">
-          <p>Pdf Page Remover  </p>
-        </div></Link>
+        <Link to="/pdfpageremover" ><div className="toolcard"> <p>Pdf Page Remover  </p> </div></Link>
+        <Link to="/imageresizer" ><div className="toolcard"> <p>Image Resizer  </p> </div></Link>
+        <Link to="/pngtojpg" ><div className="toolcard"> <p>PNG to JPG </p> </div></Link>
+        <Link to="/pngtowebp" ><div className="toolcard"> <p>PNG to WEBP  </p> </div></Link>
+        <Link to="/pngtoavif" ><div className="toolcard"> <p>PNG to AVIF  </p> </div></Link>
+        <Link to="/aviftopng" ><div className="toolcard"> <p>AVIF to PNG </p> </div></Link>
+        <Link to="/jpgtopng" ><div className="toolcard"> <p>JPG to PNG </p> </div></Link>
+        <Link to="/webptopng" ><div className="toolcard"> <p>WEBP to PNG </p> </div></Link>
+        <Link to="/webptojpg" ><div className="toolcard"> <p>WEBP to JPG  </p> </div></Link>
+        <Link to="/jpgtowebp" ><div className="toolcard"> <p>JPG to WEBP  </p> </div></Link>
+        <Link to="/mp3-joiner" ><div className="toolcard"> <p>MP3 Joiner </p> </div></Link>
+        <Link to="/video-to-gif" ><div className="toolcard"> <p>Video to GIF  </p> </div></Link>
+        <Link to="/bulk-renamer" ><div className="toolcard"> <p>Bulk Re-namer  </p> </div></Link>
+        <Link to="/ringtone-maker" ><div className="toolcard"> <p>Ringtone Maker </p> </div></Link>
+        {/* <Link to="/invoice-generator" ><div className="toolcard"> <p>Invoice Generator </p> </div></Link> */}
+
+
+         
+
+
       </div>
     </div>
   )

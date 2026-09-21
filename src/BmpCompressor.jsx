@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import './CsvCompressor.css';
+import './common.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from "./ScrollToTop";
@@ -211,17 +212,36 @@ setConvertedFile(compressedBMP);
             <li>   📉 Optimized for faster uploads and storage savings</li>
             <li>🔐 Your files remain private and are never stored</li>
             <li>⚡ Fast compression with automatic download</li>
+            
+          </ul>
             <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Bmp file  </h2>
             <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-            <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-            </div>
-          </ul>
+  <Link to="/word-to-pdf" className="fu-tool-link">
+    Word to PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-word" className="fu-tool-link">
+    PDF to Word Converter
+  </Link>
+
+  <Link to="/pdf-to-txt" className="fu-tool-link">
+    PDF to TXT Converter
+  </Link>
+
+  <Link to="/pdf-to-pptx" className="fu-tool-link">
+    PDF to PPTX Converter
+  </Link>
+
+  <Link to="/pdf-compressor" className="fu-tool-link">
+    Compress PDF
+  </Link>
+
+  <Link to="/img-compressor" className="fu-tool-link">
+    Compress Image
+  </Link>
+
+</div>
         </div>
         <div className="compressor-article">
           <h2>Understanding BMP Files and Why You Should Compress Them</h2>

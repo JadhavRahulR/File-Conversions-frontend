@@ -44,7 +44,8 @@
 .pagetitle h1 {
   text-align: center;
   max-width: 900px;
-  font-size: 2rem;
+  font-size: 1.9rem;
+  font-weight: 600;
   color:#2e86de;
 
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import JSZip from "jszip";
 // import "./ImageResizer.css";
 import "./imgtoimg.css"
+import "./common.css"
 
 import DropzoneInput from "./DropzoneInput";
 import ScrollToTop from "./ScrollToTop";
@@ -361,27 +362,79 @@ export default function PngToJpgPage() {
           <h2>Also check other features Related to PDF and Image file  </h2>
           <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >Word to PDF Converter </Link></li>
-            <li><Link to="/pdf-to-word" className='btn'>PDF to Word Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >odt to pdf Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >txt to pdf Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > pptx to pdf  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > rtf to pdf Converter </Link></li>
-            <li><Link to="/html-to-pdf" className='btn' > html to pdf Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > md  to pdf Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > xlsx  to pdf Converter </Link></li>
-             <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
-            <li><Link to='/pdfpageremover' className='btn' > PDF Page Remover  </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > csv to pdf Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > pdf to odt Converter </Link></li>
-            <li><Link to="/pdf-to-txt" className='btn' > pdf to txt Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > pdf to pptx Converter </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to='/pdfextractor' className='btn' > PDF Page  Extractor </Link></li>
-            <li><Link to="/tiffcompressor" className='btn' > Compress Tiff  </Link></li>
-             <li><Link to='/favicon-generator' className='btn' >Favicon Generator</Link></li>
-            <Link></Link>
-          </div>
+  <Link to="/word-to-pdf" className="fu-tool-link">
+    Word to PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-word" className="fu-tool-link">
+    PDF to Word Converter
+  </Link>
+
+  <Link to="/odt-to-pdf" className="fu-tool-link">
+    ODT to PDF Converter
+  </Link>
+
+  <Link to="/text-to-pdf" className="fu-tool-link">
+    TXT to PDF Converter
+  </Link>
+
+  <Link to="/pptx-to-pdf" className="fu-tool-link">
+    PPTX to PDF Converter
+  </Link>
+
+  <Link to="/rtf-to-pdf" className="fu-tool-link">
+    RTF to PDF Converter
+  </Link>
+
+  <Link to="/html-to-pdf" className="fu-tool-link">
+    HTML to PDF Converter
+  </Link>
+
+  <Link to="/md-to-pdf" className="fu-tool-link">
+    MD to PDF Converter
+  </Link>
+
+  <Link to="/xlsx-to-pdf" className="fu-tool-link">
+    XLSX to PDF Converter
+  </Link>
+
+  <Link to="/favicon-generator" className="fu-tool-link">
+    Favicon Generator
+  </Link>
+
+  <Link to="/pdfpageremover" className="fu-tool-link">
+    PDF Page Remover
+  </Link>
+
+  <Link to="/csv-to-pdf" className="fu-tool-link">
+    CSV to PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-odt" className="fu-tool-link">
+    PDF to ODT Converter
+  </Link>
+
+  <Link to="/pdf-to-txt" className="fu-tool-link">
+    PDF to TXT Converter
+  </Link>
+
+  <Link to="/pdf-to-pptx" className="fu-tool-link">
+    PDF to PPTX Converter
+  </Link>
+
+  <Link to="/pdf-compressor" className="fu-tool-link">
+    Compress PDF
+  </Link>
+
+  <Link to="/pdfextractor" className="fu-tool-link">
+    PDF Page Extractor
+  </Link>
+
+  <Link to="/tiffcompressor" className="fu-tool-link">
+    Compress TIFF
+  </Link>
+
+</div>
         </div>
 
         <h3 className="pngtojpg-subheading">Why Convert PNG to JPG?</h3>

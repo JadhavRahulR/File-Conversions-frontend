@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import './mp3joiner.css';
+import "./common.css"
 
 import MediaDropzoneInput from "./MediaDropzoneInput";
 import DriveMediaInput from "./DriveMediaInput";
@@ -874,33 +875,89 @@ export default function VideoToGif() {
           </p>
 
            <h2 style={{ marginBottom: "4px" }}>Also Related PDF Conversion & Compression Tools </h2>
-                      <div className="pdfpageslinks">
-          
-                      <div className="unzipPagelink">
-                        <ul>
-          
-                        <li><Link to="/word-to-pdf" className='btn' >Word To PDF Converter </Link></li>
-                        <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-                        <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-                        <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-                        <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
-                        <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-                        <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-                        <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-                        <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-                        <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-                        <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-                        <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-                        <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-                        <li><Link to='/pdfpageremover' className='btn' > PDF Page Extractor  </Link></li>
-                        <li><Link to='/pdfextractor' className='btn' > PDF Page Remover </Link></li>
-                        <li><Link to='/video-to-gif' className='btn' > Video to GIF </Link></li>
-                        <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
+                     <div className="pdfpageslinks">
 
-                        <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-                        </ul>
-                      </div>
-                      </div>
+  <div className="unzipPagelink">
+
+    <ul>
+
+      <Link to="/word-to-pdf" className="fu-tool-link">
+        Word To PDF Converter
+      </Link>
+
+      <Link to="/odt-to-pdf" className="fu-tool-link">
+        ODT To PDF Converter
+      </Link>
+
+      <Link to="/text-to-pdf" className="fu-tool-link">
+        TEXT To PDF Converter
+      </Link>
+
+      <Link to="/pptx-to-pdf" className="fu-tool-link">
+        PPTX To PDF Converter
+      </Link>
+
+      <Link to="/rtf-to-pdf" className="fu-tool-link">
+        RTF To PDF Converter
+      </Link>
+
+      <Link to="/md-to-pdf" className="fu-tool-link">
+        MD To PDF Converter
+      </Link>
+
+      <Link to="/xlsx-to-pdf" className="fu-tool-link">
+        XLSX To PDF Converter
+      </Link>
+
+      <Link to="/csv-to-pdf" className="fu-tool-link">
+        CSV To PDF Converter
+      </Link>
+
+      <Link to="/img-to-pdf" className="fu-tool-link">
+        IMG To PDF Converter
+      </Link>
+
+      <Link to="/tiff-to-pdf" className="fu-tool-link">
+        TIFF To PDF Converter
+      </Link>
+
+      <Link to="/pdf-to-odt" className="fu-tool-link">
+        PDF To ODT Converter
+      </Link>
+
+      <Link to="/pdf-to-pptx" className="fu-tool-link">
+        PDF To PPTX Converter
+      </Link>
+
+      <Link to="/pdf-to-rtf" className="fu-tool-link">
+        PDF To RTF Converter
+      </Link>
+
+      <Link to="/pdfpageremover" className="fu-tool-link">
+        PDF Page Extractor
+      </Link>
+
+      <Link to="/pdfextractor" className="fu-tool-link">
+        PDF Page Remover
+      </Link>
+
+      <Link to="/video-to-gif" className="fu-tool-link">
+        Video To GIF
+      </Link>
+
+      <Link to="/favicon-generator" className="fu-tool-link">
+        Favicon Generator
+      </Link>
+
+      <Link to="/merge-pdf" className="fu-tool-link">
+        Merge PDF
+      </Link>
+
+    </ul>
+
+  </div>
+
+</div>
           
                   
 

@@ -68,7 +68,7 @@
 //     <div className="app-container">
 
 //       <Navbar1 />
-      
+
 //       <div className="main-content">
 //         <GlobalLoader />
 //         <Routes>
@@ -113,7 +113,7 @@
 //           <Route path="/bmpcompressor" element={<BmpCompressor />} />
 //           <Route path="/favicon-generator" element={<FaviconGenerator />} />
 //           <Route path="/renamefile" element={<RenameFile />} />
-          
+
 //           <Route path='pdfextractor' element={<PdfPageExtractor />} />
 //           <Route path='pdfpageremover' element={<PdfPageRemove />} />
 //           <Route path='imageresizer' element={<ImageResizerPage/>}/>
@@ -158,7 +158,6 @@ import "./converter.css"
 import "./about.css";
 import "./compressor.css";
 import "./ContactUs.css";
-import "./converter.css";
 import "./drivefileinput.css";
 import "./DropzoneInput.css";
 import "./footer.css";
@@ -166,10 +165,10 @@ import "./globalloader.css";
 import "./ImageCompressor.css";
 import "./ImageResizer.css";
 import "./imgtoimg.css";
+import "./Mp3Joiner.css"
 import "./LandingPage.css";
 import "./LazyVideo.css";
 import "./navbar.css";
-import "./PDFCompressor.css";
 import "./PDFMerger.css";
 import "./PdfTools.css";
 import "./PrivacyPolicy.css";
@@ -180,26 +179,27 @@ import "./UrlPages.css";
 import "./urltofile.css";
 import "./ZipCompressor.css";
 import "./ZipExtractor.css";
-import HowToConvertWordToPdf from "./blog/HowToConvertWordToPdf";
-import HowToConvertPdfToWord from "./blog/HowToConvertPdfToWord";
-import HowToJoinMp3File from "./blog/HowToJoinMp3File";
-import HowToConvertOdtToPdf from "./blog/HowToConvertOdtToPdf";
-import HowToConvertPdfToOdt from "./blog/HowToConvertPdfToOdt";
-import HowToConvertTextToPdf from "./blog/HowToConvertTextToPdf";
-import HowToConvertPdfToText from "./blog/HowToConvertPdfToText";
-import NotFound from "./NotFound";
-import HowToConvertDocToOdt from "./blog/HowToConvertDocToOdt";
-import HowToConvertOdtToDoc from "./blog/HowToConvertOdtToDoc";
-import HowToConvertPptxToPdf from "./blog/HowToConvertPptxToPdf";
-import HowToConvertPdfToPptx from "./blog/HowToConvertPdfToPptx";
-import HowToConvertPptxToOdp from "./blog/HowToConvertPptxToOdp";
-import HowToConvertOdpToPptx from "./blog/HowToConvertOdpToPptx";
-import HowToConvertRtfToPdf from "./blog/HowToConvertRtfToPdf";
-import HowToConvertPdfToRtf from "./blog/HowToConvertPdfToRtf";
-import HowToConvertHtmlToPdf from "./blog/HowToConvertHtmlToPdf";
-import VideoToGif from "./VideoToGif";
-import BulkRenamer from "./BulkRenamer";
-import RingtoneMaker from "./RingtoneMaker";
+import NotFound from "./NotFound"
+const HowToConvertWordToPdf = lazy(() =>  import("./blog/HowToConvertWordToPdf"));
+const HowToConvertPdfToWord = lazy(() =>  import("./blog/HowToConvertPdfToWord"));
+const HowToJoinMp3File = lazy(() =>  import("./blog/HowToJoinMp3File"));
+const HowToConvertOdtToPdf = lazy(() =>  import("./blog/HowToConvertOdtToPdf"));
+const HowToConvertPdfToOdt = lazy(() =>  import("./blog/HowToConvertPdfToOdt"));
+const HowToConvertTextToPdf = lazy(() =>  import("./blog/HowToConvertTextToPdf"));
+const HowToConvertPdfToText = lazy(() =>  import("./blog/HowToConvertPdfToText"));
+const HowToConvertDocToOdt = lazy(() =>  import("./blog/HowToConvertDocToOdt"));
+const HowToConvertOdtToDoc = lazy(() =>  import("./blog/HowToConvertOdtToDoc"));
+const HowToConvertPptxToPdf = lazy(() =>  import("./blog/HowToConvertPptxToPdf"));
+const HowToConvertPdfToPptx = lazy(() =>  import("./blog/HowToConvertPdfToPptx"));
+const HowToConvertPptxToOdp = lazy(() =>  import("./blog/HowToConvertPptxToOdp"));
+const HowToConvertOdpToPptx = lazy(() =>  import("./blog/HowToConvertOdpToPptx"));
+const HowToConvertRtfToPdf = lazy(() =>  import("./blog/HowToConvertRtfToPdf"));
+const HowToConvertPdfToRtf = lazy(() =>  import("./blog/HowToConvertPdfToRtf"));
+const HowToConvertHtmlToPdf = lazy(() =>  import("./blog/HowToConvertHtmlToPdf"));
+const VideoToGif = lazy(() => import("./VideoToGif"));
+const BulkRenamer = lazy(() => import("./BulkRenamer"));
+const RingtoneMaker = lazy(() => import("./RingtoneMaker"));
+const InvoiceGenerator = lazy(() => import("./InvoiceGenerator"));
 // import BlogHome from "./blog/BlogHome";
 
 
@@ -271,7 +271,7 @@ const WebpToJpgPage = lazy(() => import("./WebpToJpgPage"));
 const JpgToWebpPage = lazy(() => import("./JpgToWebpPage"));
 const AvifToPngPage = lazy(() => import("./AvifToPngPage"));
 const Mp3Joiner = lazy(() => import("./Mp3Joiner"));
-const BlogHome = lazy(()=>import("./blog/BlogHome"))
+const BlogHome = lazy(() => import("./blog/BlogHome"))
 
 
 
@@ -279,17 +279,17 @@ function App() {
   return (
     <div className="app-container">
       <Navbar1 />
-      
+
 
       <div className="main-content">
         <GlobalLoader />
 
         {/* ✅ Suspense wrapper */}
-        <Suspense fallback={<div style={{textAlign:"center", padding:"50px"}}>Loading...</div>}>
+        <Suspense fallback={<div style={{ textAlign: "center", padding: "50px" }}>Loading...</div>}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/aboutus" element={<About />} />
-            <Route path="/blog/BlogHome"  element= {<BlogHome/>}/>
+            <Route path="/blog/BlogHome" element={<BlogHome />} />
             <Route path="/tools" element={<ToolsPg />} />
 
             <Route path="/word-to-pdf" element={<WordToPdfConverter />} />
@@ -351,42 +351,43 @@ function App() {
             <Route path="/webptopng" element={<WebpToPngPage />} />
             <Route path="/webptojpg" element={<WebpToJpgPage />} />
             <Route path="/jpgtowebp" element={<JpgToWebpPage />} />
-            <Route path="/mp3-joiner" element={<Mp3Joiner/>}/>
-            <Route path="/video-to-gif" element={<VideoToGif/>}/>
-          <Route path='/bulk-renamer' element={<BulkRenamer/>}/>  
-          <Route path='/ringtone-maker' element={<RingtoneMaker/>}/>  
+            <Route path="/mp3-joiner" element={<Mp3Joiner />} />
+            <Route path="/video-to-gif" element={<VideoToGif />} />
+            <Route path='/bulk-renamer' element={<BulkRenamer />} />
+            <Route path='/ringtone-maker' element={<RingtoneMaker />} />
+            {/* <Route path='/invoice-generator' element={<InvoiceGenerator />} /> */}
 
 
 
 
             {/* Blogs */}
 
-          <Route path='/blog' element={<BlogHome/>}/>            
-          <Route path='/blog/how-to-convert-word-to-pdf' element={<HowToConvertWordToPdf/>}/>            
-          <Route path='/blog/how-to-convert-pdf-to-word' element={<HowToConvertPdfToWord/>}/>            
-          <Route path='/blog/how-to-join-mp3-file' element={<HowToJoinMp3File/>}/>  
-          <Route path='/blog/how-to-convert-odt-to-pdf' element={<HowToConvertOdtToPdf/>}/>  
-          <Route path='/blog/how-to-convert-pdf-to-odt' element={<HowToConvertPdfToOdt/>}/>  
-          <Route path='/blog/how-to-convert-text-to-pdf' element={<HowToConvertTextToPdf/>}/>  
-          <Route path='/blog/how-to-convert-pdf-to-text' element={<HowToConvertPdfToText/>}/>  
-          <Route path='/blog/how-to-convert-doc-to-odt' element={<HowToConvertDocToOdt/>}/>  
-          <Route path='/blog/how-to-convert-odt-to-doc' element={<HowToConvertOdtToDoc/>}/>  
-          <Route path='/blog/how-to-convert-pptx-to-pdf' element={<HowToConvertPptxToPdf/>}/>  
-          <Route path='/blog/how-to-convert-pdf-to-pptx' element={<HowToConvertPdfToPptx/>}/>  
-          <Route path='/blog/how-to-convert-pptx-to-odp' element={<HowToConvertPptxToOdp/>}/>  
-          <Route path='/blog/how-to-convert-odp-to-pptx' element={<HowToConvertOdpToPptx/>}/>  
-          <Route path='/blog/how-to-convert-rtf-to-pdf' element={<HowToConvertRtfToPdf/>}/>  
-          <Route path='/blog/how-to-convert-pdf-to-rtf' element={<HowToConvertPdfToRtf/>}/>  
-          <Route path='/blog/how-to-convert-html-to-pdf' element={<HowToConvertHtmlToPdf/>}/>  
+            <Route path='/blog' element={<BlogHome />} />
+            <Route path='/blog/how-to-convert-word-to-pdf' element={<HowToConvertWordToPdf />} />
+            <Route path='/blog/how-to-convert-pdf-to-word' element={<HowToConvertPdfToWord />} />
+            <Route path='/blog/how-to-join-mp3-file' element={<HowToJoinMp3File />} />
+            <Route path='/blog/how-to-convert-odt-to-pdf' element={<HowToConvertOdtToPdf />} />
+            <Route path='/blog/how-to-convert-pdf-to-odt' element={<HowToConvertPdfToOdt />} />
+            <Route path='/blog/how-to-convert-text-to-pdf' element={<HowToConvertTextToPdf />} />
+            <Route path='/blog/how-to-convert-pdf-to-text' element={<HowToConvertPdfToText />} />
+            <Route path='/blog/how-to-convert-doc-to-odt' element={<HowToConvertDocToOdt />} />
+            <Route path='/blog/how-to-convert-odt-to-doc' element={<HowToConvertOdtToDoc />} />
+            <Route path='/blog/how-to-convert-pptx-to-pdf' element={<HowToConvertPptxToPdf />} />
+            <Route path='/blog/how-to-convert-pdf-to-pptx' element={<HowToConvertPdfToPptx />} />
+            <Route path='/blog/how-to-convert-pptx-to-odp' element={<HowToConvertPptxToOdp />} />
+            <Route path='/blog/how-to-convert-odp-to-pptx' element={<HowToConvertOdpToPptx />} />
+            <Route path='/blog/how-to-convert-rtf-to-pdf' element={<HowToConvertRtfToPdf />} />
+            <Route path='/blog/how-to-convert-pdf-to-rtf' element={<HowToConvertPdfToRtf />} />
+            <Route path='/blog/how-to-convert-html-to-pdf' element={<HowToConvertHtmlToPdf />} />
 
 
 
 
-                    
 
 
-          {/* Page Not Link  */}
-          <Route path="*" element={<NotFound />} />
+
+            {/* Page Not Link  */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </div>

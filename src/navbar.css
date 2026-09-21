@@ -1,3 +1,225 @@
+
+/* =========================================================
+   FILEUNIVERS NAVBAR
+   Bootstrap-free responsive navbar
+   ========================================================= */
+
+.site-navbar {
+  width: 100%;
+  background: #212529;
+  color: #fff;
+  position: relative;
+  z-index: 1000;
+}
+
+.site-navbar-container {
+  width: 100%;
+  max-width: 1320px;
+  min-height: 72px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.navbar-logo {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.navbar-logo:hover {
+  color: #fff;
+}
+
+
+/* =========================================================
+   DESKTOP MENU
+   ========================================================= */
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+
+  padding: 10px 14px;
+  border-radius: 6px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.navbar-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.navbar-link.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   HAMBURGER
+   Hidden on desktop
+   ========================================================= */
+
+.navbar-hamburger {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 8px;
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+  cursor: pointer;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.navbar-hamburger span {
+  display: block;
+
+  width: 24px;
+  height: 2px;
+
+  background: #fff;
+  border-radius: 2px;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+/* =========================================================
+   HAMBURGER ANIMATION
+   ========================================================= */
+
+.navbar-hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+  .site-navbar-container {
+    min-height: 64px;
+    padding: 0 16px;
+  }
+
+  .navbar-logo {
+    font-size: 17px;
+    letter-spacing: 0.8px;
+  }
+
+  .navbar-hamburger {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+
+    margin: 0;
+    padding: 8px 16px 14px;
+
+    background: #212529;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-link {
+    width: 100%;
+    padding: 12px 10px;
+
+    box-sizing: border-box;
+
+    border-radius: 5px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .site-navbar-container {
+    min-height: 60px;
+    padding: 0 12px;
+  }
+
+  .navbar-logo {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .navbar-hamburger {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar-hamburger span {
+    width: 22px;
+  }
+}
+
+
+
+
 .basic-navbar-nav{
     border: 2px solid red;
     width: 1rem;

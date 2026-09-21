@@ -1,7 +1,8 @@
 // DocToOdtConverter.jsx
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
-import "./converter.css"
+import "./converter.css";
+import "./common.css"
 import Tools from "./Tools";
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput';
@@ -196,13 +197,25 @@ const DocToOdtConverter = () => {
             <p><strong>Input:</strong> .doc (Microsoft Word)</p>
             <p><strong>Output:</strong> .odt (OpenDocument Text)</p>
             <h2>Also check other features Related to word / doc file  </h2>
-            <div className="unzipPagelink">
+           <div className="unzipPagelink">
 
-            <li><Link to="/odt-to-doc" className='btn'> ODT To DOC  Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' >PDF To ODT Converter </Link></li>
-            <li><Link to="/docxcompressor" className='btn'> Compress DOC / Word  </Link></li>
-            </div>
+  <Link to="/odt-to-doc" className="fu-tool-link">
+    ODT To DOC Converter
+  </Link>
+
+  <Link to="/odt-to-pdf" className="fu-tool-link">
+    ODT To PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-odt" className="fu-tool-link">
+    PDF To ODT Converter
+  </Link>
+
+  <Link to="/docxcompressor" className="fu-tool-link">
+    Compress DOC / Word
+  </Link>
+
+</div>
           </div>
 
           <div className="converter-section">

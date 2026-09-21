@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DropzoneInput from "./DropzoneInput";
 import axios from 'axios';
-import "./converter.css"
+import "./converter.css";
+import "./common.css"
 import Tools from './Tools';
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
@@ -177,14 +178,25 @@ const PptxToPdf = () => {
             <p><strong>Input:</strong> .pptx (PowerPoint Presentation)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to PPTX file  </h2>
-            <div className="unzipPagelink">
+           <div className="unzipPagelink">
 
-            <li><Link to="/pptx-to-odp" className='btn'> PPTX To ODP  Converter </Link></li>
-            <li><Link to="/odp-to-pptx" className='btn'> ODP To PPTX  Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pptxcompress" className='btn'> Compress PPTX </Link></li>
-            <Link></Link>
-            </div>
+  <Link to="/pptx-to-odp" className="fu-tool-link">
+    PPTX To ODP Converter
+  </Link>
+
+  <Link to="/odp-to-pptx" className="fu-tool-link">
+    ODP To PPTX Converter
+  </Link>
+
+  <Link to="/pdf-to-pptx" className="fu-tool-link">
+    PDF To PPTX Converter
+  </Link>
+
+  <Link to="/pptxcompress" className="fu-tool-link">
+    Compress PPTX
+  </Link>
+
+</div>
           </div>
 
           <div className="converter-section">

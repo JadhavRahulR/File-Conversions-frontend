@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import DropzoneInput from "./DropzoneInput";
 import axios from "axios";
 import "./converter.css";
+import "./common.css"
 import Tools from "./Tools";
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
@@ -188,23 +189,19 @@ const TxtToPdfConverter = () => {
             <p><strong>Input:</strong> .txt (Plain Text)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to Text/pdf file formate </h2>
-            <div className="unzipPagelink">
-
-            <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTF To PDF Converter </Link></li>
-            <li><Link to="/html-to-pdf" className='btn' > HTML To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <Link></Link>
-            </div>
+           <div className="unzipPagelink">
+             <Link to="/pdf-to-txt" className="fu-tool-link"> PDF To TEXT Converter </Link> 
+             <Link to="/pptx-to-pdf" className="fu-tool-link"> PPTX To PDF Converter </Link> 
+             <Link to="/rtf-to-pdf" className="fu-tool-link"> RTF To PDF Converter </Link> 
+             <Link to="/html-to-pdf" className="fu-tool-link"> HTML To PDF Converter </Link>
+              <Link to="/md-to-pdf" className="fu-tool-link"> MD To PDF Converter </Link>
+              <Link to="/xlsx-to-pdf" className="fu-tool-link"> XLSX To PDF Converter </Link> 
+              <Link to="/csv-to-pdf" className="fu-tool-link"> CSV To PDF Converter </Link>
+              <Link to="/img-to-pdf" className="fu-tool-link"> IMG To PDF Converter </Link> 
+             <Link to="/tiff-to-pdf" className="fu-tool-link"> TIFF To PDF Converter </Link>
+              <Link to="/pdf-to-pptx" className="fu-tool-link"> PDF To PPTX Converter </Link>
+              <Link to="/pdf-to-rtf" className="fu-tool-link"> PDF To RTF Converter </Link>
+              <Link to="/pdf-compressor" className="fu-tool-link"> Compress PDF </Link> </div>
           </div>
 
           <div className="converter-section">

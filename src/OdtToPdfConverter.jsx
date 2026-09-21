@@ -184,13 +184,23 @@ const OdtToPdfConverter = () => {
             <p><strong>Input:</strong> .odt (OpenDocument Text)</p>
             <p><strong>Output:</strong> .pdf</p>
             <h2>Also check other features Related to odt file  </h2>
-            <div className="unzipPagelink">
+           <div className="unzipPagelink">
+    <Link to="/doc-to-odt" className="fu-tool-link">
+        DOC To ODT Converter
+    </Link>
 
-            <li><Link to="/doc-to-odt" className='btn' >DOC To ODT Converter </Link></li>
-            <li><Link to="/odt-to-doc" className='btn' > ODT To DOC  Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/odtcompressor" className='btn'>Compress ODT </Link></li>
-            </div>
+    <Link to="/odt-to-doc" className="fu-tool-link">
+        ODT To DOC Converter
+    </Link>
+
+    <Link to="/pdf-to-odt" className="fu-tool-link">
+        PDF To ODT Converter
+    </Link>
+
+    <Link to="/odtcompressor" className="fu-tool-link">
+        Compress ODT
+    </Link>
+</div>
           </div>
 
           <div className="converter-section">

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import './CsvCompressor.css';
+import './common.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from "./ScrollToTop";
@@ -208,6 +209,75 @@ setConvertedFile(compressedTIFF);
             <li>🚀 Click <strong>Compress</strong> to begin the optimization</li>
             <li>   ⬇️ Your compressed <code>.tiff</code> will auto-download once ready</li>
           </ol>
+
+                <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Tiff file  </h2>
+            <div className="unzipPagelink">
+
+  <Link to="/word-to-pdf" className="fu-tool-link">
+    WORD To PDF Converter
+  </Link>
+
+  <Link to="/odt-to-pdf" className="fu-tool-link">
+    ODT To PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-odt" className="fu-tool-link">
+    PDF To ODT Converter
+  </Link>
+
+  <Link to="/text-to-pdf" className="fu-tool-link">
+    TEXT To PDF Converter
+  </Link>
+
+  <Link to="/pptx-to-pdf" className="fu-tool-link">
+    PPTX To PDF Converter
+  </Link>
+
+  <Link to="/rtf-to-pdf" className="fu-tool-link">
+    RTF To PDF Converter
+  </Link>
+
+  <Link to="/md-to-pdf" className="fu-tool-link">
+    MD To PDF Converter
+  </Link>
+
+  <Link to="/xlsx-to-pdf" className="fu-tool-link">
+    XLSX To PDF Converter
+  </Link>
+
+  <Link to="/csv-to-pdf" className="fu-tool-link">
+    CSV To PDF Converter
+  </Link>
+
+  <Link to="/img-to-pdf" className="fu-tool-link">
+    IMG To PDF Converter
+  </Link>
+
+  <Link to="/tiff-to-pdf" className="fu-tool-link">
+    TIFF To PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-pptx" className="fu-tool-link">
+    PDF To PPTX Converter
+  </Link>
+
+  <Link to="/pdf-to-rtf" className="fu-tool-link">
+    PDF To RTF Converter
+  </Link>
+
+  <Link to="/merge-pdf" className="fu-tool-link">
+    Merge PDF
+  </Link>
+
+  <Link to="/pdf-compressor" className="fu-tool-link">
+    Compress PDF
+  </Link>
+
+  <Link to="/img-compressor" className="fu-tool-link">
+    Compress Image
+  </Link>
+
+</div>
           <section>
           <LazyVideo 
               youtubeId="XIsVbvTw9kI"
@@ -222,30 +292,10 @@ setConvertedFile(compressedTIFF);
             <li>   📉 Shrinks file size for quicker transfer and storage</li>
             <li>🔐 Safe and secure- files are not stored</li>
             <li>⚡ Fast image compression with auto-download</li>
-            <h2 style={{ marginBottom: '6px' }}>Also check other features Related to PDF and Tiff file  </h2>
-            <div className="unzipPagelink">
-
-            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTf To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-            </div>
-
+            
           </ul>
         </div>
+      
         <section>
           <div className="compressor-article">
             <h2>All About TIFF Compression</h2>

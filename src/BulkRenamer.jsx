@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from "react";
 import JSZip from "jszip";
 import "./BulkRenamer.css";
+import "./common.css";
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const BulkRenamer = () => {
     const [files, setFiles] = useState([]);
@@ -119,7 +121,7 @@ const BulkRenamer = () => {
 
   <meta
     name="description"
-    content="Rename multiple files online for free with FileUnivers Bulk Renamer. Bulk rename files, batch rename files, customize filenames, preview changes, and download renamed files easily."
+    content="Rename multiple files online for free with Bulk Renamer. Bulk rename files, batch rename files, customize filenames, preview changes, and download renamed files easily."
   />
 
   <meta
@@ -146,7 +148,7 @@ const BulkRenamer = () => {
                     <h1>Bulk Renamer – Rename Multiple Files Online</h1>
 
 <p>
-  Rename multiple files quickly, easily, and securely with FileUnivers Bulk
+  Rename multiple files quickly, easily, and securely with our tool Bulk
   Renamer, a free online bulk file renaming tool. This online file renamer
   lets you rename multiple files at once instead of changing each filename
   individually. Select or drag and drop your files, enter a common name,
@@ -156,7 +158,7 @@ const BulkRenamer = () => {
 
 <p>
   Whether you need to bulk rename files, batch rename files, rename multiple
-  files, or organize a large collection of files, FileUnivers Bulk Renamer
+  files, or organize a large collection of files,  Bulk Renamer
   provides a simple and convenient solution directly in your browser. You
   can use this bulk renaming tool for images, photos, documents, PDFs,
   videos, project files, product images, and many other file types.
@@ -353,7 +355,7 @@ const BulkRenamer = () => {
 
                 <p>
                     Managing a large number of files can become time-consuming when every
-                    file needs to be renamed individually. FileUnivers Bulk Renamer makes
+                    file needs to be renamed individually.  Bulk Renamer makes
                     it easy to rename multiple files at once directly from your browser.
                     Whether you have images, documents, PDFs, videos, or other files, this
                     bulk file renamer helps you create consistent and organized filenames
@@ -428,7 +430,7 @@ const BulkRenamer = () => {
                 <h3>Fast, Simple and Browser-Based</h3>
 
                 <p>
-                    FileUnivers Bulk Renamer is designed to make batch file renaming simple
+                    Bulk Renamer is designed to make batch file renaming simple
                     and convenient. Your files can be selected directly from your device,
                     and the renaming process is handled in the browser. You don't need to
                     install separate desktop software just to rename multiple files.
@@ -437,15 +439,81 @@ const BulkRenamer = () => {
                 <p>
                     Whether you're organizing hundreds of photos, preparing product images,
                     managing documents, or cleaning up a folder of downloaded files,
-                    FileUnivers provides a convenient file renaming tool for quickly
+                    we provides a convenient file renaming tool for quickly
                     creating consistent filenames.
                 </p>
 
                 <p>
-                    Try FileUnivers Bulk Renamer to rename multiple files, organize your
+                    Try our Bulk Renamer to rename multiple files, organize your
                     filenames, and save time with simple and convenient batch file
                     renaming.
                 </p>
+
+
+                 <h2>Also check other features Related to PDF and Image file  </h2>
+              <div className="unzipPagelink">
+                
+                  <Link to="/word-to-pdf" className="fu-tool-link">
+                    Word to PDF Converter
+                  </Link>
+                
+                  <Link to="/pdf-to-word" className="fu-tool-link">
+                    PDF to Word Converter
+                  </Link>
+                
+                  <Link to="/odt-to-pdf" className="fu-tool-link">
+                    ODT to PDF Converter
+                  </Link>
+                
+                  <Link to="/text-to-pdf" className="fu-tool-link">
+                    TXT to PDF Converter
+                  </Link>
+                
+                  <Link to="/pptx-to-pdf" className="fu-tool-link">
+                    PPTX to PDF Converter
+                  </Link>
+                
+                  <Link to="/rtf-to-pdf" className="fu-tool-link">
+                    RTF to PDF Converter
+                  </Link>
+                
+                  <Link to="/html-to-pdf" className="fu-tool-link">
+                    HTML to PDF Converter
+                  </Link>
+                
+                  <Link to="/md-to-pdf" className="fu-tool-link">
+                    MD to PDF Converter
+                  </Link>
+                
+                  <Link to="/xlsx-to-pdf" className="fu-tool-link">
+                    XLSX to PDF Converter
+                  </Link>
+                
+                  <Link to="/csv-to-pdf" className="fu-tool-link">
+                    CSV to PDF Converter
+                  </Link>
+                
+                  <Link to="/pdf-to-odt" className="fu-tool-link">
+                    PDF to ODT Converter
+                  </Link>
+                
+                  <Link to="/pdf-to-txt" className="fu-tool-link">
+                    PDF to TXT Converter
+                  </Link>
+                
+                  <Link to="/pdf-to-pptx" className="fu-tool-link">
+                    PDF to PPTX Converter
+                  </Link>
+                
+                  <Link to="/pdf-compressor" className="fu-tool-link">
+                    Compress PDF
+                  </Link>
+                
+                  <Link to="/tiffcompressor" className="fu-tool-link">
+                    Compress TIFF
+                  </Link>
+                
+                </div>
             </section>
         </>
     );

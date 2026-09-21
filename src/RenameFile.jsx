@@ -4,6 +4,7 @@ import ScrollToTop from "./ScrollToTop";
 import DriveFileInput from "./DriveFileInput";
 import DropboxFileInput from "./DropboxFileInput";
 import './CsvCompressor.css';
+import './common.css';
 import { Link } from 'react-router-dom';
 import LazyVideo from "./LazyVideo";
 import SaveToGoogleDrive from "./SaveToGoogleDrive";
@@ -283,32 +284,81 @@ const RenameFile = () => {
           </ul>
 
           <h2 style={{ marginBottom: "6px" }}>Also check other tools related to PDF and File Tools</h2>
-          <div className="pdfpageslinks">
+          <div className="unzipPagelink">
 
-            <ul>
-              <div className="unzipPagelink">
-                <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-                <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-                <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-                <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-                <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-                <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-                <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-                <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-                <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-                <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-                <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-                <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-                <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-                <li><Link to="/merge-pdf" className='btn' > Merge PDF  </Link></li>
-                <li><Link to='/pdfpageremover' className='btn' > PDF Page Remover  </Link></li>
-                <li><Link to='/favicon-generator' className='btn' > Favicon Generator </Link></li>
-                <li><Link to='/pdfextractor' className='btn' > PDF Page  Extractor </Link></li>
-                <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-                <li><Link to="/img-compressor" className='btn' > Compress Image  </Link></li>
-              </div>
-            </ul>
-          </div>
+  <Link to="/word-to-pdf" className="fu-tool-link">
+    WORD To PDF Converter
+  </Link>
+
+  <Link to="/odt-to-pdf" className="fu-tool-link">
+    ODT To PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-odt" className="fu-tool-link">
+    PDF To ODT Converter
+  </Link>
+
+  <Link to="/text-to-pdf" className="fu-tool-link">
+    TEXT To PDF Converter
+  </Link>
+
+  <Link to="/pptx-to-pdf" className="fu-tool-link">
+    PPTX To PDF Converter
+  </Link>
+
+  <Link to="/md-to-pdf" className="fu-tool-link">
+    MD To PDF Converter
+  </Link>
+
+  <Link to="/xlsx-to-pdf" className="fu-tool-link">
+    XLSX To PDF Converter
+  </Link>
+
+  <Link to="/csv-to-pdf" className="fu-tool-link">
+    CSV To PDF Converter
+  </Link>
+
+  <Link to="/img-to-pdf" className="fu-tool-link">
+    IMG To PDF Converter
+  </Link>
+
+  <Link to="/tiff-to-pdf" className="fu-tool-link">
+    TIFF To PDF Converter
+  </Link>
+
+  <Link to="/pdf-to-pptx" className="fu-tool-link">
+    PDF To PPTX Converter
+  </Link>
+
+  <Link to="/pdf-to-rtf" className="fu-tool-link">
+    PDF To RTF Converter
+  </Link>
+
+  <Link to="/merge-pdf" className="fu-tool-link">
+    Merge PDF
+  </Link>
+
+  <Link to="/pdfpageremover" className="fu-tool-link">
+    PDF Page Remover
+  </Link>
+
+  <Link to="/favicon-generator" className="fu-tool-link">
+    Favicon Generator
+  </Link>
+
+  <Link to="/pdfextractor" className="fu-tool-link">
+    PDF Page Extractor
+  </Link>
+
+  <Link to="/pdf-compressor" className="fu-tool-link">
+    Compress PDF
+  </Link>
+
+  <Link to="/img-compressor" className="fu-tool-link">
+    Compress Image
+  </Link>
+
+</div>
           <section>
             <h2>Works on All Modern Browsers</h2>
 

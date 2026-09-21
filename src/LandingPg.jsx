@@ -140,6 +140,7 @@ export default function LandingPage() {
           <li><Link to="/video-to-gif" ><FeatureCard1 title="Video to Gif"  image1="play.png" /> </Link></li>
           <li><Link to="/bulk-renamer" ><FeatureCard1 title="Bulk Renamer"  image1="bulk rename.png" /> </Link></li>
           <li><Link to="/ringtone-maker" ><FeatureCard1 title="Ringtone Maker"  image1="music-app.png" /> </Link></li>
+          {/* <li><Link to="/invoice-generator" ><FeatureCard1 title="Invoice Generator"  image1="invoice.png" /> </Link></li> */}
 
           
            {/*
@@ -150,8 +151,10 @@ export default function LandingPage() {
            {/* <li><Link to="/webpagetopdf" ><FeatureCard title="web Page to PDF" image1="/Favicon.png" image2="pdf.png" /> </Link></li> */}
         </div>
       </section>
+<section className="processSection">
 
       <ProcessSection/>
+</section>
       <section className="faq-section">
         <h2>Frequently Asked Questions</h2>
 

@@ -6,6 +6,8 @@ import "./processSection.css";
 const ProcessSection = () => {
     return (
         <>
+
+
             <section className="process-section">
 
                 <div className="process-heading">
@@ -108,7 +110,7 @@ const ProcessSection = () => {
                                     alt="Google Drive"
                                     width="44"
                                     height="44"
-                                />
+                                    />
 
                             </div>
                         </div>
@@ -163,7 +165,7 @@ const ProcessSection = () => {
                                     alt="Save to Google Drive"
                                     width="42"
                                     height="42"
-                                />
+                                    />
                             </div>
                         </div>
 
@@ -186,7 +188,7 @@ const ProcessSection = () => {
                                     alt="Google Drive"
                                     width="44"
                                     height="44"
-                                />
+                                    />
                             </div>
                         </div>
 
@@ -208,7 +210,7 @@ const ProcessSection = () => {
                                     alt="Dropbox"
                                     width="44"
                                     height="44"
-                                />
+                                    />
 
                             </div>
                         </div>

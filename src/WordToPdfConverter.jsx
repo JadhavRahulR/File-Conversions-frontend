@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import "./converter.css"
+import "./converter.css";
+import "./common.css"
 import Tools from './Tools';
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
@@ -182,7 +183,7 @@ function WordToPdfConverter() {
           </ul>
         </div>
 
-        <ProcessSection/>
+        <ProcessSection />
 
         <div className="converter-section">
           <h2>📁 Supported Formats</h2>
@@ -190,11 +191,21 @@ function WordToPdfConverter() {
           <p><strong>Output:</strong> .pdf</p>
           <h2>Also check other features Related to word / DOC file  </h2>
           <div className="unzipPagelink">
+            <Link to="/pdf-to-word" className="fu-tool-link">
+              PDF To WORD Converter
+            </Link>
 
-          <li><Link to="/pdf-to-word" className='btn'>PDF To WORD Converter </Link></li>
-          <li><Link to="/doc-to-odt" className='btn'>DOC To ODT Converter </Link></li>
-          <li><Link to="/odt-to-doc" className='btn'> ODT To DOC  Converter </Link></li>
-          <li><Link to="/docxcompressor" className='btn'> Compress DOC / WORD  </Link></li>
+            <Link to="/doc-to-odt" className="fu-tool-link">
+              DOC To ODT Converter
+            </Link>
+
+            <Link to="/odt-to-doc" className="fu-tool-link">
+              ODT To DOC Converter
+            </Link>
+
+            <Link to="/docxcompressor" className="fu-tool-link">
+              Compress DOC / WORD
+            </Link>
           </div>
         </div>
 

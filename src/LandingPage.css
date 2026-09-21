@@ -20,9 +20,10 @@ body, h1, h2, h3, p, button {
 }
 
 .hero h1 {
-  font-size: 36px;
+  /* font-size: 36px; */
   margin-bottom: 20px;
   color: #2e86de;
+  font-weight: 500;
 }
 
 .hero p {
@@ -58,9 +59,10 @@ body, h1, h2, h3, p, button {
 }
 
 .features h2 {
-  font-size: 32px;
+  font-size: 25px;
   margin-bottom: 40px;
   color: #2e86de;
+  font-weight: 600;
 }
 
 .feature-grid {
@@ -100,9 +102,10 @@ body, h1, h2, h3, p, button {
    background: linear-gradient(to bottom right, #ffffff, #f4f4f4);
 }
 .cta h2 {
-  font-size: 28px;
+  font-size: 25px;
   margin-bottom: 10px;
   color: #2e86de;
+  font-weight: 600;
 }
 
 .cta p {
@@ -123,6 +126,8 @@ body, h1, h2, h3, p, button {
 
 .feature-card h5 {
    color: white;
+   font-size: 18px;
+   font-weight: 500;
 }
 
 
@@ -205,3 +210,5 @@ body, h1, h2, h3, p, button {
     font-size: 2.5rem;
   }
 }
+
+

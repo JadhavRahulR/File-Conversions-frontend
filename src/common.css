@@ -1,0 +1,34 @@
+/* =========================================
+   FILEUNIVERS COMMON TOOL LINKS
+   ========================================= */
+
+.fu-tool-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    min-height: 40px;
+
+    box-sizing: border-box;
+
+    margin: 10px;
+
+    border: 1px solid #0000ff;
+    border-radius: 4px;
+
+    text-decoration: none;
+    color: #212529;
+    background: transparent;
+
+    transition:
+        color 0.15s ease,
+        background-color 0.15s ease,
+        letter-spacing 0.15s ease;
+}
+
+.fu-tool-link:hover {
+     background-color: #000000;
+  border:none;
+  color: white;
+  box-shadow: 6px 15px 20px rgb(0, 0, 0);
+}

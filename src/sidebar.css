@@ -1,36 +1,242 @@
-ul li a{
-    text-decoration: none;
-   
-}
-ul li {
-    list-style: none;
-}
-h2{
-    color:#2e86de;
-    text-align: center;
-    margin: 10px;
-    font-size: 1.5rem;
-}
-.btn{
-    width: 300px;
-    height: 40px;
-    border: 1px solid blue;
-    margin: 4px 0px;
-}
-.btn:hover{
-    border: 1px solid blue;
-    letter-spacing: 2px;
-    width: 300px;
-    /* color: red; */
-}
-ul li a:hover{
-    color: red;
+
+/* =========================================================
+   OPEN BUTTON
+========================================================= */
+
+.tools-open-button {
+    margin: 0.5rem;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    background: #0d6efd;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.sidebarbody{
-    padding: 0px;
+.tools-open-button:hover {
+    background: #0b5ed7;
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.tools-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1040;
+    width: 100%;
+
+    animation: toolsOverlayFadeIn 0.3s ease forwards;
+}
+
+
+/* =========================================================
+   SIDEBAR / OFFCANVAS
+========================================================= */
+
+.tools-offcanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 330px;
+    max-width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 1050;
+    overflow-y: auto;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+
+    animation: toolsSlideIn 0.35s ease-out forwards;
+}
+
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes toolsSlideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+.tools-offcanvas.tools-closing {
+    animation: toolsSlideOut 0.3s ease-in forwards;
+}
+
+
+@keyframes toolsSlideOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+
+@keyframes toolsOverlayFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.tools-overlay.tools-closing {
+    animation: toolsOverlayFadeOut 0.3s ease-in forwards;
+}
+
+@keyframes toolsOverlayFadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.tools-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.tools-header h2 {
+    color: #2e86de;
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.5rem;
+}
+
+.tools-close-button {
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    line-height: 1;
+    cursor: pointer;
+    color: #333;
+}
+
+
+/* =========================================================
+   SIDEBAR BODY
+========================================================= */
+
+.sidebarbody {
+    padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
 }
-.sidebarbody ul{
-    padding-left:10px ;
+
+.sidebarbody ul {
+    padding: 0;
+    margin: 0;
+    width: 300px;
 }
+.sidebarbody li {
+    list-style: none;
+}
+
+
+/* =========================================================
+   TOOL LINKS
+========================================================= */
+
+.sidebarbody li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 40px;
+
+    box-sizing: border-box;
+    border: 1px solid blue;
+    margin: 4px 0;
+
+    text-decoration: none;
+    color: #212529;
+    border-radius: 4px;
+    /* Smooth hover */
+    transition:
+        color 0.2s ease,
+        border-color 0.2s ease,
+        letter-spacing 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.sidebarbody li a:hover {
+    color: rgb(242, 243, 253);
+    border: none;
+    letter-spacing: 2px;
+    background-color: #131313;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+    .tools-offcanvas {
+        width: 100%;
+    }
+
+    .sidebarbody li a {
+        width: 290px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .tools-offcanvas {
+        width: 100%;
+    }
+
+    .sidebarbody ul {
+        width: 290px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .tools-offcanvas,
+    .tools-overlay {
+        animation: none;
+    }
+
+    .tools-offcanvas {
+        transform: translateX(0);
+    }
+
+    .sidebarbody li a {
+        transition: none;
+    }
+}
+

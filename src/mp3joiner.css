@@ -259,9 +259,12 @@
 
 
 
-
+.maincontentsection{
+  max-width: 900px;
+  margin: 20px auto;
+}
 /* video to gif */
-.videoPreviewContainer {
+.maincontentsection .videoPreviewContainer {
     width: 100%;
     margin-top: 20px;
     text-align: center;
@@ -274,7 +277,11 @@
     border: 1px solid #ddd;
     background: #000;
 }
-
+.maincontentsection h2{
+  color: #0077ff;
+  text-align: center;
+  font-weight: 500;
+}
 .videoPreviewContainer p {
     margin: 10px 0;
     font-size: 15px;

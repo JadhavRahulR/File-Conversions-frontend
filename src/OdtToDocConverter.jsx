@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DropzoneInput from "./DropzoneInput";
 import axios from "axios";
-import "./converter.css"
+import "./converter.css";
+import "./common.css"
 import Tools from "./Tools";
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
@@ -185,14 +186,25 @@ const OdtToDocConverter = () => {
             <p><strong>Input:</strong> .odt (OpenDocument Text)</p>
             <p><strong>Output:</strong> .doc /docs</p>
             <h2>Also check other features Related to odt file  </h2>
-            <div className="unzipPagelink">
+           <div className="unzipPagelink">
 
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/doc-to-odt" className='btn' >DOC To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/odtcompressor" className='btn'>Compress ODT </Link></li>
-            <Link></Link>
-            </div>
+  <Link to="/odt-to-pdf" className="fu-tool-link">
+    ODT To PDF Converter
+  </Link>
+
+  <Link to="/doc-to-odt" className="fu-tool-link">
+    DOC To ODT Converter
+  </Link>
+
+  <Link to="/pdf-to-odt" className="fu-tool-link">
+    PDF To ODT Converter
+  </Link>
+
+  <Link to="/odtcompressor" className="fu-tool-link">
+    Compress ODT
+  </Link>
+
+</div>
           </div>
 
           <div className="converter-section">

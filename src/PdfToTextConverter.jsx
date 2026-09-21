@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import DropzoneInput from "./DropzoneInput";
 import axios from 'axios';
 import Tools from './Tools';
+import "./common.css";
+import "./converter.css"
 import DriveFileInput from './DriveFileInput';
 import DropboxFileInput from './DropboxFileInput'
 import ScrollToTop from './ScrollToTop';
@@ -84,11 +86,11 @@ const PdfToTextConverter = () => {
     }
   };
   useEffect(() => {
-        if (file) {
-          setStatus("Upload");
-        }
-      }, [file]);
-  
+    if (file) {
+      setStatus("Upload");
+    }
+  }, [file]);
+
   return (
     <>
       <ScrollToTop />
@@ -119,8 +121,8 @@ const PdfToTextConverter = () => {
           <input type="file" accept=".pdf" onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']}/>
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']}/>
+            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={['.pdf']} />
+            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.pdf']} />
           </div>
           <DropzoneInput acceptedType={['pdf']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
@@ -165,8 +167,8 @@ const PdfToTextConverter = () => {
             <p><strong>📌Note:</strong> Large or scanned PDFs may take more time to process.</p>
           </div>
           <section>
-            <LazyVideo 
-            youtubeId="z83ObafFsnw"
+            <LazyVideo
+              youtubeId="z83ObafFsnw"
               title="How to Convert PDF to Text ? "
               description='Easily extract text from any PDF file using this free online PDF to Text converter!.
               No software, no registration- just upload your PDF, click “Upload”, and Auto download your editable .txt file in seconds.'
@@ -190,24 +192,70 @@ const PdfToTextConverter = () => {
             <h2>Also check other features Related to PDF file formate </h2>
             <div className="unzipPagelink">
 
-            <li><Link to="/word-to-pdf" className='btn' >WORD To PDF Converter </Link></li>
-            <li><Link to="/odt-to-pdf" className='btn' >ODT To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn'>PDF To ODT Converter </Link></li>
-            <li><Link to="/text-to-pdf" className='btn' >TEXT To PDF Converter </Link></li>
-            <li><Link to="/pptx-to-pdf" className='btn' > PPTX To PDF  Converter </Link></li>
-            <li><Link to="/rtf-to-pdf" className='btn' > RTF To PDF Converter </Link></li>
-            <li><Link to="/html-to-pdf" className='btn' > HTML To PDF Converter </Link></li>
-            <li><Link to="/md-to-pdf" className='btn' > MD  To PDF Converter </Link></li>
-            <li><Link to="/xlsx-to-pdf" className='btn' > XLSX  To PDF Converter </Link></li>
-            <li><Link to="/csv-to-pdf" className='btn' > CSV To PDF Converter </Link></li>
-            <li><Link to="/img-to-pdf" className='btn' > IMG To PDF Converter </Link></li>
-            <li><Link to="/tiff-to-pdf" className='btn' > TIFF To PDF Converter </Link></li>
-            <li><Link to="/pdf-to-odt" className='btn' > PDF To ODT Converter </Link></li>
-            <li><Link to="/pdf-to-txt" className='btn' > PDF To TEXT Converter </Link></li>
-            <li><Link to="/pdf-to-pptx" className='btn' > PDF To PPTX Converter </Link></li>
-            <li><Link to="/pdf-to-rtf" className='btn' > PDF To RTF Converter </Link></li>
-            <li><Link to='/pdf-compressor' className='btn' > Compress PDF  </Link></li>
-            <Link></Link>
+              <Link to="/word-to-pdf" className="fu-tool-link">
+                WORD To PDF Converter
+              </Link>
+
+              <Link to="/odt-to-pdf" className="fu-tool-link">
+                ODT To PDF Converter
+              </Link>
+
+              <Link to="/pdf-to-odt" className="fu-tool-link">
+                PDF To ODT Converter
+              </Link>
+
+              <Link to="/text-to-pdf" className="fu-tool-link">
+                TEXT To PDF Converter
+              </Link>
+
+              <Link to="/pptx-to-pdf" className="fu-tool-link">
+                PPTX To PDF Converter
+              </Link>
+
+              <Link to="/rtf-to-pdf" className="fu-tool-link">
+                RTF To PDF Converter
+              </Link>
+
+              <Link to="/html-to-pdf" className="fu-tool-link">
+                HTML To PDF Converter
+              </Link>
+
+              <Link to="/md-to-pdf" className="fu-tool-link">
+                MD To PDF Converter
+              </Link>
+
+              <Link to="/xlsx-to-pdf" className="fu-tool-link">
+                XLSX To PDF Converter
+              </Link>
+
+              <Link to="/csv-to-pdf" className="fu-tool-link">
+                CSV To PDF Converter
+              </Link>
+
+              <Link to="/img-to-pdf" className="fu-tool-link">
+                IMG To PDF Converter
+              </Link>
+
+              <Link to="/tiff-to-pdf" className="fu-tool-link">
+                TIFF To PDF Converter
+              </Link>
+
+              <Link to="/pdf-to-txt" className="fu-tool-link">
+                PDF To TEXT Converter
+              </Link>
+
+              <Link to="/pdf-to-pptx" className="fu-tool-link">
+                PDF To PPTX Converter
+              </Link>
+
+              <Link to="/pdf-to-rtf" className="fu-tool-link">
+                PDF To RTF Converter
+              </Link>
+
+              <Link to="/pdf-compressor" className="fu-tool-link">
+                Compress PDF
+              </Link>
+
             </div>
           </div>
 
