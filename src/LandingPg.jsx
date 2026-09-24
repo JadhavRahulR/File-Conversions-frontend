@@ -193,7 +193,7 @@ export default function LandingPage() {
 function FeatureCard({ title, image1, image2 }) {
   return (
     <div className="feature-card">
-      <div className="icon"><img src={image1} width="40px" alt="no data" /> → <img src={image2} width="40px" alt="no data" /></div>
+      <div className="icon"><img src={image1}  alt="no data" /> → <img src={image2}  alt="no data" /></div>
       <h5>{title}</h5>
     </div>
   );
@@ -201,7 +201,7 @@ function FeatureCard({ title, image1, image2 }) {
 function FeatureCard1({ title, image1, image2 }) {
   return (
     <div className="feature-card">
-      <div className="icon"><img src={image1} width="40px" alt="no data" /></div>
+      <div className="icon"><img src={image1}  alt="no data" /></div>
       <h5>{title}</h5>
     </div>
   );

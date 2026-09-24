@@ -42,6 +42,13 @@
   display: none;
 }
 
+.compressor-container .rename-input{
+  margin: 50px 0px;
+  width: 300px;
+  padding: 20px ;
+  border-radius: 8px;
+}
+
 .compressor-container .fileuploadcontainer {
   margin-top: 10px;
   height: 45px;
@@ -165,6 +172,15 @@
   color: #333;
 }
 
+.converterImg img {
+  width: 100px ;
+  height: 100px;
+}
+
+.converterImg p{
+  text-align: center;
+}
+
 .compressor-heading {
   font-size: 2rem;
   margin-bottom: 1rem;
@@ -285,6 +301,10 @@
   .compressor-article .comparison-table td {
     padding: 8px;
     font-size: 14px;
+  }
+
+  .compressor-container .rename-input{
+    padding: 10px 20px;
   }
 }
 .compressor-article .table-container {

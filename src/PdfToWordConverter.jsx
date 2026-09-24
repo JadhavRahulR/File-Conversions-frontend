@@ -170,6 +170,13 @@ setConvertedFile(convertedFile);
           <p className="converter-intro" style={{ marginTop: "20px" }}>
             Convert your PDF files to editable Word documents instantly with our free online PDF to Word converter. This tool keeps your formatting, fonts, and images perfectly intact while transforming your PDFs into fully editable .docx files. No software installation or sign-up required.
           </p>
+           <div className="converterImg">
+            <img src="pdf.png" alt="Pdf Img" className='ConverterImgone' />
+            <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
+
+            <img src="word.png" alt="Word Img" className='ConverterImgtwo' />
+
+          </div>
           <div className="converter-section">
             <h2>🔄 How to Convert PDF to Word ? </h2>
 

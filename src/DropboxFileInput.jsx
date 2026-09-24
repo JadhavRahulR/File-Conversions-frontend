@@ -94,7 +94,7 @@ const DropboxFileInput = ({ onFilePicked, setStatus, extensions = ['.pdf', '.csv
       <div className="drivfileinputcontainer">
 
         <p onClick={handleDropboxChoose} className="googleDrivebtn">
-          <img src="/dropbox.png" alt="" style={{ width: "20px", marginRight: '5px' }} /> Dropbox
+          <img src="/dropbox.png" alt=""  /> Dropbox
         </p>
       </div>
     </div>

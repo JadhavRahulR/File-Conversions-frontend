@@ -48,26 +48,26 @@ const LazyVideo = ({
               <img
                 src={`https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg`}
                 alt="Video Thumbnail"
-                style={{ width: "100%", borderRadius: "10px",height:"475px" }}
+                
               />
 
               <div
-  style={{
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "70px",
-    height: "70px",
-    backgroundColor: "rgb(48, 97, 95)",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    transition: "0.3s",
-    color:"white"
-  }}
->
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "70px",
+                  height: "70px",
+                  backgroundColor: "rgb(48, 97, 95)",
+                  borderRadius: "50%",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "0.3s",
+                  color: "white"
+                }}
+              >
                 ▶
               </div>
             </>

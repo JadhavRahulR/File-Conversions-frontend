@@ -95,6 +95,12 @@ body, h1, h2, h3, p, button {
   margin-bottom: 12px;
 }
 
+.feature-card .icon img{
+  height: 40px;
+  width: 40px;
+
+}
+
 /* CTA */
 .cta {
   text-align: center;

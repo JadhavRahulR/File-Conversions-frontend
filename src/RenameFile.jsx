@@ -205,11 +205,11 @@ const RenameFile = () => {
           <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={["*"]} />
         </div>
 
-        <div className="rename-section" style={{ margin: '10px' }}>
-          <input style={{ padding: '10px', paddingLeft: "40px", paddingRight: "40px", width: '300px', margin: "40px 20px", borderRadius: "8px" }}
+        <div className="rename-section" >
+          <input 
             type="text"
             className="rename-input"
-            placeholder="Enter name without extension"
+            placeholder="Enter Name without extension (eg. Myfile) "
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
           />
@@ -266,7 +266,7 @@ const RenameFile = () => {
             <li>   ⬇️ Instantly get your file with the new name</li>
           </ol>
 
-          <ProcessSection/>
+          <ProcessSection />
           <section>
             <LazyVideo
               youtubeId="saHvQ8nOgwI"
@@ -286,79 +286,79 @@ const RenameFile = () => {
           <h2 style={{ marginBottom: "6px" }}>Also check other tools related to PDF and File Tools</h2>
           <div className="unzipPagelink">
 
-  <Link to="/word-to-pdf" className="fu-tool-link">
-    WORD To PDF Converter
-  </Link>
+            <Link to="/word-to-pdf" className="fu-tool-link">
+              WORD To PDF Converter
+            </Link>
 
-  <Link to="/odt-to-pdf" className="fu-tool-link">
-    ODT To PDF Converter
-  </Link>
+            <Link to="/odt-to-pdf" className="fu-tool-link">
+              ODT To PDF Converter
+            </Link>
 
-  <Link to="/pdf-to-odt" className="fu-tool-link">
-    PDF To ODT Converter
-  </Link>
+            <Link to="/pdf-to-odt" className="fu-tool-link">
+              PDF To ODT Converter
+            </Link>
 
-  <Link to="/text-to-pdf" className="fu-tool-link">
-    TEXT To PDF Converter
-  </Link>
+            <Link to="/text-to-pdf" className="fu-tool-link">
+              TEXT To PDF Converter
+            </Link>
 
-  <Link to="/pptx-to-pdf" className="fu-tool-link">
-    PPTX To PDF Converter
-  </Link>
+            <Link to="/pptx-to-pdf" className="fu-tool-link">
+              PPTX To PDF Converter
+            </Link>
 
-  <Link to="/md-to-pdf" className="fu-tool-link">
-    MD To PDF Converter
-  </Link>
+            <Link to="/md-to-pdf" className="fu-tool-link">
+              MD To PDF Converter
+            </Link>
 
-  <Link to="/xlsx-to-pdf" className="fu-tool-link">
-    XLSX To PDF Converter
-  </Link>
+            <Link to="/xlsx-to-pdf" className="fu-tool-link">
+              XLSX To PDF Converter
+            </Link>
 
-  <Link to="/csv-to-pdf" className="fu-tool-link">
-    CSV To PDF Converter
-  </Link>
+            <Link to="/csv-to-pdf" className="fu-tool-link">
+              CSV To PDF Converter
+            </Link>
 
-  <Link to="/img-to-pdf" className="fu-tool-link">
-    IMG To PDF Converter
-  </Link>
+            <Link to="/img-to-pdf" className="fu-tool-link">
+              IMG To PDF Converter
+            </Link>
 
-  <Link to="/tiff-to-pdf" className="fu-tool-link">
-    TIFF To PDF Converter
-  </Link>
+            <Link to="/tiff-to-pdf" className="fu-tool-link">
+              TIFF To PDF Converter
+            </Link>
 
-  <Link to="/pdf-to-pptx" className="fu-tool-link">
-    PDF To PPTX Converter
-  </Link>
+            <Link to="/pdf-to-pptx" className="fu-tool-link">
+              PDF To PPTX Converter
+            </Link>
 
-  <Link to="/pdf-to-rtf" className="fu-tool-link">
-    PDF To RTF Converter
-  </Link>
+            <Link to="/pdf-to-rtf" className="fu-tool-link">
+              PDF To RTF Converter
+            </Link>
 
-  <Link to="/merge-pdf" className="fu-tool-link">
-    Merge PDF
-  </Link>
+            <Link to="/merge-pdf" className="fu-tool-link">
+              Merge PDF
+            </Link>
 
-  <Link to="/pdfpageremover" className="fu-tool-link">
-    PDF Page Remover
-  </Link>
+            <Link to="/pdfpageremover" className="fu-tool-link">
+              PDF Page Remover
+            </Link>
 
-  <Link to="/favicon-generator" className="fu-tool-link">
-    Favicon Generator
-  </Link>
+            <Link to="/favicon-generator" className="fu-tool-link">
+              Favicon Generator
+            </Link>
 
-  <Link to="/pdfextractor" className="fu-tool-link">
-    PDF Page Extractor
-  </Link>
+            <Link to="/pdfextractor" className="fu-tool-link">
+              PDF Page Extractor
+            </Link>
 
-  <Link to="/pdf-compressor" className="fu-tool-link">
-    Compress PDF
-  </Link>
+            <Link to="/pdf-compressor" className="fu-tool-link">
+              Compress PDF
+            </Link>
 
-  <Link to="/img-compressor" className="fu-tool-link">
-    Compress Image
-  </Link>
+            <Link to="/img-compressor" className="fu-tool-link">
+              Compress Image
+            </Link>
 
-</div>
+          </div>
           <section>
             <h2>Works on All Modern Browsers</h2>
 

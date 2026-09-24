@@ -296,7 +296,7 @@ const FaviconGenerator = () => {
                         converts it into compatible favicon formats- ready for download and use.
                     </p>
                     <section>
-                        <LazyVideo 
+                        <LazyVideo
                             youtubeId="_DBlP2uk53U"
                             title="How to Generate Favicon ? "
                             description='Create your website icon in seconds!. This video shows how to generate favicons online (ICO, PNG, SVG) from your logo or image- no design skills required. In this video, you’ll learn: How to upload an image or logo ,Generate favicon in multiple formats (ICO, PNG, SVG) Download and add it to your website easily.'
@@ -316,67 +316,67 @@ const FaviconGenerator = () => {
 
                         <div className="unzipPagelink">
 
-  <Link to="/word-to-pdf" className="fu-tool-link">
-    WORD To PDF Converter
-  </Link>
+                            <Link to="/word-to-pdf" className="fu-tool-link">
+                                WORD To PDF Converter
+                            </Link>
 
-  <Link to="/odt-to-pdf" className="fu-tool-link">
-    ODT To PDF Converter
-  </Link>
+                            <Link to="/odt-to-pdf" className="fu-tool-link">
+                                ODT To PDF Converter
+                            </Link>
 
-  <Link to="/pdf-to-odt" className="fu-tool-link">
-    PDF To ODT Converter
-  </Link>
+                            <Link to="/pdf-to-odt" className="fu-tool-link">
+                                PDF To ODT Converter
+                            </Link>
 
-  <Link to="/text-to-pdf" className="fu-tool-link">
-    TEXT To PDF Converter
-  </Link>
+                            <Link to="/text-to-pdf" className="fu-tool-link">
+                                TEXT To PDF Converter
+                            </Link>
 
-  <Link to="/pptx-to-pdf" className="fu-tool-link">
-    PPTX To PDF Converter
-  </Link>
+                            <Link to="/pptx-to-pdf" className="fu-tool-link">
+                                PPTX To PDF Converter
+                            </Link>
 
-  <Link to="/md-to-pdf" className="fu-tool-link">
-    MD To PDF Converter
-  </Link>
+                            <Link to="/md-to-pdf" className="fu-tool-link">
+                                MD To PDF Converter
+                            </Link>
 
-  <Link to="/xlsx-to-pdf" className="fu-tool-link">
-    XLSX To PDF Converter
-  </Link>
+                            <Link to="/xlsx-to-pdf" className="fu-tool-link">
+                                XLSX To PDF Converter
+                            </Link>
 
-  <Link to="/csv-to-pdf" className="fu-tool-link">
-    CSV To PDF Converter
-  </Link>
+                            <Link to="/csv-to-pdf" className="fu-tool-link">
+                                CSV To PDF Converter
+                            </Link>
 
-  <Link to="/img-to-pdf" className="fu-tool-link">
-    IMG To PDF Converter
-  </Link>
+                            <Link to="/img-to-pdf" className="fu-tool-link">
+                                IMG To PDF Converter
+                            </Link>
 
-  <Link to="/tiff-to-pdf" className="fu-tool-link">
-    TIFF To PDF Converter
-  </Link>
+                            <Link to="/tiff-to-pdf" className="fu-tool-link">
+                                TIFF To PDF Converter
+                            </Link>
 
-  <Link to="/pdf-to-pptx" className="fu-tool-link">
-    PDF To PPTX Converter
-  </Link>
+                            <Link to="/pdf-to-pptx" className="fu-tool-link">
+                                PDF To PPTX Converter
+                            </Link>
 
-  <Link to="/pdf-to-rtf" className="fu-tool-link">
-    PDF To RTF Converter
-  </Link>
+                            <Link to="/pdf-to-rtf" className="fu-tool-link">
+                                PDF To RTF Converter
+                            </Link>
 
-  <Link to="/merge-pdf" className="fu-tool-link">
-    Merge PDF
-  </Link>
+                            <Link to="/merge-pdf" className="fu-tool-link">
+                                Merge PDF
+                            </Link>
 
-  <Link to="/pdf-compressor" className="fu-tool-link">
-    Compress PDF
-  </Link>
+                            <Link to="/pdf-compressor" className="fu-tool-link">
+                                Compress PDF
+                            </Link>
 
-  <Link to="/img-compressor" className="fu-tool-link">
-    Compress Image
-  </Link>
+                            <Link to="/img-compressor" className="fu-tool-link">
+                                Compress Image
+                            </Link>
 
-</div>
+                        </div>
 
                     </div>
                     <h2>Why Use FileUnivers Favicon Generator?</h2>
@@ -438,9 +438,9 @@ const FaviconGenerator = () => {
                         After downloading the ZIP file, extract it and place the <code>favicon.ico</code> in your website’s root folder.
                         Then, add this simple line inside your <code>&lt;head&gt;</code> tag:
                     </p>
-                    <pre>
+                    <p>
                         &lt;link rel="icon" type="image/x-icon" href="/favicon.ico"&gt;
-                    </pre>
+                    </p>
                     <p>
                         This ensures that browsers automatically detect and display your favicon whenever your site loads.
                     </p>

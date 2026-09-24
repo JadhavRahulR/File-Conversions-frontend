@@ -202,6 +202,7 @@
 }
 .converterImg .ConverterImgone{
   width: 100px;
+  height: 100px;
 }
 .converterImg .ConverterArrowImg{
   width: 50px;
@@ -209,6 +210,7 @@
 }
 .converterImg .ConverterImgtwo{
   width: 100px;
+  height: 100px;
 }
 .converter p {
     color: white;

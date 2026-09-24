@@ -401,11 +401,7 @@ const DriveFileInput = ({
             : "pointer",
         }}
       >
-        <img
-          src="/google-drive.png"
-          alt=""
-          style={{ width: 20 }}
-        />
+        <img    src="/google-drive.png"    alt=""      />
 
         {loadingGoogle
           ? "Loading Google Drive..."

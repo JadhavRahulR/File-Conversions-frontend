@@ -144,10 +144,10 @@ const OdtToPdfConverter = () => {
             Convert ODT to PDF online for free. Fast, secure, and accurate- no software or sign-up required. Upload your ODT file, convert in seconds, and download your PDF instantly.Whether you’re a student, writer, or office user, our ODT to PDF converter makes document sharing easier, faster, and more reliable.
           </p>
           <div className="converterImg">
-            <img src="pdf.png" alt="Pdf Img" className='ConverterImgone' />
+            <img src="odt.png" alt="Pdf Img" className='ConverterImgone' />
             <img src="Arrow.png" alt="Arrow Img" className='ConverterArrowImg' />
 
-            <img src="word.png" alt="Word Img" className='ConverterImgtwo' />
+            <img src="pdf.png" alt="Word Img" className='ConverterImgtwo' />
 
           </div>
           <div className="converter-section">

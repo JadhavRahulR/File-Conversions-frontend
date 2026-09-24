@@ -11,10 +11,16 @@
     margin-bottom: 40px   ;
     margin-right: 10px;
     cursor: pointer;
-    width: 140px;
+    width: 124px;
     background-color: black;
 }
 .drivfileinputcontainer p:hover{
      background-color: #888;
     box-shadow: 0 4px 20px rgb(255, 255, 255);
+}
+
+.drivfileinputcontainer img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }

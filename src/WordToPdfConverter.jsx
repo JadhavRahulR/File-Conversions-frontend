@@ -143,7 +143,7 @@ function WordToPdfConverter() {
 
       <div className="converter-container">
         <h2 className="converter-title">Convert Word to PDF – Free & Easy Online Tool</h2>
-        <p className="converter-intro" style={{ marginTop: "20px" }}>
+        <p className="converter-intro" >
           Easily convert Word documents (.doc, .docx) into secure, high-quality PDFs online. No registration, no watermarks – just a fast, free tool you can trust.
         </p>
         <div className="converterImg">

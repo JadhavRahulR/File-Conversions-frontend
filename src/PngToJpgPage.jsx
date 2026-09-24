@@ -346,7 +346,7 @@ export default function PngToJpgPage() {
 
         <div className="resizeimg-img" >
           <img src="png.png" alt="img Img" className='ConverterImgtwo' />
-          <p style={{ textAlign: "center" }}>PNG Image</p>
+          <p>PNG Image</p>
         </div>
 
         <p className="pngtojpg-paragraph">

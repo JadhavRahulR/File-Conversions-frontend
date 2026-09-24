@@ -16,8 +16,18 @@
   max-width: 700px;
   margin: 0.5rem auto;
 }
+ .intro-video-container img {
+  width: 100%;
+  height: 475px;
+  border: 5px solid gray;
+  border-radius: 10px;
+ }
 
 @media (max-width:500px){
+    .intro-video-container img {
+      height: 250px;
+    }
+
     .intro-video-title{
          font-size: 1rem;   
     }

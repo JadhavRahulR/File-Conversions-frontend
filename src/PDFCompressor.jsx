@@ -262,7 +262,7 @@ const PDFCompressor = () => {
             </div>
             <div >
               <img src="pdf.png" alt="Pdf Img" className='ConverterImgtwo' />
-              <p style={{ textAlign: "center" }}>PDF</p>
+              <p >PDF</p>
             </div>
           </div>
 

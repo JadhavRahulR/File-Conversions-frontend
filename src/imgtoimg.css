@@ -203,6 +203,10 @@
   line-height: 1.7;
 }
 
+.pngtojpg-content .resizeimg-img {
+  width: 100%;
+  height: 150px;
+}
 .pngtojpg-heading {
   font-size: 26px;
   font-weight: 700;
