@@ -226,7 +226,7 @@
   }
 
     .converter{
-        overflow: hidden;
+        /* overflow: hidden; */
         margin: 0;
     }
     .converter h1{

@@ -501,7 +501,7 @@ export default function RingtoneMaker() {
           Page Heading
       -------------------------------------------------- */}
 
-
+            
             <div className="headingsection">
 
                 <h1>
@@ -1048,7 +1048,6 @@ export default function RingtoneMaker() {
 
 
     <div className="ringtoneimage">
-
     <img src="cut audio.png" alt="" className="ringtonecut"/>
 </div>
 

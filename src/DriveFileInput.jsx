@@ -1,12 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+
+import React, { useRef, useState } from "react";
+
 import "./drivefileinput.css";
+
 import { useLoader } from "./LoaderContext";
+import { loadGoogleDriveSDK } from "./googleDriveLoader";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // ==========================================================
 // EXT → MIME
 // ==========================================================
+
 const extensionToMimeType = {
   ".pdf": "application/pdf",
   ".csv": "text/csv",
@@ -33,23 +38,29 @@ const extensionToMimeType = {
   ".bmp": "image/bmp",
   ".tiff": "image/tiff",
   ".tif": "image/tiff",
-  ".webp":"image/webp"
+  ".webp": "image/webp",
 };
 
 // ==========================================================
 // GOOGLE CONFIG
 // ==========================================================
+
 const CLIENT_ID =
   "944813734617-fisrviaq1i2e8faentib45tq5jsqpq8c.apps.googleusercontent.com";
+
 const API_KEY = "AIzaSyBaCuq8dNmnjqndvCJ0GKlyotquqKZ_MUM";
-const SCOPE = "https://www.googleapis.com/auth/drive.file";
+
+const SCOPE =
+  "https://www.googleapis.com/auth/drive.file";
 
 // ==========================================================
 // COMPONENT
 // ==========================================================
+
 const DriveFileInput = ({
   onFilePicked,
   setStatus,
+
   allowedTypes = [
     ".pdf",
     ".csv",
@@ -69,66 +80,117 @@ const DriveFileInput = ({
     ".md",
     ".zip",
   ],
-  useBackend = false, // ✅ SAFE DEFAULT
+
+  useBackend = false,
 }) => {
   const [pickerReady, setPickerReady] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
+
   const { setLoading } = useLoader();
 
   const accessTokenRef = useRef(null);
   const tokenClientRef = useRef(null);
 
   // ==========================================================
-  // LOAD GOOGLE API
+  // INITIALIZE GOOGLE DRIVE
   // ==========================================================
-  useEffect(() => {
-    const loadScript = (src) =>
-      new Promise((resolve, reject) => {
-        const s = document.createElement("script");
-        s.src = src;
-        s.onload = resolve;
-        s.onerror = reject;
-        document.body.appendChild(s);
+
+  const initializeGoogleDrive = async () => {
+    try {
+      setLoadingGoogle(true);
+      setStatus("Loading Google Drive...");
+
+      // ======================================================
+      // LOAD GOOGLE SDK ONLY AFTER USER CLICK
+      // ======================================================
+
+      await loadGoogleDriveSDK({
+        picker: true,
       });
 
-    const init = async () => {
-      try {
-        await loadScript("https://apis.google.com/js/api.js");
-        await loadScript("https://accounts.google.com/gsi/client");
+      setPickerReady(true);
 
-        window.gapi.load("picker", () => setPickerReady(true));
+      // ======================================================
+      // INITIALIZE GOOGLE OAUTH CLIENT
+      // ======================================================
 
+      if (!tokenClientRef.current) {
         tokenClientRef.current =
           window.google.accounts.oauth2.initTokenClient({
             client_id: CLIENT_ID,
             scope: SCOPE,
+
             callback: (tokenResponse) => {
-              accessTokenRef.current = tokenResponse.access_token;
-              openPicker();
+              if (tokenResponse?.access_token) {
+                accessTokenRef.current =
+                  tokenResponse.access_token;
+
+                openPicker();
+              } else {
+                setStatus("Google authorization failed");
+              }
             },
           });
-      } catch (err) {
-        console.error("Google API error", err);
       }
-    };
 
-    init();
-  }, []);
+      setLoadingGoogle(false);
 
-  // ==========================================================
-  // AUTH → PICKER
-  // ==========================================================
-  const handleDriveClick = () => {
-    if (!pickerReady) return setStatus("Picker not ready");
+      // ======================================================
+      // REQUEST ACCESS TOKEN
+      // ======================================================
 
-    if (!accessTokenRef.current)
-      tokenClientRef.current.requestAccessToken();
-    else openPicker();
+      if (!accessTokenRef.current) {
+        tokenClientRef.current.requestAccessToken();
+      } else {
+        openPicker();
+      }
+    } catch (err) {
+      console.error(
+        "Google Drive initialization error:",
+        err
+      );
+
+      setLoadingGoogle(false);
+      setPickerReady(false);
+
+      setStatus("Google Drive failed to load");
+    }
   };
 
   // ==========================================================
-  // OPEN PICKER
+  // GOOGLE DRIVE CLICK
   // ==========================================================
+
+  const handleDriveClick = async () => {
+    // First click → load Google SDK
+    if (!pickerReady || !tokenClientRef.current) {
+      await initializeGoogleDrive();
+      return;
+    }
+
+    // SDK already loaded
+    if (!accessTokenRef.current) {
+      tokenClientRef.current.requestAccessToken();
+    } else {
+      openPicker();
+    }
+  };
+
+  // ==========================================================
+  // OPEN GOOGLE PICKER
+  // ==========================================================
+
   const openPicker = () => {
+    if (!window.google?.picker) {
+      setStatus("Google Picker not ready");
+      return;
+    }
+
+    if (!accessTokenRef.current) {
+      setStatus("Google authorization required");
+      return;
+    }
+
     setStatus("Upload");
 
     const mimeTypes = allowedTypes
@@ -143,8 +205,12 @@ const DriveFileInput = ({
 
     const picker = new window.google.picker.PickerBuilder()
       .addView(view)
-      .enableFeature(window.google.picker.Feature.NAV_HIDDEN)
-      .enableFeature(window.google.picker.Feature.MULTISELECT_DISABLED)
+      .enableFeature(
+        window.google.picker.Feature.NAV_HIDDEN
+      )
+      .enableFeature(
+        window.google.picker.Feature.MULTISELECT_DISABLED
+      )
       .setOAuthToken(accessTokenRef.current)
       .setDeveloperKey(API_KEY)
       .setCallback(pickerCallback)
@@ -156,106 +222,198 @@ const DriveFileInput = ({
   // ==========================================================
   // PICKER CALLBACK
   // ==========================================================
+
   const pickerCallback = async (data) => {
-    if (data.action !== window.google.picker.Action.PICKED) return;
+    if (
+      data.action !==
+      window.google.picker.Action.PICKED
+    ) {
+      return;
+    }
 
     let picked = data.docs[0];
 
-    // Fix shortcut
+    // ========================================================
+    // FIX GOOGLE DRIVE SHORTCUT
+    // ========================================================
+
     if (
-      picked.mimeType === "application/vnd.google-apps.shortcut" &&
+      picked.mimeType ===
+        "application/vnd.google-apps.shortcut" &&
       picked.shortcutDetails?.targetId
     ) {
       picked.id = picked.shortcutDetails.targetId;
-      picked.mimeType = picked.shortcutDetails.targetMimeType;
+
+      picked.mimeType =
+        picked.shortcutDetails.targetMimeType;
     }
 
     const fileId = picked.id;
+
     let fileName = picked.name;
     let mime = picked.mimeType;
+
     const token = accessTokenRef.current;
 
     const lower = fileName.toLowerCase();
+
     const isZip = lower.endsWith(".zip");
+
     const isFavicon =
       lower.endsWith(".ico") ||
       lower.endsWith(".png") ||
       lower.endsWith(".jpg") ||
       lower.endsWith(".jpeg");
 
-    const shouldUseBackend = isZip || isFavicon || useBackend;
+    const shouldUseBackend =
+      isZip || isFavicon || useBackend;
 
-    // ================= BACKEND =================
+    // ========================================================
+    // BACKEND DOWNLOAD
+    // ========================================================
+
     if (shouldUseBackend) {
       try {
         setLoading(true);
         setStatus("Downloading via backend...");
 
-        const res = await fetch(`${BASE_URL}/fetch-drive-file`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fileId,
-            fileName,
-            accessToken: token,
-          }),
-        });
+        const res = await fetch(
+          `${BASE_URL}/fetch-drive-file`,
+          {
+            method: "POST",
 
-        
-        if (!res.ok) throw new Error("Backend fetch failed");
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            body: JSON.stringify({
+              fileId,
+              fileName,
+              accessToken: token,
+            }),
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Backend fetch failed");
+        }
 
         const buffer = await res.arrayBuffer();
+
         const blob = new Blob([buffer]);
 
-        onFilePicked(new File([blob], fileName, { type: blob.type || mime }));
+        onFilePicked(
+          new File(
+            [blob],
+            fileName,
+            {
+              type: blob.type || mime,
+            }
+          )
+        );
+
         setStatus("Loaded via backend!");
       } catch (err) {
         console.error(err);
+
         setStatus("Drive backend error");
       } finally {
         setLoading(false);
       }
+
       return;
     }
 
-    // ================= FRONTEND =================
+    // ========================================================
+    // FRONTEND DOWNLOAD
+    // ========================================================
+
     try {
       setLoading(true);
       setStatus("Downloading...");
 
-      let downloadUrl = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
+      let downloadUrl =
+        `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
 
-      if (mime === "application/vnd.google-apps.document") {
+      // Google Docs → PDF
+      if (
+        mime ===
+        "application/vnd.google-apps.document"
+      ) {
         downloadUrl =
           `https://www.googleapis.com/drive/v3/files/${fileId}/export?mimeType=application/pdf`;
-        fileName = fileName.replace(/\.[^.]+$/, "") + ".pdf";
+
+        fileName =
+          fileName.replace(/\.[^.]+$/, "") +
+          ".pdf";
       }
 
       const res = await fetch(downloadUrl, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
 
-      if (!res.ok) throw new Error("HTTP " + res.status);
+      if (!res.ok) {
+        throw new Error(
+          "HTTP " + res.status
+        );
+      }
 
       const blob = await res.blob();
-      onFilePicked(new File([blob], fileName, { type: blob.type || mime }));
+
+      onFilePicked(
+        new File(
+          [blob],
+          fileName,
+          {
+            type: blob.type || mime,
+          }
+        )
+      );
+
       setStatus("File loaded!");
     } catch (err) {
       console.error(err);
+
       setStatus("Google Drive error");
     } finally {
       setLoading(false);
     }
   };
 
+  // ==========================================================
+  // UI
+  // ==========================================================
+
   return (
     <div className="drivfileinputcontainer">
-      <p onClick={handleDriveClick} className="googleDrivebtn">
-        <img src="/google-drive.png" alt="" style={{ width: 20 }} />
-        Google Drive
+      <p
+        onClick={
+          loadingGoogle
+            ? undefined
+            : handleDriveClick
+        }
+        className="googleDrivebtn"
+        style={{
+          cursor: loadingGoogle
+            ? "wait"
+            : "pointer",
+        }}
+      >
+        <img
+          src="/google-drive.png"
+          alt=""
+          style={{ width: 20 }}
+        />
+
+        {loadingGoogle
+          ? "Loading Google Drive..."
+          : "Google Drive"}
       </p>
     </div>
   );
 };
 
 export default DriveFileInput;
+
