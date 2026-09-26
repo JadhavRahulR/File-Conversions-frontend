@@ -178,7 +178,7 @@ export default function AvifToPngPage() {
 
             <div className="imgtoimgcontainer">
                 <div className="tool-container">
-                     <h2>AVIF To PNG Converter</h2>
+                    <h2>AVIF To PNG Converter</h2>
                     <input type="file" multiple accept=".avif" onChange={handleDropzoneFile} />
 
                     <DropzoneInput
@@ -247,73 +247,73 @@ export default function AvifToPngPage() {
                     archiving, and sharing. Converting AVIF to PNG ensures your images can be used
                     anywhere without compatibility issues.
                 </p>
-                         <div className="converter-section">
-                        
-                                        <h2>Also check other features Related to PDF and Image file  </h2>
-                                                   <div className="unzipPagelink">
+                <div className="converter-section">
 
-  <Link to="/word-to-pdf" className="fu-tool-link">
-    Word to PDF Converter
-  </Link>
+                    <h2>Also check other features Related to PDF and Image file  </h2>
+                    <div className="unzipPagelink">
 
-  <Link to="/pdf-to-word" className="fu-tool-link">
-    PDF to Word Converter
-  </Link>
+                        <Link to="/word-to-pdf" className="fu-tool-link">
+                            Word to PDF Converter
+                        </Link>
 
-  <Link to="/odt-to-pdf" className="fu-tool-link">
-    ODT to PDF Converter
-  </Link>
+                        <Link to="/pdf-to-word" className="fu-tool-link">
+                            PDF to Word Converter
+                        </Link>
 
-  <Link to="/text-to-pdf" className="fu-tool-link">
-    TXT to PDF Converter
-  </Link>
+                        <Link to="/odt-to-pdf" className="fu-tool-link">
+                            ODT to PDF Converter
+                        </Link>
 
-  <Link to="/pptx-to-pdf" className="fu-tool-link">
-    PPTX to PDF Converter
-  </Link>
+                        <Link to="/text-to-pdf" className="fu-tool-link">
+                            TXT to PDF Converter
+                        </Link>
 
-  <Link to="/rtf-to-pdf" className="fu-tool-link">
-    RTF to PDF Converter
-  </Link>
+                        <Link to="/pptx-to-pdf" className="fu-tool-link">
+                            PPTX to PDF Converter
+                        </Link>
 
-  <Link to="/html-to-pdf" className="fu-tool-link">
-    HTML to PDF Converter
-  </Link>
+                        <Link to="/rtf-to-pdf" className="fu-tool-link">
+                            RTF to PDF Converter
+                        </Link>
 
-  <Link to="/md-to-pdf" className="fu-tool-link">
-    MD to PDF Converter
-  </Link>
+                        <Link to="/html-to-pdf" className="fu-tool-link">
+                            HTML to PDF Converter
+                        </Link>
 
-  <Link to="/xlsx-to-pdf" className="fu-tool-link">
-    XLSX to PDF Converter
-  </Link>
+                        <Link to="/md-to-pdf" className="fu-tool-link">
+                            MD to PDF Converter
+                        </Link>
 
-  <Link to="/csv-to-pdf" className="fu-tool-link">
-    CSV to PDF Converter
-  </Link>
+                        <Link to="/xlsx-to-pdf" className="fu-tool-link">
+                            XLSX to PDF Converter
+                        </Link>
 
-  <Link to="/pdf-to-odt" className="fu-tool-link">
-    PDF to ODT Converter
-  </Link>
+                        <Link to="/csv-to-pdf" className="fu-tool-link">
+                            CSV to PDF Converter
+                        </Link>
 
-  <Link to="/pdf-to-txt" className="fu-tool-link">
-    PDF to TXT Converter
-  </Link>
+                        <Link to="/pdf-to-odt" className="fu-tool-link">
+                            PDF to ODT Converter
+                        </Link>
 
-  <Link to="/pdf-to-pptx" className="fu-tool-link">
-    PDF to PPTX Converter
-  </Link>
+                        <Link to="/pdf-to-txt" className="fu-tool-link">
+                            PDF to TXT Converter
+                        </Link>
 
-  <Link to="/pdf-compressor" className="fu-tool-link">
-    Compress PDF
-  </Link>
+                        <Link to="/pdf-to-pptx" className="fu-tool-link">
+                            PDF to PPTX Converter
+                        </Link>
 
-  <Link to="/tiffcompressor" className="fu-tool-link">
-    Compress TIFF
-  </Link>
+                        <Link to="/pdf-compressor" className="fu-tool-link">
+                            Compress PDF
+                        </Link>
 
-</div>
-                                        </div>
+                        <Link to="/tiffcompressor" className="fu-tool-link">
+                            Compress TIFF
+                        </Link>
+
+                    </div>
+                </div>
                 <h3 className="pngtojpg-subheading">Why Convert AVIF to PNG?</h3>
 
                 <p className="pngtojpg-paragraph">

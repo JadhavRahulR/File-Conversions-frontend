@@ -4,7 +4,8 @@ import "./ImageCompressor.css";
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import "./compressor.css"
-import "./common.css"
+import "./common.css";
+import './CsvCompressor.css';
 import ScrollToTop from "./ScrollToTop";
 import { Helmet } from 'react-helmet-async';
 import { Link } from "react-router-dom";

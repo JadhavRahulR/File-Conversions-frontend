@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import DropzoneInput from "./DropzoneInput"; import axios from "axios";
 import "./PDFCompressor.css";
+import "./compressor.css";
+import './CsvCompressor.css';
 import DropboxFileInput from './DropboxFileInput'
 import DriveFileInput from './DriveFileInput';
 import ScrollToTop from './ScrollToTop';
