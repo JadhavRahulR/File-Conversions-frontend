@@ -155,6 +155,9 @@ export default function LandingPage() {
 
       <ProcessSection/>
 </section>
+
+<div className="faq-wrapper">
+
       <section className="faq-section">
         <h2>Frequently Asked Questions</h2>
 
@@ -183,6 +186,7 @@ export default function LandingPage() {
           <p>Yes, our tools are fully responsive and work seamlessly on mobile, tablet, and desktop devices.</p>
         </div>
       </section>
+</div>
       {/* <Footer /> */}
     </div>
     

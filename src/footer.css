@@ -3,7 +3,7 @@ footer{
     bottom: 0;
     left: 0;
     width: 100%;
-    min-height: 200px;
+    min-height: 300px;
     background: #000;
      display: flex;
     justify-content: center;
@@ -25,13 +25,14 @@ footer{
 }
 .footerpages a{
     width: 150px;
+    height: 30px;
     text-decoration: none;
     color: aliceblue;
     height: 30px;
     border: 1px solid white;
     display: flex;
     justify-content: center;
-    box-shadow: 2px 3px 4px rgba(0, 0, o, white);
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, white);
     align-items: center;
     border-radius: 10px;
     margin: 10px;
@@ -69,13 +70,10 @@ footer p {
 
 }
 @media (max-width:700px){
-    footer{
-        min-height: 300;
-    }
     .footerpages{
         flex-direction: column;
-        /* margin-top: 10px; */
-        margin: none;
+        margin-top: 10px;
+        /* margin: none; */
     }
      .footerpages a {
         width: 200px;

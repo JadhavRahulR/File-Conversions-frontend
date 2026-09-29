@@ -286,7 +286,7 @@ function App() {
         <GlobalLoader />
 
         {/* ✅ Suspense wrapper */}
-        <Suspense fallback={<div style={{ textAlign: "center", padding: "50px" }}>Loading...</div>}>
+        <Suspense fallback={<div className="page-loading">Loading...</div>}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/aboutus" element={<About />} />

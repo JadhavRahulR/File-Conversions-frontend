@@ -17,3 +17,10 @@ html, body, #root {
 .main-content {
   flex: 1;
 }
+
+.page-loading {
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

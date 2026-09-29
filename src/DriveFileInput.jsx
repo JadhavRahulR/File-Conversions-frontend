@@ -100,6 +100,8 @@ const DriveFileInput = ({
       setLoadingGoogle(true);
       setStatus("Loading Google Drive...");
 
+      console.log("Google Drive SDK requested");
+
       // ======================================================
       // LOAD GOOGLE SDK ONLY AFTER USER CLICK
       // ======================================================
