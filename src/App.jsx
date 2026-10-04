@@ -200,6 +200,7 @@ const HowToConvertHtmlToPdf = lazy(() =>  import("./blog/HowToConvertHtmlToPdf")
 const VideoToGif = lazy(() => import("./VideoToGif"));
 const BulkRenamer = lazy(() => import("./BulkRenamer"));
 const RingtoneMaker = lazy(() => import("./RingtoneMaker"));
+const PdfSplitter = lazy(() => import("./PdfSplitter"));
 const InvoiceGenerator = lazy(() => import("./InvoiceGenerator"));
 // import BlogHome from "./blog/BlogHome";
 
@@ -356,6 +357,8 @@ function App() {
             <Route path="/video-to-gif" element={<VideoToGif />} />
             <Route path='/bulk-renamer' element={<BulkRenamer />} />
             <Route path='/ringtone-maker' element={<RingtoneMaker />} />
+            {/* <Route path='/pdf-split' element={<PdfSplitter />} /> */}
+            
             {/* <Route path='/invoice-generator' element={<InvoiceGenerator />} /> */}
 
 

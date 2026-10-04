@@ -103,14 +103,20 @@ function WordToPdfConverter() {
         </Helmet>
 
 
-        <div className="pagetitle">
 
-          <h1>WORD To PDF Converter - Convert WORD (DOCX) To PDF Online Free</h1>
+        <header className="pagetitle">
+          <h1>Word to PDF Converter – Convert DOC or DOCX to PDF Online</h1>
 
           <p className="intro-paragraph">
-            Word to PDF Converter is a simple and reliable online tool that helps you convert Word documents (DOC or DOCX) into high-quality PDF files within seconds. It preserves original formatting, fonts, images, and layout, making it perfect for sharing, printing, or professional use. No installation or sign-up is required   —just upload your Word file and download a secure, perfectly converted PDF instantly.
+            Convert Word documents to PDF quickly with our free online Word to PDF Converter.
+            Upload a DOC or DOCX file and create a high-quality PDF while keeping your
+            document’s formatting, fonts, images, and layout. No software installation or
+            sign-up is required—upload your Word file, convert it, and download your PDF
+            in just a few steps.
           </p>
-        </div>
+        </header>
+
+
         <div className='converter'>
           <div className="converterheading">
             <h2>Convert Word To PDF </h2>
@@ -181,15 +187,8 @@ function WordToPdfConverter() {
             <li>🌐 Works on any device – no installs needed.</li>
             <li>🆓 Totally free, forever.</li>
           </ul>
-        </div>
 
-        <ProcessSection />
-
-        <div className="converter-section">
-          <h2>📁 Supported Formats</h2>
-          <p><strong>Input:</strong> .doc, .docx</p>
-          <p><strong>Output:</strong> .pdf</p>
-          <h2>Also check other features Related to word / DOC file  </h2>
+          <h2>Explore More File Conversion Tools</h2>
           <div className="unzipPagelink">
             <Link to="/pdf-to-word" className="fu-tool-link">
               PDF To WORD Converter
@@ -206,7 +205,32 @@ function WordToPdfConverter() {
             <Link to="/docxcompressor" className="fu-tool-link">
               Compress DOC / WORD
             </Link>
+
+            <Link to="/merge-pdf" className="fu-tool-link">
+                Merge PDF
+              </Link>
+            
+              <Link to="/pdf-compressor" className="fu-tool-link">
+                Compress PDF
+              </Link>
+            
+              <Link to="/img-compressor" className="fu-tool-link">
+                Compress Image
+              </Link>
+            
+              <Link to="/zip-extractor" className="fu-tool-link">
+                Extract Zip
+              </Link>
           </div>
+        </div>
+
+        <ProcessSection />
+
+        <div className="converter-section">
+          <h2>📁 Supported Formats</h2>
+          <p><strong>Input:</strong> .doc, .docx</p>
+          <p><strong>Output:</strong> .pdf</p>
+          
         </div>
 
         <div className="converter-section">

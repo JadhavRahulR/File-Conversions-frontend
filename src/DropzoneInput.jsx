@@ -111,7 +111,7 @@ const DropzoneInput = ({ acceptedType = [], onFileAccepted, setStatus, file }) =
                 ))}
               </ul>
             )}
-            <span>Click Convert button for Conversion<p></p></span>
+            <span>Click Button for File Conversion<p></p></span>
 
           </div>
         )}

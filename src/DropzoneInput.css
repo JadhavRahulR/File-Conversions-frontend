@@ -49,6 +49,10 @@
   display:flex;
   flex-direction:column;
   align-items:center;
+
+}
+.file-inside ul {
+  color: white;
 }
 
 .file-inside span {

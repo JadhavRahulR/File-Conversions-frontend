@@ -406,7 +406,7 @@ const DriveFileInput = ({
         <img    src="/google-drive.png"    alt=""      />
 
         {loadingGoogle
-          ? "Loading Google Drive..."
+          ? "Loading ..."
           : "Google Drive"}
       </p>
     </div>
