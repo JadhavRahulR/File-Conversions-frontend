@@ -1088,7 +1088,7 @@ const PdfSplitter = () => {
 
         <link
           rel="canonical"
-          href="https://fileunivers.com/splitpdf"
+          href="https://fileunivers.com/pdf-split"
         />
 
         <meta
