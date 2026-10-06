@@ -28,6 +28,7 @@ const PdfSplitter = () => {
   const [outputFileName, setOutputFileName] = useState("");
   const [splitFiles, setSplitFiles] = useState([]);
   const [editingEnds, setEditingEnds] = useState({});
+  const [autoRangesCreated, setAutoRangesCreated] = useState(false);
 
   // Page thumbnail previews
   const [pagePreviews, setPagePreviews] = useState({});
@@ -463,6 +464,44 @@ const PdfSplitter = () => {
       );
     }, 0);
   };
+  const autoCreateFourRanges = () => {
+  if (!totalPages || totalPages < 4) {
+    return;
+  }
+
+  const basePages = Math.floor(totalPages / 4);
+  const remainder = totalPages % 4;
+
+  const autoRanges = [];
+  let start = 1;
+
+  for (let i = 0; i < 4; i++) {
+    const partSize =
+      basePages + (i === 3 ? remainder : 0);
+
+    const end = start + partSize - 1;
+
+    autoRanges.push({
+      start,
+      end,
+    });
+
+    start = end + 1;
+  }
+
+  setRanges(autoRanges);
+  setSplitFiles([]);
+  setError("");
+  setAutoRangesCreated(true);
+
+  const requestId = ++previewRequestRef.current;
+
+  updatePagePreviews(
+    pdfDocumentRef.current,
+    autoRanges,
+    requestId
+  );
+};
   // --------------------------------------------------
   // ADD NEW RANGE
   // --------------------------------------------------
@@ -1173,7 +1212,7 @@ const PdfSplitter = () => {
               >
                 Download
               </button>
-
+                  <p>SAVE FILE...</p>
               <SaveToGoogleDrive
                 file={item.file}
               />
@@ -1492,6 +1531,27 @@ const PdfSplitter = () => {
 
             {/* ADD RANGE */}
 
+            {totalPages >= 4 && (
+  <div className="auto-split-section">
+    <button
+      type="button"
+      className={`auto-split-button ${
+        autoRangesCreated ? "done" : ""
+      }`}
+      onClick={autoCreateFourRanges}
+      disabled={autoRangesCreated}
+    >
+      {autoRangesCreated ? "Done ✓" : "Auto Create 4 Ranges"}
+    </button>
+
+    {!autoRangesCreated && (
+      <span className="auto-split-help">
+        Create 4 nearly equal page ranges automatically.
+      </span>
+    )}
+  </div>
+)}
+
             <button type="button" className="add-range-button" onClick={addRange} disabled={ranges[ranges.length - 1].end >= totalPages}>
               + Add Range
             </button>
@@ -1582,7 +1642,7 @@ const PdfSplitter = () => {
                       item.fileName
                     }
                   >
-                    <div className="split-file-info">
+                    {/* <div className="split-file-info">
                       <strong>
                         Part{" "}
                         {index +
@@ -1622,11 +1682,12 @@ const PdfSplitter = () => {
 
                       <div className="savesplittpdfto">
 
-
+                      
                       <SaveToGoogleDrive
                         file={
                           item.file
                         }
+                        className="split-google-drive"
                         />
 
                       <SaveToDropbox
@@ -1635,7 +1696,7 @@ const PdfSplitter = () => {
                         }
                         />
                         </div>
-                    </div>
+                    </div> */}
                   </div>
                 )
               )}
@@ -1645,72 +1706,156 @@ const PdfSplitter = () => {
           </div>
         )}
 
-      {/* SEO CONTENT */}
+     {/* SEO CONTENT */}
 
-      <section className="content-section">
-        <h2>
-          How to Split a PDF
-        </h2>
+<section className="content-section">
 
-        <p>
-          Upload your PDF and
-          choose the last page
-          for each section. The
-          first page of each
-          range is automatically
-          calculated. Page
-          previews help you
-          identify the beginning
-          and ending pages of
-          each section.
-        </p>
+  <h2>How to Split a PDF Online</h2>
 
-        <h2>
-          Create Multiple PDF Files from Page Ranges
-        </h2>
+  <p>
+    Splitting a PDF is useful when you need to separate specific pages from
+    a larger document or divide a long PDF into smaller files. FileUnivers
+    provides a simple way to split PDF files by selecting page ranges. Upload
+    your PDF, review the available pages, choose where each section should end,
+    and create separate PDF files without changing the original document.
+  </p>
 
-        <p>
-          You can create
-          multiple sections from
-          the same PDF. For
-          example, a 50-page
-          document can be divided
-          into pages 1-10,
-          11-20, 21-35, and
-          36-50. Each section
-          is generated as a
-          separate PDF file.
-        </p>
+  <p>
+    The tool is designed to make PDF splitting easy even when you have a
+    document with many pages. Instead of manually copying pages or installing
+    desktop software, you can select the required page ranges directly from
+    your browser. Page previews make it easier to identify the pages you want
+    to include in each section before creating the final PDF files.
+  </p>
 
-        <h2>
-          Download Split PDF Files
-        </h2>
 
-        <p>
-          After splitting, you
-          can download each PDF
-          separately. When
-          multiple files are
-          created, you can also
-          download all the
-          generated PDFs together
-          as a ZIP file.
-        </p>
+  <h2>Split a PDF into Multiple Files</h2>
 
-        <h2>
-          Browser-Based PDF Processing
-        </h2>
+  <p>
+    You can divide one PDF into multiple sections based on your requirements.
+    For example, if you have a 50-page document, you can create sections such
+    as pages 1–10, 11–20, 21–35, and 36–50. Each selected range is generated
+    as an individual PDF file, making it easier to manage, share, or download
+    only the parts of the document you need.
+  </p>
 
-        <p>
-          The PDF splitting
-          operation runs directly
-          in your browser. Your
-          PDF does not need to be
-          uploaded to the
-          FileUnivers conversion
-          server for splitting.
-        </p>
-      </section>
+  <p>
+    This can be helpful for reports, study materials, invoices, applications,
+    contracts, presentations, scanned documents, and other multi-page files.
+    You can create as many page ranges as needed within the limits of your
+    browser and device. Before splitting the document, you can review the
+    selected ranges and adjust them if necessary.
+  </p>
+
+
+  <h2>How to Create PDF Page Ranges</h2>
+
+  <p>
+    After selecting your PDF, the tool displays the available pages so you can
+    decide how the document should be divided. Select the ending page for each
+    section, and the beginning page of the next section is calculated
+    automatically. This makes it easier to create consecutive ranges without
+    entering every starting page manually.
+  </p>
+
+  <p>
+    For example, you can create a first section ending at page 5, another
+    section ending at page 15, and a final section containing the remaining
+    pages. If you change a page range, you can review the selections before
+    generating the split files. This helps reduce mistakes when working with
+    documents that contain many pages.
+  </p>
+
+
+  <h2>Download Your Split PDF Files</h2>
+
+  <p>
+    Once the PDF has been split, each generated section is available as a
+    separate PDF file. You can download individual files when you only need
+    one or two sections from the original document. If multiple PDF files are
+    created, you can also download them together as a ZIP file for convenient
+    storage and transfer.
+  </p>
+
+  <p>
+    Downloading the files separately can be useful when different pages need
+    to be sent to different people or uploaded to different websites. The ZIP
+    option is convenient when you want to keep all of the generated sections
+    together and download them in one operation.
+  </p>
+
+
+  <h2>Split PDF Files Directly in Your Browser</h2>
+
+  <p>
+    FileUnivers processes the PDF splitting operation directly in your web
+    browser. The selected PDF does not need to be uploaded to the FileUnivers
+    conversion server for the splitting operation. Processing the document in
+    the browser can also help keep the workflow simple because you can select,
+    split, and download your files from the same page.
+  </p>
+
+  <p>
+    Browser-based processing can be especially convenient for documents that
+    contain personal, business, academic, or other private information. Your
+    file remains available to the browser while the splitting operation is
+    performed. As with any browser-based file tool, processing speed can vary
+    depending on the size of the PDF, number of pages, available device memory,
+    and browser performance.
+  </p>
+
+
+  <h2>Why Use an Online PDF Splitter?</h2>
+
+  <p>
+    A PDF splitter can save time when you only need certain parts of a large
+    document. Instead of opening a PDF editor and manually exporting pages,
+    you can select the required ranges and generate separate files in a few
+    steps. This is useful for students separating chapters, businesses
+    dividing reports, or anyone who needs to share only specific pages from a
+    document.
+  </p>
+
+  <p>
+    FileUnivers keeps the process straightforward: upload a PDF, select the
+    page ranges, split the document, and download the resulting files. There
+    is no need to install additional desktop software just to separate pages
+    from a PDF. The tool works from a modern web browser and is designed for
+    quick PDF page splitting on desktop and mobile devices.
+  </p>
+
+
+  <h2>Frequently Asked Questions About Splitting PDFs</h2>
+
+  <h3>Can I split one PDF into several files?</h3>
+
+  <p>
+    Yes. You can create multiple page ranges from the same PDF, and each range
+    is generated as a separate PDF file.
+  </p>
+
+  <h3>Can I download all split PDFs together?</h3>
+
+  <p>
+    Yes. When multiple files are generated, you can download them individually
+    or download the generated PDFs together as a ZIP file.
+  </p>
+
+  <h3>Does splitting a PDF change the original file?</h3>
+
+  <p>
+    No. The original PDF is not modified. The selected page ranges are used to
+    create new PDF files.
+  </p>
+
+  <h3>Do I need to install PDF software?</h3>
+
+  <p>
+    No. FileUnivers is browser-based, so you can split a PDF directly from a
+    supported web browser without installing separate PDF editing software.
+  </p>
+
+</section>
     </>
   );
 };

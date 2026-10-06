@@ -357,7 +357,7 @@ function App() {
             <Route path="/video-to-gif" element={<VideoToGif />} />
             <Route path='/bulk-renamer' element={<BulkRenamer />} />
             <Route path='/ringtone-maker' element={<RingtoneMaker />} />
-            {/* <Route path='/pdf-split' element={<PdfSplitter />} /> */}
+            <Route path='/pdf-split' element={<PdfSplitter />} />
             
             {/* <Route path='/invoice-generator' element={<InvoiceGenerator />} /> */}
 
