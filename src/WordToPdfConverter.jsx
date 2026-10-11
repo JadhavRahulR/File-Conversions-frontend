@@ -121,13 +121,14 @@ function WordToPdfConverter() {
           <div className="converterheading">
             <h2>Convert Word To PDF </h2>
           </div>
-          <input type="file" accept=".docx" onChange={handleFileChange} />
+          <input type="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+          onChange={handleFileChange} />
           <br /><br />
           <div className="fileuploadcontainer">
-            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={[".docx"]} />
-            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={['.docx']} />
+            <DriveFileInput onFilePicked={setFile} setStatus={setStatus} allowedTypes={[".doc", ".docx"]} />
+            <DropboxFileInput onFilePicked={setFile} setStatus={setStatus} extensions={[".doc", ".docx"]} />
           </div>
-          <DropzoneInput acceptedType={['docx']} file={file} onFileAccepted={setFile} setStatus={setStatus} />
+          <DropzoneInput acceptedType={["doc", "docx"]} file={file} onFileAccepted={setFile} setStatus={setStatus} />
 
           <button onClick={handleConvert} disabled={status === 'Converting...'}>
             {status === "Upload" && "Upload"}

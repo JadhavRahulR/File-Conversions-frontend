@@ -512,6 +512,55 @@ useEffect(() => {
           </p>
 
 
+          
+<section className="browser-pdf-remover-section">
+  <h2>Remove PDF Pages Directly in Your Browser</h2>
+
+  <p>
+    FileUnivers PDF Page Remover lets you remove unwanted pages
+    from a PDF directly in your browser. Upload your document,
+    preview its pages, select the pages you no longer need, and
+    create a new PDF containing the remaining pages.
+  </p>
+
+  <h3>Why Use a Browser-Based PDF Page Remover?</h3>
+
+  <ul>
+    <li>
+      <strong>No software installation:</strong> Use the tool
+      in a modern web browser.
+    </li>
+
+    <li>
+      <strong>Local processing:</strong> PDF page removal happens
+      on your device, without uploading the PDF to our processing
+      server.
+    </li>
+
+    <li>
+      <strong>Choose specific pages:</strong> Remove individual
+      pages or multiple selected pages.
+    </li>
+
+    <li>
+      <strong>Keep the pages you need:</strong> Create a new PDF
+      from the pages that remain after removal.
+    </li>
+
+    <li>
+      <strong>Easy to use:</strong> Download the updated PDF
+      when processing is complete.
+    </li>
+  </ul>
+
+  <p>
+    For sensitive documents, make sure you download the output
+    and keep your original PDF if you might need it later.
+  </p>
+</section>
+
+
+
           <ProcessSection/>
 
           <ul className="ImgResizerLinks">
