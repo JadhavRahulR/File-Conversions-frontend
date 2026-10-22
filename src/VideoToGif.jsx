@@ -788,6 +788,10 @@ export default function VideoToGif() {
             up to <strong>100 MB</strong> and convert clips up to
             <strong>15 seconds</strong> long into smooth animated GIFs.
           </p>
+          <div className="video-to-gif-images">
+
+           <img src="video-to-gif-choose-file.webp" alt="video-to-gif-image" />
+          </div>
 
           <div className="tool-info">
 
@@ -800,7 +804,10 @@ export default function VideoToGif() {
               <li>Click <strong>Convert To GIF</strong>.</li>
               <li>Download your GIF or save it directly to Google Drive or Dropbox.</li>
             </ol>
+            <div className="video-to-gif-images">
 
+           <img src="video-to-gif-properties.webp" alt="video-to-gif-image" />
+            </div>
             <h2>Features</h2>
 
             <ul>
@@ -813,6 +820,8 @@ export default function VideoToGif() {
               <li>Choose FPS and Quality</li>
               <li>Works on Windows, Mac, Linux, Android and iPhone</li>
             </ul>
+
+           
 
           </div>
 

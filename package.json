@@ -19,6 +19,7 @@
     "bootstrap": "^5.3.7",
     "fflate": "^0.8.2",
     "file-saver": "^2.0.5",
+    "gifsicle-wasm-browser": "^1.5.19",
     "jszip": "^3.10.1",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.4.449",

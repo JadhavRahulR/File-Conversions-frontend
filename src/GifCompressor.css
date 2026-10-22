@@ -1,0 +1,479 @@
+.gif-compressor {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  color: #222;
+  box-sizing: border-box;
+}
+
+.gif-compressor *,
+.gif-compressor *::before,
+.gif-compressor *::after {
+  box-sizing: border-box;
+}
+
+.gif-compressor-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.gif-compressor-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.25;
+}
+
+.gif-compressor-header p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #555;
+  line-height: 1.7;
+}
+
+.gif-upload-section {
+  margin-bottom: 24px;
+}
+
+.gif-dropzone {
+  padding: 36px 18px;
+  border: 2px dashed #b8b8b8;
+  border-radius: 12px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.gif-upload-icon {
+  display: flex;
+  width: 204px;
+  height: 44px;
+  margin: 0 auto 16px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #222;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.gif-dropzone h2 {
+  overflow-wrap: anywhere;
+  margin: 0 0 10px;
+  font-size: 21px;
+}
+
+.gif-dropzone p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.gif-size-note {
+  font-size: 14px;
+}
+
+.gif-primary-button,
+.gif-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 20px;
+  border: 1px solid #222;
+  border-radius: 7px;
+  background: #222;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.gif-secondary-button {
+  margin-top: 12px;
+}
+
+.gif-primary-button:hover,
+.gif-secondary-button:hover {
+  opacity: 0.85;
+}
+
+.gif-primary-button:disabled,
+.gif-secondary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.gif-settings {
+  margin-top: 24px;
+}
+
+.gif-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.gif-preview-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.gif-preview-card h3 {
+  margin: 0 0 14px;
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+
+.gif-preview-image {
+  display: flex;
+  min-height: 180px;
+  max-height: 350px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: #f3f3f3;
+  background-image:
+    linear-gradient(45deg, #e7e7e7 25%, transparent 25%),
+    linear-gradient(-45deg, #e7e7e7 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e7e7e7 75%),
+    linear-gradient(-45deg, transparent 75%, #e7e7e7 75%);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 10px,
+    10px -10px,
+    -10px 0;
+}
+
+.gif-preview-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 330px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.gif-preview-card > p {
+  margin: 12px 0 0;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Advanced Settings Form Styles (No Inline CSS) */
+.gif-advanced-settings {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid #eaeaea;
+}
+
+.gif-advanced-settings h3 {
+  margin: 0 0 15px;
+  font-size: 18px;
+}
+
+.gif-control-group {
+  margin-bottom: 15px;
+}
+
+.gif-inline-control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.gif-inline-control label {
+  font-weight: 500;
+  margin: 0;
+}
+
+.gif-inline-control input[type="number"],
+.gif-inline-control select {
+  width: 120px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font: inherit;
+  background: #fff;
+}
+
+.gif-color-select-row {
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.gif-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.gif-checkbox-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.gif-checkbox-group label {
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0;
+}
+
+.gif-control label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.gif-control input[type="range"] {
+  display: block;
+  width: 100%;
+  accent-color: #222;
+  cursor: pointer;
+}
+
+.gif-range-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 8px;
+  color: #555;
+  font-size: 13px;
+}
+
+.gif-help-text {
+  margin: -5px 0 15px 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.gif-settings-submit {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.gif-progress {
+  width: 100%;
+  height: 10px;
+  margin-top: 15px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e8e8e8;
+}
+
+.gif-progress-bar {
+  height: 100%;
+  border-radius: inherit;
+  background: #222;
+  transition: width 0.2s ease;
+}
+
+.gif-error,
+.gif-success {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border-radius: 7px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.gif-error {
+  border: 1px solid #f0b6b6;
+  background: #fff1f1;
+  color: #a30000;
+}
+
+.gif-success {
+  border: 1px solid #b8dfc1;
+  background: #f0fff3;
+  color: #17652b;
+  margin-top: 15px;
+}
+
+.gif-result {
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.gif-result p {
+  margin: 0 0 16px;
+  line-height: 1.6;
+}
+
+.gif-download-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .gif-compressor {
+    padding: 20px 12px;
+  }
+
+  .gif-dropzone {
+    padding: 28px 14px;
+  }
+
+  .gif-preview-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .gif-preview-image {
+    min-height: 140px;
+  }
+
+  .gif-inline-control {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .gif-inline-control input[type="number"],
+  .gif-inline-control select {
+    width: 100%;
+  }
+
+  .gif-color-select-row {
+    padding-left: 0;
+  }
+
+  .gif-primary-button,
+  .gif-secondary-button {
+    width: 100%;
+  }
+}
+
+/* Circular Progress Loader Styles */
+.gif-circular-progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.gif-circular-progress {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.gif-circular-inner {
+  width: 72px;
+  height: 72px;
+  background-color: #ffffff; /* White background taaki ring clear dikhe */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.gif-circular-inner span {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.gif-progress-msg {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+
+/* Content */
+
+.gif-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 32px auto 0;
+  padding: 24px;
+  box-sizing: border-box;
+  color: #333;
+  background-color: #fff;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+.gif-content h2 {
+  margin: 28px 0 12px;
+  color: #222;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.gif-content h2:first-child {
+  margin-top: 0;
+}
+
+.gif-content h3 {
+  margin: 20px 0 8px;
+  color: #292929;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.gif-content p {
+  margin: 0 0 16px;
+}
+
+.gif-content ol {
+  margin: 0 0 22px;
+  padding-left: 24px;
+}
+
+.gif-content ol li {
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.gif-content strong {
+  color: #222;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .gif-content {
+    padding: 18px 16px;
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .gif-content h2 {
+    margin-top: 24px;
+    font-size: 21px;
+  }
+
+  .gif-content h3 {
+    font-size: 17px;
+  }
+
+  .gif-content ol {
+    padding-left: 21px;
+  }
+}

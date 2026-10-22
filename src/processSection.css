@@ -86,8 +86,9 @@
 @media(max-width:768px){
 
 .process-section{
-    padding:70px 20px;
-    width: 80%;
+    padding:50px 10px;
+    margin: 10px auto;
+    width: 95%;
 }
 
 .process-grid{
@@ -193,8 +194,9 @@
 @media(max-width:768px){
 
 .choose-section{
-    padding:70px 20px;
-    width:80%;
+    padding:50px 10px;
+    margin: 10px auto;
+    width: 95%;
 }
 
 .choose-heading h2{

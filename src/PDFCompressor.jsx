@@ -294,83 +294,83 @@ const PDFCompressor = () => {
 
 
 
-            <h2 style={{ marginBottom: "4px" }}>Also Related PDF Conversion & Compression Tools </h2>
-            <div className="pdfpageslinks">
+          <h2 style={{ marginBottom: "4px" }}>Also Related PDF Conversion & Compression Tools </h2>
+          <div className="pdfpageslinks">
 
-            <div className="unzipPagelink">
-
-
-    <Link to="/word-to-pdf" className="fu-tool-link">
-      Word To PDF Converter
-    </Link>
-
-    <Link to="/odt-to-pdf" className="fu-tool-link">
-      ODT To PDF Converter
-    </Link>
-
-    <Link to="/text-to-pdf" className="fu-tool-link">
-      TEXT To PDF Converter
-    </Link>
-
-    <Link to="/pptx-to-pdf" className="fu-tool-link">
-      PPTX To PDF Converter
-    </Link>
-
-    <Link to="/rtf-to-pdf" className="fu-tool-link">
-      RTF To PDF Converter
-    </Link>
-
-    <Link to="/md-to-pdf" className="fu-tool-link">
-      MD To PDF Converter
-    </Link>
-
-    <Link to="/xlsx-to-pdf" className="fu-tool-link">
-      XLSX To PDF Converter
-    </Link>
-
-    <Link to="/csv-to-pdf" className="fu-tool-link">
-      CSV To PDF Converter
-    </Link>
-
-    <Link to="/img-to-pdf" className="fu-tool-link">
-      IMG To PDF Converter
-    </Link>
-
-    <Link to="/tiff-to-pdf" className="fu-tool-link">
-      TIFF To PDF Converter
-    </Link>
-
-    <Link to="/pdf-to-odt" className="fu-tool-link">
-      PDF To ODT Converter
-    </Link>
-
-    <Link to="/pdf-to-pptx" className="fu-tool-link">
-      PDF To PPTX Converter
-    </Link>
-
-    <Link to="/pdf-to-rtf" className="fu-tool-link">
-      PDF To RTF Converter
-    </Link>
-
-    <Link to="/pdfpageremover" className="fu-tool-link">
-      PDF Page Extractor
-    </Link>
-
-    <Link to="/pdfextractor" className="fu-tool-link">
-      PDF Page Remover
-    </Link>
-
-    <Link to="/merge-pdf" className="fu-tool-link">
-      Merge PDF
-    </Link>
-
-    <Link to="/favicon-generator" className="fu-tool-link">
-      Favicon Generator
-    </Link>
+            <div className="pdfpagesexternallinks">
 
 
-</div>
+              <Link to="/word-to-pdf" className="fu-tool-link">
+                Word To PDF Converter
+              </Link>
+
+              <Link to="/odt-to-pdf" className="fu-tool-link">
+                ODT To PDF Converter
+              </Link>
+
+              <Link to="/text-to-pdf" className="fu-tool-link">
+                TEXT To PDF Converter
+              </Link>
+
+              <Link to="/pptx-to-pdf" className="fu-tool-link">
+                PPTX To PDF Converter
+              </Link>
+
+              <Link to="/rtf-to-pdf" className="fu-tool-link">
+                RTF To PDF Converter
+              </Link>
+
+              <Link to="/md-to-pdf" className="fu-tool-link">
+                MD To PDF Converter
+              </Link>
+
+              <Link to="/xlsx-to-pdf" className="fu-tool-link">
+                XLSX To PDF Converter
+              </Link>
+
+              <Link to="/csv-to-pdf" className="fu-tool-link">
+                CSV To PDF Converter
+              </Link>
+
+              <Link to="/img-to-pdf" className="fu-tool-link">
+                IMG To PDF Converter
+              </Link>
+
+              <Link to="/tiff-to-pdf" className="fu-tool-link">
+                TIFF To PDF Converter
+              </Link>
+
+              <Link to="/pdf-to-odt" className="fu-tool-link">
+                PDF To ODT Converter
+              </Link>
+
+              <Link to="/pdf-to-pptx" className="fu-tool-link">
+                PDF To PPTX Converter
+              </Link>
+
+              <Link to="/pdf-to-rtf" className="fu-tool-link">
+                PDF To RTF Converter
+              </Link>
+
+              <Link to="/pdfpageremover" className="fu-tool-link">
+                PDF Page Remover
+              </Link>
+
+              <Link to="/pdfextractor" className="fu-tool-link">
+                PDF Page Extractor
+              </Link>
+
+              <Link to="/merge-pdf" className="fu-tool-link">
+                Merge PDF
+              </Link>
+
+              <Link to="/favicon-generator" className="fu-tool-link">
+                Favicon Generator
+              </Link>
+
+
             </div>
+          </div>
 
         </div>
 

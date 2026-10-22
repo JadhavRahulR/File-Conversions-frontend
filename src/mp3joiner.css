@@ -315,8 +315,8 @@
     outline: none;
     font-size: 15px;
     transition: .3s;
-    background: rgb(207, 207, 207);
-    color: black;
+    background: #616161;
+    color: white;
 }
 
 .controlItem input:focus,
@@ -343,6 +343,16 @@
     box-shadow: 0 4px 10px rgba(0,0,0,.08);
 }
 
+.video-to-gif-images{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video-to-gif-images img{
+  width: 700px;
+  height: 350px;
+}
 .tool-info {
     margin-top: 40px;
     border-top: 1px solid #e5e5e5;
@@ -426,6 +436,15 @@ progress::-moz-progress-bar {
 
 
 @media (max-width:768px){
+
+    .maincontentsection{
+      padding: 10px;
+    }
+
+    .video-to-gif-images img{
+  width: 300px;
+  height: 270px;
+}
 
     .gifControls{
         grid-template-columns:1fr;

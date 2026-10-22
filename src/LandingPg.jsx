@@ -141,6 +141,7 @@ export default function LandingPage() {
           <li><Link to="/bulk-renamer" ><FeatureCard1 title="Bulk Renamer"  image1="bulk rename.png" /> </Link></li>
           <li><Link to="/ringtone-maker" ><FeatureCard1 title="Ringtone Maker"  image1="music-app.png" /> </Link></li>
           <li><Link to="/pdf-split" ><FeatureCard1 title="Split PDF"  image1="pdf.png" /> </Link></li>
+          <li><Link to="/gif-compressor" ><FeatureCard1 title="GIF Compressor"  image1="gif.png" /> </Link></li>
           {/* <li><Link to="/invoice-generator" ><FeatureCard1 title="Invoice Generator"  image1="invoice.png" /> </Link></li> */}
 
           
