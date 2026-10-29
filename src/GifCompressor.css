@@ -347,6 +347,7 @@
   .gif-inline-control input[type="number"],
   .gif-inline-control select {
     width: 100%;
+    color: black;
   }
 
   .gif-color-select-row {
